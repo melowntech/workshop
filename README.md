@@ -17,9 +17,15 @@ make html
 
 ## Use
 
+Generated documentation is viewable in your web browser:
+
 ```
 ${BROWSER} _build/html/index.html
 ```
+
+## Read
+
+The documentation is generated at ReadTheDocs server: http://melown.readthedocs.io/
 
 ## License
 
