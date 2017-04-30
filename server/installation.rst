@@ -45,7 +45,7 @@ Vagrant
 
 .. note:: This part is stub and needs more elaboration
 
-`Vagrant<https://www.vagrantup.com/>`_  is the command line utility for managing
+`Vagrant <https://www.vagrantup.com/>`_  is the command line utility for managing
 the lifecycle of virtual machines. With Vagrant, new VirtualBox virtual machine
 will be started, where VTS tools can be installed.
 
@@ -94,7 +94,7 @@ Now run following command
     vagrant up
 
 And once your machine is up, you should be able to go to your `localhost
-port<http://localhost:8080/` 8080 and see running MapProxy server there.
+port <http://localhost:8080/` 8080 and see running MapProxy server there.
     
 
 .. _installation-docker::
@@ -102,7 +102,7 @@ port<http://localhost:8080/` 8080 and see running MapProxy server there.
 Docker
 ======
 
-`Docker<https://docker.com>`_ is the popular software container platform.
+`Docker <https://docker.com>`_ is the popular software container platform.
 Developers use Docker to eliminate "works on my machine" problems when
 collaborating on code with co-workers.
 
