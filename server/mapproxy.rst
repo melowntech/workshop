@@ -4,7 +4,7 @@
 VTS-Mapproxy
 ************
 
-`VTS-Mapproxy<https://github.com/melown/vts-mapproxy>`_ is a HTTP server that
+`VTS-Mapproxy <https://github.com/melown/vts-mapproxy>`_ is a HTTP server that
 converts non-VTS resources (raster or vector) to VTS resources (surface,
 boundlayer, freelayer) on the fly.
 
@@ -15,7 +15,7 @@ Configuration
 =============
 
 Configuration of VTS-Mapproxy is saved in simple text file, using `INI file
-format<https://en.wikipedia.org/wiki/INI_file>`_. You can get extensive list of
+format <https://en.wikipedia.org/wiki/INI_file>`_. You can get extensive list of
 configuration options, by running :command:`mapproxy --help-all` command  in the
 command line. First, we create directory with first project configuration
 
