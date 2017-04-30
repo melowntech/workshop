@@ -21,7 +21,7 @@ Ubuntu/Debian Linux distributions
 
 .. todo:: move debian repository to public location
 
-On Debian-based distributions, you should be able just to :cmd:`apt-get install`
+On Debian-based distributions, you should be able just to :command:`apt-get install`
 the key components. First you should add Melown repository to your apt sources
 
 .. code-block:: bash

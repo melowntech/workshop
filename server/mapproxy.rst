@@ -16,7 +16,7 @@ Configuration
 
 Configuration of VTS-Mapproxy is saved in simple text file, using `INI file
 format<https://en.wikipedia.org/wiki/INI_file>`_. You can get extensive list of
-configuration options, by running :cmd:`mapproxy --help-all` command  in the
+configuration options, by running :command:`mapproxy --help-all` command  in the
 command line. First, we create directory with first project configuration
 
 .. code-block:: bash

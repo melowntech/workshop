@@ -15,7 +15,7 @@ Melown server and data tools consist from several components:
 
 :ref:`vts tools`
 
-        :cmd:`vts` tool is creatd to manipulate vts tilesets, storages and
+        :command:`vts` tool is creatd to manipulate vts tilesets, storages and
         storageviews.
 
 .. toctree::
