@@ -18,8 +18,8 @@ The tutorial/workshop topic is complete Melown’s 3D open source stack
 to the concepts and 3D visualisation principles and naming convention used in
 Melown. In the second part, Melown server components (back-end) are introduced.
 We are going to setup and configure
-`mapproxy<https://github.com/melown/vts-mapproxy>`_ and
-`vtsd<https://github.com/melown/vts-vtsd>`_ and configure data sources from
+`VTS-Mapproxy <https://github.com/melown/vts-mapproxy>`_ and
+`VTSD <https://github.com/melown/vts-vtsd>`_ and configure data sources from
 public services and local datasets. We also will add custom vector data and
 visualise them on top of digital elevation model. Next, we are going to create
 web application consuming data from configured server and visualising them in
@@ -46,6 +46,5 @@ Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
 

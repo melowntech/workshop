@@ -13,13 +13,14 @@ Melown server and data tools consist from several components:
     It's designed to server VTS resources (surface, boundlayer and freelayer)
     only.
 
-:ref:`vts tools`
-
-        :command:`vts` tool is creatd to manipulate vts tilesets, storages and
-        storageviews.
+:ref:`vts-tools`
+    :command:`vts` tool is creatd to manipulate vts tilesets, storages and
+    storageviews.
 
 .. toctree::
     :hidden:
 
     installation
     mapproxy
+    vtsd
+    tools

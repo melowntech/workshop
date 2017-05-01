@@ -15,6 +15,7 @@ should be possible to compile them on MS Windows as well, but this approach was
 not tested sofar.
 
 .. _installation-debian:
+
 =================================
 Ubuntu/Debian Linux distributions
 =================================
@@ -96,8 +97,8 @@ Now run following command
 And once your machine is up, you should be able to go to your `localhost
 port <http://localhost:8080/` 8080 and see running MapProxy server there.
     
+.. _installation-docker:
 
-.. _installation-docker::
 ======
 Docker
 ======
@@ -110,6 +111,7 @@ collaborating on code with co-workers.
         distribution in the future.
 
 .. _installation-source:
+
 ======
 Source
 ======

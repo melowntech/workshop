@@ -1,0 +1,63 @@
+[
+    {
+        "comment" : "Geoland Basemap 30cm orthophoto of Austria",
+        "credits" : [ "basemap-at" ],
+        "driver" : "tms-raster",
+        "group" : "basemap-at",
+        "id" : "basemap-at-ophoto",
+        "type" : "tms",
+        "referenceFrames" : {
+            "melown2015" : {
+                "lodRange" : [ 10, 19 ],
+                "tileRange" : [ [ 269, 175 ], [ 280, 181 ] ]
+            },
+            "webmerc-projected" : {
+                "lodRange" : [ 9, 18 ],
+                "tileRange" : [ [ 269, 175 ], [ 280, 181 ] ]
+            },
+            "webmerc-unprojected" : {
+                "lodRange" : [ 9, 18 ],
+                "tileRange" : [ [ 269, 175 ], [ 280, 181 ] ]
+            }
+        },
+        "registry" :  {
+            "credits" : {
+                "basemap-at" : {
+                    "id" : 104,
+                    "notice" : "",
+                    "url" : "http://www.basemap.at/"
+                }
+            }
+        },
+        "definition" : {
+            "dataset" : "basemap-at-ophoto.xml",
+            "format" : "jpg"
+        }
+    },
+    {
+        "comment": "spheroid",
+        "group": "melown",
+        "id": "spheroid",
+        "type": "surface",
+        "driver": "surface-spheroid",
+        "referenceFrames": {
+            "melown2015": {
+                "lodRange": [1,21],
+                "tileRange": [[0,0], [1,1]]
+            }
+            , "webmerc-projected": {
+                "lodRange": [0,20],
+                "tileRange": [[0,0], [0,0]]
+            }
+        },
+        "credits": [],
+        "definition": {
+            "introspection": {
+                "tms": {
+                    "group": "basemap-at"
+                    , "id": "basemap-at-ophoto"
+                }
+            }
+        }
+    }
+]
