@@ -1,6 +1,8 @@
 .. index::
    single: reference frame
    single: tileset
+   single: glue
+   single: storge
 
 ************
 Introduction
@@ -50,6 +52,13 @@ map defines how the space is split in a tile hierarchy provides geometrical
 surface used for navigation within a map defines a spatial reference used for
 the maps public (user facing) interface.
 
+.. _lod:
+
+Level od detail (LOD)
+---------------------
+
+Level of detail. In traditional GIS this might be similar to zoom scale.
+
 .. _tileset:
 
 Tileset
@@ -59,13 +68,40 @@ meshes are textured: usually, but not necessarily
 coresponding to a given reference frame
 possibly taking advantage of external texture layers
 containing credits (copyrights, attributions)
+
+.. _glue:
+
+Glue
+----
+
+A glue is synthetised :ref:`tileset` from two or more original tilesets, to minimize
+data transfare and rendering time of final representation. Glues are
+pre-rendered on the server, so that client does not have to do the work multiple
+times.
+
+.. figure:: images/glue1.png
+    :scale: 25%
+
+    Green and white tiles are representing *glue* tiles between two tilesets,
+    with representing different surfaces. Gray tiles "in the center" and gray
+    tiles "on the permiter" are taken from original tilesets during final
+    rendering.
+
+.. figure:: images/glue-mesh.png
+    :scale: 25%
+
+    Final "glue mesh", used for one :ref:`lod` to represent tiles, which are
+    both covered by two tilesets.
+
+
 Storage
-an array of tilesets
-sharing the same reference frame
-contains glue: a derived array of tilesets containing tiles originating from different tilesets
+-------
+Storage is a stack of :ref:`tileset` sharing the same :ref:`reference-frame`.
+Surface display priority is defined by tileset stacking order (first in, last
+out). It also contains :ref:`glue`\ s between it's constituent tilesets.
+contains :ref:`glue`\ s. It's basicaly a database of all your tilesets.
+
 Storage view
-is basically a masqueraded storage (as a different storage)
-combines multiple tilesets into a single virtual tileset
-storage view needs physical, local access to storage
-
-
+-------------
+Storage view is subset of :ref:`storage`, with selected :ref:`tileset`\ s, so
+that you are not going to render all your data in final application.

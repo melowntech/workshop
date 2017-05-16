@@ -31,7 +31,8 @@
         },
         "definition" : {
             "dataset" : "basemap-at-ophoto.xml",
-            "format" : "jpg"
+            "format" : "jpg",
+            "mask": "at.qm"
         }
     },
     {
