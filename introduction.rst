@@ -1,8 +1,16 @@
 .. index::
    single: reference frame
    single: tileset
+   double: level of detail, lod
    single: glue
+   single: credits
    single: storge
+   single: storge view
+   double: srs, spatial reference system
+   single: mask
+   single: texture
+   single: mesh
+   single: attribution
 
 ************
 Introduction
@@ -42,32 +50,12 @@ describing, how the backe-end part works.
 Typical analytical concepts in VTS are that of configuration, surface and
 layers. 
 
-.. _reference-frame:
+.. _credits:
 
-Reference Frame
----------------
-Definition of a fixed `spatial reference
-<https://en.wikipedia.org/wiki/Spatial_reference_system>`_ for all data within a
-map defines how the space is split in a tile hierarchy provides geometrical
-surface used for navigation within a map defines a spatial reference used for
-the maps public (user facing) interface.
-
-.. _lod:
-
-Level od detail (LOD)
----------------------
-
-Level of detail. In traditional GIS this might be similar to zoom scale.
-
-.. _tileset:
-
-Tileset
+Credits
 -------
-A tiled surface (set of meshes with metadata)
-meshes are textured: usually, but not necessarily
-coresponding to a given reference frame
-possibly taking advantage of external texture layers
-containing credits (copyrights, attributions)
+Each data source can have credits, or *attributions* defined. See
+:ref:`credits-configuration` for more details.
 
 .. _glue:
 
@@ -93,6 +81,103 @@ times.
     Final "glue mesh", used for one :ref:`lod` to represent tiles, which are
     both covered by two tilesets.
 
+.. _lod:
+
+Level od detail (LOD)
+---------------------
+
+Level of detail. In traditional GIS this might be similar to zoom scale. It can
+be displayed as the "pyramid" in the upper picture.
+
+.. _mask:
+
+Mask
+----
+Mask is special file, which can be used as standard binary mask, which "masks
+out" pixels out of region of interest.
+
+.. figure:: images/GUID-51C6597B-FC21-4C25-B133-F01B589405E8-web.gif
+
+    Raster mask, source: http://pro.arcgis.com/en/pro-app/tool-reference/environment-settings/mask.htm
+
+.. _mesh:
+
+Polygon mesh
+------------
+`Polygon mesh <https://en.wikipedia.org/wiki/Polygon_mesh>`_ is collection of
+vertices, edges and faces that defines the shape of a polyhedral object in 3D
+computer graphics and solid modeling. The faces usually consist of triangles
+(triangle mesh), quadrilaterals, or other simple convex polygons, since this
+simplifies rendering, but may also be composed of more general concave polygons,
+or polygons with holes.
+
+In VTS, meshes are used to construct final 3D surface, covered with
+:ref:`textures`.
+
+.. figure:: images/mesh-flatshade.png
+    :scale: 50%
+    
+    Flatshaded mesh, rendered as surface
+
+.. figure:: images/mesh-wireframe.png
+    :scale: 50%
+
+    Image mesh filled with :ref:`texture`\s
+
+.. _reference-frame:
+
+Reference Frame
+---------------
+Definition of a fixed `spatial reference
+<https://en.wikipedia.org/wiki/Spatial_reference_system>`_ for all data within a
+map defines how the space is split in a tile hierarchy provides geometrical
+surface used for navigation within a map defines a spatial reference used for
+the maps public (user facing) interface.
+
+.. figure:: images/poster-coordinates.gif
+    :scale: 50%
+    
+    Source: `Maptiler <http://www.maptiler.org/img/poster-coordinates.gif>`_
+
+.. _texture:
+
+Texture
+-------
+`Texture map <https://en.wikipedia.org/wiki/Texture_mapping>`_ is a method for
+defining high frequency detail, surface texture, or color information on a
+computer-generated graphic or 3D model. In VTS, earch surface tile contains also
+ference to metainformation-tile, which further contains reference to textures
+applied to the :ref:`mesh`. Textures are stored as simple JPEG images.
+
+.. figure:: images/internal-texture.jpg
+    :scale: 50%
+
+    Image containing mesh textures
+
+.. _tileset:
+
+Tileset
+-------
+A tiled surface (set of meshes with metadata)
+meshes are textured: usually, but not necessarily
+coresponding to a given reference frame
+possibly taking advantage of external texture layers
+containing credits (copyrights, attributions)
+
+
+.. _srs:
+
+Spatial reference system
+------------------------
+`Spatial reference system
+<https://en.wikipedia.org/wiki/Spatial_reference_system>`_ (SRS) is a
+coordinate-based local, regional or global system used to locate geographical
+entities. A spatial reference system defines a specific map projection, as well
+as transformations between different spatial reference systems. In GIS, usually
+use `EPSG <https://www.epsg-registry.org/>`_ datase, however, EPSG codes are
+not used in VTS* tools. SRS is stored in internal :ref:`registry` database.
+
+.. _storage:
 
 Storage
 -------
@@ -101,7 +186,10 @@ Surface display priority is defined by tileset stacking order (first in, last
 out). It also contains :ref:`glue`\ s between it's constituent tilesets.
 contains :ref:`glue`\ s. It's basicaly a database of all your tilesets.
 
+.. _storage-view:
+
 Storage view
 -------------
 Storage view is subset of :ref:`storage`, with selected :ref:`tileset`\ s, so
 that you are not going to render all your data in final application.
+
