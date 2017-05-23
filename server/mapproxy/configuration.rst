@@ -121,7 +121,7 @@ following *common* options defined:
 ``comment``
     Human readable title of the resource
 ``credits``
-    Attributions of the data source, see :ref:`credits` for more details.
+    Attributions of the data source, see :ref:`credit`\s for more details.
 ``driver``
     Driver used for data reading
 ``group``
@@ -162,7 +162,7 @@ configurations. The :ref:`reference-frame` configuration options are
     level 0"). It's an arry of two coordinate pairs. It basically defines *data
     bounding box* not using real coordinates, but tile index in X and Y axes.
 
-.. data-source-definition:
+.. _data-source-definition:
 
 Data source definition
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -202,7 +202,7 @@ Tile Map Service (TMS)
 `TMS <https://en.wikipedia.org/wiki/Tile_Map_Service>`_  (or, 
 tiled maps in general, like `OGC WMTS <http://www.opengeospatial.org/standards/wmts>`_), 
 Besides *common configuration options*, like ``comment, group, id, type`` etc,
-you need to define :ref:`dat-source-definition`.
+you need to define :ref:`data-source-definition`.
 
 .. _surface:
 
@@ -240,9 +240,7 @@ As first step, we have do this for the dataset:
 This will create new directory :file:`ASTGTM2_N50E015_dem` with tiled overview
 maps and virtual dataset `VRTDataset file
 <http://www.gdal.org/gdal_vrttut.html>`_ and reference to original data. You can
-run ``gdalinfo`` on the :file:`dataset` file:
-
-.. code-block:: bash
+run ``gdalinfo`` on the :file:`dataset` file::
 
         $ gdalinfo -mm ASTGTM2_N50E015_dem/dataset
 
@@ -289,9 +287,8 @@ file. We will just use resampling program ``generatevrtwo`` as before, with
     generatevrtwo ASTGTM2_N50E015_dem.tif ASTGTM2_N50E015_dem.max --resampling max --tileSize 1024x1024
 
 If you now have a look at generated overviews for minimal and maximal values,
-using ``gdalinfo`` again:
+using ``gdalinfo`` again::
 
-.. code-block:: bash
 
     $ gdalinfo -mm ASTGTM2_N50E015_dem.max/0/ovr.vrt
 
@@ -305,6 +302,22 @@ using ``gdalinfo`` again:
 
     Min/Max=125.000,1594.000
 
+.. note:: You can also create virtual dataset from multiple files and use it asi
+    input for ``generatevrtwo``::
+
+        $ cd aster
+        $ ls 
+
+        ASTGTM2_N46E009_dem.tif  ASTGTM2_N47E014_dem.tif  ASTGTM2_N49E009_dem.tif
+        ASTGTM2_N46E010_dem.tif  ASTGTM2_N47E015_dem.tif  ASTGTM2_N49E010_dem.tif
+        ASTGTM2_N46E011_dem.tif  ASTGTM2_N47E016_dem.tif  ASTGTM2_N49E011_dem.tif
+        ...
+
+        $ gdalbuildvrt aster.vrt *.tif
+        $ generatevrtwo aster.vrt myaster --resampling dem --tileSize 1024x1024
+        $ generatevrtwo aster.vrt myaster.min --resampling min --tileSize 1024x1024
+        $ generatevrtwo aster.vrt myaster.max ...
+
 
 Adding resources using Python script
 ------------------------------------
@@ -314,7 +327,7 @@ database and being able to pick it back using Python script.
 
 .. todo:: This section is stub and needs more editing. 
 
-.. _mask:
+.. _configure-mask:
 
 Mask
 ----

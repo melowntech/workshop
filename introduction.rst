@@ -1,12 +1,13 @@
 .. index::
+   single: bound layer
    single: reference frame
    single: tileset
-   double: level of detail, lod
+   pair: level of detail; lod
    single: glue
    single: credits
    single: storge
    single: storge view
-   double: srs, spatial reference system
+   pair: srs; spatial reference system
    single: mask
    single: texture
    single: mesh
@@ -50,12 +51,30 @@ describing, how the backe-end part works.
 Typical analytical concepts in VTS are that of configuration, surface and
 layers. 
 
-.. _credits:
+.. _bound-layer:
+
+Bound layer
+-----------
+Bound layer tiles always correspond (in :ref:`LOD` and index) to the active :ref:`surface`.
+They do not need :ref:`metatile`\s, they share metatile information with the active surface.
+Currently, a single type exist: ``raster``. ``Raster`` bound layers are external textures for surfaces
+they may be directly used at tile level or they can be employed by map configuration or even interactively by user.
+
+.. _credit:
 
 Credits
 -------
 Each data source can have credits, or *attributions* defined. See
 :ref:`credits-configuration` for more details.
+
+.. _geogrid:
+
+Geogrid
+-------
+Usually raster representation of height differences between used ellipsoid and
+real Earth surface `Geoid <https://en.wikipedia.org/wiki/Geoid>`_ heights.
+
+.. figure:: images/geoid-grid.png
 
 .. _glue:
 
@@ -100,6 +119,13 @@ out" pixels out of region of interest.
 
     Raster mask, source: http://pro.arcgis.com/en/pro-app/tool-reference/environment-settings/mask.htm
 
+.. _metatile:
+
+Meta tile
+---------
+Tile, holding *meta informations* needed to construct 3D model from input
+:ref:`mesh` and :ref:`texture` tiles.
+
 .. _mesh:
 
 Polygon mesh
@@ -112,7 +138,7 @@ simplifies rendering, but may also be composed of more general concave polygons,
 or polygons with holes.
 
 In VTS, meshes are used to construct final 3D surface, covered with
-:ref:`textures`.
+:ref:`texture`\s.
 
 .. figure:: images/mesh-flatshade.png
     :scale: 50%
@@ -162,8 +188,15 @@ A tiled surface (set of meshes with metadata)
 meshes are textured: usually, but not necessarily
 coresponding to a given reference frame
 possibly taking advantage of external texture layers
-containing credits (copyrights, attributions)
+containing :ref:`credit`\s (copyrights, attributions)
 
+.. _resource:
+
+Resource
+--------
+
+Data sources defined in ``JSON`` encoded file, used in :ref:`mapproxy`. The data
+sources can be DEMs or :ref:`bound-layer`\s with map.
 
 .. _srs:
 

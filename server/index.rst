@@ -25,6 +25,7 @@ Melown server and data tools consist from several components:
     :hidden:
 
     registry/index
-    mapproxy
+    mapproxy/index
     vtsd
     tools
+    cmd-tools

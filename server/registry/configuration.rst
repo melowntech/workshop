@@ -8,15 +8,14 @@
 Registry configuration
 ----------------------
 
-Registrers are configured using JSON formated text files. You can add or
+Registers are configured using JSON formatted text files. You can add or
 customize the registry any time in your configuration files
 
 .. _bound-layer-configuration:
 
 Bound layers configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-:ref:`bound-layer`\s are defined in :file:`boundlayers.json` (see `source
-<https://github.com/Melown/vts-registry/blob/master/registry/registry/boundlayers.json>`_)
+:ref:`bound-layer`\s are defined in :file:`boundlayers.json` (see `source`_)
 is dictionary, where each layer is identified by key and following options:
 
 ``id`` (number)
@@ -66,8 +65,7 @@ Example::
 Credits configuration
 ^^^^^^^^^^^^^^^^^^^^^
 
-:ref:`credits`\s are defined in :file:`credits.json` (see `source
-<https://github.com/Melown/vts-registry/blob/master/registry/registry/credits.json>`_)
+:ref:`credit`\s are defined in :file:`credits.json` (see `source`_)
 is dictionary, where each layer is identified by key and following options:
 
 ``id`` (number)
@@ -90,8 +88,7 @@ is dictionary, where each layer is identified by key and following options:
 SRS configuration
 ^^^^^^^^^^^^^^^^^
 
-:ref:`srs`\s are defined in :file:`srs.json` (see `source
-<https://github.com/Melown/vts-registry/blob/master/registry/registry/srs.json>`_)
+:ref:`srs`\s are defined in :file:`srs.json` (see `source`_)
 is dictionary, where each layer is identified by key and following options:
 
 ``comment`` (string)
@@ -137,8 +134,7 @@ Reference frame configuration
 :ref:`reference-frame` is defined by SRSs, LODs, extentds and other parameters.
 Reference ranges are stored as *Array* (not dictionary, compared to previously
 described data structures).
-Basic reference frames are defined in :file:`referenceframes.json` (see `source
-<https://github.com/Melown/vts-registry/blob/master/registry/registry/referenceframes.json>`_)
+Basic reference frames are defined in :file:`referenceframes.json` (see `source`_)
 
 ``version`` (number)
     .. todo:: what does version mean
@@ -203,3 +199,5 @@ Following options can define reference frame node:
                     "ll": [-20037508.3428,-10018754.1714],
                     "ur": [20037508.3428,-9467848.34716118] }
             }
+
+.. _source: https://github.com/Melown/vts-registry/blob/master/registry/registry/boundlayers.json
