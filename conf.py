@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Melown 3D Stack - Workshop documentation build configuration file, created by
+# Melown 3D Stack documentation build configuration file, created by
 # sphinx-quickstart on Fri Mar 10 21:33:38 2017.
 #
 # This file is execfile()d with the current directory set to its
@@ -53,7 +53,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Melown 3D Stack - Workshop'
+project = u'Melown 3D Stack '
 copyright = u'2017, Jachym Cepicky, Stanislav Sumbera'
 author = u'Jachym Cepicky, Stanislav Sumbera'
 
@@ -140,7 +140,7 @@ html_theme_options = {
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
 #
-# html_title = u'Melown 3D Stack - Workshop v1.0.0'
+# html_title = u'Melown 3D Stack v1.0.0'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #
@@ -149,7 +149,7 @@ html_theme_options = {
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
 #
-# html_logo = None
+html_logo = "images/melown-logo.png"
 
 # The name of an image file (relative to this directory) to use as a favicon of
 # the docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -240,7 +240,7 @@ html_static_path = ['_static']
 # html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Melown3DStack-Workshopdoc'
+htmlhelp_basename = 'Melown3DStack'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -266,14 +266,14 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Melown3DStack-Workshop.tex', u'Melown 3D Stack - Workshop Documentation',
+    (master_doc, 'Melown3DStack.tex', u'Melown 3D Stack - Documentation',
      u'Jachym Cepicky, Stanislav Sumbera', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
 #
-# latex_logo = None
+latex_logo = "images/melown-logo.png"
 
 # For "manual" documents, if this is true, then toplevel headings are parts,
 # not chapters.
@@ -308,7 +308,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'melown3dstack-workshop', u'Melown 3D Stack - Workshop Documentation',
+    (master_doc, 'melown3dstack', u'Melown 3D Stack - Documentation',
      [author], 1)
 ]
 
@@ -323,8 +323,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'Melown3DStack-Workshop', u'Melown 3D Stack - Workshop Documentation',
-     author, 'Melown3DStack-Workshop', 'One line description of project.',
+    (master_doc, 'Melown3DStack', u'Melown 3D Stack - Documentation',
+     author, 'Melown3DStack', 'One line description of project.',
      'Miscellaneous'),
 ]
 

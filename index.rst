@@ -3,9 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-###########################
-Melown 3D Tetchnology Stack
-###########################
+##########################
+Melown 3D Technology Stack
+##########################
 
 
 The Melown (http://melown.com) API and open source library provides a technology
