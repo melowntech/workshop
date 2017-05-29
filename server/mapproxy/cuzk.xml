@@ -1,0 +1,19 @@
+<GDAL_WMTS>
+  <GetCapabilitiesUrl>http://geoportal.cuzk.cz/WMTS_ORTOFOTO/WMTService.aspx?service=wmts&amp;request=getcapabilities</GetCapabilitiesUrl>
+  <Layer>orto</Layer>
+  <Style>default</Style>
+  <TileMatrixSet>wgs84:pseudomercator:epsg:3857</TileMatrixSet>
+  <Format>image/png</Format>
+  <InfoFormat>text/plain</InfoFormat>
+  <DataWindow>
+    <UpperLeftX>1327926.23001474</UpperLeftX>
+    <UpperLeftY>6686355.697160285</UpperLeftY>
+    <LowerRightX>2112791.700936615</LowerRightX>
+    <LowerRightY>6185018.16280091</LowerRightY>
+  </DataWindow>
+  <BandsCount>4</BandsCount>
+  <Cache />
+  <UnsafeSSL>true</UnsafeSSL>
+  <ZeroBlockHttpCodes>204,404</ZeroBlockHttpCodes>
+  <ZeroBlockOnServerException>true</ZeroBlockOnServerException>
+</GDAL_WMTS>

@@ -1,0 +1,17 @@
+<GDAL_WMTS>
+  <GetCapabilitiesUrl>http://maps.wien.gv.at/basemap/1.0.0/WMTSCapabilities.xml</GetCapabilitiesUrl>
+  <Layer>bmaporthofoto30cm</Layer>
+  <Style>normal</Style>
+  <TileMatrixSet>google3857</TileMatrixSet>
+  <DataWindow>
+    <UpperLeftX>977649.8956400231</UpperLeftX>
+    <UpperLeftY>6281289.982633859</UpperLeftY>
+    <LowerRightX>1913529.940869893</LowerRightX>
+    <LowerRightY>5838030.013400062</LowerRightY>
+  </DataWindow>
+  <BandsCount>4</BandsCount>
+  <Cache />
+  <UnsafeSSL>true</UnsafeSSL>
+  <ZeroBlockHttpCodes>204,404</ZeroBlockHttpCodes>
+  <ZeroBlockOnServerException>true</ZeroBlockOnServerException>
+</GDAL_WMTS>

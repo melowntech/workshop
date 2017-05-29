@@ -1,0 +1,58 @@
+[
+    {
+        "comment" : "ophoto",
+        "driver" : "tms-raster",
+        "group" : "ophoto",
+        "id" : "nc-ophoto",
+        "type" : "tms",
+        "credits": [],
+        "referenceFrames" : {
+            "melown2015" : {
+                "lodRange" : [ 14, 20 ],
+                "tileRange" :
+                [
+                    [2305,3223], 
+                    [2305,3224]
+                ]
+            },
+            "webmerc-projected": {
+                "lodRange": [13,19],
+                "tileRange": [[2305,3223], [2305,3224]]
+            }
+        },
+        "definition" : {
+            "dataset" : "ortho",
+            "format" : "jpg"
+        }
+    },
+    {
+        "comment": "nc surface",
+        "group": "surface",
+        "id": "dem",
+        "type": "surface",
+        "driver": "surface-dem",
+        "credits": [],
+        "referenceFrames": {
+           "melown2015": {
+                "lodRange": [13, 17],
+                "tileRange": [[1152,1611], [1152,1612]]
+            },
+
+            "webmerc-projected": {
+                "lodRange": [12,16],
+                "tileRange": [[1152,1611], [1152,1612]]
+            }
+        },
+        "definition": {
+            "dataset": "elev",
+            "geoidGrid": "egm96_15.gtx",
+            "introspection": {
+                "position": ["obj", -78.679859,35.741618, "float", 0.000000,0.000000,-90.000000,0.000000,3976.856825,55.000000],
+                "tms": [{
+                    "group": "ophoto",
+                    "id": "nc-ophoto"
+                }]
+            }
+        }
+    }
+]

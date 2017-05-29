@@ -34,8 +34,36 @@ generatevrtwo
 -------------
 Generate virtual overviews from input DEM raster files. It's used as input to
 :ref:`mapproxy`. One of the differences from ``gdalbuildvrt`` is, that you
-can specify ``dem``, ``min`` and ``max`` resampling parameters (needed for
-VTS-Mapproxy).
+can specify different ``resampling`` algorithms (needed for VTS-Mapproxy).
+
+Configuration options
+^^^^^^^^^^^^^^^^^^^^^
+``input``
+    Input raster file
+``output``
+    Output directory name
+``resampling``
+    Resampling method, one of ``dem``, ``min``, ``max`` and ``texture``
+``tileSize``
+    Specified as ``PIXELSxPIXELS``, e.g. ``1024x1024``
+``minOvrSize``
+    Minimum size of generated overview, default: ``256x256``
+``overwrite``
+    Overwrite existing dataset, 1 or 0 
+``wrapx``
+    Wrap dataset in X direction. Value indicates number of overlapping pixels.
+    Useful in Pacific regions
+``background``
+  If whole warped tile contains this color it is left empty in the output. Solid
+  dataset with this color is created and places as a first source for each band
+  in all overviews.
+``co`` 
+    GTiff extra create option; can be used multiple times.
+``nodata``
+  Optional nodata value override. Can be NONE (to 
+  disable any nodata value) or a (real) number. 
+  Input dataset's nodata value is used if not used.
+
 
 Example usage::
 
