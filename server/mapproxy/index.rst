@@ -13,5 +13,6 @@ boundlayer, freelayer) on the fly.
 
     installation
     configuration
+    resources/index
     running
-    tutorial
+    examples/index

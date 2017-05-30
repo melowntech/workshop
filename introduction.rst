@@ -55,10 +55,13 @@ layers.
 
 Bound layer
 -----------
-Bound layer tiles always correspond (in :ref:`LOD` and index) to the active :ref:`surface`.
-They do not need :ref:`metatile`\s, they share metatile information with the active surface.
-Currently, a single type exist: ``raster``. ``Raster`` bound layers are external textures for surfaces
-they may be directly used at tile level or they can be employed by map configuration or even interactively by user.
+Bound layers are tiled datasets which may complement a :ref:`surface`. The
+adjective *bound* (as opposed to :ref:`free-layer`\s) means that for any tile
+used from a bound layer, there is the corresponding tile from the active
+surface, having the same :ref:`lod`, and indices.  For this reason, bound layers
+**do not**, in essence, **require any metatile information**, as they take it
+from the active surface. Bound layers are usually used as texture overlays for
+surfaces (e.g. aerial photos).
 
 .. _credit:
 
@@ -66,6 +69,26 @@ Credits
 -------
 Each data source can have credits, or *attributions* defined. See
 :ref:`credits-configuration` for more details.
+
+.. _free-layer:
+
+Free layer
+----------
+
+Free layers are collections of three dimensional information capable of
+independent rendering. There are two facets to this independence: unlike bound
+layers, free layers do not require the active surface to determine their
+position. And unlike surfaces, they do not exclude other surfaces from
+rendering. As many free layers as needed may be rendered at a given position in
+the reference frame's node hierarchy.
+
+If a free layer is tiled, or organized in a tile hiearchy, it holds also an
+independent hierarchy of metatiles to achieve its independence on the active
+surface. In format and semantics, free layer metatiles are precisely identical
+to surface metatiles. Their usage in the rendering pipeline is largely identical
+as with surfaces. Each free layer, however, forms its own independent,
+single-entity rendering stack.
+
 
 .. _geogrid:
 
@@ -184,11 +207,10 @@ applied to the :ref:`mesh`. Textures are stored as simple JPEG images.
 
 Tileset
 -------
-A tiled surface (set of meshes with metadata)
-meshes are textured: usually, but not necessarily
-coresponding to a given reference frame
-possibly taking advantage of external texture layers
-containing :ref:`credit`\s (copyrights, attributions)
+A tiled surface (set of meshes with metadata) meshes are textured: usually, but
+not necessarily corresponding to a given reference frame possibly taking
+advantage of external texture layers containing :ref:`credit`\s (copyrights,
+attributions)
 
 .. _resource:
 
@@ -226,3 +248,19 @@ Storage view
 Storage view is subset of :ref:`storage`, with selected :ref:`tileset`\ s, so
 that you are not going to render all your data in final application.
 
+.. _surface:
+
+Surface
+-------
+
+Surfaces are a client side notion of tilesets. More precisely, they are
+
+* a geometrical definition of the modeled object's surface,
+* with optional textures and/or information on how to map external textures to object's surface
+* with information on terrain, allowing to map map XY navigation SRS coordinates to their Z compoment.
+
+Our current webexport format is, under our new terminology, a representation of
+a single surface. It is a surface which is tiled (organized in a tile hierarchy)
+and sampled (described as a set of polygonal meshes, as opposed to using
+analytical and implicit functions). We shall preserve this properties in the new
+surface format.
