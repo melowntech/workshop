@@ -349,6 +349,18 @@ Available expansion strings. Only some make sense for templates used in
 + ``{ppx}`` - tile's old PP space X index (makes sense only in ppspace)
 + ``{ppy}`` - tile's old PP space Y index (makes sense only in ppspace)
 
+.. _mapproxy-ref-frame-definition:
+
+Reference frame
+---------------
+.. todo:: Reference frame configuration
+
+.. _mapproxy-credits:
+
+Credits
+-------
+.. todo:: Credits configuration
+
 .. _resources-python:
 
 Python configuration
