@@ -82,12 +82,15 @@ position. And unlike surfaces, they do not exclude other surfaces from
 rendering. As many free layers as needed may be rendered at a given position in
 the reference frame's node hierarchy.
 
-If a free layer is tiled, or organized in a tile hiearchy, it holds also an
+If a free layer is tiled, or organized in a tile hierarchy, it holds also an
 independent hierarchy of metatiles to achieve its independence on the active
 surface. In format and semantics, free layer metatiles are precisely identical
 to surface metatiles. Their usage in the rendering pipeline is largely identical
 as with surfaces. Each free layer, however, forms its own independent,
 single-entity rendering stack.
+
+For configuration options, have a look at :ref:`geodata` resources configuration
+section.
 
 
 .. _geogrid:

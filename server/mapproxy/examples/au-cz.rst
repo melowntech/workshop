@@ -139,6 +139,11 @@ For LOD 13, this should be pretty fast.
 
 Creating virtual overviews
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note:: Following 3 steps - tiling virtual overviews, tiling information and
+        adding layer definition to ``resources.json`` file, can be done with
+        only one helper script ``mapproxy-dem2daset``
+
 We need to create ``dem``, ``min`` and ``max`` virtual overviews for DEM and
 ``texture`` overview for the aerial photos::
 

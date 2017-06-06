@@ -1,0 +1,11 @@
+{
+  "layers": {
+    "lines": {
+      "line-width": 5,
+      "line": true,
+      "line-color": [255, 0, 0, 255],
+      "zbuffer-offset": [-1, 0, 0]
+    }
+  }
+}
+

@@ -47,6 +47,11 @@ stored. We will copy :file:`elevlid_D792_6m.tif`, :file:`elevlid_D793_6m.tif` an
     $ cp ../ncrast/elevlid_D792_6m.tif .
     $ cp ../ncrast/elevlid_D793_6m.tif
 
+.. note:: Following 3 steps - tiling virtual overviews, tiling information and
+        adding layer definition to ``resources.json`` file, can be done with
+        only one helper script ``mapproxy-dem2daset``
+
+
 Step 1. Create virtual datasets
 """""""""""""""""""""""""""""""
 

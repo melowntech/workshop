@@ -1,0 +1,106 @@
+[
+    "id": "roads",
+    "group": "roads"
+    {
+        "comment" : "roads",
+        "credits" : [],
+        "driver" : "geodata-vector",
+        "group" : "roads",
+        "id" : "roads",
+        "type" : "geodata",
+        "referenceFrames" : {
+            "melown2015" : {
+                "lodRange" : [0, 0],
+                "tileRange" : [[0, 0], [0, 0]]
+            }
+        },
+        "definition": {
+            "dataset": "roads/motorways.shp",
+            "demDataset": "elev",
+            "geoidGrid": "egm96_15.gtx",
+            "layers": ["gis.osm_roads_free_1"],
+            "format": "geodataJson",
+            "styleUrl": "file:mystyle.json",
+            "displaySize": 1024,
+            "introspection": {
+                "surface": {
+                    "group": "melown",
+                    "id": "dem"
+                }
+            },
+            "position": ["obj",15.000209,50.000209,"float",0.000000,0.000000,-90.000000,0.000000,1458214.909081,55.000000]
+        }
+    },
+    {
+        "comment" : "czech",
+        "credits" : [],
+        "driver" : "tms-raster",
+        "group" : "ophoto",
+        "id" : "czech-ophoto",
+        "type" : "tms",
+        "referenceFrames" : {
+            "melown2015" : {
+                "lodRange" : [6, 22],
+                "tileRange" : [[17, 10], [17, 11]]
+            }
+        },
+        "definition" : {
+            "mask": "czech.mask",
+            "dataset" : "cuzk.xml",
+            "format" : "jpg"
+        }
+    },
+    {
+        "comment" : "austria",
+        "credits" : [ ],
+        "driver" : "tms-raster",
+        "group" : "ophoto",
+        "id" : "austria-ophoto",
+        "type" : "tms",
+        "referenceFrames" : {
+            "melown2015" : {
+                "lodRange" : [ 6, 22 ],
+                "tileRange" : [[ 16, 10 ], [ 17, 11 ] ]
+            }
+        },
+        "definition" : {
+            "mask": "austria.mask",
+            "dataset": "geolandat.xml",
+            "format" : "jpg"
+        }
+    },
+    {
+        "comment": "srtm",
+        "group": "melown",
+        "id": "dem",
+        "type": "surface",
+        "driver": "surface-dem",
+        "referenceFrames": {
+            "melown2015": {
+                "lodRange": [5,13],
+                "tileRange": [ [ 8, 5], [8, 5]]
+            }
+        },
+        "credits": [],
+        "definition": {
+            "dataset": "elev",
+            "geoidGrid": "egm96_15.gtx",
+            "introspection": {
+                "geodata": {
+                    "id": "roads",
+                    "group": "roads"
+                },
+                "position": ["obj",15.000209,50.000209,"float",0.000000,0.000000,-90.000000,0.000000,1458214.909081,55.000000],
+                "tms": [
+                {
+                    "group": "ophoto",
+                    "id": "czech-ophoto"
+                },
+                {
+                    "group": "ophoto",
+                    "id": "austria-ophoto"
+                }]
+            }
+        }
+    }
+]

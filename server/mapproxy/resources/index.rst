@@ -1,3 +1,6 @@
+.. index::
+    pair: free layer; vector layer
+
 .. _resources:
 
 ===================
@@ -272,11 +275,11 @@ subset can be configured by providing list of layer names.
 
 + ``dataset`` (string) - path to OGR dataset
 + ``demDataset`` (string) - path to complex dem dataset
-+ ``geoidGrid`` (string, optional) - name of Proj.4's geoid grid file (e.g. `egm96_15.gtx`)
-+ ``layers`` (array[string], optional) - list of layers names
++ ``displaySize`` (string) - Nominal size of tile in pixels, e.g. 1024
++ ``geoidGrid`` (string, optional) - name of Proj.4's geoid grid file (e.g. :file:`egm96_15.gtx`)
++ ``layers`` (array[string], optional) - list of layers names, as provided by GDAL
 + ``format`` (string, optional) - output file format, so far only "geodataJson" is supported (default)
-+ ``styleUrl`` (string, optional) - URL to default geodata style
-+ ``displaySize`` (string, optional) - Nominal size of tile in pixels.
++ ``styleUrl`` (string, optional) - URL to default geodata style. If used with ``file:`` prefix, e.g.  ``file:style.json``, it's searched in ``datasets`` directory.
 + ``introspection`` (:ref:`introspection`, optional) - Extended configuration for mapConfig.json served by mapproxy
 
 Introspection can be used to serve ``mapConfig`` where geodata are show with some surface which in turn can have its own introspection configuration.
@@ -309,11 +312,66 @@ Introspection
 Introspection is extending configuration for :ref:`mapproxy` served :file:`mapConfig.json`
 (only when browsing is enabled).
 
-+ ``position`` (array[number]) - VTS position in JSON/python format
-+ ``tms`` (object) - bound layer(s) mapped on the surface, see below 
-    + ``group`` (string) - group part of TMS resource identifier
-    + ``id`` (string) - ID part of TMS resource identifier
++ ``position`` (:ref:`position`) - VTS position in JSON/python format
++ ``tms`` (:ref:`resource-reference`) - bound layer(s) mapped on the surface, see below 
++ ``geodata`` (:ref:`resource-reference`) - ``group`` and ``id`` reference to free layer resource
++ ``surface`` (:ref:`resource-reference`) - reference to existing surface resource
 
+.. _resource-reference:
+
+Resource reference
+------------------
+Whenever you need to define reference to existing resource
+
++ ``group`` (string) - group part of TMS resource identifier
++ ``id`` (string) - ID part of TMS resource identifier
+
+.. _position:
+
+Position
+--------
+In VTS, the general position format is called an objective position. Position
+can be defined from ``object`` or ``subject`` perspective. Example
+configuration::
+
+    ["obj",472205.0,5555763.0,"fix",229.0,-10,-57,0,75,80]
+
+where
+
+* element 0 is string "object"
+* elements 1-2 are XY components position of the center of orbit in navigation
+  SRS
+* element 3 is either "fix" or "float"
+* element 4 is either Z component of the center of orbit in navigation SRS (if
+  element 3 is "fix") or its AGL (if element 3 is "float")
+* elements 5-7 are NED based Euler angles (yaw, pitch, and roll) of the
+  direction of view, measured at the center of orbit
+* element 8 is vertical extent of camera view, measured at the center of orbit
+  at physical SRS units
+* element 9 is vertical FOV, measured in degrees.
+* As a special case, the value of element 8 may be 0, indicating that the
+  projection is orthographic.
+
+A slightly less general position format, named subjective position, is defined as a similar 10-tuple::
+
+    ["subj",472201.0,5555739.0,"fix",266.4,-10,-57,0,44.7,80]
+
+where
+
+* element 0 is string "subj"
+* elements 1-2 are XY components of the center of perspectivity in navigation
+  SRS
+* element 3 is either "fix" or "float"
+* elements 4 is either Z component of the center of perspectivity in navigation
+  SRS (if element 3 is "fix") or its AGL (if element 3 is "float")
+* elements 5-7 are NED based Euler angles of the direction of view, measured at
+  the center of perspectivity
+* element 8 is distance from the center of perspectivity to the center of orbit,
+  and
+* element 9 (optional) is vertical FOV, measured in degree
+
+For getting optimal position definition of your dataset,
+:ref:`mapproxy-calipers` should be used.
 
 .. _url:
 
