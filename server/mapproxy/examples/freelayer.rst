@@ -8,7 +8,7 @@ Publishing vector data
 ----------------------
 
 Vector data as we know them in GIS, are called :ref:`free-layer` in terms of
-VTS ecosystem. They do have their own  coordinate reference system definition,
+VTS ecosystem. They do have their own coordinate reference system definition,
 and are not tided to specific tiling schema. For configuration details, have a
 look at :ref:`geodata-vector` configuration.
 
@@ -49,6 +49,10 @@ We can create directory and copy our motorways there::
 
     $ mkdir resources/roads
     $ mv motorways.* resources/roads/
+
+.. figure:: images/motorways.png
+    
+    Motorways separated from routes (OpenStreetMap from GeoFabrik.de)
 
 Configure ``resources.json``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -51,7 +51,15 @@
                 "tileRange": [[0,0], [0,0]]
             }
         },
-        "credits": [],
+        "credits": ["srtm"],
+        "registry": {
+            "credits": {
+                "srtm": {
+                    "id": 201,
+                    "url": "http://srtm.csi.cgiar.org"
+                }
+            }
+        },
         "definition": {
             "introspection": {
                 "tms": {

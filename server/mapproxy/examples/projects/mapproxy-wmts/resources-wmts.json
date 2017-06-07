@@ -1,7 +1,7 @@
 [
     {
         "comment" : "czech",
-        "credits" : [],
+        "credits" : ["cuzk"],
         "driver" : "tms-raster",
         "group" : "ophoto",
         "id" : "czech-ophoto",
@@ -12,6 +12,15 @@
                 "tileRange" : [[17, 10], [17, 11]]
             }
         },
+        "registry": {
+            "credits": {
+                "cuzk": {
+                    "id": 200,
+                    "notice": "{copy} CUZK",
+                    "url": "http://cuzk.cz"
+                }
+            }
+        },
         "definition" : {
             "mask": "czech.mask",
             "dataset" : "cuzk.xml",
@@ -20,7 +29,7 @@
     },
     {
         "comment" : "austria",
-        "credits" : [ ],
+        "credits" : ["base-at"],
         "driver" : "tms-raster",
         "group" : "ophoto",
         "id" : "austria-ophoto",
@@ -49,7 +58,15 @@
                 "tileRange": [ [ 8, 5], [8, 5]]
             }
         },
-        "credits": [],
+        "credits": ["srtm"],
+        "registry": {
+            "credits": {
+                "srtm": {
+                    "id": 201,
+                    "url": "http://srtm.csi.cgiar.org"
+                }
+            }
+        },
         "definition": {
             "dataset": "elev",
             "geoidGrid": "egm96_15.gtx",

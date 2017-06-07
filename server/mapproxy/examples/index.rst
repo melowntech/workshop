@@ -15,3 +15,5 @@ to setup some project using standard GIS data
     north-carolina
     au-cz
     freelayer
+    freelayer-tiled
+

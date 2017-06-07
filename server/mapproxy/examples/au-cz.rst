@@ -13,19 +13,19 @@ going to use WMTS from Czech  .... and Austrian ... (both central Europe).
 
 Start the project
 ^^^^^^^^^^^^^^^^^
+First we need to create project directory and datasets directory::
 
-::
-
-    $ mkdir mapproxy-wmts
-    $ cd mapproxy-wmts
-    $ make datasets
-    $ cd datasets
+    $ mkdir -p mapproxy-wmts/datasets
+    $ cd mapproxy-wmts/datasets
 
 Download the SRTM data
 ^^^^^^^^^^^^^^^^^^^^^^
-http://srtm.csi.cgiar.org/SELECTION/inputCoord.asp
+We will use the `CGIAR-CSI <http://srtm.csi.cgiar.org/>`_ `NASA's Shuttle Radar
+Topography Mission (SRTM) <https://www2.jpl.nasa.gov/srtm/>`_. The links to
+GeoTIFF files can be found at http://srtm.csi.cgiar.org/SELECTION/inputCoord.asp
 
 ::
+
     $ wget http://srtm.csi.cgiar.org/SRT-ZIP/SRTM_V41/SRTM_Data_GeoTiff/srtm_40_03.zip
     $ wget http://srtm.csi.cgiar.org/SRT-ZIP/SRTM_V41/SRTM_Data_GeoTiff/srtm_40_02.zip
     $ wget http://srtm.csi.cgiar.org/SRT-ZIP/SRTM_V41/SRTM_Data_GeoTiff/srtm_39_02.zip
@@ -39,7 +39,10 @@ Create virtual raster file with GDAL::
 
     $ gdalbuildvrt srtm.vrt srtm*.tif
 
-.. figure:: srtm.png
+This will create single data files, which is covering all 4 underlaying GeoTIFF
+files.
+
+.. figure:: images/srtm.png
 
     Centeral Europe SRTM DEM data, put together using ``gdalbuildvrt`` downloaded from http://srtm.csi.cgiar.org/SELECTION/inputCoord.asp
 
@@ -71,12 +74,12 @@ service::
 The output seems a bit too messy, but, if we look for Web Mercator projection
 (EPSG:3857), we might get the right spot::
 
-    $ gdalinfo "WMTS:http://geoportal.cuzk.cz/WMTS_ORTOFOTO/WMTService.aspx?service=wmts&request=getcapabilities" | grep 3857
-
+    ...
     SUBDATASET_29_NAME=WMTS:http://geoportal.cuzk.cz/WMTS_ORTOFOTO/WMTService.aspx?service=wmts&request=getcapabilities,layer=orto,tilematrixset=wgs84:pseudomercator:epsg:3857,style=default
     SUBDATASET_29_DESC=Layer Ortofoto ČR, tile matrix set wgs84:pseudomercator:epsg:3857, style default
     SUBDATASET_30_NAME=WMTS:http://geoportal.cuzk.cz/WMTS_ORTOFOTO/WMTService.aspx?service=wmts&request=getcapabilities,layer=orto,tilematrixset=wgs84:pseudomercator:epsg:3857,style=inspire_common:DEFAULT
     SUBDATASET_30_DESC=Layer Ortofoto ČR, tile matrix set wgs84:pseudomercator:epsg:3857, style inspire_common:DEFAULT
+    ...
 
 Now, we can continue with the ``SUBDATASET_29`` or ``SUBDATASET_30`` (they
 should be both the same).
@@ -103,7 +106,7 @@ Again, the file should look limilar to :download:`geolandat.xml`
 We now have WMTS from two sources and digital elevation model from SRTM source.
 Let's check our data in QGIS:
 
-.. figure:: cz-au-srtm.png
+.. figure:: images/cz-au-srtm.png
 
     WMTS layers along with SRTM DEM
 
@@ -128,14 +131,15 @@ The data we are looking for - state boundaries - are
 
 To make the mask, we need to know biggest :ref:`lod` nad :ref:`reference-frame`.
 You use maximum LOD - e.g. 21, but the calculation will take probably whole
-night. Since the SRTM dataset does "make sense" at LOD 13, I'm going to use this
-number (I've used :ref:`mapproxy-calipers` to find out, more about this
-lower).::
+night. Since the SRTM dataset does "make sense" at LOD 13, I could use this
+level of detail. But I would like to get little bit finer mask resolution,
+therefore I go with nr. 17 (21 would be even more nicer, but would take lifetime
+to get it generated).::
 
-    $ mapproxy-rf-mask --dataset czech-republic/admin_level_2.geojson --output czech.mask.melown2015 --referenceFrame melown2015 --lod 13
-    $ mapproxy-rf-mask --dataset austria/admin_level_2.geojson --output czech.mask.melown2015 --referenceFrame melown2015 --lod 13
+    $ mapproxy-rf-mask --dataset czech-republic/admin_level_2.geojson --output czech.mask.melown2015 --referenceFrame melown2015 --lod 17
+    $ mapproxy-rf-mask --dataset austria/admin_level_2.geojson --output czech.mask.melown2015 --referenceFrame melown2015 --lod 17
 
-For LOD 13, this should be pretty fast.
+For LOD 17, this should be relativelyh fast.
 
 Creating virtual overviews
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -157,7 +161,7 @@ We need to create ``dem``, ``min`` and ``max`` virtual overviews for DEM and
 
 Same could we do for the czech and austrian aerial images, BUT to
 ``generatevrtwo`` for Czech republic, it would take 8010114 tiles and some disk
-space. So we are going to ommit this and relay on the original services.
+space. So we are going to ommit this and use the WMTS data on-the-fly.
 
 Generate tiling information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -186,7 +190,7 @@ Configuring VTS-Mapproxy
 
 First, configuration file, it will be simple and straight forward:
 
-.. literalinclude:: mapproxy-wmts.cfg
+.. literalinclude:: projects/mapproxy-wmts/mapproxy-wmts.cfg
 
 Next, we configure resources. We are going to stick to ``melown2015``
 :ref:`reference-frame`. For this, we need to know LOD ranges and tile ranges::
@@ -217,9 +221,9 @@ Next, we configure resources. We are going to stick to ``melown2015``
 We can now start with the configuration of data sources and use output from
 ``mapproxy-calipers`` to layer configurations: Let's start with the Czech WMTS layer:
 
-.. literalinclude:: resources-wmts.json
+.. literalinclude:: projects/mapproxy-wmts/resources-wmts.json
     :linenos:
-    :lines: 1-20
+    :lines: 1-29
 
 Note: tile ranges and LOD ranges are taken from the previous
 ``mapproxy-calipers`` output. Note also, that the generated **mask** is
@@ -228,35 +232,52 @@ automatically.
 
 Continue with Austrian WMTS layer
 
-.. literalinclude:: resources-wmts.json
+.. literalinclude:: projects/mapproxy-wmts/resources-wmts.json
     :linenos:
-    :lineno-start: 20
-    :lines: 20-39
+    :lineno-start: 30
+    :lines: 30-48
 
 And finally, we add SRTM dataset with both WMTS layers overlayed:
 
-.. literalinclude:: resources-wmts.json
+.. literalinclude:: projects/mapproxy-wmts/resources-wmts.json
     :linenos:
-    :lineno-start: 40
-    :lines: 40-
+    :lineno-start: 49
+    :lines: 49-
+
+Here you can download the whole resources file :download:`projects/mapproxy-wmts/resources-wmts.json`.
 
 We can now start the server and see the result::
 
-    $ mapproxy --config mapproxy-wmts.cfg
+    $ mapproxy --config projects/mapproxy-wmts/mapproxy-wmts.cfg
     ...
     2017-05-29 13:28:27 I3 [27261(updater)]: Ready to serve.
 
-.. figure:: cz-au.png
+.. figure:: images/cz-au.png
 
     Czech republic and Austria on ``melown2015`` reference frame using SRTM
     digital elevation model.
 
-.. figure:: austria.png
+.. figure:: images/austria.png
 
     Alps region in Austria
 
-.. figure:: palava.png
+.. figure:: images/palava.png
 
     Palava, look from behind Austrian borders
+
+The final file structure::
+
+    mapproxy-wmts/
+        mapproxy-wmts.cfg
+        resources-wmts.json
+        datasets/
+            austria/
+            czech-republic/
+            elev
+            cuzk.xml
+            austria.mask.melown2015
+            cuzk.mask.melown2015
+            srtm_*.tif
+            ...
 
 .. _GDAL XML WMTS configuration file: http://www.gdal.org/frmt_wmts.html

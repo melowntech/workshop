@@ -1,15 +1,15 @@
 [
     {
-        "comment" : "roads",
+        "comment" : "austria vector",
         "credits" : ["osm", "openmaptiles"],
-        "driver" : "geodata-vector",
-        "group" : "roads",
-        "id" : "roads",
+        "driver" : "geodata-vector-tiled",
+        "group" : "vector",
+        "id" : "austria",
         "type" : "geodata",
         "referenceFrames" : {
             "melown2015" : {
-                "lodRange" : [0, 0],
-                "tileRange" : [[0, 0], [0, 0]]
+                "lodRange" : [6, 15],
+                "tileRange" : [[16, 10], [17, 11]]
             }
         },
         "registry": {
@@ -19,6 +19,32 @@
                     "notice": "{copy} OpenMapTiles",
                     "url": "http://openmaptiles.org"
                 }
+            }
+        },
+        "definition": {
+            "dataset": "austria.mbtiles/{loclod}-{locx}-{locy}",
+            "demDataset": "elev",
+            "geoidGrid": "egm96_15.gtx",
+            "displaySize": 1024,
+            "introspection": {
+                "surface": {
+                    "group": "melown",
+                    "id": "dem"
+                }
+            }
+        }
+    },
+    {
+        "comment" : "roads",
+        "credits" : [],
+        "driver" : "geodata-vector",
+        "group" : "roads",
+        "id" : "roads",
+        "type" : "geodata",
+        "referenceFrames" : {
+            "melown2015" : {
+                "lodRange" : [0, 0],
+                "tileRange" : [[0, 0], [0, 0]]
             }
         },
         "definition": {
