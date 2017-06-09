@@ -1,5 +1,6 @@
 .. index::
     single: tutorial
+    single: example
     single: North Carolina
 
 .. _north-carolina:
@@ -36,7 +37,7 @@ them:: ``melown2015``, which is represented as sphere of Earth's shape and
 ``webmerc-projected``, which is the popular web mapping projection.
 
 Once we have this, we can finally ad the tiled dataset to the
-:file:`resources.json` configuration file.
+:file:`resources-nc.json` configuration file.
 
 First we create ``datasets`` directory, where all *to-be-published data* will be
 stored. We will copy :file:`elevlid_D792_6m.tif`, :file:`elevlid_D793_6m.tif` and
@@ -48,13 +49,11 @@ stored. We will copy :file:`elevlid_D792_6m.tif`, :file:`elevlid_D793_6m.tif` an
     $ cp ../ncrast/elevlid_D793_6m.tif
 
 .. note:: Following 3 steps - tiling virtual overviews, tiling information and
-        adding layer definition to ``resources.json`` file, can be done with
-        only one helper script ``mapproxy-dem2daset``
-
+        adding layer definition to ``resources-nc.json`` file, can be done with
+        only one helper script ``mapproxy-dem2dataset``
 
 Step 1. Create virtual datasets
 """""""""""""""""""""""""""""""
-
 Next, we will create virtual overviews (step nr. 1.) using `GDAL Virtual
 Format`_. Let's start with the ortho photo, we will use :ref:`generatevrtwo`
 program for that::
@@ -68,7 +67,7 @@ Next we first join the two elevation raster files together using GDAL::
 
     $ gdalbuildvrt elevlid_6m.vrt elevlid_D7*_6m.tif
 
-New file :file`elevlid_6m.vrt` was created and can be used as input to
+New file :file:`elevlid_6m.vrt` was created and can be used as input to
 :ref:`generatevrtwo`.
 
 For elevation maps, 3 maps have to created: The DEM, it's minimums and
@@ -161,32 +160,32 @@ Same for our DEM::
 
 Configure VTS-Mapproxy
 ^^^^^^^^^^^^^^^^^^^^^^
-Two files have to be created: the :file:`resources.json` and :file:`maproxy.conf` (the names do not
+Two files have to be created: the :file:`resources-nc.json` and :file:`maproxy.conf` (the names do not
 have to be like this, but we will stick to those names in frame of this
 tutorial).
 
-First, let's create :file:`nc-project/mapproxy.conf` with following content:
+First, let's create :file:`mapproxy.conf` with following content:
 
-.. literalinclude:: mapproxy-nc.conf
+.. literalinclude:: projects/nc/mapproxy.conf
 
-.. note:: You can download the file directly :download:`mapproxy-nc.conf`
+.. note:: You can download the file directly :download:`projects/nc/mapproxy.conf`
 
 The configuration values should be self-explaining. For more configuration
 options, you can have a look at ``mapproxy --help-all`` output. Just few
 comments:
 
-    * Resources will be loaded from :file:`resources.json`
+    * Resources will be loaded from :file:`resources-nc.json`
     * It is assumed, that all the data are loaded from ``datasets`` directory
     * Generated cache tiles are stored in ``store`` directory
     * Since ``max-age`` is set to -1, nothing will be cached in the browser.
 
-Next, we have to create :file:`resources.json` file. It's an JSON file. There
+Next, we have to create :file:`resources-nc.json` file. It's an JSON file. There
 will be 2 resources defined: the one with ``ortho`` data input and the other with
 ``elev`` data input. Let's start with ``ortho`` data input.
 
-.. note:: You can download the file directly :download:`resources-nc.json`
+.. note:: You can download the file directly :download:`projects/nc/resources-nc.json`
 
-.. literalinclude:: resources-nc.json
+.. literalinclude:: projects/nc/resources-nc.json
     :lines: 1-27
     :linenos:
 
@@ -204,7 +203,7 @@ will be 2 resources defined: the one with ``ortho`` data input and the other wit
 
 Next, we add our ``elev`` data source:
 
-.. literalinclude:: resources-nc.json
+.. literalinclude:: projects/nc/resources-nc.json
     :lines: 28-
     :lineno-start: 28
     :linenos:
@@ -246,7 +245,7 @@ http://localhost:3070::
             resource-backend.updatePeriod = 300
             resource-backend.root = "/tmp/melown/datasets/"
             resource-backend.type = conffile
-            resource-backend.path = "resources.json"
+            resource-backend.path = "resources-nc.json"
          {main.cpp:configure():259}
         2017-05-27 20:23:11 I4 [23429(main)]: [mapproxy] Service mapproxy/test starting. {service.cpp:operator()():476}
         2017-05-27 20:23:11 I3 [23429(updater)]: Ready to serve. {generator.cpp:update():745}
@@ -255,6 +254,17 @@ http://localhost:3070::
 
     North Carolina dataset displayed as 3D using :ref:`mapproxy`. The map is reachable at
     http://localhost:3070/melown2015/surface/surface/dem/
+
+Final project directory structure::
+
+    projects/nc
+        datasets/
+            ortho_2001/
+            ncterrain/
+            ortho_2001_t792_1m.tif
+            elevlid_D792_6m-compressed.tif
+        mapproxy.conf
+        resources.json
 
 .. _North Carolina dataset: https://grassbook.org/datasets/datasets-3rd-edition/
 .. _The Open Source GIS\: A GRASS GIS approach: https://grassbook.org/

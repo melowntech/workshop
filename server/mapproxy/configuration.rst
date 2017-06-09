@@ -22,10 +22,10 @@ command line. First, we create directory with first project configuration
     cd mapproxy-project
     $EDITOR mapproxy.conf
 
-You can now add following lines in the :download:`examples/mapproxy.conf` configuration
-file.
+You can now add following lines in the
+:download:`examples/projects/nc/mapproxy.conf` configuration file.
 
-.. literalinclude:: examples/mapproxy.conf
+.. literalinclude:: examples/projects/nc/mapproxy.conf
    :linenos:
 
 Mapproxy configuration options
