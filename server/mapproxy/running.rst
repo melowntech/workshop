@@ -85,5 +85,5 @@ service http://localhost:3070/webmerc-projected/tms/basemap-at/basemap-at-ophoto
 
 And we should also see the same map, projected on sphere http://localhost:3070/melown2015/surface/melown/spheroid/ - the sphere might look empty, but you can always find "Vienna" in the search field and you should end up on URL similar to this: http://localhost:3070/melown2015/surface/melown/spheroid/?pos=obj,16.372504,48.208354,fix,0.00,0.00,-60.00,0.00,30000.00,55.00
 
-.. figure:: examples/spheroid-vienna.png
+.. figure:: examples/images/spheroid-vienna.png
 

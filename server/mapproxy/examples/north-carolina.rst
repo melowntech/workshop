@@ -250,7 +250,7 @@ http://localhost:3070::
         2017-05-27 20:23:11 I4 [23429(main)]: [mapproxy] Service mapproxy/test starting. {service.cpp:operator()():476}
         2017-05-27 20:23:11 I3 [23429(updater)]: Ready to serve. {generator.cpp:update():745}
     
-.. figure:: north-carolina.png
+.. figure:: images/north-carolina.png
 
     North Carolina dataset displayed as 3D using :ref:`mapproxy`. The map is reachable at
     http://localhost:3070/melown2015/surface/surface/dem/

@@ -1,6 +1,8 @@
 .. index::
     single: free layer tiled
     single: tiled vector layer
+    single: tutorial
+    single: example
 
 .. _freelayer-tiled-example:
 
@@ -8,10 +10,13 @@ Publishing tiled vector data
 ----------------------------
 
 Vector data as we know them in GIS, are called :ref:`free-layer` in terms of
-VTS ecosystem. They can have their own coordinate reference system definition,
-and they are tided to specific tiling schema - not related to used reference
-frame. For configuration details, have a look at :ref:`geodata-vector-tiled`
-configuration.
+VTS ecosystem. For displaying large vector data sets in map viewers, the data
+need usually to be tiled using some predefied tiling schema.
+
+The vector data have their own coordinate reference system definition,
+and the tiling is tided to specific tiling schema - not necessary related to
+used reference frame. For configuration details, have a look at
+:ref:`geodata-vector-tiled` configuration.
 
 The main difference between vector data source (:ref:`free-layer`) and tiled
 vector data is, that it allows us to display much larger datasets, adjusted to
@@ -24,8 +29,6 @@ In our example, we will continue with the :ref:`srtm-example` project (you can
 also take what you have in the :ref:`freelayer-example` project), where we
 have `SRTM <https://www2.jpl.nasa.gov/srtm/>`_ elevation data along with Czech
 and Austrian WMTS aerial image layers.
-
-We may now add some tiled vector layers.
 
 .. note:: If you do not have ``resources.json`` and ``mapproxy.conf`` files yet,
     go to the :ref:`srtm-example` project and come back, after you have working
@@ -48,9 +51,9 @@ Configure ``resources.json``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We now have our input data and can add new resource to
-:download:`mapproxy-wmts-vector.json`
+:download:`projects/freelayer-tiled/mapproxy-wmts-vector-tiled.json`
 
-.. literalinclude:: mapproxy-wmts-vector-tiled.json
+.. literalinclude:: projects/freelayer-tiled/mapproxy-wmts-vector-tiled.json
     :linenos:
     :lines: 2-36
 
@@ -78,7 +81,12 @@ You should be familiar with most
 of the values, for reference have a look to :ref:`geodata-vector-tiled` documentation.
 There is one important parameter ``dataset``, which is the reference the our
 downloaded ``mbtiles`` file - you need to specify it's `x`, `y` and `lod`
-parameters like it would be used in the URL.
+parameters like it would be used in the URL, therefore we use::
+
+    ...
+    "dataset": "austria.mbtiles/{loclod}-{locx}-{locy}",
+    ...
+    
 
 Vector data styling
 ^^^^^^^^^^^^^^^^^^^
@@ -89,7 +97,7 @@ Vector data styling
 Vector data styles are stored in JSON format. We shall discuss this in separate
 example. In our case, we just use simple style file.
 
-.. literalinclude:: mystyle.json
+.. literalinclude:: projects/freelayer/style.json
 
 .. note:: styleUrl is not mandatory parameter - the vector data are going to be
     displayed anyhow.

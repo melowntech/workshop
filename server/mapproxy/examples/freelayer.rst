@@ -1,6 +1,9 @@
 .. index::
     single: free layer
     single: vector layer
+    single: tutorial
+    single: styles
+    single: example
 
 .. _freelayer-example:
 
@@ -29,7 +32,9 @@ We may now add new resource of type :ref:`geodata-vector`.
 
 Download the data
 ^^^^^^^^^^^^^^^^^
-We have downloaded popular OpenStreetMap dataset from the `GeoFabrik.de <https://www.geofabrik.de/>`_, we used ESRI Shapefile format of the data from `The Czech Republic <http://download.geofabrik.de/europe/czech-republic.html>`_.
+We have downloaded popular OpenStreetMap dataset from the `GeoFabrik.de
+<https://www.geofabrik.de/>`_, we used ESRI Shapefile format of the data from
+`The Czech Republic <http://download.geofabrik.de/europe/czech-republic.html>`_.
 
 After downloading and unzipping, we needed to separate just highways from the
 roads dataset.
@@ -58,16 +63,16 @@ Configure ``resources.json``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We now have our input data and can add new resource to
-:download:`mapproxy-wmts-vector.json`
+:download:`projects/freelayer/mapproxy-wmts-vector.json`
 
-.. literalinclude:: mapproxy-wmts-vector.json
+.. literalinclude:: projects/freelayer/mapproxy-wmts-vector.json
     :linenos:
-    :lines: 2-30
+    :lines: 2-40
 
 The first part should be clear already, with exception for reference frame
 definition. Vector dataset is not tided to any :ref:`reference-frame`
 definition. But we need to specify some, therefore the numbers are all zeros,
-even if tat does not make much sense. 
+even if that does not make much sense. 
 
 Second part, the source ``definition`` is new. You should be familiar with most
 of the values, for reference have a look to :ref:`geodata-vector` documentation.
@@ -85,7 +90,7 @@ Vector data styling
 
 Vector data styles are stored in JSON format. Let's have an example:
 
-.. literalinclude:: mystyle.json
+.. literalinclude:: projects/freelayer/style.json
 
 The structure of the file is obvious::
 
@@ -105,7 +110,7 @@ vector data, check the
 should be similar to `mapbox filter format
 <https://www.mapbox.com/mapbox-gl-js/style-spec/#types-filter>`_.
 
-.. note:: styleUrl is not mandatory parameter - the vector data are going to be
+.. note:: ``styleUrl`` is not mandatory parameter - the vector data are going to be
     displayed anyhow.
 
 Running
@@ -114,6 +119,6 @@ Once set, you can re-run ``mapproxy`` and see your vector map::
 
     $ mapproxy --config mapproxy.conf
 
-.. figure:: vector-data.png
+.. figure:: images/vector-data.png
 
     Vector layer as :ref:`free-layer` displayed on surface with default style.
