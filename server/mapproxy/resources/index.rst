@@ -89,7 +89,8 @@ Reference frame
 ---------------
 
 Definition of :ref:`lod` range and tile ranges for each :ref:`reference-frame`
-for this resource
+for this resource. See more about configuration at
+:ref:`reference-frame-configuration`.
 
 + ``lodRange`` (array[number, number]) - :ref:`lod` range extend
 + ``tileRange`` (array[array[number, number]]) - bounding box of tiles covering area of interest on the first LOD. Example: ``[[16, 10], [17,11]]``
@@ -417,7 +418,115 @@ Reference frame
 
 Credits
 -------
-.. todo:: Credits configuration
++ ``id`` (number) - Identification
++ ``notice`` (string) - What you want to appear on the map. Several placeholders can be defined (see lower) using ``{PLACEHOLDER}`` syntax.
++ ``url`` (string, optional) Optional URL
+
+Following placeholders can be used in the ``notice`` configuration options and
+will be replaced by corresponding signs.
+
++ ``{copy}`` Will add copyright sign
++ ``{Y}`` Will add current year
+
+
+.. _srs-configuration:
+
+SRS configuration
+-----------------
+
+:ref:`srs`\s are defined in :file:`srs.json` (see `source`_)
+is dictionary, where each layer is identified by key and following options:
+
++ ``comment`` (string) - Description string
++ ``srsDef`` (string)-  `Proj4 SRS definition <http://proj4.org>`_, e.g. you can use `epsg.io <http://epsg.io>`_ service to get it done.::
+
+        "srsDef": "+proj=qsc +units=m +datum=WGS84 +lat_0=90 +lon_0=0 +wktext",
++ ``type`` (string) -  One of
+    + ``cartesian``
+    + ``geographic``
+    + ``projected``
+
+*Optional parameters*:
+
++ ``srsModifiers`` (Array(string)) - Modification options: ``adjustVertical``
++ ``periodicity`` (Object) - Defined by ``type`` and ``period``::
+
+        "periodicity" : { "type" : "X", "period": 40075016.685578 }
++ ``geoidGrid`` (Object) `Geoid grid <https://en.wikipedia.org/wiki/Geoid#/media/File:Geoid_height_red_blue_averagebw.png>`_ can be attached as JPEG encoded file with ``extents, valueRange`` and ``srsDefEllps`` example::
+
+        "geoidGrid": {
+            "extents": {"ll": [-2009979, 3000861], "ur": [2999421, 8260731]},
+            "valueRange": [-17.6, 67.3],
+            "definition": "geoidgrid/utm33n-va-geoidgrid.jpg",
+            "srsDefEllps" : "+proj=utm +zone=33 +datum=WGS84 +no_defs"
+        }
+
+.. _reference-frame-configuration:
+
+Reference frame configuration
+-----------------------------
+
+:ref:`reference-frame` is defined by SRSs, LODs, extentds and other parameters.
+Reference ranges are stored as *Array* (not dictionary, compared to previously
+described data structures).
+Basic reference frames are defined in :file:`referenceframes.json` in
+:ref:`vts-registry`.
+
++ ``version`` (number) - Version nuber
+
+.. todo:: what does version mean
+
+``id`` (string) - Unique identifier
+``description`` (string) - Longer descriptive text
+``model`` (:ref:`ref-frame-model`) - Definition of ``physicalSRS``, ``navigationSrs`` and ``publicSrs`` as reference to :ref:`srs-configuration`
+``division`` (:ref:`division`) - Division defintion
+
+.. _ref-frame-model:
+
+Model
+-----
+Reference frame model (see :ref:`reference-frame-configuraiton` ``model``
+option.
+
++ ``physicalSrs`` (string) - reference to :ref:`srs-configuration`. See more in
+  :ref:`physical-srs`
++ ``navigationSrs`` (string) - reference to :ref:`srs-configuration`. See more
+  in :ref:`navigation-srs`
++ ``publicSrs`` (string) - reference to :ref:`srs-configuration`. See more in
+  :ref:`public-srs`
+
+.. _division:
+
+Division
+--------
+
++ ``extents`` (ref:`extent-configuration`) - Bounding box
++ ``heightRange`` (array(number)) - low and top bounds of heights (above the ellipsoid), where the reference frame makes sense
++ ``nodes`` (Array) - Definition of nodes for various lod ranges and positions, see :ref:`nodes-configuration`
+
+.. _nodes-configuration:
+
+Nodes
+-----
+
+Following options can define reference frame node:
+
++ ``id`` (Object) - It's dictionary with keys ``lod`` (level od detail) and ``position`` (tile
+    position with the tile grid).
++ ``srs`` (String) - Reference to :ref:`srs-configuration`
++ ``extents`` (ref:`extent-configuration`) - Bounding box
++ ``partitioning`` (string|:ref:`extent-configuration`) - Either you can use the keyword ``bisection`` or you can use binary keys and
+
+.. _extent-configuration:
+
+Extent
+------
+Bounding box configuration
+
++ ``ll`` (array(number)) - minx, miny
++ ``ur`` (array(number)) - maxx, maxy
+
+.. _source: https://github.com/Melown/vts-registry/blob/master/registry/registry/boundlayers.json
 
 .. _resources-python:
 

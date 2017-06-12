@@ -42,6 +42,11 @@ your system::
     make -j4
     sudo make install
 
+.. note:: To build mapproxy without debugging symbols (smaller library result),
+    :envvar:`BUILDSYS_RELEASE_NDEBUG` environment variable::
+
+        make set-variable VARIABLE=BUILDSYS_RELEASE_NDEBUG=1
+
 You have to add `UbuntuGIS <https://wiki.ubuntu.com/UbuntuGIS>`_ repository
 available in your `source.list`::
 

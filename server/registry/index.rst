@@ -25,8 +25,10 @@ directory.
 You can change the path, where VTS* tools are looking for the registry by the
 :envvar:`VTS_LIBS_REGISTRY_PATH` environment variable.
 
+Continue reading in chapters: 
+
 .. toctree::
-    :hidden:
+    :maxdepth: 1
 
     installation
     configuration

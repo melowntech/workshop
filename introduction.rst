@@ -31,6 +31,12 @@ The javascript-based :ref:`vts-browser-js` client is then consuming data from
 Mapproxy and visualizing them using WebGL in the window of web browser. It also
 provides API, to help users create their own applications.
 
+The C++ :ref:`vts-browser-cpp` client is working the same way and consumes the
+same configuration file. It's rendering 3D scene using OpenGL library. The
+:ref:`vts-browser-cpp` is meant as *library*, but there are two sample
+applications included ``vts-browser-qt`` and ``vts-browser-glfw``, which are
+build by default. 
+
 ==============================
 Getting data for this tutorial
 ==============================
@@ -128,7 +134,7 @@ times.
 
 .. _lod:
 
-Level od detail (LOD)
+Level of detail (LOD)
 ---------------------
 
 Level of detail. In traditional GIS this might be similar to zoom scale. It can
@@ -180,54 +186,80 @@ In VTS, meshes are used to construct final 3D surface, covered with
 
 Reference Frame
 ---------------
-Definition of a fixed `spatial reference
-<https://en.wikipedia.org/wiki/Spatial_reference_system>`_ for all data within a
-map defines how the space is split in a tile hierarchy provides geometrical
-surface used for navigation within a map defines a spatial reference used for
-the maps public (user facing) interface.
+Although they are closely related, a
+reference frame is not the same thing as a :ref:`srs` (SRS) a
+*reference frame* defines multiple SRSes, and each of these serves a different
+purpose. In the simple example we discussed, some of these systems were
+identical, and others hardcoded and thus did not call for an explicit
+definition.
 
 .. figure:: images/poster-coordinates.gif
     :scale: 50%
     
     Source: `Maptiler <http://www.maptiler.org/img/poster-coordinates.gif>`_
 
+
+The concept of reference frames is of crucial importance in VTS design. In order
+to create and use 3D map data, we need answers to questions such as:
+
+Which coordinate system (or more precisely spatial reference) are geometries
+within polygonal :ref:`mesh`\s and metatiles? When the user navigates the map,
+what is logic of motion? For example, what does pan motion mean, geometricaly?
+When we rotate around and object, what is the axis of rotation?  When we report
+spatial coordinates to the user, how do they relate to the coordinate system
+used for geometries?  There is a tile hierarchy within the map. How is the map
+split into tiles? Is there a way to tell the physical extents of a tile with
+given indices on a given :ref:`lod`?
+
+We need a more generic way to define a reference frame. Hence a reference frame
+consists of:
+
+#. **Physical** spatial reference system, employed by meta node bounding boxes, by
+   mesh and free layer geometries
+#. **Navigational** spatial reference system, whose XY plane defines tangential
+   movement (pan) and objective rotational movement (orbit) as movement along
+   the plane and rotation around axis perpendicular to the plane, respectively;
+   its Z component is employed by navigation tiles and it is the system used in
+   positioning, both to define position and orientation
+#. **Public** spatial reference system, which is used when interfacing with the user
+   (when informing user of current position in the map or of altitude or when
+   handling user input)
+#. Spatial division, which defines physical extents of the model and extents of
+   every tile on every level-of-detail (LOD), either explicitly (for a specific
+   tile) or by setting out a rule by which tiles are split into subtiles.
+   Several points should be made here.
+
+
 .. _texture:
 
-Texture
--------
-`Texture map <https://en.wikipedia.org/wiki/Texture_mapping>`_ is a method for
-defining high frequency detail, surface texture, or color information on a
-computer-generated graphic or 3D model. In VTS, earch surface tile contains also
-ference to metainformation-tile, which further contains reference to textures
-applied to the :ref:`mesh`. Textures are stored as simple JPEG images.
+Texture ------- `Texture map <https://en.wikipedia.org/wiki/Texture_mapping>`_
+is a method for defining high frequency detail, surface texture, or color
+information on a computer-generated graphic or 3D model. In VTS, each surface
+tile contains also reference to metainformation-tile, which further contains
+reference to textures applied to the :ref:`mesh`. Textures are stored as simple
+JPEG images.
 
-.. figure:: images/internal-texture.jpg
-    :scale: 50%
+.. figure:: images/internal-texture.jpg :scale: 50%
 
     Image containing mesh textures
 
 .. _tileset:
 
-Tileset
--------
-A tiled surface (set of meshes with metadata) meshes are textured: usually, but
-not necessarily corresponding to a given reference frame possibly taking
-advantage of external texture layers containing :ref:`credit`\s (copyrights,
-attributions)
+Tileset ------- A tiled surface (set of meshes with metadata) meshes are
+textured: usually, but not necessarily corresponding to a given reference frame
+possibly taking advantage of external texture layers containing :ref:`credit`\s
+(copyrights, attributions)
 
 .. _resource:
 
-Resource
---------
+Resource --------
 
 Data sources defined in ``JSON`` encoded file, used in :ref:`mapproxy`. The data
 sources can be DEMs or :ref:`bound-layer`\s with map.
 
 .. _srs:
 
-Spatial reference system
-------------------------
-`Spatial reference system
+Spatial reference system ------------------------ `Spatial reference system
 <https://en.wikipedia.org/wiki/Spatial_reference_system>`_ (SRS) is a
 coordinate-based local, regional or global system used to locate geographical
 entities. A spatial reference system defines a specific map projection, as well
