@@ -31,6 +31,3 @@ files:
 :file:`srs.json`
     File containing configuration of spatial reference system. See
     :ref:`srs-configuration` for configuration details.
-
-
-

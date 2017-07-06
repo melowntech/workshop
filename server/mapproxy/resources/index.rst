@@ -470,7 +470,7 @@ Reference frame configuration
 Reference ranges are stored as *Array* (not dictionary, compared to previously
 described data structures).
 Basic reference frames are defined in :file:`referenceframes.json` in
-:ref:`vts-registry`.
+:ref:`registry`.
 
 + ``version`` (number) - Version nuber
 
@@ -485,7 +485,7 @@ Basic reference frames are defined in :file:`referenceframes.json` in
 
 Model
 -----
-Reference frame model (see :ref:`reference-frame-configuraiton` ``model``
+Reference frame model (see :ref:`reference-frame-configuration` ``model``
 option.
 
 + ``physicalSrs`` (string) - reference to :ref:`srs-configuration`. See more in

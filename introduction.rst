@@ -74,7 +74,7 @@ surfaces (e.g. aerial photos).
 Credits
 -------
 Each data source can have credits, or *attributions* defined. See
-:ref:`credits-configuration` for more details.
+:ref:`mapproxy-configuration` for more details.
 
 .. _free-layer:
 
@@ -232,34 +232,43 @@ consists of:
 
 .. _texture:
 
-Texture ------- `Texture map <https://en.wikipedia.org/wiki/Texture_mapping>`_
+Texture
+-------
+
+`Texture map <https://en.wikipedia.org/wiki/Texture_mapping>`_
 is a method for defining high frequency detail, surface texture, or color
 information on a computer-generated graphic or 3D model. In VTS, each surface
 tile contains also reference to metainformation-tile, which further contains
 reference to textures applied to the :ref:`mesh`. Textures are stored as simple
 JPEG images.
 
-.. figure:: images/internal-texture.jpg :scale: 50%
+.. figure:: images/internal-texture.jpg
+    :scale: 50%
 
     Image containing mesh textures
 
 .. _tileset:
 
-Tileset ------- A tiled surface (set of meshes with metadata) meshes are
+Tileset
+-------
+A tiled surface (set of meshes with metadata) meshes are
 textured: usually, but not necessarily corresponding to a given reference frame
 possibly taking advantage of external texture layers containing :ref:`credit`\s
 (copyrights, attributions)
 
 .. _resource:
 
-Resource --------
+Resource
+--------
 
 Data sources defined in ``JSON`` encoded file, used in :ref:`mapproxy`. The data
 sources can be DEMs or :ref:`bound-layer`\s with map.
 
 .. _srs:
 
-Spatial reference system ------------------------ `Spatial reference system
+Spatial reference system
+------------------------
+`Spatial reference system
 <https://en.wikipedia.org/wiki/Spatial_reference_system>`_ (SRS) is a
 coordinate-based local, regional or global system used to locate geographical
 entities. A spatial reference system defines a specific map projection, as well

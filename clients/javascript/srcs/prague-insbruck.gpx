@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gpx creator="mapy.cz" version="1.1" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+    
+    <wpt lat="50.0173988342" lon="14.3941440582">
+        <name>001 primary@Strakonická@</name>
+    </wpt>
+    <wpt lat="50.0173988342" lon="14.3941440582">
+        <name>002 Strakonická</name>
+    </wpt>
+    <wpt lat="50.022064209" lon="14.3942489624">
+        <name>003 </name>
+    </wpt>
+    <wpt lat="50.0229682922" lon="14.394985199">
+        <name>004 </name>
+    </wpt>
+    <wpt lat="50.0229606628" lon="14.3950099945">
+        <name>005 Mezichuchelská</name>
+    </wpt>
+    <wpt lat="50.0118980408" lon="14.3892326355">
+        <name>006 Dostihová</name>
+    </wpt>
+    <wpt lat="50.0121536255" lon="14.3935337067">
+        <name>007 </name>
+    </wpt>
+    <wpt lat="50.0120010376" lon="14.3942041397">
+        <name>008 Strakonická</name>
+    </wpt>
+    <wpt lat="49.9949913025" lon="14.3971719742">
+        <name>009 </name>
+    </wpt>
+    <wpt lat="49.9948921204" lon="14.3972120285">
+        <name>010 Lahovický most</name>
+    </wpt>
+    <wpt lat="49.9883842468" lon="14.3982486725">
+        <name>011 </name>
+    </wpt>
+    <wpt lat="49.9243736267" lon="14.3363494873">
+        <name>012 </name>
+    </wpt>
+    <wpt lat="49.705368042" lon="14.0881977081">
+        <name>013 </name>
+    </wpt>
+    <wpt lat="49.4127693176" lon="14.0378026962">
+        <name>014 </name>
+    </wpt>
+    <wpt lat="49.355255127" lon="14.0549068451">
+        <name>015 </name>
+    </wpt>
+    <wpt lat="49.349357605" lon="14.051774025">
+        <name>016 </name>
+    </wpt>
+    <wpt lat="49.2598800659" lon="13.9139108658">
+        <name>017 Podsrpenská</name>
+    </wpt>
+    <wpt lat="49.2539520264" lon="13.9146251678">
+        <name>018 Volyňská</name>
+    </wpt>
+    <wpt lat="49.1658325195" lon="13.885471344">
+        <name>019 Vimperská</name>
+    </wpt>
+    <wpt lat="48.8853607178" lon="13.7051639557">
+        <name>020 StrážnýCZ / D</name>
+    </wpt>
+    <wpt lat="48.8809623718" lon="13.7044172287">
+        <name>021 </name>
+    </wpt>
+    <wpt lat="48.8188247681" lon="13.5424442291">
+        <name>022 </name>
+    </wpt>
+    <wpt lat="48.5775184631" lon="13.4743947983">
+        <name>023 Ilzbrücke</name>
+    </wpt>
+    <wpt lat="48.5776329041" lon="13.4734268188">
+        <name>024 Ferdinand-Wagner-Straße</name>
+    </wpt>
+    <wpt lat="48.5774078369" lon="13.4732980728">
+        <name>025 Ferdinand-Wagner-Straße</name>
+    </wpt>
+    <wpt lat="48.5761833191" lon="13.4718589783">
+        <name>026 Angerstraße</name>
+    </wpt>
+    <wpt lat="48.5775146484" lon="13.4587421417">
+        <name>027 </name>
+    </wpt>
+    <wpt lat="48.5764808655" lon="13.4280519485">
+        <name>028 </name>
+    </wpt>
+    <wpt lat="48.5635185242" lon="13.383351326">
+        <name>029 </name>
+    </wpt>
+    <wpt lat="48.5645637512" lon="13.3834352493">
+        <name>030 </name>
+    </wpt>
+    <wpt lat="48.4373397827" lon="13.3761234283">
+        <name>031 </name>
+    </wpt>
+    <wpt lat="48.4347419739" lon="13.3754968643">
+        <name>032 </name>
+    </wpt>
+    <wpt lat="48.4226264954" lon="13.3490686417">
+        <name>033 </name>
+    </wpt>
+    <wpt lat="48.3281364441" lon="13.2201452255">
+        <name>034 </name>
+    </wpt>
+    <wpt lat="48.3071060181" lon="13.1718387604">
+        <name>035 </name>
+    </wpt>
+    <wpt lat="48.2586402893" lon="12.9980354309">
+        <name>036 </name>
+    </wpt>
+    <wpt lat="48.2575454712" lon="12.997086525">
+        <name>037 </name>
+    </wpt>
+    <wpt lat="48.2563552856" lon="12.9976768494">
+        <name>038 Atzinger Allee</name>
+    </wpt>
+    <wpt lat="48.2500762939" lon="12.9851932526">
+        <name>039 Münchner Straße</name>
+    </wpt>
+    <wpt lat="48.2499694824" lon="12.9849529266">
+        <name>040 Münchner Straße</name>
+    </wpt>
+    <wpt lat="48.2469291687" lon="12.9092826843">
+        <name>041 </name>
+    </wpt>
+    <wpt lat="48.2444572449" lon="12.907242775">
+        <name>042 Seibersdorfer Straße</name>
+    </wpt>
+    <wpt lat="48.2453269958" lon="12.906124115">
+        <name>043 </name>
+    </wpt>
+    <wpt lat="48.2453765869" lon="12.9060497284">
+        <name>044 </name>
+    </wpt>
+    <wpt lat="48.2410736084" lon="12.89752388">
+        <name>045 </name>
+    </wpt>
+    <wpt lat="48.2449569702" lon="12.8329467773">
+        <name>046 </name>
+    </wpt>
+    <wpt lat="48.2457351685" lon="12.8341379166">
+        <name>047 </name>
+    </wpt>
+    <wpt lat="48.2436294556" lon="12.8330698013">
+        <name>048 </name>
+    </wpt>
+    <wpt lat="48.1686973572" lon="12.8312482834">
+        <name>049 Berchtesgadener Straße</name>
+    </wpt>
+    <wpt lat="48.1004142761" lon="12.7393865585">
+        <name>050 </name>
+    </wpt>
+    <wpt lat="48.0853042603" lon="12.7058525085">
+        <name>051 </name>
+    </wpt>
+    <wpt lat="48.0609016418" lon="12.6681861877">
+        <name>052 Rupertistraße</name>
+    </wpt>
+    <wpt lat="48.0602607727" lon="12.6646385193">
+        <name>053 Pallinger Straße</name>
+    </wpt>
+    <wpt lat="48.0472106934" lon="12.6606750488">
+        <name>054 </name>
+    </wpt>
+    <wpt lat="48.0006752014" lon="12.639465332">
+        <name>055 Tittmoninger Straße</name>
+    </wpt>
+    <wpt lat="48.0007591248" lon="12.6371021271">
+        <name>056 Traunsteiner Straße</name>
+    </wpt>
+    <wpt lat="47.9987640381" lon="12.6369314194">
+        <name>057 Traunreuter Straße</name>
+    </wpt>
+    <wpt lat="47.9685440063" lon="12.6122913361">
+        <name>058 </name>
+    </wpt>
+    <wpt lat="47.9688796997" lon="12.6111278534">
+        <name>059 Trostberger Straße</name>
+    </wpt>
+    <wpt lat="47.9616508484" lon="12.6098165512">
+        <name>060 Waginger Straße</name>
+    </wpt>
+    <wpt lat="47.9603729248" lon="12.6120538712">
+        <name>061 Frühlinger Spitz</name>
+    </wpt>
+    <wpt lat="47.9509811401" lon="12.6188793182">
+        <name>062 </name>
+    </wpt>
+    <wpt lat="47.9452476501" lon="12.602265358">
+        <name>063 Robert-Bosch-Straße</name>
+    </wpt>
+    <wpt lat="47.9348335266" lon="12.5940885544">
+        <name>064 Hauptstraße</name>
+    </wpt>
+    <wpt lat="47.93201828" lon="12.5971193314">
+        <name>065 </name>
+    </wpt>
+    <wpt lat="47.9008636475" lon="12.5486345291">
+        <name>066 Laimgrub</name>
+    </wpt>
+    <wpt lat="47.8315582275" lon="12.5237865448">
+        <name>067 </name>
+    </wpt>
+    <wpt lat="47.8304328918" lon="12.5211648941">
+        <name>068 </name>
+    </wpt>
+    <wpt lat="47.8040466309" lon="12.2950811386">
+        <name>069 </name>
+    </wpt>
+    <wpt lat="47.8049087524" lon="12.2926206589">
+        <name>070 </name>
+    </wpt>
+    <wpt lat="47.8050384521" lon="12.2919607162">
+        <name>071 </name>
+    </wpt>
+    <wpt lat="47.8032531738" lon="12.2911930084">
+        <name>072 Hauptstraße</name>
+    </wpt>
+    <wpt lat="47.8030395508" lon="12.2851324081">
+        <name>073 Hauptstraße</name>
+    </wpt>
+    <wpt lat="47.7954559326" lon="12.2288293839">
+        <name>074 Törwanger Straße</name>
+    </wpt>
+    <wpt lat="47.7529907227" lon="12.1482715607">
+        <name>075 Neubeuerer Straße</name>
+    </wpt>
+    <wpt lat="47.7467041016" lon="12.1518545151">
+        <name>076 Weidachweg</name>
+    </wpt>
+    <wpt lat="47.7465286255" lon="12.1508617401">
+        <name>077 Dandlbergweg</name>
+    </wpt>
+    <wpt lat="47.7452507019" lon="12.1509027481">
+        <name>078 Am Rain</name>
+    </wpt>
+    <wpt lat="47.7451515198" lon="12.1511735916">
+        <name>079 Wendelsteinweg</name>
+    </wpt>
+    <wpt lat="47.7446479797" lon="12.148768425">
+        <name>080 Seilenauweg</name>
+    </wpt>
+    <wpt lat="47.7431488037" lon="12.150557518">
+        <name>081 Brannenburger Straße</name>
+    </wpt>
+    <wpt lat="47.7374992371" lon="12.1260147095">
+        <name>082 </name>
+    </wpt>
+    <wpt lat="47.7359046936" lon="12.1293992996">
+        <name>083 Inntal Autobahn</name>
+    </wpt>
+    <wpt lat="47.6050453186" lon="12.1935472488">
+        <name>084 Inntal Autobahn</name>
+    </wpt>
+    <wpt lat="47.2543869019" lon="11.4168920517">
+        <name>085 </name>
+    </wpt>
+    <wpt lat="47.2537536621" lon="11.4136381149">
+        <name>086 Resselstraße</name>
+    </wpt>
+    <wpt lat="47.2586936951" lon="11.4109039307">
+        <name>087 Olympiastraße</name>
+    </wpt>
+    <wpt lat="47.2564201355" lon="11.3978233337">
+        <name>088 Leopoldstraße</name>
+    </wpt>
+    <wpt lat="47.2625999451" lon="11.3949136734">
+        <name>089 Salurner Straße</name>
+    </wpt>
+    <wpt lat="47.2625923157" lon="11.3947896957">
+        <name>090 Maximilianstraße</name>
+    </wpt>
+    <wpt lat="47.2623901367" lon="11.3924808502">
+        <name>091 Fallmerayerstraße</name>
+    </wpt>
+    <wpt lat="47.2655029297" lon="11.3916425705">
+        <name>092 </name>
+    </wpt>
+    <wpt lat="47.2655906677" lon="11.3920936584">
+        <name>093 </name>
+    </wpt>
+    <rte><name>primary@Strakonická@ -&gt; </name>
+        <rtept lat="50.0174172968" lon="14.3940585852"><name>001 </name></rtept>
+        <rtept lat="47.2654292732" lon="11.3927686214"><name>002 </name></rtept>
+    </rte>
+</gpx>
