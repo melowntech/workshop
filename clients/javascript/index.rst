@@ -12,6 +12,8 @@ the demos, `distributed along with the source code <https://github.com/Melown/vt
 
 The examples are also `hosted on JSFiddle <https://github.com/Melown/vts-browser-js/wiki/Examples>`_
 
+The `API Reference documentation <https://github.com/melown/vts-browser-js/wiki>`_ is hosted on GitHub too.
+
 .. toctree::
     :maxdepth: 1
 

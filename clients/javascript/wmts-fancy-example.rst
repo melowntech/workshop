@@ -81,7 +81,8 @@ and bound ``map-loaded`` event.
 
 Next, we add GPX layers - it will contain mixed geometry of ``LineString`` and
 ``Point`` data. Data are already downloaded using jQuery, we just parse them and
-add them to the map
+add them to the map. The GPX files is :download:`srcs/prague-insbruck.gpx`
+downloadable too.
 
 .. literalinclude:: srcs/wmts-app-fancy.js
     :lines: 94-124
@@ -89,11 +90,16 @@ add them to the map
 The layerswitcher switchingg function is modifying the ``view`` attribute of
 ``browser.map`` object. You can have a look in `the documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#definition-of-view>`_ as well
 as at our `mapConfig.json <http://localhost/melown2015/surface/melown/dem/mapConfig.json>`_ file.
+As for the styling, we are using similar vector style syntax, as used by `MapBox
+<https://www.mapbox.com/mapbox-gl-js/style-spec/>`_. Check you `full
+documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`_.
 
 .. literalinclude:: srcs/wmts-app-fancy.js
-    :lines: 94-124
+    :lines: 21-56
 
-You can download :download:`src/wmts-app-fancy.js` the file for further changes.
+You can download :download:`srcs/wmts-app-fancy.js` the file for further changes.
 
 And also you should be able to visit `our example
 <../../_downloads/wmts-app-fancy.html>`_ and it should be working.
+
+.. figure:: images/wmts-fancy.png

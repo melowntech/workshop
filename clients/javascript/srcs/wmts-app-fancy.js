@@ -12,7 +12,7 @@ var browser;
  * @param {Element} panel Layerswitcher panel element
  */
 var registerEvents = function(panel) {
-  var inputs = element.getElementsByTagName('input');
+  var inputs = panel.getElementsByTagName('input');
   for (var i = 0, ii = inputs.length; i < ii; i++) {
     inputs[i].onchange = onInputChange;
   }

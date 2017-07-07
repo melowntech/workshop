@@ -41,7 +41,7 @@ parameters:
 #. Map configuration JSON file
 
 .. literalinclude:: srcs/sample-app.js
-    :lines: 9-10
+    :lines: 9-11
 
 You can download :download:`srcs/sample-app.js` the javascript code too.
 

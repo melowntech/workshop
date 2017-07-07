@@ -81,3 +81,5 @@ You should be now able to reach ``mapConfig.json`` using the proxy, check it
 out: http://localhost/melown2015/surface/melown/dem/mapConfig.json
 
 And also you should be able to visit `our example <../../_downloads/wmts-app.html>`_ and it should be working.
+
+.. figure:: images/wmts-example.png
