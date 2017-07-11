@@ -1,5 +1,23 @@
 Displaying cadastre over 3D data
+--------------------------------
 
+In this tutorial we shall combine 3D data from Bohemian village Jenstejn that we made available for this purpose with both raster
+and vector cadastre provided by `State Administration of Land Surveying and Cadastre (ČÚZK) <http://www.cuzk.cz/en>`_ .
+
+This tutorial expects that you have already set up your VTS backend.
+
+First download the pack with sample data from ... It contains:
+
+* One tile of SRTM 1 arc second DEM for context - alternatively available from `Earth Explorer <https://earthexplorer.usgs.gov/>`_
+* Finer DEM of Jenstejn surroundings for free layer heightcoding
+* Whole Jenstejn village at 3cm/px in `VEF format <https://github.com/Melown/true3d-format-spec>`_
+* Center of Jenstejn at 2.5cm/px in `VEF format <https://github.com/Melown/true3d-format-spec>`_
+* GDAL WMTS configuration for `Mapy.cz <http://mapy.cz>`_ bound layer.
+* GDAL WMS configuration for raster cadastre - particular layers from WMS available at `<http://services.cuzk.cz/wms/wms.asp>`_
+* Vector cadastre of Jenstejn - available at http://services.cuzk.cz/shp/ku/epsg-5514/658499.zip
+
+1. Preparation of static data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 Tippecanoe:
@@ -30,7 +48,7 @@ may come with too imprecise towgs84 parameter:
             -t_srs "+init=epsg:4326" \
             -dialect sqlite \
             -sql "SELECT geometry, TEXT_KM FROM PARCELY_KN_DEF" \
-            parcel-numbers.geojson PARCELY_KN_DEF.shp
+            jenstejn-parcel-numbers.geojson PARCELY_KN_DEF.shp
 
   $ ogr2ogr -f "GeoJson" \
             -s_srs "+proj=krovak +lat_0=49.5 +lon_0=24.83333333333333 +alpha=0 +k=0.9999 +x_0=0 +y_0=0 +ellps=bessel \
@@ -38,15 +56,16 @@ may come with too imprecise towgs84 parameter:
             -t_srs "+init=epsg:4326" \
             -dialect sqlite \
             -sql "SELECT geometry FROM HRANICE_PARCEL_L" \
-            parcel-borders.geojson HRANICE_PARCEL_L.shp
+            jenstejn-parcel-borders.geojson HRANICE_PARCEL_L.shp
 
 Now we will merge geojsons into one containing both linestrings and points using merge-geojsons.py from https://gist.github.com/migurski/3759608 :
 
-  $ ./merge-geojson parcel-numbers.geojson parcel-borders.geojson parcel-all.geojson
+  $ ./merge-geojson jenstejn-parcel-numbers.geojson jenstejn-parcel-borders.geojson jenstejn-parcel-all.geojson
 
 Because simplification makes little sense for cadastre, we will use tippecanoe just to tile features on a single level of detail without any simplification:
 
-  $ tippecanoe -o /var/vts/mapproxy/datasets.mbtiles -z 16 -Z 16 -B 16 -ps all2.geojson
+  $ mkdir /var/vts/mapproxy/datasets/jenstejn-cadastre
+  $ tippecanoe -o /var/vts/mapproxy/datasets/jenstejn-cadastre/parcels-all.mbtiles -z 16 -Z 16 -B 16 -ps parcel-all.geojson
 
 Data:
 
