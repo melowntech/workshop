@@ -7,5 +7,5 @@ Description of clients (JavaScript, C++)
 .. toctree::
 
     javascript/index
-    cpp
+    cpp/index
 

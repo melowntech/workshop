@@ -1,4 +1,4 @@
-/**
+1/**
  * WMTS fancy example
  */
 
@@ -6,6 +6,7 @@
  * Set some environment variables
  */
 var browser;
+var geodata;
 
 /**
  * Register onChange events on the layerswitcher
@@ -99,10 +100,16 @@ var addGPXLayer = function(data) {
       data_points.push([pt.getAttribute('lon'), pt.getAttribute('lat'), 0]);
     }
 
-    var geodata = browser.map.createGeodata();
-    geodata.addLineString(data_points);
-    geodata.addPointArray(data_points);
+    geodata = browser.map.createGeodata();
+    geodata.addLineString(data_points, 'float');
+    geodata.addPointArray(data_points, 'float');
 
+    geodata.processHeights('heightmap-by-precision', 60, onHeightProcessed);
+
+
+};
+
+var onHeightProcessed = function() {
     var freeLayer = geodata.makeFreeLayer({
       layers: {
         'line': {

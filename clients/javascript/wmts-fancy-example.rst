@@ -2,7 +2,7 @@
 Fancy VTS-Browser-JS example
 ============================
 
-In this example, we are going to add some fancy controlls and custom vector data
+In this example, we are going to add some fancy controls and custom vector data
 layer.
 
 .. note:: This example assumes, you are on your own computer, having e.g. Apache

@@ -44,6 +44,20 @@ This documentation/tutorial comes with basic VTS-Mapproxy configuration set,
 which can be downloaded from `our GitHub
 <https://github.com/melown/mapproxy-project/>`_.
 
+======
+Schema
+======
+
+You might find this picture as useful reference in the future, while going
+through this tutorial. 
+
+.. figure:: images/VTS-architecture-final.svg
+    :width: 800px
+
+    VTS 3D mapping stack architecture
+
+
+
 ===========
 Basic terms
 ===========
