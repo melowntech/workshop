@@ -6,17 +6,9 @@ Displaying cadastre over 3D data
 In this tutorial we shall combine 3D data from Bohemian village Jenstejn that we made available for this purpose with both raster
 and vector cadastre provided by `State Administration of Land Surveying and Cadastre (ČÚZK) <http://www.cuzk.cz/en>`_ .
 
-This tutorial expects that you have already set up your VTS backend. 
+This tutorial expects that you have already set up your VTS backend.
 
-First download the pack with sample data from ... It contains:
-
-* One tile of SRTM 1 arc second DEM for context - alternatively available from `Earth Explorer <https://earthexplorer.usgs.gov/>`_
-* Finer DEM of Jenstejn surroundings for free layer heightcoding
-* Whole Jenstejn village at 3cm/px in `VEF format <https://github.com/Melown/true3d-format-spec>`_
-* Center of Jenstejn at 2.5cm/px in `VEF format <https://github.com/Melown/true3d-format-spec>`_
-* GDAL WMTS configuration for `Mapy.cz <http://mapy.cz>`_ orthophoto bound layer.
-* GDAL WMS configuration for raster cadastre - particular layers from WMS available at `<http://services.cuzk.cz/wms/wms.asp>`_
-* Vector cadastre of Jenstejn - available at http://services.cuzk.cz/shp/ku/epsg-5514/658499.zip
+.. todo ref to VTS backend
 
 Setting up mapproxy resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -166,7 +158,7 @@ snippet will be as following::
   {
     "comment": "CUZK Raster cadastre",
     "group": "cadastre",
-    "id": "raster-cadastre",
+    "id": "cuzk-raster-cadastre",
     "type": "tms",
     "driver": "tms-raster",
     "credits": ["cuzk"],
@@ -282,10 +274,44 @@ And examine the log::
 
 If you should see no errors, only ``Ready to serve <resource>`` line for each defined resource.
 
+Styling vector cadastre
+"""""""""""""""""""""""
+
+To give the vector free layer the right look, we will create a style for it which we later apply to the layer
+in storage view.
+
+Go to ``/var/vts/store/stylesheet/`` and create ``cuzk-cadastre-style.json`` with the following contents::
+
+ {
+  "layers": {
+    "parcel-labels": {
+      "label": true,
+      "label-size": 20,
+      "label-source": "$TEXT_KM",
+      "zbuffer-offset": [-11,-50,-50],
+      "visibility": 350,
+      "label-no-overlap" : false
+    },
+    "lines": {
+      "line-width": 0.002,
+      "line-width-units": "ratio",
+      "line-flat": true,
+      "line": true,
+      "line-color": [255,255,0,255],
+      "zbuffer-offset": [-1,0,-50]
+    }
+  }
+ }
+
+That will tell the browser that we want to see parcel borders yellow drawn by line that looks flat (gets thinner when you tilt). Further,
+when you come close, the parcel numbers will show up. For complete documentation for styles have a look here.
+
+.. todo ref na dokumentaci stylu
+
 Filling the storage
 ^^^^^^^^^^^^^^^^^^^
 
-Important location for this step is ``/var/vts/store/stage.melown2015``. Furthermore, create following directory to
+Important location for this step is ``/var/vts/store/stage.melown2015`` (stage is a traditional name for the main storage). Furthermore, create following directory to
 hold the 3D resources::
 
   $ mkdir -p /var/vts/store/resources/tilesets
@@ -320,6 +346,60 @@ Then add the two Jenstejns as local tilesets - this way the data are only refere
   $ vts /var/vts/store/stage.melown2015 --add --tileset local:/var/vts/store/resources/tilesets/jentejn-village --top
   $ vts /var/vts/store/stage.melown2015 --add --tileset local:/var/vts/store/resources/tilesets/jentejn-center --top
 
+Creating a storage view
+"""""""""""""""""""""""
 
+As the final step we need to create a `storage view <http://melown.readthedocs.io/en/latest/introduction.html#storage-view>`_ that combines tilesets from our storage
+and free and bound layer from the mapproxy.
 
+Go to ``/var/vts/store/map-config`` and create file ``cadastre`` with the following contents. The hashes are meant as commnets and need to be deleted before saving the file to
+create a valid JSON::
 
+  {
+        "storage": "../stage.melown2015",  # where is our storage
+        "tilesets": [                      # tilesets we pick from the storage, all in our case
+                "cadastre-srtm",
+                "jenstejn-village",
+                "jenstejn-center"
+        ],
+        "credits": { }                     # no additional credit definitions
+        },
+        "boundLayers": {                   # where to find definition files for bound layers
+                "mapy-cz": "/mapproxy/melown2015/tms/cadastre/mapy-cz-ophoto/boundlayer.json",
+                "cadastre-raster": "/mapproxy/melown2015/tms/cadastre/cuzk-raster-cadastre/boundlayer.json"
+        },
+        "freeLayers": {                    # free layers - vector cadastre and tiles mesh as a base for raster cadastre
+                "cadastre-vector": "/mapproxy/melown2015/geodata/cadastre/cuzk-vector-cadastre/freelayer.json",
+                "jenstejn-dem" : "/mapproxy/melown2015/surface/cadastre/jenstejn-dem/freelayer.json"
+        },
+        "view": {                          # what combination will be seen when we open storage view with the browser
+                "description": "",
+                "surfaces": {
+                        "cadastre-srtm": ["mapy-cz"],
+                        "jenstejn-village": [],
+                        "jenstejn-center": []
+                },
+                "freeLayers": {            # free layers to display - both, they can be toggled through diagnostic console
+                        "cadastre-vector" :  { "style" : "/store/stylesheet/cuzk-cadastre-style.json" },
+                        "jenstejn-dem" : { "boundLayers": ["cadastre-raster"],
+                                            "depthOffset" : [-5, 0, -10] }
+                }
+        },
+        "namedViews": {},
+        "position": [                      # initial position of the map (Jenstejn)
+                "obj",14.611103581926853,50.152724855605186,"float",0.00,3.16,-70.91,0.00,226.97,45.00
+        ],
+        "version": 1
+  }
+
+After saving you can test if the storage view is valid by running (standing next to ``cadastre`` file)::
+
+  $ vts --map-config cadastre
+
+If everything is all right, a large JSON with client side map configuration will be printed.
+
+.. todo ref to mapConfig description if available
+
+In that case you can open your browser and go to http://localhost:8070/store/map-config/cadastre to get nice view of 
+Jenstejn. If you press CTRL + SHIFT + D and then SHIFT + V, a console will open when you can toggle various layers
+and play with other parameters.
