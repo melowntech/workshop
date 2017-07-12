@@ -1,4 +1,4 @@
-Setting up your own VTS backend environment
+Setting up Your Own VTS Backend Environment
 -------------------------------------------
 
 VTS backend environment is a system of server-side components which allow you to run the backend portion of Melown Tech's open source VTS 3D map streaming and rendering stack. 
@@ -47,7 +47,7 @@ And finally, install vts-backend::
 If all went well, you now have a working VTS backend.
 
 
-Test your setup
+Test Your Setup
 """""""""""""""
 
 VTS backend is capable of generating ellipsoid surfaces out of the box for every reference frame known to it. It is also bundled with some example data and provides powerful introspection capabilities. We may use these to test your installation.
@@ -60,7 +60,7 @@ For your own interactive 3D map of Dachstein, based on SRTM and Geoland basemap.
 
 .. image:: vtsbackend-srtm1-n47-e013-basemap-at.jpg
 
-Under the hood
+Under the Hood
 """"""""""""""
 
 Here is some information you might find useful when exploring your fresh reated VTS backend environment further. 
