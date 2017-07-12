@@ -1,5 +1,0 @@
-#######
-Console
-#######
-
-The console
