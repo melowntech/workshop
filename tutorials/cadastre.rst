@@ -187,25 +187,21 @@ snippet will be as following::
     }
   }  
  
-Tippecanoe:
+Setting up vector free layer
+""""""""""""""""""""""""""""
 
-Install - follow instructions from github:
+We will set up geodata free layer with parcel borders and parcel numbers. We will use MBTiles file
+as the base resource for mapproxy to demotrate possibility of serving tiled geodata.
 
-  $ git clone https://github.com/mapbox/tippecanoe.git
-  $ cd tippecanoe
-  $ sudo apt-get install build-essential libsqlite3-dev zlib1g-dev
-  $ make -j2
-  $ sudo make install
+First we need to download pack with shapefiles of Jenstejn cadastal area from ČÚZK website::
 
-Converting vector cadastre to MBTiles
-
-As whole vts-backend runs under the vts user, it is advisible to switch to vts user before manipulating any data:
-
-  $ sudo -iu vts
+  $ wget http://services.cuzk.cz/shp/ku/epsg-5514/658499.zip
+  $ unzip 658499.zip
+  $ cd 658499
 
 We are interested in parcel borders and parcel numbers. We will create one MBTiles containing both these layers but first we need to prepare the GeoJson
 to create the MBTiles from. Because original data are in Krovak projection care must be taken when converting coordinates as system definition of Krovak
-may come with too imprecise towgs84 parameter:
+may come with too imprecise towgs84 parameter::
 
   $ unzip jenstejn-vector-cadastre-658499.zip
   $ cd 658499
@@ -225,20 +221,56 @@ may come with too imprecise towgs84 parameter:
             -sql "SELECT geometry FROM HRANICE_PARCEL_L" \
             jenstejn-parcel-borders.geojson HRANICE_PARCEL_L.shp
 
-Now we will merge geojsons into one containing both linestrings and points using merge-geojsons.py from https://gist.github.com/migurski/3759608 :
+Now we will merge geojsons into one containing both linestrings and points using merge-geojsons.py from https://gist.github.com/migurski/3759608 ::
 
-  $ ./merge-geojson jenstejn-parcel-numbers.geojson jenstejn-parcel-borders.geojson jenstejn-parcel-all.geojson
+  $ python merge-geojsons.py jenstejn-parcel-numbers.geojson jenstejn-parcel-borders.geojson jenstejn-parcel-all.geojson
 
-Because simplification makes little sense for cadastre, we will use tippecanoe just to tile features on a single level of detail without any simplification:
+To create MBTiles we will use MapBox's opensource tool tippecanoe. To install it, follow the instructions on github::
+
+  $ cd <some working directory>
+  $ git clone https://github.com/mapbox/tippecanoe.git
+  $ cd tippecanoe
+  $ sudo apt-get install build-essential libsqlite3-dev zlib1g-dev
+  $ make -j2
+  $ sudo make install
+
+We will place MBTiles into ``/var/vts/mapproxy/datasets/cuzk-raster-cadastre/`` directory. Because simplification 
+makes little sense for cadastre, we will use tippecanoe just to tile features on a single level of detail without any simplification::
 
   $ mkdir /var/vts/mapproxy/datasets/jenstejn-cadastre
-  $ tippecanoe -o /var/vts/mapproxy/datasets/jenstejn-cadastre/parcels-all.mbtiles -z 16 -Z 16 -B 16 -ps jentejn-parcel-all.geojson
+  $ tippecanoe -o /var/vts/mapproxy/datasets/jenstejn-cadastre/parcels-all.mbtiles -z 16 -Z 16 -B 16 -ps \
+               <path-to-dir-with-vector-data>/658499/jentejn-parcel-all.geojson
 
-Data:
+And finally we create a configuration snippet for mapproxy::
 
-SRTM 1 arc-sec for context - N50E014.hgt available either through EarthExplorer https://earthexplorer.usgs.gov/ or in our data package.
-Finer DEM of Jenstejn surroundings - available in our data package
-WMTS Mapy.cz bound layer - WMTS configuration available in our data package
-WMS Raster cadastre from ČÚZK - available at WMS:http://services.cuzk.cz/wms/wms.asp . Preconfigured combination of layers is available in our data package.
-Vector cadastre from ČÚZK - available at http://services.cuzk.cz/shp/ku/epsg-5514/658499.zip or in our data package. In Krovak projection.
+ {
+    "comment": "Data source",
+    "group": "cadastre",
+    "id": "cuzk-vector-cadastre",
+    "type": "geodata",
+    "driver": "geodata-vector-tiled",
+    "credits": ["cuzk"],
+    "definition": {
+        "dataset": "cuzk-raster-cadastre/parcels-all.mbtiles/{loclod}-{locx}-{locy}"
+        , "demDataset": "jenstejn-dem"
+        , "geoidGrid": "egm96_15.gtx"
+        , "format": "geodataJson"
+        , "displaySize": 1024
+    },
+    "registry": {
+        "credits" : {"cuzk":{ "id": 104, "notice": "{copy}{Y} ČÚZK" }}
+    },
+    "referenceFrames":
+        {
+            "melown2015": {
+                "tileRange": [
+                    [553, 346],
+                    [553, 346]
+                ],
+                "lodRange": [11, 17]
+            }
+        }
+ }
+
+
 
