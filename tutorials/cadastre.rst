@@ -1,3 +1,5 @@
+.. _cadastre-tutorial:
+
 Displaying cadastre over 3D data
 --------------------------------
 
@@ -12,12 +14,77 @@ First download the pack with sample data from ... It contains:
 * Finer DEM of Jenstejn surroundings for free layer heightcoding
 * Whole Jenstejn village at 3cm/px in `VEF format <https://github.com/Melown/true3d-format-spec>`_
 * Center of Jenstejn at 2.5cm/px in `VEF format <https://github.com/Melown/true3d-format-spec>`_
-* GDAL WMTS configuration for `Mapy.cz <http://mapy.cz>`_ bound layer.
+* GDAL WMTS configuration for `Mapy.cz <http://mapy.cz>`_ orthophoto bound layer.
 * GDAL WMS configuration for raster cadastre - particular layers from WMS available at `<http://services.cuzk.cz/wms/wms.asp>`_
 * Vector cadastre of Jenstejn - available at http://services.cuzk.cz/shp/ku/epsg-5514/658499.zip
 
-1. Preparation of static data
+Setting up mapproxy resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For this step, the most important locations are ``/var/vts/mapproxy/datasets/`` where all inputs for mapproxy are stored and
+``/etc/vts/mapproxy/resource.json`` where you will place configuration snippet for each mapproxy resource.
+
+During resource preparation it is advisible to turn off the mapproxy, so that you have time to correct mistakes in your
+configuration::
+  
+  $ sudo /etc/init.d/vts-backend-mapproxy stop
+
+As whole vts-backend runs under the vts user, it is advisible to switch to vts user so that all files are created with the 
+right privileges and ownership::
+
+  $ sudo -iu vts
+
+
+Setting up dynamic surfaces
+"""""""""""""""""""""""""""
+
+To set up surface resources based on DEM from both SRTM DEM and Jenstejn DEM, please follow instructions in 
+`North carolina tutorial _north-carolina`_ . The data files should be placed in ``/var/vts/mapproxy/datasets/srtm`` and
+``/var/vts/mapproxy/datasets/jenstejn-dem`` respectively.
+
+Configuration snippets should look like::
+
+  {
+    "comment": "SRTM 1 arc sec",
+    "group": "cadastre",
+    "id": "srtm",
+    "type": "surface",
+    "driver": "surface-dem",
+    "credits": [],
+    "definition": {
+        "dataset": "srtm"
+    },
+    "referenceFrames": {
+        "melown2015": {
+            "lodRange": [ 9, 15 ],
+            "tileRange": [
+                [ 137, 85 ],
+                [ 138, 86 ]
+            ]
+        }
+    }
+  },
+  {
+    "comment": "Jenstejn DEM",
+    "group": "cadastre",
+    "id": "jenstejn-dem",
+    "type": "surface",
+    "driver": "surface-dem",
+    "credits": [],
+    "definition": {
+        "dataset": "jenstejn-dem"
+    },
+    "referenceFrames": {
+        "melown2015": {
+            "tileRange": [
+                [ 2213, 1386 ],
+                [ 2214, 1386 ]
+            ],
+            "lodRange": [ 13, 16 ]
+        }
+    }
+  }
+
 
 
 Tippecanoe:
@@ -65,7 +132,7 @@ Now we will merge geojsons into one containing both linestrings and points using
 Because simplification makes little sense for cadastre, we will use tippecanoe just to tile features on a single level of detail without any simplification:
 
   $ mkdir /var/vts/mapproxy/datasets/jenstejn-cadastre
-  $ tippecanoe -o /var/vts/mapproxy/datasets/jenstejn-cadastre/parcels-all.mbtiles -z 16 -Z 16 -B 16 -ps parcel-all.geojson
+  $ tippecanoe -o /var/vts/mapproxy/datasets/jenstejn-cadastre/parcels-all.mbtiles -z 16 -Z 16 -B 16 -ps jentejn-parcel-all.geojson
 
 Data:
 
