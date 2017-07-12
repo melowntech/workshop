@@ -6,7 +6,7 @@ Displaying cadastre over 3D data
 In this tutorial we shall combine 3D data from Bohemian village Jenstejn that we made available for this purpose with both raster
 and vector cadastre provided by `State Administration of Land Surveying and Cadastre (ČÚZK) <http://www.cuzk.cz/en>`_ .
 
-This tutorial expects that you have already set up your VTS backend.
+This tutorial expects that you have already set up your VTS backend. 
 
 First download the pack with sample data from ... It contains:
 
@@ -38,13 +38,23 @@ right privileges and ownership::
 Setting up dynamic surfaces
 """""""""""""""""""""""""""
 
+We need to set up two surfaces - one from srtm 1 arc sec N50E014 tile for context and second from finer DEM of 
+Jenstejn surroundings.
+
+* SRTM can be obtained from `Earth Explorer <https://earthexplorer.usgs.gov/>`_ or from `our CDN <http://cdn.melown.com/public/cadastre/N50E014.hgt>`_ for convenience.
+* Jenstejn DEM can be downloaded from `our CDN <http://cdn.melown.com/public/cadastre/jenstejn-dem.tif>`_
+
+The SRTM must be converted away from hgt (e.g. to GeoTiff) prior to processing because hgt format draws georeferencing information from filename.::
+  
+  $ gdal_translate -of GTiff N50E014.hgt N50E014.tif
+
 To set up surface resources based on DEM from both SRTM DEM and Jenstejn DEM, please follow instructions in 
 `North carolina tutorial _north-carolina`_ . The data files should be placed in ``/var/vts/mapproxy/datasets/srtm`` and
 ``/var/vts/mapproxy/datasets/jenstejn-dem`` respectively.
 
-Configuration snippets should look like::
+Configuration snippets placed into ``/etc/vts/mapproxy/resource.json`` should look like (alter the comment, group and id fields)::
 
-  {
+  [{
     "comment": "SRTM 1 arc sec",
     "group": "cadastre",
     "id": "srtm",
@@ -80,13 +90,103 @@ Configuration snippets should look like::
                 [ 2213, 1386 ],
                 [ 2214, 1386 ]
             ],
-            "lodRange": [ 13, 16 ]
+            "lodRange": [ 13, 18 ]
         }
     }
+  }]
+
+Setting up bound layers
+"""""""""""""""""""""""
+
+First we will set up boundlayer with orthophoto based on Czech `Mapy.cz maps <http://www.mapy.cz>`_ .
+Because Mapy.cz work as WMTS ins suitable SRS (webemercator), the tiles need not to be processed by mapproxy.
+We will therefore configure this bound layer to use ``tms-raster-remote`` driver, which will basically just 
+tell the client to use tiles from some particular external URL and how to index them. Add following snippet
+to the outermost array in ``/etc/vts/mapproxy/resource.json`` ::
+
+  {
+    "comment": "Mapy.cz orthophoto",
+    "group": "cadastre",
+    "id": "mapy-cz-ophoto",
+    "type": "tms",
+    "driver": "tms-raster-remote",
+    "credits": ["seznamcz"],
+    "definition": {
+        "remoteUrl": "//m{alt(1,2,3,4)}.mapserver.mapy.cz/ophoto-m/{loclod}-{locx}-{locy}"
+    },
+    "registry": {
+        "credits" : {"seznamcz":{ "id": 103, "notice": "{copy}{Y} Seznam.cz, a.s." }}
+    },
+    "referenceFrames":
+        {
+            "melown2015": {
+                "tileRange": [
+                    [ 137, 85 ],
+                    [ 138, 86 ]
+                ],
+                "lodRange": [
+                    9,
+                    21
+                ]
+            }
+        }
   }
 
+Now we set up transparent bound layer with raster cadastre drawn from WMS at http://services.cuzk.cz/wms/wms.asp .
+In ``/var/vts/mapproxy/datasets/cuzk-raster-cadastre`` create a file ``cadastre.xml`` with the 
+following content::
 
+ <GDAL_WMS>
+  <Service name="WMS">
+    <Version>1.1.1</Version>
+    <ServerUrl>http://services.cuzk.cz/wms/wms.asp?SERVICE=WMS</ServerUrl>
+    <Layers>hranice_parcel_i,obrazy_parcel_i,parcelni_cisla_i</Layers>
+    <SRS>EPSG:3857</SRS>
+    <ImageFormat>image/png</ImageFormat>
+    <Transparent>TRUE</Transparent>
+    <BBoxOrder>xyXY</BBoxOrder>
+  </Service>
+  <DataWindow>
+    <UpperLeftX>1320000</UpperLeftX>
+    <UpperLeftY>6693000</UpperLeftY>
+    <LowerRightX>2113000</LowerRightX>
+    <LowerRightY>6140000</LowerRightY>
+    <SizeX>1073741824</SizeX>
+    <SizeY>748775824</SizeY>
+  </DataWindow>
+  <BandsCount>4</BandsCount>
+  <BlockSizeX>1024</BlockSizeX>
+  <BlockSizeY>1024</BlockSizeY>
+  <OverviewCount>20</OverviewCount>
+ </GDAL_WMS>
 
+The bound layer will have the same tile range as SRTM DEM because larger is not needed. Thus the mapproxy configuration
+snippet will be as following::
+
+  {
+    "comment": "CUZK Raster cadastre",
+    "group": "cadastre",
+    "id": "raster-cadastre",
+    "type": "tms",
+    "driver": "tms-raster",
+    "credits": ["cuzk"],
+    "definition": {
+        "dataset": "cuzk-raster-cadastre/cadastre.xml"
+    },
+    "registry": {
+        "credits" : {"cuzk":{ "id": 104, "notice": "{copy}{Y} ČÚZK" }}
+    },
+    "referenceFrames": {
+        "melown2015": {
+            "lodRange": [ 9, 21 ],
+            "tileRange": [
+                [ 137, 85 ],
+                [ 138, 86 ]
+            ]
+        }
+    }
+  }  
+ 
 Tippecanoe:
 
 Install - follow instructions from github:
