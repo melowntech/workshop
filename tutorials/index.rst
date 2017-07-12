@@ -7,7 +7,7 @@ Some more VTS case studies and tutorials are provided below.
 .. toctree::
    :maxdepth: 1
 
-   vtsbackend
+..   vtsbackend
 ..   cadastre
 ..   mars1
 ..   mars2
