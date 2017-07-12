@@ -53,9 +53,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Melown 3D Stack '
-copyright = u'2017, Jachym Cepicky, Stanislav Sumbera'
-author = u'Jachym Cepicky, Stanislav Sumbera'
+project = u'VTS 3D Technology Stack'
+copyright = u'2017 Melown Technologies SE'
+author = u'Melown Technologies SE'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
