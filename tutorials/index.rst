@@ -8,5 +8,6 @@ Some more VTS case studies and tutorials are provided below.
    :maxdepth: 1
 
    vtsbackend
+   cadastre
    mars1
    mars2
