@@ -36,7 +36,7 @@ technical skilled users.
     introduction
     server/index
     clients/index
-    console/index
+    cloud/index
     conclusion
 
 

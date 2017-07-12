@@ -27,5 +27,3 @@ There are also code samples, using Python, in `the tests directory
 Please, `refer to the documentation
 <https://github.com/Melown/mario-cloud-api/tree/master/docs>`_ for more
 informations.
-
-
