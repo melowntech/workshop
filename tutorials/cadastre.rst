@@ -272,5 +272,54 @@ And finally we create a configuration snippet for mapproxy::
         }
  }
 
+Now you can turn mapproxy back on::
+  
+  $ sudo /etc/init.d/vts-backend-mapproxy start
+
+And examine the log::
+
+  $ less /var/log/vts/mapproxy.log
+
+If you should see no errors, only ``Ready to serve <resource>`` line for each defined resource.
+
+Filling the storage
+^^^^^^^^^^^^^^^^^^^
+
+Important location for this step is ``/var/vts/store/stage.melown2015``. Furthermore, create following directory to
+hold the 3D resources::
+
+  $ mkdir -p /var/vts/store/resources/tilesets
+
+Preparing True3D tilesets
+"""""""""""""""""""""""""
+
+VTS tileset format is suitable for streaming data over the internet but it is firmly bound to given Reference Frame.
+For True3D data exchange purposes we specified an open, Reference Frame independent, `VEF format <https://github.com/Melown/true3d-format-spec>`_
+meant for storing hierarchical georeferenced textured meshes. The VEF format is a preferable entry point for 3D data into VTS.
+
+To get the True3D data for this tutorial, please download `Jenstejn (the whole village) <http://cdn.melown.com/public/cadastre/jenstejn-village.vef.tar>`_
+and `Jenstejn (center) <http://cdn.melown.com/public/cadastre/jenstejn.vef.tar>`_ in VEF fromat to some working directory.
+
+Now we will convert both datasets into VTS tileset::
+
+  $ cd <work dir>
+  $ vef2vts --input jenstejn.vef.tar --output /var/vts/store/resources/tilesets/jentejn-center \
+            --tilesetId jenstejn-center --referenceFrame melown2015
+  $ vef2vts --input jenstejn-village.vef.tar --output /var/vts/store/resources/tilesets/jentejn-village \
+            --tilesetId jenstejn-village --referenceFrame melown2015
+
+Adding tilesets into storage
+""""""""""""""""""""""""""""
+
+Now we are ready to merge everything in the storage, First we add the bottommost surface from SRTM DEM as remote tileset::
+
+  $ vts /var/vts/store/stage.melown2015 --add --tileset http://localhost:8070/mapproxy/melown2015/surface/cadastre/srtm --top
+
+Then add the two Jenstejns as local tilesets - this way the data are only referenced rather than copied into storage which makes the operation faster and saves some space::
+
+  $ vts /var/vts/store/stage.melown2015 --add --tileset local:/var/vts/store/resources/tilesets/jentejn-village --top
+  $ vts /var/vts/store/stage.melown2015 --add --tileset local:/var/vts/store/resources/tilesets/jentejn-center --top
+
+
 
 
