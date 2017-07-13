@@ -59,6 +59,8 @@ For your own interactive 3D map of Dachstein, based on SRTM and Geoland basemap.
 
 .. image:: vtsbackend-srtm1-n47-e013-basemap-at.jpg
 
+Please note that depending on the speed of your hardware, the initial generation of textured tiles in mapproxy's cache may take some time.
+
 Under the hood
 """"""""""""""
 
