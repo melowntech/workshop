@@ -23,7 +23,6 @@ Make sure we have ``add-apt-repository`` available::
 
 Add ubuntugis ppa to your apt system::
 
-    $ sudo apt install software-properties-common
     $ sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
     $ sudo apt-get update
 
@@ -42,7 +41,7 @@ Update your package lists::
 
 And finally, install vts-backend::
 
-    $ apt install vts-backend 
+    $ sudo apt install vts-backend 
 
 If all went well, you now have a working VTS backend.
 
