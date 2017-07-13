@@ -23,7 +23,6 @@ Make sure we have ``add-apt-repository`` available::
 
 Add ubuntugis ppa to your apt system::
 
-    $ sudo apt install software-properties-common
     $ sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
     $ sudo apt-get update
 
@@ -42,7 +41,7 @@ Update your package lists::
 
 And finally, install vts-backend::
 
-    $ apt install vts-backend 
+    $ sudo apt install vts-backend 
 
 If all went well, you now have a working VTS backend.
 
@@ -59,6 +58,8 @@ To see the WGS84 ellipsoid with spherical mercator tile hierarchy, simply point 
 For your own interactive 3D map of Dachstein, based on SRTM and Geoland basemap.at data, go to ``http://<yourserver>:8070/mapproxy/melown2015/surface/examples/srtm1-n47-e013/``. Here is what the result should look like:
 
 .. image:: vtsbackend-srtm1-n47-e013-basemap-at.jpg
+
+Please note that depending on the speed of your hardware, the initial generation of textured tiles in mapproxy's cache may take some time.
 
 Under the Hood
 """"""""""""""
