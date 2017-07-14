@@ -3,7 +3,7 @@
 Displaying cadastre over 3D data
 --------------------------------
 
-In this tutorial we shall combine 3D data from Bohemian village Jenstejn that we made available for this purpose with both raster
+In this tutorial we combine 3D data of a Czech village Jenštejn that we made available for this purpose with both raster
 and vector cadastre provided by `State Administration of Land Surveying and Cadastre (ČÚZK) <http://www.cuzk.cz/en>`_ .
 
 This tutorial expects that you have already set up your VTS backend.
