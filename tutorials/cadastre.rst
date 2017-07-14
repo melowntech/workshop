@@ -181,18 +181,18 @@ snippet will be as following::
 Setting up vector free layer
 """"""""""""""""""""""""""""
 
-We will set up geodata free layer with parcel borders and parcel numbers. We will use MBTiles file
-as the base resource for mapproxy to demotrate possibility of serving tiled geodata.
+We will set up a geodata free layer with parcel borders and parcel numbers. We will use an MBTiles file
+as the base resource for mapproxy to demonstrate the possibility of serving tiled geodata.
 
-First we need to download pack with shapefiles of Jenstejn cadastal area from ČÚZK website::
+First we need to download a ZIP file with shapefiles of Jenstejn cadastal area from the ČÚZK website::
 
   $ wget http://services.cuzk.cz/shp/ku/epsg-5514/658499.zip
   $ unzip 658499.zip
   $ cd 658499
 
 We are interested in parcel borders and parcel numbers. We will create one MBTiles containing both these layers but first we need to prepare the GeoJson
-to create the MBTiles from. Because original data are in Krovak projection care must be taken when converting coordinates as system definition of Krovak
-may come with too imprecise towgs84 parameter::
+to create the MBTiles from. Because original data are in Krovak projection care must be taken when converting coordinates as the system definition of Krovak
+may come with insufficiently precise towgs84 parameter::
 
   $ unzip jenstejn-vector-cadastre-658499.zip
   $ cd 658499
@@ -271,7 +271,7 @@ And examine the log::
 
   $ less /var/log/vts/mapproxy.log
 
-If you should see no errors, only ``Ready to serve <resource>`` line for each defined resource.
+You should see no errors, only a ``Ready to serve <resource>`` line for each defined resource.
 
 Styling vector cadastre
 """""""""""""""""""""""
