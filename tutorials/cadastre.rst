@@ -3,7 +3,7 @@
 Displaying cadastre over 3D data
 --------------------------------
 
-In this tutorial we shall combine 3D data from Bohemian village Jenstejn that we made available for this purpose with both raster
+In this tutorial we combine 3D data of a Czech village Jenštejn that we made available for this purpose with both raster
 and vector cadastre provided by `State Administration of Land Surveying and Cadastre (ČÚZK) <http://www.cuzk.cz/en>`_ .
 
 This tutorial expects that you have already set up your VTS backend.
@@ -21,8 +21,7 @@ configuration::
   
   $ sudo /etc/init.d/vts-backend-mapproxy stop
 
-As whole vts-backend runs under the vts user, it is advisible to switch to vts user so that all files are created with the 
-right privileges and ownership::
+As the whole vts-backend runs under the vts user, it is advisable to switch to the vts user so that all files are created with the right privileges and ownership::
 
   $ sudo -iu vts
 
@@ -44,7 +43,7 @@ To set up surface resources based on DEM from both SRTM DEM and Jenstejn DEM, pl
 `North carolina tutorial _north-carolina`_ . The data files should be placed in ``/var/vts/mapproxy/datasets/srtm`` and
 ``/var/vts/mapproxy/datasets/jenstejn-dem`` respectively.
 
-Configuration snippets placed into ``/etc/vts/mapproxy/resource.json`` should look like (alter the comment, group and id fields)::
+Configuration snippets placed into ``/etc/vts/mapproxy/resources.json`` should look like (alter the comment, group and id fields)::
 
   [{
     "comment": "SRTM 1 arc sec",
@@ -90,10 +89,10 @@ Configuration snippets placed into ``/etc/vts/mapproxy/resource.json`` should lo
 Setting up bound layers
 """""""""""""""""""""""
 
-First we will set up boundlayer with orthophoto based on Czech `Mapy.cz maps <http://www.mapy.cz>`_ .
-Because Mapy.cz work as WMTS ins suitable SRS (webemercator), the tiles need not to be processed by mapproxy.
-We will therefore configure this bound layer to use ``tms-raster-remote`` driver, which will basically just 
-tell the client to use tiles from some particular external URL and how to index them. Add following snippet
+First we will set up a boundlayer with orthophoto based on Czech `Mapy.cz maps <http://www.mapy.cz>`_ .
+Because Mapy.cz work as a WMTS in a suitable SRS (webmercator), the tiles need not be processed by mapproxy.
+We will therefore configure this bound layer to use the ``tms-raster-remote`` driver, which will basically just 
+tell the client to use tiles from some particular external URL and how to index them. Add the following snippet
 to the outermost array in ``/etc/vts/mapproxy/resource.json`` ::
 
   {
