@@ -188,13 +188,11 @@ First we need to download a ZIP file with shapefiles of Jenstejn cadastal area f
 
   $ wget http://services.cuzk.cz/shp/ku/epsg-5514/658499.zip
   $ unzip 658499.zip
-  $ cd 658499
-
+  
 We are interested in parcel borders and parcel numbers. We will create one MBTiles containing both these layers but first we need to prepare the GeoJson
 to create the MBTiles from. Because original data are in Krovak projection care must be taken when converting coordinates as the system definition of Krovak
 may come with insufficiently precise towgs84 parameter::
 
-  $ unzip jenstejn-vector-cadastre-658499.zip
   $ cd 658499
   $ ogr2ogr -f "GeoJson" \
             -s_srs "+proj=krovak +lat_0=49.5 +lon_0=24.83333333333333 +alpha=0 +k=0.9999 +x_0=0 +y_0=0 +ellps=bessel \
