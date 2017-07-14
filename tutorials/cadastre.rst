@@ -358,8 +358,7 @@ Go to ``/var/vts/store/map-config`` and create the file ``cadastre`` with the fo
                 "jenstejn-village",
                 "jenstejn-center"
         ],
-        "credits": { }                     # no additional credit definitions
-        },
+        "credits": { },                    # no additional credit definitions
         "boundLayers": {                   # where to find definition files for bound layers
                 "mapy-cz": "/mapproxy/melown2015/tms/cadastre/mapy-cz-ophoto/boundlayer.json",
                 "cadastre-raster": "/mapproxy/melown2015/tms/cadastre/cuzk-raster-cadastre/boundlayer.json"
@@ -388,8 +387,9 @@ Go to ``/var/vts/store/map-config`` and create the file ``cadastre`` with the fo
         "version": 1
   }
 
-After saving you can test if the storage view is valid by running (standing next to ``cadastre`` file)::
+After saving you can test if the storage view is valid by running::
 
+  $ cd /var/vts/store/map-config
   $ vts --map-config cadastre
 
 If everything is all right, a large JSON with client side map configuration will be printed.
