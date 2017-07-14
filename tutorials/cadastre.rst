@@ -21,8 +21,7 @@ configuration::
   
   $ sudo /etc/init.d/vts-backend-mapproxy stop
 
-As whole vts-backend runs under the vts user, it is advisible to switch to vts user so that all files are created with the 
-right privileges and ownership::
+As the whole vts-backend runs under the vts user, it is advisable to switch to the vts user so that all files are created with the right privileges and ownership::
 
   $ sudo -iu vts
 
