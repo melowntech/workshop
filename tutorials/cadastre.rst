@@ -89,10 +89,10 @@ Configuration snippets placed into ``/etc/vts/mapproxy/resources.json`` should l
 Setting up bound layers
 """""""""""""""""""""""
 
-First we will set up boundlayer with orthophoto based on Czech `Mapy.cz maps <http://www.mapy.cz>`_ .
-Because Mapy.cz work as WMTS ins suitable SRS (webemercator), the tiles need not to be processed by mapproxy.
-We will therefore configure this bound layer to use ``tms-raster-remote`` driver, which will basically just 
-tell the client to use tiles from some particular external URL and how to index them. Add following snippet
+First we will set up a boundlayer with orthophoto based on Czech `Mapy.cz maps <http://www.mapy.cz>`_ .
+Because Mapy.cz work as a WMTS in a suitable SRS (webmercator), the tiles need not be processed by mapproxy.
+We will therefore configure this bound layer to use the ``tms-raster-remote`` driver, which will basically just 
+tell the client to use tiles from some particular external URL and how to index them. Add the following snippet
 to the outermost array in ``/etc/vts/mapproxy/resource.json`` ::
 
   {
