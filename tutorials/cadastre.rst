@@ -349,8 +349,7 @@ Creating a storage view
 As the final step we need to create a `storage view <http://melown.readthedocs.io/en/latest/introduction.html#storage-view>`_ that combines tilesets from our storage
 and free and bound layer from the mapproxy.
 
-Go to ``/var/vts/store/map-config`` and create file ``cadastre`` with the following contents. The hashes are meant as commnets and need to be deleted before saving the file to
-create a valid JSON::
+Go to ``/var/vts/store/map-config`` and create the file ``cadastre`` with the following contents. The hashes are meant as comments and need to be deleted before saving the file to create a valid JSON::
 
   {
         "storage": "../stage.melown2015",  # where is our storage
