@@ -41,8 +41,6 @@ The Global Mosaic
 """""""""""""""""
 For a global model of any celestial body, you need a global mosaic. We choose the 232m/px `Mars Viking MDIM21 Color Mosaic <https://astrogeology.usgs.gov/search/map/Mars/Viking/MDIM21/Mars_Viking_MDIM21_ClrMosaic_global_232m>`_ available from USGS Astrogeology Science Center.
 
-.. todo:: Download from our servers is broken. You may use the original file.
-
 The `original file <https://planetarymaps.usgs.gov/mosaic/Mars_Viking_MDIM21_ClrMosaic_global_232m.tif>`_ is almost 12GiBs and takes quite a while to download. You might prefer to obtain a deflated 5GiB version from our servers::
 
     $ cd ~/mapproxy/datasets/mars-case-study
