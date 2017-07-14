@@ -59,7 +59,7 @@ Format`_. Let's start with the ortho photo, we will use :ref:`generatevrtwo`
 program for that::
 
     $ mkdir ortho
-    $ generatevrtwo ortho_2001_t792_1m.tif ortho/ortho_2001_t792_1m --resampling texture --tileSize 1023x1024
+    $ generatevrtwo ortho_2001_t792_1m.tif ortho/ortho_2001_t792_1m --resampling texture --tileSize 1024x1024
 
 New directory ``ortho`` was created.
 

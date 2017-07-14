@@ -1,3 +1,6 @@
+.. index::
+    pair: HGT; SRTMHGT
+
 .. _cadastre-tutorial:
 
 Displaying cadastre over 3D data
@@ -29,21 +32,58 @@ As the whole vts-backend runs under the vts user, it is advisable to switch to t
 Setting up dynamic surfaces
 """""""""""""""""""""""""""
 
-We need to set up two surfaces - one from srtm 1 arc sec N50E014 tile for context and second from finer DEM of 
-Jenstejn surroundings.
+We need to set up two surfaces - one from `SRTM <http://srtm.csi.cgiar.org/>`_ 1
+arc sec :file:`N50E014` tile for context and second from finer DEM of `Jenstejn
+surroundings <https://mapy.cz/zakladni?x=14.6194164&y=50.1445893&z=14&source=muni&id=4489&q=jenstejn>`_.
 
-* SRTM can be obtained from `Earth Explorer <https://earthexplorer.usgs.gov/>`_ or from `our CDN <http://cdn.melown.com/public/cadastre/N50E014.hgt>`_ for convenience.
-* Jenstejn DEM can be downloaded from `our CDN <http://cdn.melown.com/public/cadastre/jenstejn-dem.tif>`_
+* SRTM can be obtained from `Earth Explorer <https://earthexplorer.usgs.gov/>`_ or from our CDN: http://cdn.melown.com/pub/cadastre/N50E014.hgt
+* Jenstejn DEM can be downloaded from our CDN: http://cdn.melown.com/pub/cadastre/jenstejn-dem.tif
 
-The SRTM must be converted away from hgt (e.g. to GeoTiff) prior to processing because hgt format draws georeferencing information from filename.::
+The SRTM must be converted away from `SRTMHGT format
+<http://www.gdal.org/frmt_various.html#SRTMHGT>`_  e.g. to `GeoTiff
+<http://www.gdal.org/frmt_gtiff.html>`_ prior to processing because `SRTMHGT` format
+draws georeferencing information from filename.::
   
   $ gdal_translate -of GTiff N50E014.hgt N50E014.tif
 
-To set up surface resources based on DEM from both SRTM DEM and Jenstejn DEM, please follow instructions in 
-`North carolina tutorial _north-carolina`_ . The data files should be placed in ``/var/vts/mapproxy/datasets/srtm`` and
-``/var/vts/mapproxy/datasets/jenstejn-dem`` respectively.
+To set up surface resources based on DEM from both SRTM DEM and Jenstejn DEM,
+please follow more detailed instructions in :ref:`north-carolina` or
+:ref:`mars-peaks-valleys` tutorials. In this
+tutorial, it is expected, that you place the data in
+``/var/vts/mapproxy/datasets/srtm`` and
+``/var/vts/mapproxy/datasets/jenstejn-dem`` directoriers respectively.
 
-Configuration snippets placed into ``/etc/vts/mapproxy/resources.json`` should look like (alter the comment, group and id fields)::
+.. code-block:: bash
+
+    # create the SRTM DEM dataset
+    generatevrtwo N50E014.tif /var/vts/mapproxy/datasets/srtm --resampling dem --tiliseSize 1024x1024
+    generatevrtwo N50E014.tif /var/vts/mapproxy/datasets/srtm.min --resampling min --tiliseSize 1024x1024
+    generatevrtwo N50E014.tif /var/vts/mapproxy/datasets/srtm.max --resampling max --tiliseSize 1024x1024
+    ln -s srtm/dataset srtm/dem
+    ln -s srtm.min/dataset srtm/dem.min
+    ln -s srtm.max/dataset srtm/dem.max
+    
+    # create Jensten dataset
+    generatevrtwo jenstejn-dem.tif /var/vts/mapproxy/datasets/jenstejn-dem --resampling dem --tiliseSize 1024x1024
+    generatevrtwo jenstejn-dem.tif /var/vts/mapproxy/datasets/jenstejn-dem.min --resampling min --tiliseSize 1024x1024
+    generatevrtwo jenstejn-dem.tif /var/vts/mapproxy/datasets/jenstejn-dem.max --resampling max --tiliseSize 1024x1024
+    ln -s jenstejn-dem/dataset jenstejn-dem/dem
+    ln -s jenstejn-dem.min/dataset jenstejn-dem/dem.min
+    ln -s jenstejn-dem.max/dataset jenstejn-dem/dem.max
+
+
+We now need the configuration snippet for the ``/etc/vts/mapproxy/resource.json`` file.
+The ``lodRange`` and ``tileRange`` values are taken from the ``mapproxy-calipers`` tool::
+
+    mapproxy-calipers srtm/dem --referenceFrame melown2015
+    ...
+
+    mapproxy-calipers jenstejn-dem/dem --referenceFrame melown2015
+    ...
+
+The final configuration snippets placed into
+``/etc/vts/mapproxy/resources.json`` should look like (alter the comment, group
+and id fields)::
 
   [{
     "comment": "SRTM 1 arc sec",
@@ -89,11 +129,13 @@ Configuration snippets placed into ``/etc/vts/mapproxy/resources.json`` should l
 Setting up bound layers
 """""""""""""""""""""""
 
-First we will set up a boundlayer with orthophoto based on Czech `Mapy.cz maps <http://www.mapy.cz>`_ .
-Because Mapy.cz work as a WMTS in a suitable SRS (webmercator), the tiles need not be processed by mapproxy.
-We will therefore configure this bound layer to use the ``tms-raster-remote`` driver, which will basically just 
-tell the client to use tiles from some particular external URL and how to index them. Add the following snippet
-to the outermost array in ``/etc/vts/mapproxy/resource.json`` ::
+First we will set up boundlayer with orthophoto based on Czech `Mapy.cz maps
+<http://www.mapy.cz>`_ .  Because Mapy.cz work as WMTS ins suitable SRS
+(webmercator), the tiles need not to be processed by VTS Mapproxy.  We will
+therefore configure this bound layer to be used with the ``tms-raster-remote``
+driver, which will basically just tell the client to use tiles from some
+particular external service and how to index them. Add following snippet to the
+outermost array in ``/etc/vts/mapproxy/resource.json`` ::
 
   {
     "comment": "Mapy.cz orthophoto",
@@ -123,9 +165,10 @@ to the outermost array in ``/etc/vts/mapproxy/resource.json`` ::
         }
   }
 
-Now we set up transparent bound layer with raster cadastre drawn from WMS at http://services.cuzk.cz/wms/wms.asp .
-In ``/var/vts/mapproxy/datasets/cuzk-raster-cadastre`` create a file ``cadastre.xml`` with the 
-following content::
+Now we set up transparent bound layer with raster cadastre drawn from WMS at
+http://services.cuzk.cz/wms/wms.asp .  In
+``/var/vts/mapproxy/datasets/cuzk-raster-cadastre`` create a file
+``cadastre.xml`` with the following content::
 
  <GDAL_WMS>
   <Service name="WMS">
@@ -151,8 +194,10 @@ following content::
   <OverviewCount>20</OverviewCount>
  </GDAL_WMS>
 
-The bound layer will have the same tile range as SRTM DEM because larger is not needed. Thus the mapproxy configuration
-snippet will be as following::
+This is further more discussed in the example :ref:`srtm-example`.
+
+The bound layer will have the same tile range as SRTM DEM because larger is not
+needed. Thus the mapproxy configuration snippet will be as following::
 
   {
     "comment": "CUZK Raster cadastre",
@@ -177,21 +222,29 @@ snippet will be as following::
         }
     }
   }  
+
+Again, for the ``lodRange`` and ``tileRange`` values, ``mapproxy-calipers``
+program can be used.
  
 Setting up vector free layer
 """"""""""""""""""""""""""""
 
-We will set up a geodata free layer with parcel borders and parcel numbers. We will use an MBTiles file
-as the base resource for mapproxy to demonstrate the possibility of serving tiled geodata.
+We will set up a geodata free layer with parcel borders and parcel numbers. We
+will use an MBTiles file as the base resource for mapproxy to demotrate the
+possibility of serving tiled geodata.
 
-First we need to download a ZIP file with shapefiles of Jenstejn cadastal area from the ČÚZK website::
+First we need to download a ZIP file with shapefiles of Jenstejn cadastal area from
+ČÚZK website::
 
   $ wget http://services.cuzk.cz/shp/ku/epsg-5514/658499.zip
   $ unzip 658499.zip
-  
-We are interested in parcel borders and parcel numbers. We will create one MBTiles containing both these layers but first we need to prepare the GeoJson
-to create the MBTiles from. Because original data are in Krovak projection care must be taken when converting coordinates as the system definition of Krovak
-may come with insufficiently precise towgs84 parameter::
+  $ cd 658499
+
+We are interested in parcel borders and parcel numbers. We will create one
+MBTiles containing both these layers but first we need to prepare the GeoJSON to
+create the MBTiles from. Because original data are in the `Krovak projection
+<http://epsg.io/5514>`_ care must be taken when converting coordinates as system
+definition of Krovak may come with insufficiently precise ``towgs84`` parameter::
 
   $ cd 658499
   $ ogr2ogr -f "GeoJson" \
@@ -210,21 +263,25 @@ may come with insufficiently precise towgs84 parameter::
             -sql "SELECT geometry FROM HRANICE_PARCEL_L" \
             jenstejn-parcel-borders.geojson HRANICE_PARCEL_L.shp
 
-Now we will merge geojsons into one containing both linestrings and points using merge-geojsons.py from https://gist.github.com/migurski/3759608 ::
+Now we will merge geojsons into one containing both linestrings and points using
+merge-geojsons.py from https://gist.github.com/migurski/3759608 ::
 
   $ python merge-geojsons.py jenstejn-parcel-numbers.geojson jenstejn-parcel-borders.geojson jenstejn-parcel-all.geojson
 
-To create MBTiles we will use MapBox's opensource tool tippecanoe. To install it, follow the instructions on github::
+To create MBTiles we will use MapBox's opensource tool `tippecanoe
+<https://github.com/mapbox/tippecanoe>`_. To install it, follow the instructions
+on github::
 
-  $ cd <some working directory>
   $ git clone https://github.com/mapbox/tippecanoe.git
   $ cd tippecanoe
   $ sudo apt-get install build-essential libsqlite3-dev zlib1g-dev
   $ make -j2
   $ sudo make install
 
-We will place MBTiles into ``/var/vts/mapproxy/datasets/cuzk-raster-cadastre/`` directory. Because simplification 
-makes little sense for cadastre, we will use tippecanoe just to tile features on a single level of detail without any simplification::
+We will place MBTiles into ``/var/vts/mapproxy/datasets/cuzk-raster-cadastre/``
+directory. Because simplification makes little sense for cadastre, we will use
+tippecanoe just to tile features on a single level of detail without any
+simplification::
 
   $ mkdir /var/vts/mapproxy/datasets/jenstejn-cadastre
   $ tippecanoe -o /var/vts/mapproxy/datasets/jenstejn-cadastre/parcels-all.mbtiles -z 16 -Z 16 -B 16 -ps \
@@ -277,7 +334,8 @@ Styling vector cadastre
 To give the vector free layer the right look, we will create a style for it which we later apply to the layer
 in storage view.
 
-Go to ``/var/vts/store/stylesheet/`` and create ``cuzk-cadastre-style.json`` with the following contents::
+Go to ``/var/vts/store/stylesheet/`` and create ``cuzk-cadastre-style.json``
+with the following contents::
 
  {
   "layers": {
@@ -300,28 +358,36 @@ Go to ``/var/vts/store/stylesheet/`` and create ``cuzk-cadastre-style.json`` wit
   }
  }
 
-That will tell the browser that we want to see parcel borders yellow drawn by line that looks flat (gets thinner when you tilt). Further,
-when you come close, the parcel numbers will show up. For complete documentation for styles have a look here.
-
-.. todo ref na dokumentaci stylu
+That will tell the browser that we want to see parcel borders yellow drawn by
+line that looks flat (gets thinner when you tilt). Further, when you come close,
+the parcel numbers will show up. Check the `free layers style documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`_
+for further details.
 
 Filling the storage
 ^^^^^^^^^^^^^^^^^^^
 
-Important location for this step is ``/var/vts/store/stage.melown2015`` (stage is a traditional name for the main storage). Furthermore, create following directory to
-hold the 3D resources::
+.. todo:: Be more verbose in the description of the step.
+
+Important location for this step is ``/var/vts/store/stage.melown2015`` (stage
+is a traditional name for the main storage). Furthermore, create following
+directory to hold the 3D resources::
 
   $ mkdir -p /var/vts/store/resources/tilesets
 
 Preparing True3D tilesets
 """""""""""""""""""""""""
 
-VTS tileset format is suitable for streaming data over the internet but it is firmly bound to given Reference Frame.
-For True3D data exchange purposes we specified an open, Reference Frame independent, `VEF format <https://github.com/Melown/true3d-format-spec>`_
-meant for storing hierarchical georeferenced textured meshes. The VEF format is a preferable entry point for 3D data into VTS.
+VTS tileset format is suitable for streaming data over the internet but it is
+firmly bound to given Reference Frame.  For True3D data exchange purposes we
+specified an open, Reference Frame independent, `VEF format
+<https://github.com/Melown/true3d-format-spec>`_ meant for storing hierarchical
+georeferenced textured meshes. The VEF format is a preferable entry point for 3D
+data into VTS.
 
-To get the True3D data for this tutorial, please download `Jenstejn (the whole village) <http://cdn.melown.com/public/cadastre/jenstejn-village.vef.tar>`_
-and `Jenstejn (center) <http://cdn.melown.com/public/cadastre/jenstejn.vef.tar>`_ in VEF fromat to some working directory.
+To get the True3D data for this tutorial, please download `Jenstejn (the whole
+village) <http://cdn.melown.com/public/cadastre/jenstejn-village.vef.tar>`_ and
+`Jenstejn (center) <http://cdn.melown.com/public/cadastre/jenstejn.vef.tar>`_ in
+VEF fromat to some working directory.
 
 Now we will convert both datasets into VTS tileset::
 
@@ -334,11 +400,14 @@ Now we will convert both datasets into VTS tileset::
 Adding tilesets into storage
 """"""""""""""""""""""""""""
 
-Now we are ready to merge everything in the storage, First we add the bottommost surface from SRTM DEM as remote tileset::
+Now we are ready to merge everything in the storage, First we add the bottommost
+surface from SRTM DEM as remote tileset::
 
   $ vts /var/vts/store/stage.melown2015 --add --tileset http://localhost:8070/mapproxy/melown2015/surface/cadastre/srtm --top
 
-Then add the two Jenstejns as local tilesets - this way the data are only referenced rather than copied into storage which makes the operation faster and saves some space::
+Then add the two Jenstejns as local tilesets - this way the data are only
+referenced rather than copied into storage which makes the operation faster and
+saves some space::
 
   $ vts /var/vts/store/stage.melown2015 --add --tileset local:/var/vts/store/resources/tilesets/jentejn-village --top
   $ vts /var/vts/store/stage.melown2015 --add --tileset local:/var/vts/store/resources/tilesets/jentejn-center --top
@@ -346,10 +415,12 @@ Then add the two Jenstejns as local tilesets - this way the data are only refere
 Creating a storage view
 """""""""""""""""""""""
 
-As the final step we need to create a `storage view <http://melown.readthedocs.io/en/latest/introduction.html#storage-view>`_ that combines tilesets from our storage
-and free and bound layer from the mapproxy.
+As the final step we need to create a :ref:`storage-view` that
+combines tilesets from our storage and free and bound layer from the mapproxy.
 
-Go to ``/var/vts/store/map-config`` and create the file ``cadastre`` with the following contents. The hashes are meant as comments and need to be deleted before saving the file to create a valid JSON::
+Go to ``/var/vts/store/map-config`` and create the file ``cadastre`` with the
+following contents. The hashes are meant as commnets and need to be deleted
+before saving the file to create a valid JSON.::
 
   {
         "storage": "../stage.melown2015",  # where is our storage
@@ -392,10 +463,12 @@ After saving you can test if the storage view is valid by running::
   $ cd /var/vts/store/map-config
   $ vts --map-config cadastre
 
-If everything is all right, a large JSON with client side map configuration will be printed.
+If everything is all right, a large JSON with client side map configuration will
+be printed.
 
-.. todo ref to mapConfig description if available
+.. todo:: ref to mapConfig description if available
 
-In that case you can open your browser and go to http://localhost:8070/store/map-config/cadastre to get nice view of 
-Jenstejn. If you press CTRL + SHIFT + D and then SHIFT + V, a console will open when you can toggle various layers
-and play with other parameters.
+In that case you can open your browser and go to
+http://localhost:8070/store/map-config/cadastre to get nice view of Jenstejn. If
+you press :kbd:`CTRL + SHIFT + D` and then :kbd:`SHIFT + V`, a console will open
+when you can toggle various layers and play with other parameters.

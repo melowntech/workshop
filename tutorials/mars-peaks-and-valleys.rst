@@ -1,3 +1,5 @@
+.. _mars-peaks-valleys:
+
 The Peaks and Valleys of Mars
 -----------------------------
 
