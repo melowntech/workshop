@@ -43,7 +43,7 @@ To set up surface resources based on DEM from both SRTM DEM and Jenstejn DEM, pl
 `North carolina tutorial _north-carolina`_ . The data files should be placed in ``/var/vts/mapproxy/datasets/srtm`` and
 ``/var/vts/mapproxy/datasets/jenstejn-dem`` respectively.
 
-Configuration snippets placed into ``/etc/vts/mapproxy/resource.json`` should look like (alter the comment, group and id fields)::
+Configuration snippets placed into ``/etc/vts/mapproxy/resources.json`` should look like (alter the comment, group and id fields)::
 
   [{
     "comment": "SRTM 1 arc sec",
