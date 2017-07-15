@@ -93,7 +93,8 @@ and id fields)::
     "driver": "surface-dem",
     "credits": [],
     "definition": {
-        "dataset": "srtm"
+        "dataset": "srtm",
+        "geoidGrid": "egm96_15.gtx"
     },
     "referenceFrames": {
         "melown2015": {
@@ -113,7 +114,8 @@ and id fields)::
     "driver": "surface-dem",
     "credits": [],
     "definition": {
-        "dataset": "jenstejn-dem"
+        "dataset": "jenstejn-dem",
+        "geoidGrid": "egm96_15.gtx"
     },
     "referenceFrames": {
         "melown2015": {
