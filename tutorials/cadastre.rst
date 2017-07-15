@@ -365,6 +365,8 @@ line that looks flat (gets thinner when you tilt). Further, when you come close,
 the parcel numbers will show up. Check the `free layers style documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`_
 for further details.
 
+todo:: why is the cadastre layer black?
+
 Filling the storage
 ^^^^^^^^^^^^^^^^^^^
 
