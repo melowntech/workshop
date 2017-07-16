@@ -3,7 +3,7 @@
 The GPX Tracks Viewer
 -----------------------------
 
-Do you want display and explore the GPX tracks in beautiful 3D map? Me too. The VTS-Browser-JS is great solution for this task. Just take a look at `live demo <https://jsfiddle.net/35at1zqj/show>`_ in JSFiddle. Are you curious how is it done? I will try to explain it at following lines.
+Do you want display and explore the GPX tracks in beautiful 3D map? Me too. The VTS-Browser-JS is great solution for this task. Just take a look at `live demo <https://jsfiddle.net/bz05rczw/show/>`_ in JSFiddle. Are you curious how is it done? I will try to explain it at following lines.
 
 
 The GPX File Format
@@ -303,7 +303,7 @@ Now we have callback function onFeatureHover which is called when cursor hovers 
         map.redraw();
     }
 
-Simple example with related hover events can be found `here <https://jsfiddle.net/ec2gh95a/>`_ .
+Simple example with related hover events can be found `here <https://jsfiddle.net/n0L0o8ca/>`_ .
 
 Displaying Dynamic Features on the Map
 """"""""""""""""""""""""""""""""""""""
