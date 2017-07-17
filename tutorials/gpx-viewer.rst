@@ -69,6 +69,7 @@ The DOM elements are wrapped by UI library which makes work with elements easier
 There is one trick by which you can move existing control little bit higher.
 
 ::
+
     browser.ui.getControl('credits').getElement('vts-credits').setStyle('bottom', '134px');
     browser.ui.getControl('space').getElement('vts-space').setStyle('bottom', '140px');
     browser.ui.getControl('zoom').getElement('vts-zoom-plus').setStyle('bottom', '140px');
