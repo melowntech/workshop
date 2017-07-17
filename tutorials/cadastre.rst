@@ -209,7 +209,9 @@ needed. Thus the mapproxy configuration snippet will be as following::
     "driver": "tms-raster",
     "credits": ["cuzk"],
     "definition": {
-        "dataset": "cuzk-raster-cadastre/cadastre.xml"
+        "dataset": "cuzk-raster-cadastre/cadastre.xml",
+        "format": "png",
+        "transparent": true
     },
     "registry": {
         "credits" : {"cuzk":{ "id": 104, "notice": "{copy}{Y} ČÚZK" }}
