@@ -3,7 +3,7 @@
 The GPX Tracks Viewer
 -----------------------------
 
-Do you want display and explore the GPX tracks in beautiful 3D map? Me too. The VTS-Browser-JS is great solution for this task. Just take a look at `live demo <https://jsfiddle.net/bz05rczw/show/>`_ in JSFiddle. Are you curious how is it done? I will try to explain it at following lines.
+Do you want display and explore the GPX tracks in beautiful 3D map? Me too. The VTS-Browser-JS is great solution for this task. Just take a look at `live demo <https://jsfiddle.net/xrz53a7k/show/>`_ in JSFiddle. Are you curious how is it done? I will try to explain it at following lines.
 
 
 The GPX File Format
