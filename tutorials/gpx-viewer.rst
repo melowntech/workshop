@@ -66,7 +66,7 @@ And so on. The DOM elements can accessed following way:
 
 The DOM elements are wrapped by UI library which makes work with elements easier. In case you want access original element use getElement method. Another simple examples where is used UI API can be found `here <https://jsfiddle.net/2sdyfekd/1/>`_ or `here <https://jsfiddle.net/xeef5s4r/>`_ .
 
-There is one trick by which you can move existing control little bit higher.
+There is one trick by which you can move existing controls little bit higher.
 
 ::
 
