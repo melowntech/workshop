@@ -9,12 +9,12 @@ Do you want display and explore the GPX tracks in beautiful 3D map? Me too. The 
 The GPX File Format
 """""""""""""""""""
 
-The GPX, or GPS Exchange Format, is an XML schema designed as a common GPS data format for software applications. It can be used to describe waypoints, tracks, and routes. The format is open and can be used without the need to pay license fees. Location data (and optionally elevation, time, and other information) is stored in tags and can be interchanged between GPS devices and software. More information about GPX file found `here <https://en.wikipedia.org/wiki/GPS_Exchange_Format>`_ or `here <http://www.topografix.com/GPX/1/1/>`_ .
+The GPX, or GPS Exchange Format, is an XML schema designed as a common GPS data format for software applications. It can be used to describe waypoints, tracks, and routes. The format is open and can be used without the need to pay license fees. Location data (and optionally elevation, time, and other information) is stored in tags and can be interchanged between GPS devices and software. More information about GPX format can be found `here <https://en.wikipedia.org/wiki/GPS_Exchange_Format>`_ or `here <http://www.topografix.com/GPX/1/1/>`_ .
 
 Displaying the Map
 """"""""""""""""""
 
-So how do I display 3D map? With `VTS-Browser-JS <https://github.com/Melown/vts-browser-js/wiki>`_ library it is `easy task <https://jsfiddle.net/a5rh6vnh/2/>`_:
+So how do I display 3D map? With `VTS-Browser-JS <https://github.com/Melown/vts-browser-js/wiki>`_ library it is `easy task <https://jsfiddle.net/a5rh6vnh/2/>`_.
 
 ::
 
@@ -65,6 +65,15 @@ And so on. The DOM elements can accessed following way:
     canvasCtx = canvas.getElement().getContext("2d");
 
 The DOM elements are wrapped by UI library which makes work with elements easier. In case you want access original element use getElement method. Another simple examples where is used UI API can be found `here <https://jsfiddle.net/2sdyfekd/1/>`_ or `here <https://jsfiddle.net/xeef5s4r/>`_ .
+
+There is one trick by which you can move existing control little bit higher.
+
+::
+    browser.ui.getControl('credits').getElement('vts-credits').setStyle('bottom', '134px');
+    browser.ui.getControl('space').getElement('vts-space').setStyle('bottom', '140px');
+    browser.ui.getControl('zoom').getElement('vts-zoom-plus').setStyle('bottom', '140px');
+    browser.ui.getControl('zoom').getElement('vts-zoom-minus').setStyle('bottom', '140px');
+    browser.ui.getControl('compass').getElement('vts-compass').setStyle('bottom', '170px');
 
 .. image:: gpx-viewer-panel.jpg
 
