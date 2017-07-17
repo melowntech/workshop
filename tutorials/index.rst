@@ -7,7 +7,8 @@ Some more VTS case studies and tutorials are provided below.
 .. toctree::
    :maxdepth: 1
 
+   gpx-viewer
    vtsbackend
    mars-peaks-and-valleys
-..   cadastre
+   cadastre
 ..   mars2
