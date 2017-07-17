@@ -344,7 +344,7 @@ How we get screen coordinates? We already know coordinates in the physical SRS, 
     var screenCoords = map.convertCoordsFromPhysToCanvas(linePoint);
 
 
-The HTML elements are great but they can be slow when you draw a lot of them. Another disadvantage of the HTML elements is that they do not respect depth buffer of displayed map. Which means that when some feature is behind building or hill it will be still visible. In these cases we can use `rendering API <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Renderer-API>`_ 
+The HTML elements are great but they can be slow when you draw a lot of them. Another disadvantage of the HTML elements is that they do not respect depth buffer of displayed map. Which means that when some feature is behind building or hill it will be still visible. In these cases we can use `rendering API <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Renderer-API>`_ .
 
 First thing we need to do is setup rendering callback. This callback is called when map is ready for rendering additional content.
 
@@ -375,7 +375,7 @@ Simple example showing how to render dynamic features can be found `here <https:
 Displaying the Track Height Profile
 """""""""""""""""""""""""""""""""""
 
-How do we get height profile of the track? We are able to get track geometry in physical SRS. From that geometry we can get length of each line segment and total length of all line segments together. Next thing are heights for each track point. We are able to do that by converting point coordinates from physical SRS to public SRS. So we collect heights of all track points and together with line segment lengths we can plot track height profile.
+How do we get height profile of the track? We are able to get track geometry in physical SRS. From that geometry we can get length of each line segment and total length of all line segments together. Next thing are heights for each track point. We are able to do that by converting point coordinates from physical SRS to public SRS. So we collect heights of all track points and together with line segment lengths we can plot track height profile. The most simple way for plotting height profile is to use `HTML Canvas<https://www.w3schools.com/graphics/canvas_reference.asp>`_.
 
 .. image:: gpx-viewer-final.jpg
 
