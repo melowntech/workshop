@@ -124,25 +124,25 @@ The drop event provides the file the user dropped. We read this file and parse i
         }
     }
 
-Once the XML file is loaded, we can extract features by `DOM methods <https://www.w3schools.com/jsref/dom_obj_all.asp>`_ like getElementsByTagName, etc., according to the format `specification <http://www.topografix.com/GPX/1/1/>`_ .
+Once the XML file is loaded, we can extract features by `DOM methods <https://www.w3schools.com/jsref/dom_obj_all.asp>`_ like getElementsByTagName, etc., according to the format `specification <http://www.topografix.com/GPX/1/1/>`_.
 
 
 Displaying the Geodata
 """"""""""""""""""""""
 
-Now we have data and how to display them on the map. For this purpose we can use `Geodata API <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#geodata-creation>`_ . First we create geodata object.
+Now that we have geographic data, we can display them in the map using the `Geodata API <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#geodata-creation>`_. First we create a geodata object.
 
 ::
 
     geodata = map.createGeodata();
 
-Now we can add some points. Note that we are using 'float' height which define how much is point above terrain. In case we have elevation data then we can use 'fix' height with no relation to the terrain. The point can be also provided by its properties which can be accessed by `geodata styles <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`_. 
+Now we can add some points. Note that we are using a 'float' height which defines height above terrain. If we had elevation data we could use a 'fix' height which has no relation to the terrain. The point can also be assigned properties which can be accessed by `geodata styles <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`_. 
 
 :: 
 
-    geodata.addPoint([14.3836691, 50.0485568, 500], 'float', { 'name' : 'Nice place'  });
+    geodata.addPoint([14.3836691, 50.0485568, 500], 'float', { 'name' : 'Nice place' });
 
-Similarly we can add line string. Note that we have added line string with id 'some-path'. We will need that later for extracting geometry.
+Similarly we can add a line string. Note that we are giving it an id 'some-path'. We will need that later for extracting geometry.
 
 ::
 
@@ -155,15 +155,17 @@ Similarly we can add line string. Note that we have added line string with id 's
         [16.2429312, 49.5161402, 0]
     ], 'float', null, 'some-path');
 
-Once we added all features to the geodata we can convert 'float' heights to 'fix' height. This process can take some time because terrain data have to loaded. For conversion is used following asynchronous function. In case you used 'fix' height you do not have to call this function.
+Once we added all features to the geodata, we can convert 'float' heights to 'fix' heights. This process can take some time because terrain data has to be loaded. The following asynchronous function is used for the conversion. In case you used 'fix' height you don't have to call this function.
 
 ::
 
     geodata.processHeights('heightmap-by-precision', 1, onHeightProcessed);
 
-The second function parameter sets desired resolution of heightmap from which are heights read. Value represents size of height sample in meters. 
+The second function parameter sets the desired resolution of the heightmap from which the heights are read. The value represents the size of height sample in meters. 
 
-Once we have geodata ready we can create free layer. But before that we have to define its style. You can image free layer as map layer with vector features. These vector features can styled with geodata styles. Each style has set of inner layers which will be rendered. Which feature will be rendered with which style layer is determined by style layer filter. When filter condition is fulfilled then feature is rendered with layer style. Note that style layer 'track-shadow' has properties 'hover-event' = true and 'advanced-hit' = true. The hovering events will be explained later.
+Once our geodata is ready we can create a map layer with vector features. In VTS terminology such layer is called a free layer because it is independent of other surfaces. 
+
+The vector features can be styled with geodata styles. A style has a set of internal layers to be rendered. Each style layer has a filter with a condition that determines which features will be rendered in that layer. Note that in our example the style layer 'track-shadow' has properties 'hover-event' = true and 'advanced-hit' = true. These events will be explained later.
 
 ::
 
@@ -195,25 +197,24 @@ Once we have geodata ready we can create free layer. But before that we have to 
                 "point-color": [0,255,255,255],              
                 "zbuffer-offset" : [-5,0,0]
             },
-
         }
     };
 
-Now we can create free layer and add that layer to the map. The map will keep free layer under id 'gpxgeodata'.
+Now we can create a free layer and add it to the map. The map will keep the free layer under the id 'gpxgeodata'.
 
 ::
 
     var freeLayer = geodata.makeFreeLayer(style);
     map.addFreeLayer('gpxgeodata', freeLayer);
 
-We have added free layer to the map, but that does not mean that free layer will be displayed. To make that happen we have to include free layer to current map view;
+Just adding the free layer to the map will not display it. To make that happen we need to include the free layer in the current map view,
 
 ::
 
     var view = map.getView();
     view.freeLayers.gpxgeodata = {};
 
-Simple example which shows how to display geodata can be found `here <https://jsfiddle.net/c8xez624/>`_ .
+A simple example which shows how to display geodata can be found `here <https://jsfiddle.net/c8xez624/>`_ .
 
 
 How to Center Map Position to the Track
