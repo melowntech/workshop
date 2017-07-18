@@ -136,7 +136,7 @@ Now that we have geographic data, we can display them in the map using the `Geod
 
     geodata = map.createGeodata();
 
-Now we can add some points. Note that we are using a 'float' height which defines height above terrain. If we had elevation data we could use a 'fix' height which has no relation to the terrain. The point can also be assigned properties which can be accessed by `geodata styles <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`_. 
+Now we can add some points. Note that we are using 'float' height which defines height above terrain. If we had elevation data we could use 'fix' height which has no relation to the terrain. The point can also be assigned properties which can be accessed by `geodata styles <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`_. 
 
 :: 
 
@@ -220,19 +220,21 @@ A simple example which shows how to display geodata can be found `here <https://
 How to Center Map Position to the Track
 """""""""""""""""""""""""""""""""""""""
 
-What we need to do is to find center coordinates of all track points. For this purpose we have to extract track coordinates. This is important step because extracted coordinates will be in the right coordinate system (physical SRS). Keep in mind that we can extract track geometry only after heights are processed (method processHeights was called). The geodata feature with id 'some-path' is searched and its geometry exacted.
+We need to find the coordinates of the center of all track points. For this purpose we have to extract track coordinates. It is important to use extracted coordinates because they will be in the right coordinate system (physical SRS). Keep in mind that we can extract track geometry only after heights are processed (method processHeights was called). 
+
+The geodata feature with id 'some-path' is found and its geometry exacted:
 
 ::
 
     lineGeometry = geodata.extractGeometry('some-path');
 
-Total number of line segments is returned by this method:
+The total number of line segments is returned by this method:
 
 ::
 
     totalElements = lineGeometry.getElements();
 
-Particular line segment is returned by this method:
+A particular line segment is returned by this method:
 
 ::
 
@@ -245,14 +247,14 @@ Line segments points:
     p1 = lineSegment[0];   
     p2 = lineSegment[1];   
 
-Now we find average coordinates of all line points and convert that coordinates to navigation SRS. In this case we can ignore resulting height and set that height to zero. 
+Now we find average coordinates of all line points and convert that coordinates to navigation SRS. In this case we can ignore the resulting height and set that height to zero. 
 
 ::
 
     navCoords = vts.proj4(physicalSrsDef, navigationSrsDef, midPoint);
     navCoords[2] = 0;
 
-We have center coordinates, but we have to also zoom appropriately. For that purpose we have to find right view extent. Most simple way is following. Imagine line which goes from the center coordinates. This line is perpendicular to the ground. Now we find most distant track point for that line. We multiple this distance by two and that is it. Now we can set new map position:
+We have center coordinates, but we also have to zoom appropriately. To do that we need to find the right view extent. A simple approach is as follows. Imagine a line which goes from the center point and is perpendicular to the ground. We find the most distant track point from that line. We multiply this distance by two and that is that. Now we can set the new map position:
 
 ::
 
