@@ -1,20 +1,20 @@
 .. _mars-peaks-valleys:
 
-The GPX Tracks Viewer
------------------------------
+GPX Track Viewer
+----------------
 
-Do you want display and explore the GPX tracks in beautiful 3D map? Me too. The VTS-Browser-JS is great solution for this task. Just take a look at `live demo <https://jsfiddle.net/xrz53a7k/show/>`_ in JSFiddle. Are you curious how is it done? I will try to explain it at following lines.
+Do you want to display and explore GPX tracks in a cool 3D map? The VTS-Browser-JS is a great solution for this task. Just take a look at `live demo <https://jsfiddle.net/xrz53a7k/show/>`_ in JSFiddle. If you are curious how this can be done, I will try to explain in this article.
 
 
 The GPX File Format
 """""""""""""""""""
 
-The GPX, or GPS Exchange Format, is an XML schema designed as a common GPS data format for software applications. It can be used to describe waypoints, tracks, and routes. The format is open and can be used without the need to pay license fees. Location data (and optionally elevation, time, and other information) is stored in tags and can be interchanged between GPS devices and software. More information about GPX format can be found `here <https://en.wikipedia.org/wiki/GPS_Exchange_Format>`_ or `here <http://www.topografix.com/GPX/1/1/>`_ .
+The GPX, or GPS Exchange Format, is an XML schema designed as a common GPS data format for software applications. It can be used to describe waypoints, tracks, and routes. The format is open and can be used without paying any license fees. Location data (and optionally elevation, time, and other information) is stored in tags and can be interchanged between GPS devices and software. More information about GPX format can be found `here <https://en.wikipedia.org/wiki/GPS_Exchange_Format>`_ or `here <http://www.topografix.com/GPX/1/1/>`_ .
 
 Displaying the Map
 """"""""""""""""""
 
-So how do I display 3D map? With `VTS-Browser-JS <https://github.com/Melown/vts-browser-js/wiki>`_ library it is `easy task <https://jsfiddle.net/a5rh6vnh/2/>`_.
+So how do we display a 3D map? With the `VTS-Browser-JS <https://github.com/Melown/vts-browser-js/wiki>`_ library this is as `easy as <https://jsfiddle.net/a5rh6vnh/2/>`_:
 
 ::
 
@@ -22,7 +22,7 @@ So how do I display 3D map? With `VTS-Browser-JS <https://github.com/Melown/vts-
         map: 'https://cdn.melown.com/mario/store/melown2015/map-config/melown/VTS-Tutorial-Map-4/mapConfig.json'
     });
 
-This function creates map in the HTML DOM element with id 'map-div'. The parameter 'map' sets URL path to the map which will be displayed. You can create your own map by `Melown Cloud <https://www.melown.com/>`_ or you can host you own map server which is by the way also open source.
+This function creates a map in the HTML DOM element with id 'map-div'. The parameter 'map' sets a URL path to the map data to be displayed. You can create your own map within the `Melown Cloud <https://www.melown.com/>`_ or you can host you own map server which is also open source by the way.
 
 .. image:: gpx-viewer-map.jpg
 
