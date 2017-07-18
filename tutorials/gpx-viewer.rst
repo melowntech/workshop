@@ -165,7 +165,7 @@ The second function parameter sets the desired resolution of the heightmap from 
 
 Once our geodata is ready we can create a map layer with vector features. In VTS terminology such layer is called a free layer because it is independent of other surfaces. 
 
-The vector features can be styled with geodata styles. A style has a set of internal layers to be rendered. Each style layer has a filter with a condition that determines which features will be rendered in that layer. Note that in our example the style layer 'track-shadow' has properties 'hover-event' = true and 'advanced-hit' = true. These events will be explained later.
+The vector features can be styled with `geodata styles<https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`_. A style has a set of internal layers to be rendered. Each style layer has a filter with a condition that determines which features will be rendered in that layer. Note that in our example the style layer 'track-shadow' has properties 'hover-event' = true and 'advanced-hit' = true. These events will be explained later.
 
 ::
 
