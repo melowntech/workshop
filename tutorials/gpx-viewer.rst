@@ -3,7 +3,7 @@
 GPX Track Viewer
 ----------------
 
-Do you want to display and explore GPX tracks in a cool 3D map? The VTS-Browser-JS is a great solution for this task. Just take a look at `live demo <https://jsfiddle.net/xrz53a7k/show/>`_ in JSFiddle. If you are curious how this can be done, I will try to explain in this article.
+Do you want to display and explore GPX tracks in a cool 3D map? The VTS-Browser-JS is a great solution for this task. Take a look at this `live demo <https://jsfiddle.net/xrz53a7k/show/>`_ in JSFiddle. If you are curious how this can be done, I will try to explain in this article.
 
 
 The GPX File Format
@@ -29,7 +29,7 @@ This function creates a map in the HTML DOM element with id 'map-div'. The param
 Adding New Panel to the Map Browser
 """""""""""""""""""""""""""""""""""
 
-Most simple way how to add new UI controls to the map browser is to use `UI API <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-UI-API>`_ . 
+The simplest way to add new UI controls to the map browser is to use the `UI API <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-UI-API>`_ . 
 
 ::
 
@@ -41,7 +41,7 @@ Most simple way how to add new UI controls to the map browser is to use `UI API 
             '</div>' + 
         '</div>');
 
-Position and style of the new control is set by CSS:
+The position and style of the new control is set by CSS:
 
 :: 
 
@@ -56,7 +56,7 @@ Position and style of the new control is set by CSS:
         border-radius: 5px;
     }
 
-And so on. The DOM elements can accessed following way:
+And so on. The DOM elements can by accessed the following way:
 
 ::
 
@@ -64,9 +64,9 @@ And so on. The DOM elements can accessed following way:
     canvas.on('mousemove', onCanvasHover);
     canvasCtx = canvas.getElement().getContext("2d");
 
-The DOM elements are wrapped by UI library which makes work with elements easier. In case you want access original element use getElement method. Another simple examples where is used UI API can be found `here <https://jsfiddle.net/2sdyfekd/1/>`_ or `here <https://jsfiddle.net/xeef5s4r/>`_ .
+The DOM elements are wrapped by the UI library which makes work with the elements easier. In case you want to access the original element, use the getElement method. Another simple examples where the UI API is used can be found `here <https://jsfiddle.net/2sdyfekd/1/>`_ or `here <https://jsfiddle.net/xeef5s4r/>`_ .
 
-There is one trick by which you can move existing controls little bit higher.
+There is one trick by which you can move existing controls a little bit higher.
 
 ::
 
@@ -78,8 +78,8 @@ There is one trick by which you can move existing controls little bit higher.
 
 .. image:: gpx-viewer-panel.jpg
 
-Loading GPX file
-""""""""""""""""
+Loading a GPX file
+""""""""""""""""""
 
 In our demo you can just drop GPX file into the map or created canvas panel and loading magic happens. How is it done? In previous section we have created new panel. Now we add event listeners to this panel. 
 
