@@ -2,9 +2,7 @@
 Melown Cloud
 ############
 
-`Melown cloud <https://melown.com/console>`_ service is HTML-based web interface
-hosted on Melown's servers, where all the `server tools <../server/>`_ are ready
-to be used. Users are encouraged (after registering) to upload their dataset and
+`Melown Cloud <https://melown.com/console>`_ service is a 3D map development cloud platform operated by Melown Technologies and implemented atop of VTS 3D geospatial software stack. Users are encouraged (after registering) to upload their dataset and
 publish on Melown's servers.
 
 .. figure:: images/cloud.png
