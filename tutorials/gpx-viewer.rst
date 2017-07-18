@@ -81,7 +81,7 @@ There is one trick by which you can move existing controls a little bit higher.
 Loading a GPX file
 """"""""""""""""""
 
-In our demo you can just drop GPX file into the map or created canvas panel and loading magic happens. How is it done? In previous section we have created new panel. Now we add event listeners to this panel. 
+In our demo you can drop a GPX file into the map or into the panel we just created and the file is loaded magically. How is this done? In this section we add event listeners to the new panel. 
 
 ::
 
@@ -100,7 +100,7 @@ The dragover event is needed to prevent default browser behavior for dropping fi
     };
 
 
-The drop event provides us dropped file. We read this file and parse it as XML file.
+The drop event provides the file the user dropped. We read this file and parse it as an XML file.
 
 ::
 
@@ -124,7 +124,7 @@ The drop event provides us dropped file. We read this file and parse it as XML f
         }
     }
 
-Once is XML file loaded. Then we can extract features by `DOM methods <https://www.w3schools.com/jsref/dom_obj_all.asp>`_ like getElementsByTagName etc. according to format `specification <http://www.topografix.com/GPX/1/1/>`_ .
+Once the XML file is loaded, we can extract features by `DOM methods <https://www.w3schools.com/jsref/dom_obj_all.asp>`_ like getElementsByTagName, etc., according to the format `specification <http://www.topografix.com/GPX/1/1/>`_ .
 
 
 Displaying the Geodata
