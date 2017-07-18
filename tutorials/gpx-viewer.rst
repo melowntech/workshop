@@ -295,9 +295,9 @@ But these events will be generated only when we keep informing the map about the
         map.hover(coords[0], coords[1], true);
     }
 
-You are probably curious about the third parameter in the 'hover' method. We need to generate hover events even when the cursor is not moving, which is what the parameter does when its value is 'true'. When the cursor leaves the map we pass 'false' to stop generating hover events.
+You are probably wondering about the third parameter in the 'hover' method. We need to generate hover events even when the cursor is not moving, which is what the parameter does when its value is 'true'. When the cursor leaves the map we pass 'false' to stop generating hover events.
 
-Now we have the callback function onFeatureHover which is called when the cursor hovers over the track. What is next? We have to figure out which part of the track is hovered. The function onFeatureHover is called with an event parameter that contains additional information. This information contains property named 'element' which is the index of the hovered line segment. Note that the style layer of the feature needs to have the property 'advanced-hit' = true for this to work. 
+Now we have the callback function onFeatureHover which is called when the cursor hovers over the track. What is next? We have to figure out which part of the track is hovered. The function onFeatureHover is called with an event parameter that contains additional information. This information contains a property named 'element' which is the index of the hovered line segment. Note that the style layer of the feature needs to have the property 'advanced-hit' = true for this to work. 
 
 To get a precise location and distance of the cursor on the track we use the getRelationToCanvasPoint method, which returns information where the cursor is located on the line segment. This information contains the distance property which has values from 0 (line segment start) to 1 (line segment end). We multiply this value by line segment length (obtained by getPathLengthToElement method) and add that value to the total path length to the segment (also obtained by getPathLengthToElement). When we know the total distance to the point on the track we can get the coordinates of this point by the getPathPoint method. We don't strictly need to use this function to get the coordinates, because getRelationToCanvasPoint returns these as well, but this is sort of a double check.
 
@@ -321,9 +321,9 @@ A simple example with related hover events can be found `here <https://jsfiddle.
 Displaying Dynamic Features on the Map
 """"""""""""""""""""""""""""""""""""""
 
-The geodata are very good at displaying static content. But when it comes to the rendering of dynamic features we can use combination of HTLM elements and `rendering API <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Renderer-API>`_ 
+Geodata is very good for displaying static content. But when it comes to rendering dynamic features we can use a combination of HTML elements and the `rendering API <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Renderer-API>`_ 
 
-We will start with HTML part fist. The HTML elements are very good at displaying info boxes .. etc. So why not use it for this purpose. To keep things organized we create new UI control which will hold HTML element.
+We will start with the HTML part fist. HTML elements are great for displaying info boxes, etc., so why not use them for this purpose. To keep things organized we create a new UI control which will hold an HTML element.
 
 :: 
 
@@ -333,23 +333,23 @@ We will start with HTML part fist. The HTML elements are very good at displaying
 
     distancePointer = infoPointers.getElement('distance-div');
 
-Now we can modify element style to move it to desired screen coordinates:
+Now we can modify the element style to move it to the desired screen coordinates:
 
 :: 
 
     distancePointer.setStyle('left', screenX + 'px');
     distancePointer.setStyle('top', screenY + 'px');
 
-How we get screen coordinates? We already know coordinates in the physical SRS, so we just need to convert then to screen coordinates.
+How do we get screen coordinates? We already know coordinates in the physical SRS, so we just need to convert them to screen coordinates.
 
 :: 
 
     var screenCoords = map.convertCoordsFromPhysToCanvas(linePoint);
 
 
-The HTML elements are great but they can be slow when you draw a lot of them. Another disadvantage of the HTML elements is that they do not respect depth buffer of displayed map. Which means that when some feature is behind building or hill it will be still visible. In these cases we can use `rendering API <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Renderer-API>`_ .
+HTML elements are great but they can be slow when you draw a lot of them. Another disadvantage is that they do not respect the depth buffer of the rendered map. This means that when some feature is behind a building or a hill it will still be visible. In these cases we can use the `rendering API <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Renderer-API>`_ .
 
-First thing we need to do is setup rendering callback. This callback is called when map is ready for rendering additional content.
+The first thing we need to do is to set up a rendering callback. This callback is invoked when the map is ready for rendering additional content.
 
 ::
 
@@ -357,7 +357,7 @@ First thing we need to do is setup rendering callback. This callback is called w
     map.moveRenderSlotAfter('after-map-render', 'custom-render');
 
 
-Once is callback called then we can draw icon of the track point.
+In the callback we can draw an icon of the track point.
 
 ::
 
@@ -373,12 +373,12 @@ Once is callback called then we can draw icon of the track point.
             });
     }
 
-Simple example showing how to render dynamic features can be found `here <https://jsfiddle.net/ec2gh95a/>`_ .
+A simple example showing how to render dynamic features can be found `here <https://jsfiddle.net/ec2gh95a/>`_ .
 
-Displaying the Track Height Profile
-"""""""""""""""""""""""""""""""""""
+Displaying Track Height Profile
+"""""""""""""""""""""""""""""""
 
-How do we get height profile of the track? We are able to get track geometry in physical SRS. From that geometry we can get length of each line segment and total length of all line segments together. Next thing are heights for each track point. We are able to do that by converting point coordinates from physical SRS to public SRS. So we collect heights of all track points and together with line segment lengths we can plot track height profile. The most simple way for plotting height profile is to use `HTML Canvas<https://www.w3schools.com/graphics/canvas_reference.asp>`_.
+How do we get the height profile of the track? We are able to get track geometry in physical SRS. From that geometry we can get the length of each line segment and the total length of all line segments together. The next thing are heights for each track point. We are able to do that by converting point coordinates from the physical SRS to the so called public SRS, which is normally lat-lon coordinates plus height above sea level. We collect heights of all track points and together with line segment lengths we can plot the height profile. The easiest way to plot the profile is to use `HTML Canvas<https://www.w3schools.com/graphics/canvas_reference.asp>`_.
 
 .. image:: gpx-viewer-final.jpg
 
