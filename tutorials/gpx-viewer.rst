@@ -357,7 +357,7 @@ The first thing we need to do is to set up a rendering callback. This callback i
     map.moveRenderSlotAfter('after-map-render', 'custom-render');
 
 
-In the callback we can draw an icon of the track point.
+In the callback we can draw an icon of a track point.
 
 ::
 
