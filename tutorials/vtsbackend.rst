@@ -17,24 +17,19 @@ Install VTS Backend
 
 `Melown Technologies <https://melown.com/>`_ provides a public package repository for VTS backend and installing it is thus straightforward.
 
-Make sure we have ``add-apt-repository`` available::
+Make sure we have ``add-apt-repository`` and HTTPS apt transport available::
 
-    $ sudo apt install software-properties-common
+    $ sudo apt install software-properties-common apt-transport-https
 
 Add ubuntugis ppa to your apt system::
 
     $ sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
-    $ sudo apt-get update
-
-.. todo:: Provide actual path to public repo
-
 
 Add Melown Tech's repository to your sources list::
 
-  $ sudo -i
-  # curl https://cdn.melown.com/packages/xenial/sources.list > /etc/apt/sources.list.d/melown-xenial 
-  # curl https://cdn.melown.com/packages/xenial/internal.gpg.key | apt-key add -
-
+  $ cd /etc/apt/sources.list.d/ && sudo wget http://cdn.melown.com/packages/conf/melown-xenial.list 
+  $ wget -O - http://cdn.melown.com/packages/keys/oss.packages%40melown.com.key | sudo apt-key add -
+  
 Update your package lists::
 
     $ sudo apt-get update

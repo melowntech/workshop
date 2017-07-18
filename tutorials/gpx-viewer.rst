@@ -1,20 +1,20 @@
 .. _mars-peaks-valleys:
 
-The GPX Tracks Viewer
------------------------------
+GPX Track Viewer
+----------------
 
-Do you want display and explore the GPX tracks in beautiful 3D map? Me too. The VTS-Browser-JS is great solution for this task. Just take a look at `live demo <https://jsfiddle.net/xrz53a7k/show/>`_ in JSFiddle. Are you curious how is it done? I will try to explain it at following lines.
+Do you want to display and explore GPX tracks in a cool 3D map? The VTS-Browser-JS is a great solution for this task. Take a look at this `live demo <https://jsfiddle.net/xrz53a7k/show/>`_ in JSFiddle. If you are curious how this can be done, I will try to explain in this article.
 
 
 The GPX File Format
 """""""""""""""""""
 
-The GPX, or GPS Exchange Format, is an XML schema designed as a common GPS data format for software applications. It can be used to describe waypoints, tracks, and routes. The format is open and can be used without the need to pay license fees. Location data (and optionally elevation, time, and other information) is stored in tags and can be interchanged between GPS devices and software. More information about GPX format can be found `here <https://en.wikipedia.org/wiki/GPS_Exchange_Format>`_ or `here <http://www.topografix.com/GPX/1/1/>`_ .
+The GPX, or GPS Exchange Format, is an XML schema designed as a common GPS data format for software applications. It can be used to describe waypoints, tracks, and routes. The format is open and can be used without paying any license fees. Location data (and optionally elevation, time, and other information) is stored in tags and can be interchanged between GPS devices and software. More information about GPX format can be found `here <https://en.wikipedia.org/wiki/GPS_Exchange_Format>`_ or `here <http://www.topografix.com/GPX/1/1/>`_ .
 
 Displaying the Map
 """"""""""""""""""
 
-So how do I display 3D map? With `VTS-Browser-JS <https://github.com/Melown/vts-browser-js/wiki>`_ library it is `easy task <https://jsfiddle.net/a5rh6vnh/2/>`_.
+So how do we display a 3D map? With the `VTS-Browser-JS <https://github.com/Melown/vts-browser-js/wiki>`_ library this is as `easy as <https://jsfiddle.net/a5rh6vnh/2/>`_:
 
 ::
 
@@ -22,14 +22,14 @@ So how do I display 3D map? With `VTS-Browser-JS <https://github.com/Melown/vts-
         map: 'https://cdn.melown.com/mario/store/melown2015/map-config/melown/VTS-Tutorial-Map-4/mapConfig.json'
     });
 
-This function creates map in the HTML DOM element with id 'map-div'. The parameter 'map' sets URL path to the map which will be displayed. You can create your own map by `Melown Cloud <https://www.melown.com/>`_ or you can host you own map server which is by the way also open source.
+This function creates a map in an HTML DOM element with ID 'map-div'. The parameter 'map' sets a URL path to the map data to be displayed. You can create your own map within the `Melown Cloud <https://www.melown.com/>`_ or you can host you own map server which is open source as well, by the way.
 
 .. image:: gpx-viewer-map.jpg
 
-Adding New Panel to the Map Browser
-"""""""""""""""""""""""""""""""""""
+Adding a New Panel to the Map Browser
+"""""""""""""""""""""""""""""""""""""
 
-Most simple way how to add new UI controls to the map browser is to use `UI API <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-UI-API>`_ . 
+The simplest way to add new UI controls to the map browser is to use the `UI API <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-UI-API>`_ . 
 
 ::
 
@@ -41,7 +41,7 @@ Most simple way how to add new UI controls to the map browser is to use `UI API 
             '</div>' + 
         '</div>');
 
-Position and style of the new control is set by CSS:
+The position and style of the new control is set by CSS:
 
 :: 
 
@@ -56,7 +56,7 @@ Position and style of the new control is set by CSS:
         border-radius: 5px;
     }
 
-And so on. The DOM elements can accessed following way:
+And so on. The DOM elements can by accessed the following way:
 
 ::
 
@@ -64,9 +64,9 @@ And so on. The DOM elements can accessed following way:
     canvas.on('mousemove', onCanvasHover);
     canvasCtx = canvas.getElement().getContext("2d");
 
-The DOM elements are wrapped by UI library which makes work with elements easier. In case you want access original element use getElement method. Another simple examples where is used UI API can be found `here <https://jsfiddle.net/2sdyfekd/1/>`_ or `here <https://jsfiddle.net/xeef5s4r/>`_ .
+The DOM elements are wrapped by the UI library which makes work with the elements easier. In case you want to access the original element, use the getElement method. More simple examples where the UI API is used can be found `here <https://jsfiddle.net/2sdyfekd/1/>`_ and `here <https://jsfiddle.net/xeef5s4r/>`_ .
 
-There is one trick by which you can move existing controls little bit higher.
+There is one trick by which you can move existing controls a little bit higher.
 
 ::
 
@@ -78,10 +78,10 @@ There is one trick by which you can move existing controls little bit higher.
 
 .. image:: gpx-viewer-panel.jpg
 
-Loading GPX file
-""""""""""""""""
+Loading a GPX file
+""""""""""""""""""
 
-In our demo you can just drop GPX file into the map or created canvas panel and loading magic happens. How is it done? In previous section we have created new panel. Now we add event listeners to this panel. 
+In our demo you can drop a GPX file into the map or into the panel we just created and the file is loaded magically. How is this done? In this section we add event listeners to the new panel. 
 
 ::
 
@@ -100,7 +100,7 @@ The dragover event is needed to prevent default browser behavior for dropping fi
     };
 
 
-The drop event provides us dropped file. We read this file and parse it as XML file.
+The drop event provides the file the user dropped. We read this file and parse it as an XML file.
 
 ::
 
@@ -124,7 +124,7 @@ The drop event provides us dropped file. We read this file and parse it as XML f
         }
     }
 
-Once is XML file loaded. Then we can extract features by `DOM methods <https://www.w3schools.com/jsref/dom_obj_all.asp>`_ like getElementsByTagName etc. according to format `specification <http://www.topografix.com/GPX/1/1/>`_ .
+Once the XML file is loaded, we can extract features by `DOM methods <https://www.w3schools.com/jsref/dom_obj_all.asp>`_ like getElementsByTagName, etc., according to the format `specification <http://www.topografix.com/GPX/1/1/>`_ .
 
 
 Displaying the Geodata
