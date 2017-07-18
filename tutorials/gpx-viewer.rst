@@ -22,12 +22,12 @@ So how do we display a 3D map? With the `VTS-Browser-JS <https://github.com/Melo
         map: 'https://cdn.melown.com/mario/store/melown2015/map-config/melown/VTS-Tutorial-Map-4/mapConfig.json'
     });
 
-This function creates a map in the HTML DOM element with id 'map-div'. The parameter 'map' sets a URL path to the map data to be displayed. You can create your own map within the `Melown Cloud <https://www.melown.com/>`_ or you can host you own map server which is also open source by the way.
+This function creates a map in an HTML DOM element with ID 'map-div'. The parameter 'map' sets a URL path to the map data to be displayed. You can create your own map within the `Melown Cloud <https://www.melown.com/>`_ or you can host you own map server which is open source as well, by the way.
 
 .. image:: gpx-viewer-map.jpg
 
-Adding New Panel to the Map Browser
-"""""""""""""""""""""""""""""""""""
+Adding a New Panel to the Map Browser
+"""""""""""""""""""""""""""""""""""""
 
 The simplest way to add new UI controls to the map browser is to use the `UI API <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-UI-API>`_ . 
 
@@ -64,7 +64,7 @@ And so on. The DOM elements can by accessed the following way:
     canvas.on('mousemove', onCanvasHover);
     canvasCtx = canvas.getElement().getContext("2d");
 
-The DOM elements are wrapped by the UI library which makes work with the elements easier. In case you want to access the original element, use the getElement method. Another simple examples where the UI API is used can be found `here <https://jsfiddle.net/2sdyfekd/1/>`_ or `here <https://jsfiddle.net/xeef5s4r/>`_ .
+The DOM elements are wrapped by the UI library which makes work with the elements easier. In case you want to access the original element, use the getElement method. More simple examples where the UI API is used can be found `here <https://jsfiddle.net/2sdyfekd/1/>`_ and `here <https://jsfiddle.net/xeef5s4r/>`_ .
 
 There is one trick by which you can move existing controls a little bit higher.
 
