@@ -222,7 +222,7 @@ How to Center Map Position to the Track
 
 We need to find the coordinates of the center of all track points. For this purpose we have to extract track coordinates. It is important to use extracted coordinates because they will be in the right coordinate system (physical SRS). Keep in mind that we can extract track geometry only after heights are processed (method processHeights was called). 
 
-The geodata feature with id 'some-path' is found and its geometry exacted:
+The geodata feature with id 'some-path' is found and its geometry extracted:
 
 ::
 
@@ -265,17 +265,16 @@ We have center coordinates, but we also have to zoom appropriately. To do that w
     map.setPosition(pos);
 
 
-The Hit Test with Displayed Track
-"""""""""""""""""""""""""""""""""
+Hit Testing the Displayed Track
+"""""""""""""""""""""""""""""""
 
-Track is displayed. Now we want to know whether is cursor hovering over the track. It is easy task. Do you remember when add property 'hover-event' = true to he 'track-shadow' style layer? Now we have to only listen to these events:
+The track is displayed. Now we want to know whether the cursor is hovering over the track. Easy. Do you remember when added the property 'hover-event' = true to the 'track-shadow' style layer? Now we just need to listen to these events:
 
 ::
 
     browser.on('geo-feature-hover', onFeatureHover);
 
-But these events will be generated only when we keep informing the map about current cursor position by calling 'hover' method. This gives you absolute control over generation of hover events.
-
+But these events will be generated only when we keep informing the map about the current cursor position by calling the 'hover' method. This gives you absolute control over the generation of hover events.
 
 ::
 
@@ -283,7 +282,6 @@ But these events will be generated only when we keep informing the map about cur
     mapElement.on('mouseleave', onMouseLeave);
 
     ...
-
 
     function onMouseLeave(event) {
         var coords = event.getMouseCoords();
@@ -297,9 +295,11 @@ But these events will be generated only when we keep informing the map about cur
         map.hover(coords[0], coords[1], true);
     }
 
-You are probably curious about the third parameter in the 'hover' method. We need to generate hover events even in case that cursor does not move. That is what that parameter does when its value is 'true'. When cursor leaves the map we use that parameter with value 'false' to stop generating hover events.
+You are probably curious about the third parameter in the 'hover' method. We need to generate hover events even when the cursor is not moving, which is what the parameter does when its value is 'true'. When the cursor leaves the map we pass 'false' to stop generating hover events.
 
-Now we have callback function onFeatureHover which is called when cursor hovers over the track. What is next? We have to figure out which part of the track is hovered. The function onFeatureHover is called with event parameter which contains information about hovered feature. This information contains property with name 'element' which is index of hovered line segment. The hover events contains 'element' property only when style layer of that feature contains property 'advanced-hit' = true. So we know when we hovering over the track and we also know over which line segment we are hovering. To get precise location and distance of the cursor on the track we use getRelationToCanvasPoint method which return information about where is cursor located on line segment. This information contains distance property which has values from 0 (line segment start) to 1 (line segment end). We multiply this value with line segment length (obtained by getPathLengthToElement method) add that value to the total path length to segment (also obtained by getPathLengthToElement). When we know total distance to the point on the track then we can get coordinates of this point by the getPathPoint method. We do not need to use this function to get these coordinates because method getRelationToCanvasPoint returns these coordinates, but this is sort of double check.
+Now we have the callback function onFeatureHover which is called when the cursor hovers over the track. What is next? We have to figure out which part of the track is hovered. The function onFeatureHover is called with an event parameter that contains additional information. This information contains property named 'element' which is the index of the hovered line segment. Note that the style layer of the feature needs to have the property 'advanced-hit' = true for this to work. 
+
+To get a precise location and distance of the cursor on the track we use the getRelationToCanvasPoint method, which returns information where the cursor is located on the line segment. This information contains the distance property which has values from 0 (line segment start) to 1 (line segment end). We multiply this value by line segment length (obtained by getPathLengthToElement method) and add that value to the total path length to the segment (also obtained by getPathLengthToElement). When we know the total distance to the point on the track we can get the coordinates of this point by the getPathPoint method. We don't strictly need to use this function to get the coordinates, because getRelationToCanvasPoint returns these as well, but this is sort of a double check.
 
 ::
 
@@ -316,7 +316,7 @@ Now we have callback function onFeatureHover which is called when cursor hovers 
         map.redraw();
     }
 
-Simple example with related hover events can be found `here <https://jsfiddle.net/n0L0o8ca/>`_ .
+A simple example with related hover events can be found `here <https://jsfiddle.net/n0L0o8ca/>`_ .
 
 Displaying Dynamic Features on the Map
 """"""""""""""""""""""""""""""""""""""
