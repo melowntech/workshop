@@ -3,7 +3,7 @@
 GPX Track Viewer
 ----------------
 
-Do you want to display and explore GPX tracks in a cool 3D map? The VTS-Browser-JS is a great solution for this task. Take a look at this `live demo <https://jsfiddle.net/xrz53a7k/show/>`_ in JSFiddle. If you are curious how this can be done, I will try to explain in this article.
+Do you want to display and explore GPX tracks in a cool 3D map? The `VTS-Browser-JS <https://github.com/Melown/vts-browser-js>`_ is a great solution for this task. Take a look at this `live demo <https://jsfiddle.net/xrz53a7k/show/>`_ in JSFiddle. If you are curious how this can be done, I will try to explain in this article.
 
 
 The GPX File Format
@@ -29,7 +29,7 @@ This function creates a map in an HTML DOM element with ID 'map-div'. The parame
 Adding a New Panel to the Map Browser
 """""""""""""""""""""""""""""""""""""
 
-The simplest way to add new UI controls to the map browser is to use the `UI API <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-UI-API>`_ . 
+The simplest way to add new UI controls to the map browser is to use the `UI API <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-UI-API>`_. 
 
 ::
 
