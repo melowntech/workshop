@@ -1,8 +1,8 @@
-#############
-Melown server
-#############
+###########
+VTS Backend
+###########
 
-Melown server and data tools consist from several components:
+Melown server and data tools consists of several components:
 
 :ref:`registry`
     MapProxy is  HTTP server that converts non-VTS resources (raster or vector)
