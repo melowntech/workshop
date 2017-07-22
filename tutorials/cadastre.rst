@@ -36,8 +36,8 @@ We need to set up two surfaces - one from `SRTM <http://srtm.csi.cgiar.org/>`_ 1
 arc sec :file:`N50E014` tile for context and second from finer DEM of `Jenstejn
 surroundings <https://mapy.cz/zakladni?x=14.6194164&y=50.1445893&z=14&source=muni&id=4489&q=jenstejn>`_.
 
-* SRTM can be obtained from `Earth Explorer <https://earthexplorer.usgs.gov/>`_ or from our CDN: http://cdn.melown.com/pub/cadastre/N50E014.hgt
-* Jenstejn DEM can be downloaded from our CDN: http://cdn.melown.com/pub/cadastre/jenstejn-dem.tif
+* SRTM can be obtained from `Earth Explorer <https://earthexplorer.usgs.gov/>`_ or from our CDN: http://cdn.melown.com/pub/vts-tutorials/cadastre/N50E014.hgt
+* Jenstejn DEM can be downloaded from our CDN: http://cdn.melown.com/pub/vts-tutorials/cadastre/jenstejn-dem.tif
 
 The SRTM must be converted away from `SRTMHGT format
 <http://www.gdal.org/frmt_various.html#SRTMHGT>`_  e.g. to `GeoTiff
