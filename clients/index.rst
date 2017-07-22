@@ -1,6 +1,6 @@
-##############
-Melown clients
-##############
+####################
+VTS client libraries
+####################
 
 Description of clients (JavaScript, C++)
 
