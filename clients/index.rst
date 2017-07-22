@@ -1,5 +1,5 @@
 ####################
-VTS client libraries
+VTS Client Libraries
 ####################
 
 Description of clients (JavaScript, C++)
