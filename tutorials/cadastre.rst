@@ -73,13 +73,25 @@ tutorial, it is expected, that you place the data in
 
 
 We now need the configuration snippet for the ``/etc/vts/mapproxy/resource.json`` file.
-The ``lodRange`` and ``tileRange`` values are taken from the ``mapproxy-calipers`` tool::
+The ``lodRange`` and ``tileRange`` values are taken from the ``mapproxy-calipers`` tool. Next we need to create tiling metadata based on mapproxy-calipers output.::
 
     mapproxy-calipers srtm/dem --referenceFrame melown2015
-    ...
+    > ...
+    > gsd: 24.6774
+    > range<pseudomerc>: 9,15 15/8829,5484:8874,5556
+    > range: 9,15 137,85:138,86
+    > position: obj,14.500069,50.500069,float,0.000000,0.000000,-90.000000,0.000000,144822.451449,55.000000
+    
+    mappproxy-tiling --input srtm --lodRange 9,15 --tileRange 137,85:138,86
 
     mapproxy-calipers jenstejn-dem/dem --referenceFrame melown2015
-    ...
+    > ...
+    > gsd: 3.20576
+    > range<pseudomerc>: 13,18 18/70840,44352:70871,44380
+    > range: 13,18 2213,1386:2214,1386
+    > position: obj,14.611388,50.150629,float,0.000000,0.000000,-90.000000,0.000000,7768.350285,55.000000
+    
+    mappproxy-tiling --input jenstejn-dem --lodRange 13,18 --tileRange 2213,1386:2214,1386
 
 The final configuration snippets placed into
 ``/etc/vts/mapproxy/resources.json`` should look like (alter the comment, group
@@ -227,8 +239,7 @@ needed. Thus the mapproxy configuration snippet will be as following::
     }
   }  
 
-Again, for the ``lodRange`` and ``tileRange`` values, ``mapproxy-calipers``
-program can be used.
+Alternatively, ``mapproxy-calipers`` tool can be used again to obtain for the ``lodRange`` and ``tileRange`` values.
  
 Setting up vector free layer
 """"""""""""""""""""""""""""
@@ -332,8 +343,8 @@ And examine the log::
 
 You should see no errors, only a ``Ready to serve <resource>`` line for each defined resource.
 
-Styling vector cadastre
-"""""""""""""""""""""""
+Styling the vector cadastre
+"""""""""""""""""""""""""""
 
 To give the vector free layer the right look, we will create a style for it which we later apply to the layer
 in storage view.
@@ -367,12 +378,12 @@ line that looks flat (gets thinner when you tilt). Further, when you come close,
 the parcel numbers will show up. Check the `free layers style documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`_
 for further details.
 
-todo:: why is the cadastre layer black?
-
 Filling the storage
 ^^^^^^^^^^^^^^^^^^^
 
-.. todo:: Be more verbose in the description of the step.
+To work with static True3D data and/or merge various surfaces together, we must first add them to the storage. 
+Storage is administered by tool ```vts``` that takes care of adding tilesets to storage and subsequent generation 
+of required glues.
 
 Important location for this step is ``/var/vts/store/stage.melown2015`` (stage
 is a traditional name for the main storage). Furthermore, create following
@@ -391,8 +402,8 @@ georeferenced textured meshes. The VEF format is a preferable entry point for 3D
 data into VTS.
 
 To get the True3D data for this tutorial, please download `Jenstejn (the whole
-village) <http://cdn.melown.com/public/cadastre/jenstejn-village.vef.tar>`_ and
-`Jenstejn (center) <http://cdn.melown.com/public/cadastre/jenstejn.vef.tar>`_ in
+village) <http://cdn.melown.com/pub/vts-tutorials/cadastre/jenstejn-village.vef.tar>`_ and
+`Jenstejn (center) <http://cdn.melown.com/pub/vts-tutorials/cadastre/jenstejn.vef.tar>`_ in
 VEF fromat to some working directory.
 
 Now we will convert both datasets into VTS tileset::
