@@ -56,17 +56,17 @@ tutorial, it is expected, that you place the data in
 .. code-block:: bash
 
     # create the SRTM DEM dataset
-    generatevrtwo N50E014.tif /var/vts/mapproxy/datasets/srtm --resampling dem --tiliseSize 1024x1024
-    generatevrtwo N50E014.tif /var/vts/mapproxy/datasets/srtm.min --resampling min --tiliseSize 1024x1024
-    generatevrtwo N50E014.tif /var/vts/mapproxy/datasets/srtm.max --resampling max --tiliseSize 1024x1024
+    generatevrtwo N50E014.tif /var/vts/mapproxy/datasets/srtm --resampling dem --tiliseSize 1024x1024 --overwrite
+    generatevrtwo N50E014.tif /var/vts/mapproxy/datasets/srtm.min --resampling min --tiliseSize 1024x1024 --overwrite
+    generatevrtwo N50E014.tif /var/vts/mapproxy/datasets/srtm.max --resampling max --tiliseSize 1024x1024 --overwrite
     ln -s srtm/dataset srtm/dem
     ln -s srtm.min/dataset srtm/dem.min
     ln -s srtm.max/dataset srtm/dem.max
     
     # create Jensten dataset
-    generatevrtwo jenstejn-dem.tif /var/vts/mapproxy/datasets/jenstejn-dem --resampling dem --tiliseSize 1024x1024
-    generatevrtwo jenstejn-dem.tif /var/vts/mapproxy/datasets/jenstejn-dem.min --resampling min --tiliseSize 1024x1024
-    generatevrtwo jenstejn-dem.tif /var/vts/mapproxy/datasets/jenstejn-dem.max --resampling max --tiliseSize 1024x1024
+    generatevrtwo jenstejn-dem.tif /var/vts/mapproxy/datasets/jenstejn-dem --resampling dem --tiliseSize 1024x1024 --overwrite
+    generatevrtwo jenstejn-dem.tif /var/vts/mapproxy/datasets/jenstejn-dem.min --resampling min --tiliseSize 1024x1024 --overwrite
+    generatevrtwo jenstejn-dem.tif /var/vts/mapproxy/datasets/jenstejn-dem.max --resampling max --tiliseSize 1024x1024 --overwrite
     ln -s jenstejn-dem/dataset jenstejn-dem/dem
     ln -s jenstejn-dem.min/dataset jenstejn-dem/dem.min
     ln -s jenstejn-dem.max/dataset jenstejn-dem/dem.max
