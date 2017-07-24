@@ -82,7 +82,8 @@ The ``lodRange`` and ``tileRange`` values are taken from the ``mapproxy-calipers
     > range: 9,15 137,85:138,86
     > position: obj,14.500069,50.500069,float,0.000000,0.000000,-90.000000,0.000000,144822.451449,55.000000
     
-    mappproxy-tiling --input srtm --lodRange 9,15 --tileRange 137,85:138,86 --referenceFrame melown2015
+    mapproxy-tiling --input srtm --lodRange 9,15 --tileRange 137,85:138,86 --referenceFrame melown2015
+
 
     mapproxy-calipers jenstejn-dem/dem --referenceFrame melown2015
     > ...
@@ -90,8 +91,9 @@ The ``lodRange`` and ``tileRange`` values are taken from the ``mapproxy-calipers
     > range<pseudomerc>: 13,18 18/70840,44352:70871,44380
     > range: 13,18 2213,1386:2214,1386
     > position: obj,14.611388,50.150629,float,0.000000,0.000000,-90.000000,0.000000,7768.350285,55.000000
-    
-    mappproxy-tiling --input jenstejn-dem --lodRange 13,18 --tileRange 2213,1386:2214,1386 --referenceFrame melown2015
+
+    mapproxy-tiling --input jenstejn-dem --lodRange 13,18 --tileRange 2213,1386:2214,1386 --referenceFrame melown2015
+
 
 The final configuration snippets placed into
 ``/etc/vts/mapproxy/resources.json`` should look like (alter the comment, group
