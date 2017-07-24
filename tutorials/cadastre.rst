@@ -51,48 +51,79 @@ please follow more detailed instructions in :ref:`north-carolina` or
 :ref:`mars-peaks-valleys` tutorials. In this
 tutorial, it is expected, that you place the data in
 ``/var/vts/mapproxy/datasets/srtm`` and
-``/var/vts/mapproxy/datasets/jenstejn-dem`` directoriers respectively.
+``/var/vts/mapproxy/datasets/jenstejn-dem`` directoriers respectively. Following block contains condensed commands to prepare DEMs for mapproxy:
 
 .. code-block:: bash
 
     # create the SRTM DEM dataset
-    generatevrtwo N50E014.tif /var/vts/mapproxy/datasets/srtm --resampling dem --tilseSize 1024x1024
-    generatevrtwo N50E014.tif /var/vts/mapproxy/datasets/srtm.min --resampling min --tileSize 1024x1024
-    generatevrtwo N50E014.tif /var/vts/mapproxy/datasets/srtm.max --resampling max --tileSize 1024x1024
-    ln -s srtm/dataset srtm/dem
-    ln -s srtm.min/dataset srtm/dem.min
-    ln -s srtm.max/dataset srtm/dem.max
+    mkdir -p /var/vts/mapproxy/datasets/srtm
+    cd /var/vts/mapproxy/datasets/srtm
+    wget http://cdn.melown.com/pub/vts-tutorials/cadastre/N50E014.hgt
+    gdal_translate -of GTiff N50E014.hgt N50E014.tif
+    
+    generatevrtwo N50E014.tif overview --resampling dem --tileSize 1024x1024
+    generatevrtwo N50E014.tif overview.min --resampling min --tileSize 1024x1024
+    generatevrtwo N50E014.tif overview.max --resampling max --tileSize 1024x1024
+    ln -s overview/dataset dem
+    ln -s overview.min/dataset dem.min
+    ln -s overview.max/dataset dem.max
     
     # create Jensten dataset
-    generatevrtwo jenstejn-dem.tif /var/vts/mapproxy/datasets/jenstejn-dem --resampling dem --tileSize 1024x1024
-    generatevrtwo jenstejn-dem.tif /var/vts/mapproxy/datasets/jenstejn-dem.min --resampling min --tileSize 1024x1024
-    generatevrtwo jenstejn-dem.tif /var/vts/mapproxy/datasets/jenstejn-dem.max --resampling max --tileSize 1024x1024
-    ln -s jenstejn-dem/dataset jenstejn-dem/dem
-    ln -s jenstejn-dem.min/dataset jenstejn-dem/dem.min
-    ln -s jenstejn-dem.max/dataset jenstejn-dem/dem.max
+    mkdir -p /var/vts/mapproxy/datasets/jenstejn-dem
+    cd /var/vts/mapproxy/datasets/jenstejn-dem
+    wget http://cdn.melown.com/pub/vts-tutorials/cadastre/jenstejn-dem.tif
+    
+    generatevrtwo jenstejn-dem.tif overview --resampling dem --tileSize 1024x1024
+    generatevrtwo jenstejn-dem.tif overview.min --resampling min --tileSize 1024x1024
+    generatevrtwo jenstejn-dem.tif overview.max --resampling max --tileSize 1024x1024
+    ln -s overview/dataset dem
+    ln -s overview.min/dataset dem.min
+    ln -s overview.max/dataset dem.max
 
 
 We now need the configuration snippet for the ``/etc/vts/mapproxy/resource.json`` file.
-The ``lodRange`` and ``tileRange`` values are taken from the ``mapproxy-calipers`` tool. Next we need to create tiling metadata based on mapproxy-calipers output.::
+The ``lodRange`` and ``tileRange`` values are taken from the ``mapproxy-calipers`` tool. Next we need to create tiling metadata based on mapproxy-calipers output.
 
+.. code-block:: bash
+
+    cd /var/vts/mapproxy/datasets
     mapproxy-calipers srtm/dem --referenceFrame melown2015
-    > ...
-    > gsd: 24.6774
-    > range<pseudomerc>: 9,15 15/8829,5484:8874,5556
-    > range: 9,15 137,85:138,86
-    > position: obj,14.500069,50.500069,float,0.000000,0.000000,-90.000000,0.000000,144822.451449,55.000000
-    
+    # > ...
+    # > gsd: 24.6774
+    # > range<pseudomerc>: 9,15 15/8829,5484:8874,5556
+    # > range: 9,15 137,85:138,86
+    # > position: obj,14.500069,50.500069,float,0.000000,0.000000,-90.000000,0.000000,144822.451449,55.000000
     mapproxy-tiling --input srtm --lodRange 9,15 --tileRange 137,85:138,86 --referenceFrame melown2015
 
-
     mapproxy-calipers jenstejn-dem/dem --referenceFrame melown2015
-    > ...
-    > gsd: 3.20576
-    > range<pseudomerc>: 13,18 18/70840,44352:70871,44380
-    > range: 13,18 2213,1386:2214,1386
-    > position: obj,14.611388,50.150629,float,0.000000,0.000000,-90.000000,0.000000,7768.350285,55.000000
-
+    # > ...
+    # > gsd: 3.20576
+    # > range<pseudomerc>: 13,18 18/70840,44352:70871,44380
+    # > range: 13,18 2213,1386:2214,1386
+    # > position: obj,14.611388,50.150629,float,0.000000,0.000000,-90.000000,0.000000,7768.350285,55.000000
     mapproxy-tiling --input jenstejn-dem --lodRange 13,18 --tileRange 2213,1386:2214,1386 --referenceFrame melown2015
+    
+The directory structure in ``/var/vts/mapproxy/datasets`` should now look like this::
+
+   jenstejn-dem:
+    dem -> overview/dataset
+    dem.max -> overview.max/dataset
+    dem.min -> overview.min/dataset
+    jenstejn-dem.tif
+    overview
+    overview.max
+    overview.min
+    tiling.melown2015
+
+   srtm:
+    dem -> ovr/dataset
+    dem.max -> ovr.max/dataset
+    dem.min -> ovr.min/dataset
+    N50E014.tif
+    overview
+    overview.max
+    overview.min
+    tiling.melown2015
 
 
 The final configuration snippets placed into
