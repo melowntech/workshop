@@ -56,17 +56,17 @@ tutorial, it is expected, that you place the data in
 .. code-block:: bash
 
     # create the SRTM DEM dataset
-    generatevrtwo N50E014.tif /var/vts/mapproxy/datasets/srtm --resampling dem --tiliseSize 1024x1024
-    generatevrtwo N50E014.tif /var/vts/mapproxy/datasets/srtm.min --resampling min --tiliseSize 1024x1024
-    generatevrtwo N50E014.tif /var/vts/mapproxy/datasets/srtm.max --resampling max --tiliseSize 1024x1024
+    generatevrtwo N50E014.tif /var/vts/mapproxy/datasets/srtm --resampling dem --tilseSize 1024x1024
+    generatevrtwo N50E014.tif /var/vts/mapproxy/datasets/srtm.min --resampling min --tileSize 1024x1024
+    generatevrtwo N50E014.tif /var/vts/mapproxy/datasets/srtm.max --resampling max --tileSize 1024x1024
     ln -s srtm/dataset srtm/dem
     ln -s srtm.min/dataset srtm/dem.min
     ln -s srtm.max/dataset srtm/dem.max
     
     # create Jensten dataset
-    generatevrtwo jenstejn-dem.tif /var/vts/mapproxy/datasets/jenstejn-dem --resampling dem --tiliseSize 1024x1024
-    generatevrtwo jenstejn-dem.tif /var/vts/mapproxy/datasets/jenstejn-dem.min --resampling min --tiliseSize 1024x1024
-    generatevrtwo jenstejn-dem.tif /var/vts/mapproxy/datasets/jenstejn-dem.max --resampling max --tiliseSize 1024x1024
+    generatevrtwo jenstejn-dem.tif /var/vts/mapproxy/datasets/jenstejn-dem --resampling dem --tileSize 1024x1024
+    generatevrtwo jenstejn-dem.tif /var/vts/mapproxy/datasets/jenstejn-dem.min --resampling min --tileSize 1024x1024
+    generatevrtwo jenstejn-dem.tif /var/vts/mapproxy/datasets/jenstejn-dem.max --resampling max --tileSize 1024x1024
     ln -s jenstejn-dem/dataset jenstejn-dem/dem
     ln -s jenstejn-dem.min/dataset jenstejn-dem/dem.min
     ln -s jenstejn-dem.max/dataset jenstejn-dem/dem.max
@@ -82,7 +82,8 @@ The ``lodRange`` and ``tileRange`` values are taken from the ``mapproxy-calipers
     > range: 9,15 137,85:138,86
     > position: obj,14.500069,50.500069,float,0.000000,0.000000,-90.000000,0.000000,144822.451449,55.000000
     
-    mapproxy-tiling --input srtm --lodRange 9,15 --tileRange 137,85:138,86
+    mapproxy-tiling --input srtm --lodRange 9,15 --tileRange 137,85:138,86 --referenceFrame melown2015
+
 
     mapproxy-calipers jenstejn-dem/dem --referenceFrame melown2015
     > ...
@@ -90,8 +91,9 @@ The ``lodRange`` and ``tileRange`` values are taken from the ``mapproxy-calipers
     > range<pseudomerc>: 13,18 18/70840,44352:70871,44380
     > range: 13,18 2213,1386:2214,1386
     > position: obj,14.611388,50.150629,float,0.000000,0.000000,-90.000000,0.000000,7768.350285,55.000000
-    
-    mapproxy-tiling --input jenstejn-dem --lodRange 13,18 --tileRange 2213,1386:2214,1386
+
+    mapproxy-tiling --input jenstejn-dem --lodRange 13,18 --tileRange 2213,1386:2214,1386 --referenceFrame melown2015
+
 
 The final configuration snippets placed into
 ``/etc/vts/mapproxy/resources.json`` should look like (alter the comment, group
