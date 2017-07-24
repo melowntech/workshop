@@ -483,8 +483,6 @@ After saving you can test if the storage view is valid by running::
 If everything is all right, a large JSON with client side map configuration will
 be printed.
 
-.. todo:: ref to mapConfig description if available
-
 In that case you can open your browser and go to
 http://localhost:8070/store/map-config/cadastre to get nice view of Jenstejn. If
 you press :kbd:`CTRL + SHIFT + D` and then :kbd:`SHIFT + V`, a console will open
