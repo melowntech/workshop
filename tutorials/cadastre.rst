@@ -24,7 +24,7 @@ configuration
   
   sudo /etc/init.d/vts-backend-mapproxy stop
 
-As the whole vts-backend runs under the vts user, it is advisable to switch to the vts user so that all files are created with the right privileges and ownership::
+As the whole vts-backend runs under the vts user, it is advisable to switch to the vts user so that all files are created with the right privileges and ownership.
 
 .. code-block:: bash
 
@@ -350,7 +350,7 @@ simplification (again as a vts user)
   sudo -iu vts
   mkdir /var/vts/mapproxy/datasets/jenstejn-cadastre
   tippecanoe -o /var/vts/mapproxy/datasets/jenstejn-cadastre/parcels-all.mbtiles \
-             -z 16 -Z 16 -B 16 -ps /tmp/658499/jentejn-parcel-all.geojson
+             -z 16 -Z 16 -B 16 -ps /tmp/658499/jenstejn-parcel-all.geojson
 
 And finally we create a configuration snippet for mapproxy::
 
@@ -470,11 +470,11 @@ Now we will convert both datasets into VTS tileset
   cd ~/workdir
   wget http://cdn.melown.com/pub/vts-tutorials/cadastre/jenstejn.vef.tar
   vef2vts --input jenstejn.vef.tar \
-          --output /var/vts/store/resources/tilesets/jentejn-center \
+          --output /var/vts/store/resources/tilesets/jenstejn-center \
           --tilesetId jenstejn-center --referenceFrame melown2015
   wget http://cdn.melown.com/pub/vts-tutorials/cadastre/jenstejn-village.vef.tar>
   vef2vts --input jenstejn-village.vef.tar \
-          --output /var/vts/store/resources/tilesets/jentejn-village \
+          --output /var/vts/store/resources/tilesets/jenstejn-village \
           --tilesetId jenstejn-village --referenceFrame melown2015
 
 Adding tilesets into storage
@@ -502,9 +502,9 @@ saves some space
 .. code-block:: bash
 
   vts /var/vts/store/stage.melown2015 --add \
-      --tileset local:/var/vts/store/resources/tilesets/jentejn-village --top
+      --tileset local:/var/vts/store/resources/tilesets/jenstejn-village --top
   vts /var/vts/store/stage.melown2015 --add \
-      --tileset local:/var/vts/store/resources/tilesets/jentejn-center --top
+      --tileset local:/var/vts/store/resources/tilesets/jenstejn-center --top
 
 Creating a storage view
 """""""""""""""""""""""
