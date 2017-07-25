@@ -472,7 +472,7 @@ Now we will convert both datasets into VTS tileset
   vef2vts --input jenstejn.vef.tar \
           --output /var/vts/store/resources/tilesets/jenstejn-center \
           --tilesetId jenstejn-center --referenceFrame melown2015
-  wget http://cdn.melown.com/pub/vts-tutorials/cadastre/jenstejn-village.vef.tar>
+  wget http://cdn.melown.com/pub/vts-tutorials/cadastre/jenstejn-village.vef.tar
   vef2vts --input jenstejn-village.vef.tar \
           --output /var/vts/store/resources/tilesets/jenstejn-village \
           --tilesetId jenstejn-village --referenceFrame melown2015
