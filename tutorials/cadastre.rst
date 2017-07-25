@@ -11,8 +11,6 @@ and vector cadastre provided by `State Administration of Land Surveying and Cada
 
 This tutorial expects that you have already set up your VTS backend.
 
-.. todo ref to VTS backend
-
 Setting up mapproxy resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -20,13 +18,17 @@ For this step, the most important locations are ``/var/vts/mapproxy/datasets/`` 
 ``/etc/vts/mapproxy/resource.json`` where you will place configuration snippet for each mapproxy resource.
 
 During resource preparation it is advisible to turn off the mapproxy, so that you have time to correct mistakes in your
-configuration::
+configuration
+
+.. code-block:: bash
   
-  $ sudo /etc/init.d/vts-backend-mapproxy stop
+  sudo /etc/init.d/vts-backend-mapproxy stop
 
 As the whole vts-backend runs under the vts user, it is advisable to switch to the vts user so that all files are created with the right privileges and ownership::
 
-  $ sudo -iu vts
+.. code-block:: bash
+
+  sudo -iu vts
 
 
 Setting up dynamic surfaces
@@ -282,20 +284,25 @@ will use an MBTiles file as the base resource for mapproxy to demotrate the
 possibility of serving tiled geodata.
 
 First we need to download a ZIP file with shapefiles of Jenstejn cadastal area from
-ČÚZK website::
+ČÚZK website:
 
-  $ wget http://services.cuzk.cz/shp/ku/epsg-5514/658499.zip
-  $ unzip 658499.zip
-  $ cd 658499
+.. code-block:: bash
+
+  cd /tmp
+  wget http://services.cuzk.cz/shp/ku/epsg-5514/658499.zip
+  unzip 658499.zip
+  cd 658499
 
 We are interested in parcel borders and parcel numbers. We will create one
 MBTiles containing both these layers but first we need to prepare the GeoJSON to
 create the MBTiles from. Because original data are in the `Krovak projection
 <http://epsg.io/5514>`_ care must be taken when converting coordinates as system
-definition of Krovak may come with insufficiently precise ``towgs84`` parameter::
+definition of Krovak may come with insufficiently precise ``towgs84`` parameter:
 
-  $ cd 658499
-  $ ogr2ogr -f "GeoJson" \
+.. code-block:: bash
+
+  cd /tmp/658499
+  ogr2ogr -f "GeoJson" \
             -s_srs "+proj=krovak +lat_0=49.5 +lon_0=24.83333333333333 +alpha=0 +k=0.9999 +x_0=0 +y_0=0 +ellps=bessel \
                     +towgs84=570.8,85.7,462.8,4.998,1.587,5.261,3.56 +units=m +no_defs" \
             -t_srs "+init=epsg:4326" \
@@ -303,7 +310,7 @@ definition of Krovak may come with insufficiently precise ``towgs84`` parameter:
             -sql "SELECT geometry, TEXT_KM FROM PARCELY_KN_DEF" \
             jenstejn-parcel-numbers.geojson PARCELY_KN_DEF.shp
 
-  $ ogr2ogr -f "GeoJson" \
+  ogr2ogr -f "GeoJson" \
             -s_srs "+proj=krovak +lat_0=49.5 +lon_0=24.83333333333333 +alpha=0 +k=0.9999 +x_0=0 +y_0=0 +ellps=bessel \
                     +towgs84=570.8,85.7,462.8,4.998,1.587,5.261,3.56 +units=m +no_defs" \
             -t_srs "+init=epsg:4326" \
@@ -312,27 +319,36 @@ definition of Krovak may come with insufficiently precise ``towgs84`` parameter:
             jenstejn-parcel-borders.geojson HRANICE_PARCEL_L.shp
 
 Now we will merge geojsons into one containing both linestrings and points using
-merge-geojsons.py from https://gist.github.com/migurski/3759608 ::
+merge-geojsons.py from https://gist.github.com/migurski/3759608 
 
-  $ python merge-geojsons.py jenstejn-parcel-numbers.geojson jenstejn-parcel-borders.geojson jenstejn-parcel-all.geojson
+.. code-block:: bash
+
+  python merge-geojsons.py jenstejn-parcel-numbers.geojson jenstejn-parcel-borders.geojson jenstejn-parcel-all.geojson
 
 To create MBTiles we will use MapBox's opensource tool `tippecanoe
 <https://github.com/mapbox/tippecanoe>`_. To install it, follow the instructions
-on github::
+on github. This part may be better done as a non-vts user.
 
-  $ git clone https://github.com/mapbox/tippecanoe.git
-  $ cd tippecanoe
-  $ sudo apt-get install build-essential libsqlite3-dev zlib1g-dev
-  $ make -j2
-  $ sudo make install
+.. code-block:: bash
+
+  mkdir ~/git
+  cd git
+  git clone https://github.com/mapbox/tippecanoe.git
+  cd tippecanoe
+  sudo apt-get install build-essential libsqlite3-dev zlib1g-dev
+  make -j2
+  sudo make install
 
 We will place MBTiles into ``/var/vts/mapproxy/datasets/cuzk-raster-cadastre/``
 directory. Because simplification makes little sense for cadastre, we will use
 tippecanoe just to tile features on a single level of detail without any
-simplification::
+simplification (again as a vts user)
 
-  $ mkdir /var/vts/mapproxy/datasets/jenstejn-cadastre
-  $ tippecanoe -o /var/vts/mapproxy/datasets/jenstejn-cadastre/parcels-all.mbtiles -z 16 -Z 16 -B 16 -ps \
+.. code-block:: bash
+
+  sudo -iu vts
+  mkdir /var/vts/mapproxy/datasets/jenstejn-cadastre
+  tippecanoe -o /var/vts/mapproxy/datasets/jenstejn-cadastre/parcels-all.mbtiles -z 16 -Z 16 -B 16 -ps \
                <path-to-dir-with-vector-data>/658499/jentejn-parcel-all.geojson
 
 And finally we create a configuration snippet for mapproxy::
@@ -366,13 +382,17 @@ And finally we create a configuration snippet for mapproxy::
         }
  }
 
-Now you can turn mapproxy back on::
+Now you can turn mapproxy back on 
   
-  $ sudo /etc/init.d/vts-backend-mapproxy start
+.. code-block:: bash
+  
+  sudo /etc/init.d/vts-backend-mapproxy start
 
-And examine the log::
+And examine the log
 
-  $ less /var/log/vts/mapproxy.log
+.. code-block:: bash
+
+  less /var/log/vts/mapproxy.log
 
 You should see no errors, only a ``Ready to serve <resource>`` line for each defined resource.
 
@@ -416,13 +436,15 @@ Filling the storage
 
 To work with static True3D data and/or merge various surfaces together, we must first add them to the storage. 
 Storage is administered by tool ```vts``` that takes care of adding tilesets to storage and subsequent generation 
-of required glues.
+of required :ref:`glue`s.
 
 Important location for this step is ``/var/vts/store/stage.melown2015`` (stage
 is a traditional name for the main storage). Furthermore, create following
-directory to hold the 3D resources::
+directory to hold the 3D resources
 
-  $ mkdir -p /var/vts/store/resources/tilesets
+.. code-block:: bash
+
+  mkdir -p /var/vts/store/resources/tilesets
 
 Preparing True3D tilesets
 """""""""""""""""""""""""
@@ -439,28 +461,44 @@ village) <http://cdn.melown.com/pub/vts-tutorials/cadastre/jenstejn-village.vef.
 `Jenstejn (center) <http://cdn.melown.com/pub/vts-tutorials/cadastre/jenstejn.vef.tar>`_ in
 VEF fromat to some working directory.
 
-Now we will convert both datasets into VTS tileset::
+Now we will convert both datasets into VTS tileset
 
-  $ cd <work dir>
-  $ vef2vts --input jenstejn.vef.tar --output /var/vts/store/resources/tilesets/jentejn-center \
+.. code-block:: bash
+
+  mkdir ~/workdir
+  cd ~/workdir
+  wget http://cdn.melown.com/pub/vts-tutorials/cadastre/jenstejn.vef.tar
+  vef2vts --input jenstejn.vef.tar --output /var/vts/store/resources/tilesets/jentejn-center \
             --tilesetId jenstejn-center --referenceFrame melown2015
-  $ vef2vts --input jenstejn-village.vef.tar --output /var/vts/store/resources/tilesets/jentejn-village \
+  wget http://cdn.melown.com/pub/vts-tutorials/cadastre/jenstejn-village.vef.tar>
+  vef2vts --input jenstejn-village.vef.tar --output /var/vts/store/resources/tilesets/jentejn-village \
             --tilesetId jenstejn-village --referenceFrame melown2015
 
 Adding tilesets into storage
 """"""""""""""""""""""""""""
 
 Now we are ready to merge everything in the storage, First we add the bottommost
-surface from SRTM DEM as remote tileset::
+surface from SRTM DEM as remote tileset. The browser will eventually draw the tiles from URL you specify in ```vts --add```
+command.
 
-  $ vts /var/vts/store/stage.melown2015 --add --tileset http://127.0.0.1:8070/mapproxy/melown2015/surface/cadastre/srtm --top
+.. note:: Network
+
+    If you are running vts-backend on different machine than localhost, replace the 127.0.0.1 IP from now on with IP 
+    address or hostname of your server. You must be able to access the server through that IP/hostname from the machine 
+    on which you plan to run the browser. If your set up uses different ports, change them accordingly.
+
+.. code-block:: bash
+
+  vts /var/vts/store/stage.melown2015 --add --tileset http://127.0.0.1:8070/mapproxy/melown2015/surface/cadastre/srtm --top
 
 Then add the two Jenstejns as local tilesets - this way the data are only
 referenced rather than copied into storage which makes the operation faster and
-saves some space::
+saves some space
 
-  $ vts /var/vts/store/stage.melown2015 --add --tileset local:/var/vts/store/resources/tilesets/jentejn-village --top
-  $ vts /var/vts/store/stage.melown2015 --add --tileset local:/var/vts/store/resources/tilesets/jentejn-center --top
+.. code-block:: bash
+
+  vts /var/vts/store/stage.melown2015 --add --tileset local:/var/vts/store/resources/tilesets/jentejn-village --top
+  vts /var/vts/store/stage.melown2015 --add --tileset local:/var/vts/store/resources/tilesets/jentejn-center --top
 
 Creating a storage view
 """""""""""""""""""""""
@@ -508,15 +546,17 @@ before saving the file to create a valid JSON.::
         "version": 1
   }
 
-After saving you can test if the storage view is valid by running::
+After saving you can test if the storage view is valid by running
 
-  $ cd /var/vts/store/map-config
-  $ vts --map-config cadastre
+.. code-block:: bash
+
+  cd /var/vts/store/map-config
+  vts --map-config cadastre
 
 If everything is all right, a large JSON with client side map configuration will
 be printed.
 
 In that case you can open your browser and go to
-http://localhost:8070/store/map-config/cadastre to get nice view of Jenstejn. If
+http://127.0.0.1:8070/store/map-config/cadastre to get nice view of Jenstejn. If
 you press :kbd:`CTRL + SHIFT + D` and then :kbd:`SHIFT + V`, a console will open
 when you can toggle various layers and play with other parameters.
