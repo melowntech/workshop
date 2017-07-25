@@ -340,7 +340,7 @@ on github. This part may be better done as a non-vts user.
   make -j2
   sudo make install
 
-We will place MBTiles into ``/var/vts/mapproxy/datasets/cuzk-raster-cadastre/``
+We will place MBTiles into ``/var/vts/mapproxy/datasets/jenstejn-cadastre/``
 directory. Because simplification makes little sense for cadastre, we will use
 tippecanoe just to tile features on a single level of detail without any
 simplification (again as a vts user)
@@ -362,7 +362,7 @@ And finally we create a configuration snippet for mapproxy::
     "driver": "geodata-vector-tiled",
     "credits": ["cuzk"],
     "definition": {
-        "dataset": "cuzk-raster-cadastre/parcels-all.mbtiles/{loclod}-{locx}-{locy}"
+        "dataset": "jenstejn-cadastre/parcels-all.mbtiles/{loclod}-{locx}-{locy}"
         , "demDataset": "jenstejn-dem"
         , "geoidGrid": "egm96_15.gtx"
         , "format": "geodataJson"
