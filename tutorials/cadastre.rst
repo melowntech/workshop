@@ -323,7 +323,8 @@ merge-geojsons.py from https://gist.github.com/migurski/3759608
 
 .. code-block:: bash
 
-  python merge-geojsons.py jenstejn-parcel-numbers.geojson jenstejn-parcel-borders.geojson jenstejn-parcel-all.geojson
+  python merge-geojsons.py jenstejn-parcel-numbers.geojson \
+         jenstejn-parcel-borders.geojson jenstejn-parcel-all.geojson
 
 To create MBTiles we will use MapBox's opensource tool `tippecanoe
 <https://github.com/mapbox/tippecanoe>`_. To install it, follow the instructions
@@ -348,8 +349,8 @@ simplification (again as a vts user)
 
   sudo -iu vts
   mkdir /var/vts/mapproxy/datasets/jenstejn-cadastre
-  tippecanoe -o /var/vts/mapproxy/datasets/jenstejn-cadastre/parcels-all.mbtiles -z 16 -Z 16 -B 16 -ps \
-               <path-to-dir-with-vector-data>/658499/jentejn-parcel-all.geojson
+  tippecanoe -o /var/vts/mapproxy/datasets/jenstejn-cadastre/parcels-all.mbtiles \
+             -z 16 -Z 16 -B 16 -ps /tmp/658499/jentejn-parcel-all.geojson
 
 And finally we create a configuration snippet for mapproxy::
 
@@ -468,11 +469,13 @@ Now we will convert both datasets into VTS tileset
   mkdir ~/workdir
   cd ~/workdir
   wget http://cdn.melown.com/pub/vts-tutorials/cadastre/jenstejn.vef.tar
-  vef2vts --input jenstejn.vef.tar --output /var/vts/store/resources/tilesets/jentejn-center \
-            --tilesetId jenstejn-center --referenceFrame melown2015
+  vef2vts --input jenstejn.vef.tar \
+          --output /var/vts/store/resources/tilesets/jentejn-center \
+          --tilesetId jenstejn-center --referenceFrame melown2015
   wget http://cdn.melown.com/pub/vts-tutorials/cadastre/jenstejn-village.vef.tar>
-  vef2vts --input jenstejn-village.vef.tar --output /var/vts/store/resources/tilesets/jentejn-village \
-            --tilesetId jenstejn-village --referenceFrame melown2015
+  vef2vts --input jenstejn-village.vef.tar \
+          --output /var/vts/store/resources/tilesets/jentejn-village \
+          --tilesetId jenstejn-village --referenceFrame melown2015
 
 Adding tilesets into storage
 """"""""""""""""""""""""""""
@@ -489,7 +492,8 @@ command.
 
 .. code-block:: bash
 
-  vts /var/vts/store/stage.melown2015 --add --tileset http://127.0.0.1:8070/mapproxy/melown2015/surface/cadastre/srtm --top
+  vts /var/vts/store/stage.melown2015 --add \
+      --tileset http://127.0.0.1:8070/mapproxy/melown2015/surface/cadastre/srtm --top
 
 Then add the two Jenstejns as local tilesets - this way the data are only
 referenced rather than copied into storage which makes the operation faster and
@@ -497,8 +501,10 @@ saves some space
 
 .. code-block:: bash
 
-  vts /var/vts/store/stage.melown2015 --add --tileset local:/var/vts/store/resources/tilesets/jentejn-village --top
-  vts /var/vts/store/stage.melown2015 --add --tileset local:/var/vts/store/resources/tilesets/jentejn-center --top
+  vts /var/vts/store/stage.melown2015 --add \
+      --tileset local:/var/vts/store/resources/tilesets/jentejn-village --top
+  vts /var/vts/store/stage.melown2015 --add \
+      --tileset local:/var/vts/store/resources/tilesets/jentejn-center --top
 
 Creating a storage view
 """""""""""""""""""""""
@@ -541,6 +547,44 @@ before saving the file to create a valid JSON.::
         },
         "namedViews": {},
         "position": [                      # initial position of the map (Jenstejn)
+                "obj",14.611103581926853,50.152724855605186,"float",0.00,3.16,-70.91,0.00,226.97,45.00
+        ],
+        "version": 1
+  }
+  
+Convenience version for copy-pasting::
+
+  {
+        "storage": "../stage.melown2015",  
+        "tilesets": [                      
+                "cadastre-srtm",
+                "jenstejn-village",
+                "jenstejn-center"
+        ],
+        "credits": { },                    
+        "boundLayers": {                   
+                "mapy-cz": "/mapproxy/melown2015/tms/cadastre/mapy-cz-ophoto/boundlayer.json",
+                "cadastre-raster": "/mapproxy/melown2015/tms/cadastre/cuzk-raster-cadastre/boundlayer.json"
+        },
+        "freeLayers": {                    
+                "cadastre-vector": "/mapproxy/melown2015/geodata/cadastre/cuzk-vector-cadastre/freelayer.json",
+                "jenstejn-dem" : "/mapproxy/melown2015/surface/cadastre/jenstejn-dem/freelayer.json"
+        },
+        "view": {                          
+                "description": "",
+                "surfaces": {
+                        "cadastre-srtm": ["mapy-cz"],
+                        "jenstejn-village": [],
+                        "jenstejn-center": []
+                },
+                "freeLayers": {            
+                        "cadastre-vector" :  { "style" : "/store/stylesheet/cuzk-cadastre-style.json" },
+                        "jenstejn-dem" : { "boundLayers": ["cadastre-raster"],
+                                            "depthOffset" : [-5, 0, -10] }
+                }
+        },
+        "namedViews": {},
+        "position": [                      
                 "obj",14.611103581926853,50.152724855605186,"float",0.00,3.16,-70.91,0.00,226.97,45.00
         ],
         "version": 1
