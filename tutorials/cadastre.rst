@@ -453,7 +453,7 @@ Adding tilesets into storage
 Now we are ready to merge everything in the storage, First we add the bottommost
 surface from SRTM DEM as remote tileset::
 
-  $ vts /var/vts/store/stage.melown2015 --add --tileset http://localhost:8070/mapproxy/melown2015/surface/cadastre/srtm --top
+  $ vts /var/vts/store/stage.melown2015 --add --tileset http://127.0.0.1:8070/mapproxy/melown2015/surface/cadastre/srtm --top
 
 Then add the two Jenstejns as local tilesets - this way the data are only
 referenced rather than copied into storage which makes the operation faster and
