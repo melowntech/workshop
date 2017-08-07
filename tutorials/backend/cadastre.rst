@@ -435,9 +435,10 @@ for further details.
 Filling the storage
 ^^^^^^^^^^^^^^^^^^^
 
-To work with static True3D data and/or merge various surfaces together, we must first add them to the storage. 
-Storage is administered by tool ```vts``` that takes care of adding tilesets to storage and subsequent generation 
-of required :ref:`glue`s.
+To work with static True3D data and/or merge various surfaces together, we must
+first add them to the storage.  Storage is administered by tool ``vts`` that
+takes care of adding tilesets to storage and subsequent generation of required
+:ref:`glue`\s.
 
 Important location for this step is ``/var/vts/store/stage.melown2015`` (stage
 is a traditional name for the main storage). Furthermore, create following

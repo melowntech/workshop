@@ -1,20 +1,20 @@
-.. _mars-peaks-valleys:
+.. _gpx-viewer-example:
 
 GPX Track Viewer
 ----------------
 
-Do you want to display and explore GPX tracks in a cool 3D map? The `VTS-Browser-JS <https://github.com/Melown/vts-browser-js>`_ is a great solution for this task. Take a look at this `live demo <https://jsfiddle.net/xrz53a7k/show/>`_ in JSFiddle. If you are curious how this can be done, I will try to explain in this article.
+Do you want to display and explore GPX tracks in a cool 3D map? The `VTS-Browser-JS`_ is a great solution for this task. Take a look at this `live demo <https://jsfiddle.net/xrz53a7k/show/>`_ in JSFiddle. If you are curious how this can be done, I will try to explain in this article.
 
 
 The GPX File Format
 """""""""""""""""""
 
-The GPX, or GPS Exchange Format, is an XML schema designed as a common GPS data format for software applications. It can be used to describe waypoints, tracks, and routes. The format is open and can be used without paying any license fees. Location data (and optionally elevation, time, and other information) is stored in tags and can be interchanged between GPS devices and software. More information about GPX format can be found `here <https://en.wikipedia.org/wiki/GPS_Exchange_Format>`_ or `here <http://www.topografix.com/GPX/1/1/>`_ .
+The GPX, or GPS Exchange Format, is an XML schema designed as a common GPS data format for software applications. It can be used to describe waypoints, tracks, and routes. The format is open and can be used without paying any license fees. Location data (and optionally elevation, time, and other information) is stored in tags and can be interchanged between GPS devices and software. More information about GPX format can be found on `Wikipedia <https://en.wikipedia.org/wiki/GPS_Exchange_Format>`_ or at `Topografix web page <http://www.topografix.com/GPX/1/1/>`_ .
 
 Displaying the Map
 """"""""""""""""""
 
-So how do we display a 3D map? With the `VTS-Browser-JS <https://github.com/Melown/vts-browser-js/wiki>`_ library this is as `easy as <https://jsfiddle.net/a5rh6vnh/2/>`_:
+So how do we display a 3D map? With the `VTS-Browser-JS`_  library this is as `easy as <https://jsfiddle.net/a5rh6vnh/2/>`_:
 
 ::
 
@@ -24,7 +24,7 @@ So how do we display a 3D map? With the `VTS-Browser-JS <https://github.com/Melo
 
 This function creates a map in an HTML DOM element with ID 'map-div'. The parameter 'map' sets a URL path to the map data to be displayed. You can create your own map within the `Melown Cloud <https://www.melown.com/>`_ or you can host you own map server which is open source as well, by the way.
 
-.. image:: gpx-viewer-map.jpg
+.. image:: images/gpx-viewer-map.jpg
 
 Adding a New Panel to the Map Browser
 """""""""""""""""""""""""""""""""""""
@@ -64,7 +64,7 @@ And so on. The DOM elements can by accessed the following way:
     canvas.on('mousemove', onCanvasHover);
     canvasCtx = canvas.getElement().getContext("2d");
 
-The DOM elements are wrapped by the UI library which makes work with the elements easier. In case you want to access the original element, use the getElement method. More simple examples where the UI API is used can be found `here <https://jsfiddle.net/2sdyfekd/1/>`_ and `here <https://jsfiddle.net/xeef5s4r/>`_ .
+The DOM elements are wrapped by the UI library which makes work with the elements easier. In case you want to access the original element, use the getElement method. More simple examples where the UI API is used can be found JSFiddle, follow links to  `example-1 <https://jsfiddle.net/2sdyfekd/1/>`_ and `example-2 <https://jsfiddle.net/xeef5s4r/>`_ .
 
 There is one trick by which you can move existing controls a little bit higher.
 
@@ -76,7 +76,7 @@ There is one trick by which you can move existing controls a little bit higher.
     browser.ui.getControl('zoom').getElement('vts-zoom-minus').setStyle('bottom', '140px');
     browser.ui.getControl('compass').getElement('vts-compass').setStyle('bottom', '170px');
 
-.. image:: gpx-viewer-panel.jpg
+.. image:: images/gpx-viewer-panel.jpg
 
 Loading a GPX file
 """"""""""""""""""
@@ -136,7 +136,7 @@ Now that we have geographic data, we can display them in the map using the `Geod
 
     geodata = map.createGeodata();
 
-Now we can add some points. Note that we are using 'float' height which defines height above terrain. If we had elevation data we could use 'fix' height which has no relation to the terrain. The point can also be assigned properties which can be accessed by `geodata styles <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`_. 
+Now we can add some points. Note that we are using 'float' height which defines height above terrain. If we had elevation data we could use 'fix' height which has no relation to the terrain. The point can also be assigned properties which can be accessed by `geodata styles`_. 
 
 :: 
 
@@ -165,7 +165,12 @@ The second function parameter sets the desired resolution of the heightmap from 
 
 Once our geodata is ready we can create a map layer with vector features. In VTS terminology such layer is called a free layer because it is independent of other surfaces. 
 
-The vector features can be styled with `geodata styles<https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`_. A style has a set of internal layers to be rendered. Each style layer has a filter with a condition that determines which features will be rendered in that layer. Note that in our example the style layer 'track-shadow' has properties 'hover-event' = true and 'advanced-hit' = true. These events will be explained later.
+The vector features can be styled with `geodata styles`_.
+A style has a set of internal layers to be rendered. Each style layer has a
+filter with a condition that determines which features will be rendered in that
+layer. Note that in our example the style layer 'track-shadow' has properties
+'hover-event' = true and 'advanced-hit' = true. These events will be explained
+later.
 
 ::
 
@@ -214,7 +219,7 @@ Just adding the free layer to the map will not display it. To make that happen w
     var view = map.getView();
     view.freeLayers.gpxgeodata = {};
 
-A simple example which shows how to display geodata can be found `here <https://jsfiddle.net/c8xez624/>`_ .
+A `simple example  <https://jsfiddle.net/c8xez624/>`_ which shows how to display geodata can be found at JSFiddle.
 
 
 How to Center Map Position to the Track
@@ -316,12 +321,12 @@ To get a precise location and distance of the cursor on the track we use the get
         map.redraw();
     }
 
-A simple example with related hover events can be found `here <https://jsfiddle.net/n0L0o8ca/>`_ .
+A simple `events example <https://jsfiddle.net/n0L0o8ca/>`_  can be found at.
 
 Displaying Dynamic Features on the Map
 """"""""""""""""""""""""""""""""""""""
 
-Geodata is very good for displaying static content. But when it comes to rendering dynamic features we can use a combination of HTML elements and the `rendering API <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Renderer-API>`_ 
+Geodata is very good for displaying static content. But when it comes to rendering dynamic features we can use a combination of HTML elements and the `rendering API`_.
 
 We will start with the HTML part fist. HTML elements are great for displaying info boxes, etc., so why not use them for this purpose. To keep things organized we create a new UI control which will hold an HTML element.
 
@@ -347,7 +352,7 @@ How do we get screen coordinates? We already know coordinates in the physical SR
     var screenCoords = map.convertCoordsFromPhysToCanvas(linePoint);
 
 
-HTML elements are great but they can be slow when you draw a lot of them. Another disadvantage is that they do not respect the depth buffer of the rendered map. This means that when some feature is behind a building or a hill it will still be visible. In these cases we can use the `rendering API <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Renderer-API>`_ .
+HTML elements are great but they can be slow when you draw a lot of them. Another disadvantage is that they do not respect the depth buffer of the rendered map. This means that when some feature is behind a building or a hill it will still be visible. In these cases we can use the `rendering API`_. 
 
 The first thing we need to do is to set up a rendering callback. This callback is invoked when the map is ready for rendering additional content.
 
@@ -373,12 +378,15 @@ In the callback we can draw an icon of a track point.
             });
     }
 
-A simple example showing how to render dynamic features can be found `here <https://jsfiddle.net/ec2gh95a/>`_ .
+A simple example showing how to render dynamic features can be found at `JSFiddle <https://jsfiddle.net/ec2gh95a/>`_ .
 
 Displaying Track Height Profile
 """""""""""""""""""""""""""""""
 
-How do we get the height profile of the track? We are able to get track geometry in physical SRS. From that geometry we can get the length of each line segment and the total length of all line segments together. The next thing are heights for each track point. We are able to do that by converting point coordinates from the physical SRS to the so called public SRS, which is normally lat-lon coordinates plus height above sea level. We collect heights of all track points and together with line segment lengths we can plot the height profile. The easiest way to plot the profile is to use `HTML Canvas<https://www.w3schools.com/graphics/canvas_reference.asp>`_.
+How do we get the height profile of the track? We are able to get track geometry in physical SRS. From that geometry we can get the length of each line segment and the total length of all line segments together. The next thing are heights for each track point. We are able to do that by converting point coordinates from the physical SRS to the so called public SRS, which is normally lat-lon coordinates plus height above sea level. We collect heights of all track points and together with line segment lengths we can plot the height profile. The easiest way to plot the profile is to use `HTML Canvas <https://www.w3schools.com/graphics/canvas_reference.asp>`_.
 
-.. image:: gpx-viewer-final.jpg
+.. image:: images/gpx-viewer-final.jpg
 
+.. _geodata styles: https://github.com/Melown/JSFiddle-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure
+.. _rendering api: https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Renderer-API
+.. _vts-browser-js: https://github.com/Melown/vts-browser-js/wiki

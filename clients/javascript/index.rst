@@ -18,6 +18,4 @@ The `API Reference documentation <https://github.com/melown/vts-browser-js/wiki>
     :maxdepth: 1
 
     installation
-    sample-app.rst
-    wmts-example.rst
-    wmts-fancy-example.rst
+    next
