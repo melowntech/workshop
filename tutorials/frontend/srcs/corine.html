@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Open Landuse 3D map</title>
+    <!-- Include CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.melown.com/libs/vtsjs/browser/v2/vts-browser.min.css">
+    <!-- Include JavaScript Melown API -->
+    <script type="text/javascript" src="https://cdn.melown.com/libs/vtsjs/browser/v2/vts-browser.min.js"></script>
+    <style>
+        #map-div {
+            width: 800px;
+            height: 100%;
+        }
+        .switch-panel-div {
+            position: absolute;
+            right: 320px;
+            bottom: 20px;
+            background-color: #eee;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: solid 1px #000;            
+            width: 300px;
+        }
+        #legend-div {
+            position: absolute;
+            right: 5px;
+            bottom: 20px;
+            background-color: #eee;
+            width: 300px;
+            padding: 5px 5px;
+            border-radius: 5px;
+            border: solid 1px #000;            
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body style = "padding: 0; margin: 0;">
+    <div id="map-div">
+    </div>
+    <div id="legend-div">
+        <div id="corine-legend"><img src="corine-legend.png" /></div>
+    </div>
+    <script type="text/javascript" src="corine.js"></script>
+</body>
+
+</html>

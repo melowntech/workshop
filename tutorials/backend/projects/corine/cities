@@ -1,0 +1,33 @@
+{
+      "storage": "../storage",
+      "tilesets": [
+              "melown-cities-cz"
+      ],
+      "credits": { },
+      "boundLayers": {
+              "urbanatlas": "//localhost/melown2015/tms/openlanduse/urbanatlas/boundlayer.json"
+      },
+      "freeLayers": {
+              "copernicus-dem" : "//localhost/melown2015/surface/openlanduse/dem/freelayer.json"
+      },
+      "view": {
+              "description": "",
+              "surfaces": {
+                      "melown-cities-cz": []
+              },
+              "freeLayers": {
+                      "copernicus-dem" : {
+                        "boundLayers": [{
+                            "id": "urbanatlas",
+                            "alpha": 0.5
+                        }],
+                        "depthOffset" : [-5, 0, -10]
+                        }
+              }
+      },
+      "namedViews": {},
+      "position": [
+              "obj",14.465691,50.059673,"float",0.000000,0.000000,-90.000000,0.000000,45046.985745,55.000000
+      ],
+      "version": 1
+}

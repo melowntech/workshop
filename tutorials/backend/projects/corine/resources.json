@@ -1,0 +1,63 @@
+[
+    {
+        "comment" : "corine",
+        "credits" : [],
+        "driver" : "tms-raster",
+        "group" : "openlanduse",
+        "id" : "corine",
+        "type" : "tms",
+        "referenceFrames" : {
+            "melown2015" : {
+                "lodRange": [2, 24],
+                "tileRange": [ [ 0, 0], [1, 1]]
+            }
+        },
+        "definition" : {
+            "dataset" : "corine-landcover.xml",
+            "format" : "png"
+        }
+    },
+    {
+        "comment" : "openlanduse",
+        "credits" : [],
+        "driver" : "tms-raster",
+        "group" : "openlanduse",
+        "id" : "openlanduse",
+        "type" : "tms",
+        "referenceFrames" : {
+            "melown2015" : {
+                "lodRange": [7, 15],
+                "tileRange": [ [ 34, 21], [35, 22]]
+            }
+        },
+        "definition" : {
+            "dataset" : "openlanduse.xml",
+            "format" : "png"
+        }
+    },
+    {
+        "comment": "copernicus",
+        "group": "openlanduse",
+        "id": "dem",
+        "type": "surface",
+        "driver": "surface-dem",
+        "referenceFrames": {
+            "melown2015": {
+                "lodRange": [7, 15],
+                "tileRange": [ [ 34, 21], [35, 22]]
+            }
+        },
+        "credits": [],
+        "definition": {
+            "dataset": "corine/copernicus-dem",
+            "geoidGrid": "egm96_15.gtx",
+            "introspection": {
+                "position": ["obj",15.474967,49.803826, "float",0.000000,0.000000,-90.000000,0.000000,649246.827847,55.000000],
+                "tms": [
+                    {"group":"openlanduse", "id": "corine"},
+                    {"group":"openlanduse", "id": "openlanduse"}
+                ]
+            }
+        }
+    }
+]

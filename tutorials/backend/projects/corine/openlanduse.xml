@@ -1,0 +1,23 @@
+<GDAL_WMS>
+  <Service name="WMS">
+    <Version>1.1.1</Version>
+    <ServerUrl>http://gis.lesprojekt.cz/cgi-bin/mapserv?map=/home/dima/maps/olu/european_openlandusemap.map&amp;language=eng&amp;SERVICE=WMS</ServerUrl>
+    <Layers>olu</Layers>
+    <SRS>EPSG:3857</SRS>
+    <ImageFormat>image/jpeg</ImageFormat>
+    <Transparent>FALSE</Transparent>
+    <BBoxOrder>xyXY</BBoxOrder>
+  </Service>
+  <DataWindow>
+    <UpperLeftX>-3.84498e+06</UpperLeftX>
+    <UpperLeftY>1.88072e+07</UpperLeftY>
+    <LowerRightX>4.65427e+06</LowerRightX>
+    <LowerRightY>2.97309e+06</LowerRightY>
+    <SizeX>576350688</SizeX>
+    <SizeY>1073741824</SizeY>
+  </DataWindow>
+  <BandsCount>3</BandsCount>
+  <BlockSizeX>1024</BlockSizeX>
+  <BlockSizeY>1024</BlockSizeY>
+  <OverviewCount>20</OverviewCount>
+</GDAL_WMS>

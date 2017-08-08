@@ -1,0 +1,23 @@
+<GDAL_WMS>
+  <Service name="WMS">
+    <Version>1.1.1</Version>
+    <ServerUrl>http://image.discomap.eea.europa.eu/arcgis/services/Corine/CLC2012/MapServer/WmsServer?SERVICE=WMS</ServerUrl>
+    <Layers>Corine%20Land%20Cover%202012%20vector,Corine%20Land%20Cover%202012%20raster</Layers>
+    <SRS>EPSG:4326</SRS>
+    <ImageFormat>image/jpeg</ImageFormat>
+    <Transparent>FALSE</Transparent>
+    <BBoxOrder>xyXY</BBoxOrder>
+  </Service>
+  <DataWindow>
+    <UpperLeftX>-81.231079</UpperLeftX>
+    <UpperLeftY>72.123059</UpperLeftY>
+    <LowerRightX>93.489511</LowerRightX>
+    <LowerRightY>-29.121654</LowerRightY>
+    <SizeX>1073741824</SizeX>
+    <SizeY>622197319</SizeY>
+  </DataWindow>
+  <BandsCount>3</BandsCount>
+  <BlockSizeX>1024</BlockSizeX>
+  <BlockSizeY>1024</BlockSizeY>
+  <OverviewCount>20</OverviewCount>
+</GDAL_WMS>

@@ -16,10 +16,12 @@ and :ref:`vtsd`.
     
     north-carolina
     au-cz
+    urbanatlas
     freelayer
     freelayer-tiled
     vtsbackend
     mars-peaks-and-valleys
     cadastre
     mars-peaks-and-valleys-searchable-nomenclature
+    urbanatlas-cities
 

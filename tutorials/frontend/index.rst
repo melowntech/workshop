@@ -18,3 +18,4 @@ and :ref:`vts-browser-cpp`.
     geojson-part2
     geojson-part3
     importobj
+    corine
