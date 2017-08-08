@@ -227,7 +227,7 @@ VTS Mapproxy will process this configuration automatically within five minutes. 
 
 ::
 
-    sudo echo update-resources | socat -T2 - UNIX-CONNECT:/var/run/vts-backend-mapproxy.ctrl
+    sudo /etc/init.d/vts-backend-mapproxy force-update 
  
 All right now. Point your browser to
 
