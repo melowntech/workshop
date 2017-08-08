@@ -241,5 +241,5 @@ On the first try rendering of the map will take quite some time, but eventually,
 
 You are looking into the massive equatorial canyons of *Ius Chasma* which form one of the planet's most striking topographical features. Zoom in or out, pan, or rotate your view to look around.
 
-That's it! You are now streaming a browseable, interactive 3D map of Mars from your system. In some of our next tutorials, we're going to take a look at how to complement this map with even more visual detail and compelling features. 
+That's it! You are now streaming a browseable, interactive 3D map of Mars from your system. In :doc:`some of our next tutorials <mars-peaks-and-valleys-searchable-nomenclature>`, we're going to take a look at how to complement this map with even more visual detail and compelling features. 
  
