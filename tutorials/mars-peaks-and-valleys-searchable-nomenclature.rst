@@ -119,16 +119,16 @@ VTS Mapproxy will process this configuration automatically within five minutes. 
 All right now. Point your browser to
 
 ::
-    http://<your server>:8070/mapproxy/mars-qsc/geodata/mars-case-study/iau-mars-nomenclature2/
+    http://<your server>:8070/mapproxy/mars-qsc/geodata/mars-case-study/iau-mars-nomenclature/
 
 Here is what you should see:
 
 .. image:: mars-peaks-and-valleys-labels.jpg
 
 
-Should you be interested, here is a bit of VTS styling tricks: you've used the ``diameter`` property from the IAU feature dataset (which contains the feature size in kilometers) in conjunction with the "visibility-abs" and "visibility-rel" layer properties to make sure that labels are visible either 1.) when they are bigger than two kilometers and occupy more then 8 percent and less than 80 percent of the current vertical view extent, or 2.) they are smaller than two kilometers and the vertical view extent is less than 120 kilometers. 
+Should you be interested, here is a bit of VTS styling tricks you've just used: the ``diameter`` property from the IAU feature dataset (which contains the feature size in kilometers) in conjunction with the "visibility-abs" and "visibility-rel" layer properties makes sure that labels are visible either 1.) when they are bigger than two kilometers and occupy more then 8 percent and less than 80 percent of the current vertical view extent, or 2.) they are smaller than two kilometers and the vertical view extent is less than 120 kilometers. 
 
-Also the streamable map you've just created is a fine example of the VTS mapproxy introspection capabilities. Your map combines four different resources: 1.) the nomenclature, which you've just defined, 2.) its style, 3.) the terrain (which the labels refer to in their introspection) and 4.) the orthomosaic (which the terrain refers to in its own introspection). Yes, introspection is quite powerful - but in the next section, we will move on to VTS storage views to give our map even more functionality.
+Also, the streamable map you've just created is a fine example of the VTS mapproxy introspection capabilities. Your map combines four different resources: 1.) the nomenclature, which you've just defined, 2.) its style, 3.) the terrain (which the labels refer to in their introspection) and 4.) the orthomosaic (which the terrain refers to in its own introspection). Yes, introspection is quite powerful - but in the next section, we will move on to VTS storage views to give our map even more functionality.
 
 
 Search
