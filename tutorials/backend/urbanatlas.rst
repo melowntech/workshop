@@ -6,11 +6,11 @@
 
 .. _corine-example:
 
-Publishing WMS long with Corine digital elevation model
--------------------------------------------------------
+Publishing WMS along with Corine digital elevation model
+--------------------------------------------------------
 
-In this example, standard cartography map (Urban atlas) is lied over digit
-elevation model, for better representation of the data in space.
+In this example, standard cartography map (Urban atlas) is laid over a digital
+elevation model for better representation of the data in space.
 
 Preparing workspace
 ^^^^^^^^^^^^^^^^^^^
@@ -19,7 +19,7 @@ First we create project directory::
 
     mkdir openlanduse
 
-Then, we shell create datasets directory::
+Then, we shall create datasets directory::
 
     mkdir openlanduse/datasets
 
@@ -29,11 +29,11 @@ In frame of the `Copernicus programme <http://www.copernicus.eu>`_, `Digital
 Elevation Model over Europe (EU-DEM)
 <https://www.eea.europa.eu/data-and-maps/data/eu-dem>`_ are published. The
 EU-DEM is a 3D raster dataset with elevations captured at 1 arc second postings
-(2.78E-4 degrees) or about every 30 metre.
+(2.78E-4 degrees) or about every 30 meters.
 
 Data can be downloaded from `EU-DEM
-<https://www.eea.europa.eu/data-and-maps/data/eu-dem#tab-gis-data>`_ page. In
-this example we are going to use again the CEE (central and east Europe)
+<https://www.eea.europa.eu/data-and-maps/data/eu-dem#tab-original-data>`_ page. In
+this example we are going to use the CEE (central and east Europe)
 region:
 
 * eudem_dem_5deg_n40e010.tif
@@ -60,7 +60,7 @@ Input Open landuse data
 ^^^^^^^^^^^^^^^^^^^^^^^
 `Open Land-Use Map <http://sdi4apps.eu/open_land_use/>`_ is a composite map that
 is intended to create detailed
-land-use maps of various regions based on certain pan-Europen datasets such as
+land-use maps of various regions based on certain pan-European datasets such as
 CORINE Landcover, UrbanAtlas enriched by available regional data.
 
 Data are published as `OGC WMS <http://opengeospatial.org/standards/wms>`_
@@ -69,8 +69,8 @@ services.
 Setting up DEM dataset
 ^^^^^^^^^^^^^^^^^^^^^^
 
-First thing you have to do, after downloading the data, is to create virtual
-datasource with help of GDAL::
+First thing you have to do after downloading the data, is to create virtual
+raster with help of GDAL::
 
     $ cd openlanduse/datasets/copernicus/rasters
     $ ls 
@@ -114,8 +114,8 @@ be created::
     $ ln -s elev.min/dataset copernicus-dem/dem.min
     $ ln -s elev/dataset copernicus-dem/dem
 
-And as last preparation step, is to create information about the tiling schema.
-For this, first we need to know the tile extend of input dataset::
+And the last preparation step is to create a basic metainformation about tiles - tileindex.
+For this, we first need to know tile extents of the input dataset::
 
     $ mapproxy-calipers copernicus-dem/dem melown2015
 
@@ -128,8 +128,7 @@ For this, first we need to know the tile extend of input dataset::
     range: 7,15 34,21:35,22
     position: obj,15.474967,49.803826,float,0.000000,0.000000,-90.000000,0.000000,649246.827847,55.000000
     
-Now we can run ``mapproxy-tiling`` to calculate the tiling schema for our input
-data::
+Now we can run ``mapproxy-tiling`` to calculate the tileindex for our input data::
 
     mapproxy-tiling copernicus-dem --referenceFrame melown2015 --lodRange 7,15 --tileRange 15/8742,5480:9050,5657
 
@@ -140,7 +139,7 @@ data::
 Setting up Urban atlas dataset
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We are going to relay on the OGC WMS, maintained  by `European Environment Agency <https://www.eea.europa.eu/>`_. The service URL is ``http://image.discomap.eea.europa.eu/arcgis/services/Corine/CLC2012/MapServer/WmsServer``. We use `GDAL <http://gdal.org>`_ to generate file needed for MapProxy input::
+We are going to rely on the OGC WMS, maintained  by `European Environment Agency <https://www.eea.europa.eu/>`_. The service URL is ``http://image.discomap.eea.europa.eu/arcgis/services/Corine/CLC2012/MapServer/WmsServer``. We use `GDAL <http://gdal.org>`_ to generate file needed for MapProxy input::
 
     $ gdalinfo "WMS:http://image.discomap.eea.europa.eu/arcgis/services/Corine/CLC2012/MapServer/WmsServer"
 
@@ -184,7 +183,7 @@ Having the file at your hand, we can finally configure our datasets.
 
 Configuring Open landuse layer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The same approach we shall use for the Open Landuse layer, the input URL is
+We shall use the same approach for the Open Landuse layer, the input URL is
 http://gis.lesprojekt.cz/cgi-bin/mapserv?map=/home/dima/maps/olu/european_openlandusemap.map
 (provided by `SDI4Apps <http://sdi4apps.eu/>`_ project. The final XML can be
 downloaded :download:`projects/corine/openlanduse.xml`.
@@ -203,7 +202,7 @@ Don't forget to use ``mapproxy-calipers`` to obtain tile ranges.
 Configuring mapproxy
 ^^^^^^^^^^^^^^^^^^^^
 
-For Mapproxy we use the same configuration file, we did in previous examples.
+For Mapproxy we use the same configuration file we used in previous examples.
 The configuration file should be stored in ``openlanduse/`` directory too:
 :download:`projects/corine/mapproxy.cfg`
 
@@ -211,11 +210,11 @@ The configuration file should be stored in ``openlanduse/`` directory too:
 
 Running Mapproxy
 ^^^^^^^^^^^^^^^^
-Mapproxy can be run using::
+Mapproxy is started by running::
 
     $ mapproxy --config mapproxy.cfg
 
-And we should obtain result similar to the picture, at http://localhost:3070/melown2015/surface/openlanduse/dem/
+We should obtain result similar to the picture, at http://localhost:3070/melown2015/surface/openlanduse/dem/
 
 .. figure:: images/corine-praha.png
     :width: 800px
