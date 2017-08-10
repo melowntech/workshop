@@ -140,8 +140,8 @@ If you're into the VTS fineprint, here is a bit of styling tricks you've just us
 Anothe point worth noticing: the streamable map you've just created is a fine example of the VTS mapproxy introspection capabilities. It combines four different resources: 1.) the nomenclature, which you've just defined, 2.) its style, 3.) the terrain (which the labels refer to in their introspection) and 4.) the orthomosaic (which the terrain refers to in its own introspection). Yes, introspection is quite powerful - but in the next section, we will move on to VTS storage views to give our map even more functionality.
 
 
-Search interface
-""""""""""""""""
+The Search Interface
+""""""""""""""""""""
 
 Search interfaces for maps go by the fancy name of *geocoding* these days, though if you want to sound even fancier, you might speak of `areocoding <https://en.wiktionary.org/wiki/areo->`_ in this particular case. 
 
@@ -177,7 +177,7 @@ and do
 
     $ curl http://localhost:8100/mars?q=Chasma&format=json&limit=1
 
-to test that togs is up and running. The output will be a single-element JSON array, familiar in format to everyone used to working with `OSM Nominatim <http://nominatim.openstreetmap.org/>_`. 
+to test that togs is up and running. The output will be a single-element JSON array, familiar in format to everyone used to working with `OSM Nominatim <http://nominatim.openstreetmap.org/>`_. 
 
 You might want to make sure that togs survives the reboot of your server. To do that, perform
 
