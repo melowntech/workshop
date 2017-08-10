@@ -17,7 +17,7 @@ GeoJSON
 
 GeoJSON is an open standard format designed for representing simple
 geographical features, along with their non-spatial attributes, based on
-JavaScript Object Notation. You can explore more
+JavaScript Object Notation. You can view the specs 
 `here <http://geojson.org/>`__.
 
 VTS Browser JS
@@ -25,7 +25,7 @@ VTS Browser JS
 
 The VTS Browser JS is a JavaScript WebGL rendering engine used and
 developed by `Melown Technologies SE <http://melown.com>`__ as part of
-the VTS 3D map streaming and rendering stack.
+the VTS 3D Technology Stack.
 
 Displaying the browser
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -81,15 +81,15 @@ code to make the browser run.
 
     startDemo();
 
-We created a map in place of the ``map-div`` and set the path to the ``map``
-that will be displayed. You can create your own map in `Melown
-Cloud <https://www.melown.com/cloud>`__. We set the
+We created a map in place of the ``map-div`` and set the ``map`` parameter
+to point to a map configuration we prepared in Melown Cloud for this purpose. 
+You can create your own map in `Melown Cloud <https://www.melown.com/cloud>`__. We set the
 `position <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#position>`__
 to San Francisco Golden Bridge. You can discover more about
 browser configuration parameters in
-`documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#definition-of-view>`__.
+`documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-API#options>`__.
 
-It is necessary to wait for the map to be loaded and then we can start with
+Once the map loads we can start with
 importing a GeoJSON. We achieve this by using the callback function
 ``onMapLoaded`` and registering it to listen for the ``map-loaded`` event.
 You should now see the following:
@@ -172,23 +172,19 @@ function mentioned earlier:
         // import GeoJSON data
         geodata.importGeoJson(json);
 
-        // this function is needed only when 'float' heights are used
-        // in case you use data with 'fix' height only then you can
-        // skip this function and call makeFreeLayer directly
         geodata.processHeights('node-by-precision', 62, onHeightsProcessed);
     }
 
 We create a ``geodata`` object with ``map.createGeodata()`` that we can 
-use to import a GeoJSON with ``geodata.importGeoJson(json)``.
+use to import a GeoJSON with ``geodata.importGeoJson(json, <mode = float>)``. During the
+import, the height of features is interpreted either as above the terrain
+(``float`` mode, default) or above ellipsoid (``fix`` mode). 
+If height are missing, 0 is assumed and therefore ``float`` should be used.
+``geodata.processHeights(...)`` must be called for every ``float`` data to 
+display them correctly.
 
-VTS Browser currently **does not support** importing **polygons**
+VTS Browser currently does not support importing polygons
 as a feature type.
-
-Notice that the data doesn't contain height information. Therefore in
-order to display our data correctly together with the terrain we need
-to process it. That's why ``geodata.processHeights(...)`` is called.
-
-When using data with a fixed height, processing heights can be skipped.
 
 .. code:: javascript
 
@@ -219,8 +215,8 @@ the newly created layers.
 Basic styling
 ~~~~~~~~~~~~~
 
-Let's start with a really basic one. We'll connect our point with violet
-line. To do so we'll change the style object to following:
+Let's start with a really basic one. We'll omit point data for now
+and just display a magenta line. To do so we'll change the style object to following:
 
 ::
 
@@ -240,30 +236,30 @@ line. To do so we'll change the style object to following:
 
    Basic styling
 
-``style`` now contains property ``layers`` which is works as container
-component for all layers we want to add to map. Direct children of
-``layers`` can have totally arbitrary names. In example above I've added
-one layer group and named it ``track-line``. Layer group can have
+``style`` now contains property ``layers`` which works as a container
+component for all style layers we want to use. Direct children of
+``layers`` can have arbitrary names. In the example above we've added
+one style layer and named it ``track-line``. Style layer can have
 multiple properties you can check them
 `here <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#layers-structure>`__.
 Most important one is ``filter``.
 
-Filter used to select features from geojson to which we want to apply
-set of display rules described in current group. In current example we
+Filter is used to select features from geojson to which we want to apply
+set of display rules described in current style layer. In current example we
 are applying display rules to all lines. This filter selects everything
-from features where type equals line. With ``"line":true`` we tell that
+from features where ``type`` equals ``line``. The ``"line":true`` means
 we want to display current feature as a line. ``line-width`` denominates
-line width. And finally we set line color to violet with ``line-color``
-which accepts RGBA values as array.
+line width. And finally we set line color to magenta with ``line-color``
+which accepts RGBA values as an array.
 
-You can find definitive documentation for styles
+You can find comprehensive documentation for styles
 `here <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`__.
 
 Advanced styling
 ~~~~~~~~~~~~~~~~
 
-You can notice that added line dives under the surface. This happens due
-to imprecise interpolation of line height. We can fix this by adding
+You may have noticed that line dives under the surface. This happens due
+to interpolation of line height between points. We can fix this by adding
 ``zbuffer-offset`` to ``track-line`` layer. Try to add
 ``"zbuffer-offset": [-0.5, 0, 0]`` and see the difference.
 
@@ -303,9 +299,9 @@ Now we'll improve line's visual style by adding shadow to it.
 
 Okay so far we have managed to visualize feature of type line. But if we
 go back to our sample GeoJSON data we'll notice that it contains feature
-of type point as well. We'll focus to visualize that one now.
+of type point as well. We'll focus on visualizing that one now.
 
-We'll visualize the place with green circle and it's title displayed
+We'll make the point appear as a green circle with it's title displayed
 above it.
 
 .. code:: javascript
@@ -318,11 +314,24 @@ above it.
             "icons": 'http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png'
         },
         "layers": {
-             "track-line": { ...},
-             "track-shadow": { ... },
+             "track-line" : {
+                "filter" : ["==", "#type", "line"],
+                "line": true,
+                "line-width" : 4,
+                "line-color": [255,0,255,255],
+                "zbuffer-offset" : [-0.5,0,0],
+                "z-index" : -1
+            },
+            "track-shadow" : {
+                "filter" : ["==", "#type", "line"],
+                "line": true,
+                "line-width" : 20,
+                "line-color": [0,0,0,120],
+                "zbuffer-offset" : [-0.5,0,0],
+            },
          
-             // add new style for point
-             "place" : {
+            // added new style for point
+            "place" : {
                     "filter":["==", "#type", "point"],
                     
                     "icon": true,
@@ -336,11 +345,12 @@ above it.
                     "label-source": "$title",
                     "label-offset": [0,-20],
                     "zbuffer-offset" : [-1,0,0]
-              }
-    }
+            }
+        }
+    }; 
 
-I've added 2 new properties to ``style``. The ``bitmap.icons`` defines
-url with resource to overlay icon. In ``constants`` we can define
+We've added 2 new properties to ``style``. The ``bitmap.icons`` defines
+url with overlay icon resource. In ``constants`` we define
 variables that can be reused trough whole style object. Here we define
 constant ``@icon-marker`` and select rectangle out of ``icons`` png.
 First two numbers in array define top left corner and last two numbers
@@ -349,9 +359,9 @@ bottom right corner in image coordinates.
 We've also added new layer group ``place`` to ``layers``. Notice that
 now we have used different ``filter`` to select all points instead. For
 ``icon-source`` we have used defined constant. Notice that for
-``label-source`` we used ``$title``. This tells layer group to search
-for value defined in GeoJSON feature properties. Rest of group
-properties should be self-explanatory.
+``label-source`` we used ``$title``. This means that contents of point's
+``title`` property should be used as label. Rest of the style
+properties are self-explanatory.
 
 .. figure:: ./geojson-track-point.png
    :alt: Track with point
@@ -362,4 +372,4 @@ Thats it for now, you've made it to the end :)
 
 In the `next
 tutorial <http://vtsdocs.melown.com/en/latest/tutorials/geojson-part2.html>`__
-we'll have a look at the loading from url and extend the track.
+we'll have a look at loading extra data from url and extending the track.
