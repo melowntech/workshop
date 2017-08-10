@@ -192,7 +192,8 @@ To make your Mars website aware of your brand new search API, go back to the map
 
     "browserOptions": {
         "controlSearchSrs": "+proj=longlat +a=3396190 +b=3376200 +no_defs",
-        "controlSearchUrl": "http://<your-server>:8100/mars?q={value}&format=json&limit=20"
+        "controlSearchUrl": "http://<your-server>:8100/mars?q={value}&format=json&limit=20",
+        "controlSearchFilter": false 
     }
 
 Do not forget to replace ``<your-server>`` above with your server's hostname or IP address.
