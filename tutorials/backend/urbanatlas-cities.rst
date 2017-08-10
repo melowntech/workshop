@@ -3,7 +3,7 @@
 Displaying Open Landuse map over 3D data
 ----------------------------------------
 
-In this tutorial we combine 3D data of a Czech cities and the Corine Land Cover
+In this tutorial we combine 3D data of Czech cities and the Corine Land Cover
 / Open Landuse datasets from the :ref:`corine-example`.
 
 .. note:: Czech Cities 3D is proprietary dataset, provided by `Melown Technologies <https://melown.com>`_. Please contact Melown Technologies in order to get permission for the dataset usage.
@@ -16,8 +16,8 @@ instance is up and running, just as shown in the example :ref:`corine-example`.
 Filling the storage
 ^^^^^^^^^^^^^^^^^^^
 
-To work with static True3D data and/or merge various surfaces together, we must
-first add them to the storage.  Storage is administered by tool ``vts`` that
+To work with static True3D data and/or fuse various surfaces together, we must
+add them to the storage.  Storage is administered by tool ``vts`` that
 takes care of adding tilesets to storage. The :ref:`glue`\s will not be
 generated, since we are using just one surface.
 
