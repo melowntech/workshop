@@ -1,13 +1,19 @@
 .. _mars-peaks-and-valleys-searchable-nomenclature:
 
-Mars Peaks and Valleys Part 2: Searchable Nomenclature
-------------------------------------------------------
+
+.. image:: mars-peaks-and-valleys2-banner.jpg 
+
+|
+|
+
+Mars Part 2: Searchable Labels
+------------------------------
 
 In our :doc:`first Mars tutorial <mars-peaks-and-valleys>`, you used `VTS 3D geospatial software stack <https://melown.com/products/vts>`_ to  stream an interactive, browseable map of Mars from your own system using public domain data sources. That was fun.
 
 But wait a minute - is your virtual Mars model a real *map*? A map should have labels, so that aliens (YOU in this case) can use it to get around. After all, Mars is one of the best researched and documented bodies in the solar system so its nomenclature is readily available. And by the long standing standard of digital cartography, a map nomenclature should be searchable.
 
-Right on. In following this tutorial, you are going to turn your 3D model of Mars into a real map, complete with labels and search functionality.
+In following this tutorial, you are going to turn your 3D model of Mars into a real map, complete with labels and search functionality.
 
 
 Preparation
@@ -35,9 +41,9 @@ Make sure you use the ``vts`` system user for data manipulation commands in the 
 
 The Labels
 """"""""""
-In creating your Mars 3D map you heavily relied on VTS mapproxy and on its ability to stream 2D map tiles and 3D VTS surfaces based on DEMs. Now we will make use of another mapproxy feature: the ability to convert geographic features to VTS geodata free layers.
+In creating your first Mars website you heavily relied on VTS mapproxy and on its ability to stream 2D map tiles and 3D VTS surfaces based on DEMs. Now you will make use of another mapproxy feature: the ability to convert geographic features to VTS geodata free layers.
 
-Your Mars labels will be based on offcial `IAU nomenclature <https://planetarynames.wr.usgs.gov/Page/MARS/target>`_, available as an ESRI shapefile. Download and unzip it to your mapproxy data directory::
+Your Mars labels will be based on the offcial `IAU nomenclature <https://planetarynames.wr.usgs.gov/Page/MARS/target>`_, available as an ESRI shapefile. Download and unzip it to your mapproxy data directory::
 
     $ cd && wget http://planetarynames.wr.usgs.gov/shapefiles/MARS_nomenclature.zip
     $ cd mapproxy/datasets/mars-case-study
@@ -88,7 +94,7 @@ Create a resource configuration file at ``/etc/vts/mapproxy/mars-case-study.d/ia
 
 In VTS terminology, you've created a monolithic geodata free layer definition. Among other things, it defines the path to the feature dataset (``definition.dataset``) and elevation DEM (``definition.demDataset``). 
 
-Geodata free layers are stylable, in a manner remotely resembling CSS. The style file is referenced in the above resource definition (``definition.styleUrl``). The file does not exist yet. Fix this by putting the following into ``~/mapproxy/datasets/mars-case-study/iau-mars-nomenclature.style``::
+Geodata free layers are stylable in a manner remotely resembling CSS. The style file is referenced in the above resource definition (``definition.styleUrl``). The file does not exist yet. Fix this by putting the following into ``~/mapproxy/datasets/mars-case-study/iau-mars-nomenclature.style``::
 
 
     {
@@ -118,7 +124,7 @@ VTS Mapproxy will process this configuration automatically within five minutes. 
 
     sudo /etc/init.d/vts-backend-mapproxy force-update 
 
-All right now. Point your browser to
+All right, time to see this in action. Point your browser to
 
 ::
 
@@ -129,23 +135,23 @@ Here is what you should see:
 .. image:: mars-peaks-and-valleys-labels.jpg
 
 
-If you're into the VTS fineprint, here is a bit of styling tricks you've just used: the ``diameter`` property from the IAU feature dataset (which contains the feature size in kilometers) in conjunction with the "visibility-abs" and "visibility-rel" layer properties makes sure that labels are visible either 1.) when they are bigger than two kilometers and occupy more then 8 percent and less than 80 percent of the current vertical view extent, or 2.) they are smaller than two kilometers and the vertical view extent is less than 120 kilometers. 
+If you're into the VTS fineprint, here is a bit of styling tricks you've just used: the ``diameter`` property from the IAU feature dataset (which contains the feature size in kilometers) in conjunction with the "visibility-abs" and "visibility-rel" layer properties makes sure that labels are visible either 1.) when they are bigger than two kilometers and occupy more then 8 percent and less than 80 percent of the current vertical view extent, or 2.) they are smaller than two kilometers and the vertical view extent is less than 120 kilometers. These simple rules ensure that the labels exhibit just the right level of visual density for the map to be informative while avoiding visual clutter. 
 
-Also, the streamable map you've just created is a fine example of the VTS mapproxy introspection capabilities. Your map combines four different resources: 1.) the nomenclature, which you've just defined, 2.) its style, 3.) the terrain (which the labels refer to in their introspection) and 4.) the orthomosaic (which the terrain refers to in its own introspection). Yes, introspection is quite powerful - but in the next section, we will move on to VTS storage views to give our map even more functionality.
+Anothe point worth noticing: the streamable map you've just created is a fine example of the VTS mapproxy introspection capabilities. It combines four different resources: 1.) the nomenclature, which you've just defined, 2.) its style, 3.) the terrain (which the labels refer to in their introspection) and 4.) the orthomosaic (which the terrain refers to in its own introspection). Yes, introspection is quite powerful - but in the next section, we will move on to VTS storage views to give our map even more functionality.
 
 
-Search
-""""""
+Search interface
+""""""""""""""""
 
-Search interfaces for maps go by the fancy name of *geocoding*, though if you want to sound even fancier, you might speak of `*areocoding* <https://en.wiktionary.org/wiki/areo->`_ in this particular case. 
+Search interfaces for maps go by the fancy name of *geocoding* these days, though if you want to sound even fancier, you might speak of `areocoding <https://en.wiktionary.org/wiki/areo->`_ in this particular case. 
 
-Your search interface will make use of the same nomenclature file you've downloaded in the first part of this tutorial. You will use `togs <https://npmjs.org/togs>`_, a simiple nodescript, to turn this shapefile into a search server VTS clients can talk to.
+Your search interface will make use of the same nomenclature file you've downloaded in the first part of this tutorial. To turn this shapefile into a search server VTS clients can talk to, you will use `togs <https://npmjs.org/togs>`_, a simple Node.JS script.
 
 Install togs as follows::
 
     $ npm install togs
 
-Togs configuration file is located at ``$(npm root)/togs/conf/togs.conf``. Add the following snippet to it::
+Togs configuration file is located at ``$(npm root)/togs/conf/togs.conf``. Open it and the following snippet to it::
 
     [interface.mars]
     dataset = /var/vts/mapproxy/datasets/mars-case-study/MARS_nomenclature.shp
@@ -168,13 +174,15 @@ Start togs via pm2 process manager::
 and do
 
 ::
+
     $ curl http://localhost:8100/mars?q=Chasma&format=json&limit=1
 
-to test that togs is up and running. The output will be a single-element JSON array, familiar to everyone used to working with Nominatim. 
+to test that togs is up and running. The output will be a single-element JSON array, familiar in format to everyone used to working with `OSM Nominatim <http://nominatim.openstreetmap.org/>_`. 
 
 You might want to make sure that togs survives the reboot of your server. To do that, perform
 
 ::
+
     $ pm2 startup systemd
 
 and run the last line of the output as superuser.
@@ -187,6 +195,8 @@ To make your Mars website aware of your brand new search API, go back to the map
         "controlSearchUrl": "http://<your-server>:8100/mars?q={value}&format=json&limit=20"
     }
 
+Do not forget to replace ``<your-server>`` above with your server's hostname or IP address.
+
 To make VTS mapproxy instantly aware of your changes, do
 
 ::
@@ -198,15 +208,17 @@ Go back to your website at
 
 ::
 
-http://<your server>:8070/mapproxy/mars-qsc/geodata/mars-case-study/iau-mars-nomenclature/
+    http://<your server>:8070/mapproxy/mars-qsc/geodata/mars-case-study/iau-mars-nomenclature/
 
-If all went well, your map will now include a search window:
+If all went well, your map now includes a search field:
 
 .. image:: mars-peaks-and-valleys-search-window.jpg
 
-That's it! Your own Mars website has now all officially known place labels, indexed and searchable. Search for the characteristic Mars features (*chaos*, *chasma*, or *mons*, *crater*), or simply fool around with the interface. 
+You can search for the characteristic Martian topographic feature types (*chaos*, *chasma*, *mons*, or *crater*). Or you can search for the nationalities (*Czech*, *German*,*Dutch*) to find out what nations discovered and named the individual features. There is lots of fun ways to fool around. 
 
-VTS has some more yet uncovered features to offer which will make your Mars website even more interesting. We shall explore those in some of our next tutorials.
+That's it! Your own Mars website sports almost 2000 official place labels, indexed and searchable.  
+
+VTS has some more yet uncovered features to offer which can make your Mars website even more interesting. We shall explore those in some of our next tutorials.
 
 
  
