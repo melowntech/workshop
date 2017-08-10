@@ -11,4 +11,6 @@ Some more VTS case studies and tutorials are provided below.
    vtsbackend
    mars-peaks-and-valleys
    cadastre
+   geojson
+   geojson-part2
 ..   mars2
