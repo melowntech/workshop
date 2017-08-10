@@ -110,7 +110,7 @@ And finally, configure the mapproxy resource. Create a resource configuration fi
     }]
 
 
-This resource configuration file creates a VTS mapproxy tiled map service resource based on the dataset provided. Among other things, it tells VTS mapproxy that the resource shall be known under "mars-case-study-mars-viking-mdim21" group/id combination and it uses the tile hierarchy defined by ``mars-qsc`` reference frame. The ``lodRange`` and ``tileRange`` are merely a transformation of the following line you've seen in the output of mapproxy-calipres above::
+This resource configuration file creates a VTS mapproxy tiled map service resource based on the dataset provided. Among other things, it tells VTS mapproxy that the resource shall be known under "mars-case-study-mars-viking-mdim21" group/id combination and it uses the tile hierarchy defined by ``mars-qsc`` reference frame. The ``lodRange`` and ``tileRange`` are merely a transformation of the following line you've seen in the output of mapproxy-calipers above::
 
   range: 2,9 0,0:3,2
 
