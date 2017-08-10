@@ -1,3 +1,5 @@
+.. _setting-vts-backend:
+
 Setting up Your Own VTS Backend Environment
 -------------------------------------------
 
@@ -59,11 +61,11 @@ Please note that depending on the speed of your hardware, the initial generation
 Under the Hood
 """"""""""""""
 
-Here is some information you might find useful when exploring your fresh reated VTS backend environment further. 
+Here is some information you might find useful when exploring your fresh related VTS backend environment further. 
 
-Your VTS backend evironment consists of four components:
+Your VTS backend environment consists of four components:
 
-* the *registry*, which holds the deinition of coordinate systems and reference frames known to VTS,
+* the *registry*, which holds the definition of coordinate systems and reference frames known to VTS,
 * the *mapproxy*, which provides for on-the-fly generation and streaming of bound layers, surfaces and free layers,
 * the *vtsd*, which is an HTTP server streaming static content from VTS storage
 * the *tools*, which provide tools to create and maintain a VTS storage and interface with it
@@ -78,7 +80,7 @@ The key elements of VTS backend data model are
 
 You may examine the available reference frames at ``/opt/vts/etc/registry/referenceFrames.json``.
 
-Mapproxy resourcs are defined by ``/etc/vts/mapproxy/resources.json``.
+Mapproxy resources are defined in ``/etc/vts/mapproxy/resources.json``.
 
 VTS Backend creates a storage for every reference frame in registry during installation. The storage directories are located at ``/var/vts/store/stage.<referenceFrame>``. *Stage* is merely a traditional name for VTS storage. They are not intended for direct manipulation, use a utility called `vts` (part of VTS tools) instead.  
 

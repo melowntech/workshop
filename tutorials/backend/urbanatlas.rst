@@ -12,16 +12,35 @@ Publishing WMS along with Corine digital elevation model
 In this example, standard cartography map (Urban atlas) is laid over a digital
 elevation model for better representation of the data in space.
 
+.. note:: We do assume, you setup your environment as described in
+    :ref:`settting-vts-backend`.
+
+Setting up mapproxy resources
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For this step, the most important locations are ``/var/vts/mapproxy/datasets/`` where all inputs for mapproxy are stored and
+``/etc/vts/mapproxy/resource.json`` where you will place configuration snippet for each mapproxy resource.
+
+During resource preparation it is advisable to turn off the mapproxy, so that you have time to correct mistakes in your
+configuration
+
+.. code-block:: bash
+  
+  sudo /etc/init.d/vts-backend-mapproxy stop
+
+As the whole vts-backend runs under the vts user, it is advisable to switch to the vts user so that all files are created with the right privileges and ownership.
+
+.. code-block:: bash
+
+  sudo -iu vts
+
+
 Preparing workspace
 ^^^^^^^^^^^^^^^^^^^
 
 First we create project directory::
 
-    mkdir openlanduse
-
-Then, we shall create datasets directory::
-
-    mkdir openlanduse/datasets
+    mkdir -p /var/vts/mapproxy/datasets/openlanduse
 
 Input DEM data
 ^^^^^^^^^^^^^^
@@ -54,7 +73,9 @@ region:
 * eudem_dem_5deg_n55e025.tif
 
 You should download the data you need and save them in the
-``openlanduse/datasets/copernicus/rasters`` directory.
+``/var/vts/mapproxy/datasets/openlanduse/copernicus/rasters`` directory (do not
+forget to ``mkdir -p
+/var/vts/mapproxy/datasets/openlanduse/copernicus/rasters``).
 
 Input Open landuse data
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -72,7 +93,7 @@ Setting up DEM dataset
 First thing you have to do after downloading the data, is to create virtual
 raster with help of GDAL::
 
-    $ cd openlanduse/datasets/copernicus/rasters
+    $ cd /var/vts/mapproxy/datasets/openlanduse/copernicus/rasters
     $ ls 
 
     eudem_dem_5deg_n40e010.tif  eudem_dem_5deg_n45e020.tif  eudem_dem_5deg_n55e010.tif
@@ -101,7 +122,7 @@ And have a look at the data in QGIS
 
 Next, we have to create virtual overviews::
 
-    $ cd openlanduse/datasets/
+    $ cd /var/vts/mapproxy/datasets/openlanduse/
     $ mkdir copernicus-dem
     $ generatevrtwo rasters/eudem_dem.tiff copernicus-dem/elev --tileSize 1024x1024 --resampling dem
     $ generatevrtwo rasters/eudem_dem.tiff copernicus-dem/elev.min --tileSize 1024x1024 --resampling min
@@ -141,6 +162,7 @@ Setting up Urban atlas dataset
 
 We are going to rely on the OGC WMS, maintained  by `European Environment Agency <https://www.eea.europa.eu/>`_. The service URL is ``http://image.discomap.eea.europa.eu/arcgis/services/Corine/CLC2012/MapServer/WmsServer``. We use `GDAL <http://gdal.org>`_ to generate file needed for MapProxy input::
 
+    $ cd /var/vts/mapproxy/datasets/openlanduse/
     $ gdalinfo "WMS:http://image.discomap.eea.europa.eu/arcgis/services/Corine/CLC2012/MapServer/WmsServer"
 
         Driver: WMS/OGC Web Map Service
@@ -191,7 +213,7 @@ downloaded :download:`projects/corine/openlanduse.xml`.
 Configuring resources
 ^^^^^^^^^^^^^^^^^^^^^
 
-We can now create the ``resources.json`` file, containing DEM and cover Corine
+We can now edit the ``/etc/vts/mapproxy/resources.json`` file containing DEM and cover Corine
 Land Cover datasets. The file :download:`projects/corine/resources.json` should
 be stored in ``openlanduse/`` directory:
 
@@ -199,6 +221,7 @@ be stored in ``openlanduse/`` directory:
 
 Don't forget to use ``mapproxy-calipers`` to obtain tile ranges.
 
+<<<<<<< 7114f952eb51ebce72872daa2efb93d20a9a4ef5
 Configuring mapproxy
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -211,10 +234,15 @@ The configuration file should be stored in ``openlanduse/`` directory too:
 Running Mapproxy
 ^^^^^^^^^^^^^^^^
 Mapproxy is started by running::
+=======
+Running Mapproxy
+^^^^^^^^^^^^^^^^
+Mapproxy can be started again using::
 
-    $ mapproxy --config mapproxy.cfg
+    $ sudo /etc/init.d/vts-backend-mapproxy start
 
-We should obtain result similar to the picture, at http://localhost:3070/melown2015/surface/openlanduse/dem/
+And we should obtain result similar to the picture, at 
+http://localhost:8070/mapproxy/melown2015/surface/openlanduse/dem/
 
 .. figure:: images/corine-praha.png
     :width: 800px
