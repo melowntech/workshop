@@ -1,8 +1,8 @@
-Import GeoJSON with Melown VTS Browser JS
-=========================================
+Importing GeoJSON with VTS Browser JS
+=====================================
 
 This tutorial provides a step by step guide how to import and visualize
-sample GeoJSON data with `Melown VTS Browser
+sample GeoJSON data with `VTS Browser
 JS <https://github.com/Melown/vts-browser-js>`__.
 
 In detail we'll take a look how to display the VTS browser on a webpage. Next
@@ -30,7 +30,7 @@ the VTS 3D map streaming and rendering stack.
 Displaying the browser
 ~~~~~~~~~~~~~~~~~~~~~~
 
-To display the Melown VTS Browser, add the necessary CSS and
+To display the VTS Browser, add the necessary CSS and
 JavaScript resources and create a ``div`` with an id like ``map-div``.
 
 .. code:: html
@@ -91,7 +91,7 @@ browser configuration parameters in
 
 It is necessary to wait for the map to be loaded and then we can start with
 importing a GeoJSON. We achieve this by using the callback function
-``onMapLoaded`` and registering it to listen for ``map-loaded`` event.
+``onMapLoaded`` and registering it to listen for the ``map-loaded`` event.
 You should now see the following:
 
 .. figure:: ./geojson-initial.png
@@ -102,7 +102,7 @@ You should now see the following:
 Adding GeoJSON data
 ~~~~~~~~~~~~~~~~~~~
 
-Let's assume we have following GeoJSON data containing the sample trek
+Let's assume we have the following GeoJSON data containing a sample trek
 trough Golden Gate Bridge Vista Point.
 
 .. code:: javascript
@@ -153,12 +153,12 @@ trough Golden Gate Bridge Vista Point.
         ]
     }
 
-Data contains two features. One point and one line represented by list
+The data contains two features. One point and one line represented by a list
 of coordinates. In addition to geometry representation every feature can
-have custom properties such as title as in the current example. We'll
+have custom properties such as a title as in the current example. We'll
 take advantage of this later in the tutorial.
 
-To load the data into browser we need to implement the ``onMapLoaded()``
+To load the data into the browser we need to implement the ``onMapLoaded()``
 function mentioned earlier:
 
 .. code:: javascript
@@ -166,31 +166,29 @@ function mentioned earlier:
     function onMapLoaded() {
         map = browser.map;
         
-        //create geodata object
+        // create geodata object
         geodata = map.createGeodata();
 
-        //import GeoJSON data
+        // import GeoJSON data
         geodata.importGeoJson(json);
 
-        //this function is needed only when 'float' heights are used
-        //in case you use data with 'fix' height only then you can
-        //skip this function and call makeFreeLayer directly
+        // this function is needed only when 'float' heights are used
+        // in case you use data with 'fix' height only then you can
+        // skip this function and call makeFreeLayer directly
         geodata.processHeights('node-by-precision', 62, onHeightsProcessed);
     }
 
-First we've saved reference for loaded map and keep it simpler for later
-use. Then create ``geodata`` object with ``map.createGeodata()``. Once
-we have geodata object we can use it to import GeoJSON with
-``geodata.importGeoJson(json)``.
+We create a ``geodata`` object with ``map.createGeodata()`` that we can 
+use to import a GeoJSON with ``geodata.importGeoJson(json)``.
 
-Melown VTS Browser currently **doesn't support** to import **polygons**
-as feature type.
+VTS Browser currently **does not support** importing **polygons**
+as a feature type.
 
-Notice that given data doesn't contain height information. Therefore in
-order to display our data correctly together with terrain we need
-process it. That's why ``geodata.processHeights(...)`` is called.
+Notice that the data doesn't contain height information. Therefore in
+order to display our data correctly together with the terrain we need
+to process it. That's why ``geodata.processHeights(...)`` is called.
 
-When we use data with fixed height, processing heights can be skipped.
+When using data with a fixed height, processing heights can be skipped.
 
 .. code:: javascript
 
@@ -200,23 +198,23 @@ When we use data with fixed height, processing heights can be skipped.
             // add your style here
         };
 
-        //make free layer
+        // make free layer
         var freeLayer = geodata.makeFreeLayer(style);
 
-        //add free layer to the map
+        // add free layer to the map
         map.addFreeLayer('geodatatest', freeLayer);
 
-        //add free layer to the list of free layers
-        //which will be rendered on the map
+        // add free layer to the list of free layers
+        // which will be rendered on the map
         let view = map.getView();
         view.freeLayers.geodatatest = {};
         map.setView(view);
     }
 
-Function on ``onHeightsProcessed()`` creates free layer out of GeoJSON
-data and adds our custom style to it. Now you have all data rendered,
+The function ``onHeightsProcessed()`` creates a free layer out of the GeoJSON
+data and adds our custom style to it. Now you have all the data rendered,
 but it's still invisible because we need to first add some styles to
-newly created layers.
+the newly created layers.
 
 Basic styling
 ~~~~~~~~~~~~~
