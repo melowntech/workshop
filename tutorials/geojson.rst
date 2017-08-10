@@ -1,7 +1,7 @@
-Tutorial: Import GeoJSON with Melown VTS Browser JS
-===================================================
+Import GeoJSON with Melown VTS Browser JS
+=========================================
 
-In this tutorial provides step by step guide how to import and visualize
+This tutorial provides step by step guide how to import and visualize
 sample GeoJSON data with `Melown VTS Browser
 JS <https://github.com/Melown/vts-browser-js>`__.
 
@@ -54,14 +54,12 @@ code to make browser run.
 
 .. code:: javascript
 
-    let browser = null;
-    let renderer = null;
-    let map = null;
-    let geodata = null;
+    var browser = null;
+    var renderer = null;
+    var map = null;
+    var geodata = null;
 
     function startDemo() {
-        
-        // parameter 'map' sets path to the map which will be displayed
         browser = vts.browser('map-div', {
             map: 'https://cdn.melown.com/mario/store/melown2015/map-config/melown/VTS-Tutorial-map/mapConfig.json',
             position : [ 'obj', -122.48443455025, 37.83071587047, 'float', 0.00, 19.04, -49.56, 0.00, 1946.45, 55.00 ]
@@ -109,7 +107,7 @@ trough Golden Gate Bridge Vista Point.
 
 .. code:: javascript
 
-    const json = {
+    var json = {
         "type": "FeatureCollection",
         "features": [
             {
@@ -198,12 +196,12 @@ When we use data with fixed height, processing heights can be skipped.
 
     function onHeightsProcessed() {
 
-        const style = {
+        var style = {
             // add your style here
         };
 
         //make free layer
-        let freeLayer = geodata.makeFreeLayer(style);
+        var freeLayer = geodata.makeFreeLayer(style);
 
         //add free layer to the map
         map.addFreeLayer('geodatatest', freeLayer);
@@ -280,7 +278,7 @@ Now we'll improve line's visual style by adding shadow to it.
 
 .. code:: javascript
 
-    const style = {
+    var style = {
         layers: {
             "track-line" : {
                 "filter" : ["==", "#type", "line"],
@@ -314,7 +312,7 @@ above it.
 
 .. code:: javascript
 
-    const style = {
+    var style = {
         "constants": {
             "@icon-marker": ['icons', 6, 8, 18, 18]
         },
@@ -362,6 +360,8 @@ properties should be self-explanatory.
 
    Track with point
 
-Thats it. You've made it to the end :)
+Thats it for now, you've made it to the end :)
 
-In the next tutorial we'll have a look at the loading from url.
+In the `next
+tutorial <http://vtsdocs.melown.com/en/latest/tutorials/geojson-part2.html>`__
+we'll have a look at the loading from url and extend the track.
