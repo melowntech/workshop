@@ -137,13 +137,13 @@ The Terrain
 The 2D map you have just created is fun but you are after something more ambitious: a browsable 3D model of the planet. To achieve this, you need a global DEM. A good choice is 463m/px `Mars MGS MOLA Elevation Model <https://astrogeology.usgs.gov/search/map/Mars/GlobalSurveyor/MOLA/Mars_MGS_MOLA_DEM_mosaic_global_463m>`_, available again from USGS Astrogeology Science Center. Download it as follows::
 
     $ cd ~/mapproxy/datasets/mars-case-study
-    $ wget http://astropedia.astrogeology.usgs.gov/download/Mars/GlobalSurveyor/MOLA/ancillary/mola128_mola64_merge_90Nto90S_SimpCyl_clon0_LZW.tif    
+    $ wget https://planetarymaps.usgs.gov/mosaic/Mars_MGS_MOLA_DEM_mosaic_global_463m.tif
 
 Like the global mosaic, this dataset needs overviews to be handled efficiently. And unlike the global mosaic, you will need three different types of datasets created with different filters. Here they come::
 
     $ for resampling in min max cubicspline; do \ 
-        generatevrtwo --input mola128_mola64_merge_90Nto90S_SimpCyl_clon0_LZW.tif \
-            --output mola128_mola64_merge_90Nto90S_SimpCyl_clon0_LZW.$resampling \
+        generatevrtwo --input Mars_MGS_MOLA_DEM_mosaic_global_463m.tif \
+            --output Mars_MGS_MOLA_DEM_mosaic_global_463m.$resampling \
             --resampling $resampling --wrapx 1; done
 
 The ``--wrapx 1`` parameter indicates that the image is cyclical (as most global datasets for celestial bodies are) and defines the number of overlapping pixels on the sides of the mosaic. You may want to use ``gdalinfo`` utility to verify that the first and last columns in this mosaic are indeed identical.    
@@ -151,9 +151,9 @@ The ``--wrapx 1`` parameter indicates that the image is cyclical (as most global
 Now, create a directory to hold symbolic links to these datasets::
 
     $ mkdir mars-mola-dem && cd mars-mola-dem 
-    $ ln -s ../mola128_mola64_merge_90Nto90S_SimpCyl_clon0_LZW.cubicspline/dataset dem
-    $ ln -s ../mola128_mola64_merge_90Nto90S_SimpCyl_clon0_LZW.min/dataset dem.min
-    $ ln -s ../mola128_mola64_merge_90Nto90S_SimpCyl_clon0_LZW.max/dataset dem.max
+    $ ln -s ../Mars_MGS_MOLA_DEM_mosaic_global_463m.cubicspline/dataset dem
+    $ ln -s ../Mars_MGS_MOLA_DEM_mosaic_global_463m.min/dataset dem.min
+    $ ln -s ../Mars_MGS_MOLA_DEM_mosaic_global_463m.max/dataset dem.max
     $ cd .. 
 
 
