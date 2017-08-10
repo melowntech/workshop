@@ -51,7 +51,7 @@ Schema
 You might find this picture as useful reference in the future, while going
 through this tutorial. 
 
-.. figure:: images/VTS-architecture-final.svg
+.. figure:: images/VTS-architecture-final.png
     :width: 800px
 
     VTS 3D mapping stack architecture
