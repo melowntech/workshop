@@ -23,7 +23,7 @@ Make sure we have ``add-apt-repository`` and HTTPS apt transport available::
 
 Add ubuntugis ppa to your apt system::
 
-    $ sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+    $ sudo add-apt-repository ppa:ubuntugis/ppa
 
 Add Melown Tech's repository to your sources list::
 
