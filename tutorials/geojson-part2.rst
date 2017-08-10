@@ -1,5 +1,5 @@
-Tutorial: Import GeoJSON with Melown VTS Browser JS - Part II
-=============================================================
+Import GeoJSON with Melown VTS Browser JS - Part II
+===================================================
 
 This tutorial showcases how to import and visualize GeoJSON data via url
 and how to modify it programmatically afterwards.
