@@ -1,23 +1,23 @@
 Import GeoJSON with Melown VTS Browser JS
 =========================================
 
-This tutorial provides step by step guide how to import and visualize
+This tutorial provides a step by step guide how to import and visualize
 sample GeoJSON data with `Melown VTS Browser
 JS <https://github.com/Melown/vts-browser-js>`__.
 
-In detail we'll have a look how to display browser on the webpage. Next
-we'll load some GeoJSON data and display them. And at last we'll have
-sneak peak into possibilities of visual style customization.
+In detail we'll take a look how to display the VTS browser on a webpage. Next
+we'll load some GeoJSON data and display them. And finally we'll take a
+sneak peek into the possibilities of visual style customization.
 
-You can find code and `live demo <https://jsfiddle.net/1xf3bxz9/>`__ of
-this tutorial in JSFiddle.
+You can find the code and a `live demo <https://jsfiddle.net/1xf3bxz9/>`__ of
+this tutorial on JSFiddle.
 
 GeoJSON
 ~~~~~~~
 
 GeoJSON is an open standard format designed for representing simple
 geographical features, along with their non-spatial attributes, based on
-JavaScript Object Notation. You can discover more
+JavaScript Object Notation. You can explore more
 `here <http://geojson.org/>`__.
 
 VTS Browser JS
@@ -25,13 +25,13 @@ VTS Browser JS
 
 The VTS Browser JS is a JavaScript WebGL rendering engine used and
 developed by `Melown Technologies SE <http://melown.com>`__ as part of
-VTS 3D map streaming and rendering stack.
+the VTS 3D map streaming and rendering stack.
 
-Displaying browser
-~~~~~~~~~~~~~~~~~~
+Displaying the browser
+~~~~~~~~~~~~~~~~~~~~~~
 
-To display Melown VTS Browser on web page add necessary css and
-javascript resources and create ``div`` with id eg. ``map-div``.
+To display the Melown VTS Browser, add the necessary CSS and
+JavaScript resources and create a ``div`` with an id like ``map-div``.
 
 .. code:: html
 
@@ -49,8 +49,8 @@ javascript resources and create ``div`` with id eg. ``map-div``.
       </body>
     </html>
 
-Now that we've prepared our html structure we can add some javascript
-code to make browser run.
+Now that we've prepared our HTML structure we can add some JavaScript
+code to make the browser run.
 
 .. code:: javascript
 
@@ -81,23 +81,23 @@ code to make browser run.
 
     startDemo();
 
-We created a map in place of ``map-div`` and set the path to ``map``
-which will be displayed. You can create your own map in `Melown
-Cloud <https://www.melown.com/cloud>`__. We set
+We created a map in place of the ``map-div`` and set the path to the ``map``
+that will be displayed. You can create your own map in `Melown
+Cloud <https://www.melown.com/cloud>`__. We set the
 `position <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#position>`__
-to San Francisco Golden Bridge view point. You can discover more about
+to San Francisco Golden Bridge. You can discover more about
 browser configuration parameters in
 `documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#definition-of-view>`__.
 
-It's necessary to wait for map to be loaded and then we can start with
-GeoJSON importing. We'll achieve this by using callback function
+It is necessary to wait for the map to be loaded and then we can start with
+importing a GeoJSON. We achieve this by using the callback function
 ``onMapLoaded`` and registering it to listen for ``map-loaded`` event.
 You should now see the following:
 
 .. figure:: ./geojson-initial.png
    :alt: initial image
 
-   initial image
+   Initial image
 
 Adding GeoJSON data
 ~~~~~~~~~~~~~~~~~~~
