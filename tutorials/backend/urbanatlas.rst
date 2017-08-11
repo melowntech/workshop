@@ -9,10 +9,10 @@
 Publishing WMS along with Corine digital elevation model
 --------------------------------------------------------
 
-In this example, standard cartography map (Urban atlas) is laid over a digital
+In this example, a standard cartography map (Urban atlas) is laid over a digital
 elevation model for better representation of the data in space.
 
-.. note:: We do assume, you setup your environment as described in
+.. note:: We assume you have set up your environment as described in
     :ref:`settting-vts-backend`.
 
 Setting up mapproxy resources
@@ -22,13 +22,13 @@ For this step, the most important locations are ``/var/vts/mapproxy/datasets/`` 
 ``/etc/vts/mapproxy/resource.json`` where you will place configuration snippet for each mapproxy resource.
 
 During resource preparation it is advisable to turn off the mapproxy, so that you have time to correct mistakes in your
-configuration
+configuration:
 
 .. code-block:: bash
   
   sudo /etc/init.d/vts-backend-mapproxy stop
 
-As the whole vts-backend runs under the vts user, it is advisable to switch to the vts user so that all files are created with the right privileges and ownership.
+As the whole vts-backend runs under the vts user, it is advisable to switch to the vts user so all files are created with the right privileges and ownership.
 
 .. code-block:: bash
 
@@ -38,15 +38,15 @@ As the whole vts-backend runs under the vts user, it is advisable to switch to t
 Preparing workspace
 ^^^^^^^^^^^^^^^^^^^
 
-First we create project directory::
+First we create the project directory::
 
     mkdir -p /var/vts/mapproxy/datasets/openlanduse
 
 Input DEM data
 ^^^^^^^^^^^^^^
-In frame of the `Copernicus programme <http://www.copernicus.eu>`_, `Digital
+The `Copernicus programme <http://www.copernicus.eu>`_ publishes `Digital
 Elevation Model over Europe (EU-DEM)
-<https://www.eea.europa.eu/data-and-maps/data/eu-dem>`_ are published. The
+<https://www.eea.europa.eu/data-and-maps/data/eu-dem>`_. The
 EU-DEM is a 3D raster dataset with elevations captured at 1 arc second postings
 (2.78E-4 degrees) or about every 30 meters.
 
@@ -90,8 +90,8 @@ services.
 Setting up DEM dataset
 ^^^^^^^^^^^^^^^^^^^^^^
 
-First thing you have to do after downloading the data, is to create virtual
-raster with help of GDAL::
+The first thing you need to do after downloading the data is to create a virtual
+raster with the help of GDAL::
 
     $ cd /var/vts/mapproxy/datasets/openlanduse/copernicus/rasters
     $ ls 
@@ -103,7 +103,7 @@ raster with help of GDAL::
     eudem_dem_5deg_n45e010.tif  eudem_dem_5deg_n50e020.tif
     eudem_dem_5deg_n45e015.tif  eudem_dem_5deg_n50e025.tif
 
-Let's create virtual dataset::
+Let's create the virtual dataset::
 
     $ gdalbuildvrt eudem_dem.vrt *.tif
 
@@ -112,9 +112,9 @@ And have a look at the data in QGIS
 .. figure:: images/eudem_dem.png
     :width: 600px
 
-.. note:: In this example, we are going to process major part of Europe. This is
+.. note:: In this example, we are going to process a major part of Europe. This is
     usually very time and resources demanding operation. For some simple
-    project, make sure, your dataset is reasonable big, e.g. just one country.
+    project, make sure your dataset is reasonably sized, e.g., just one country.
     For "cutting out" just country borders, use ``gdalwarp``::
 
         gdalwarp -cutline COUNTRY.shp -crop_to_cutline -dstalpha eudem_dem.vrt eudem_COUNTRY.tiff
@@ -128,7 +128,7 @@ Next, we have to create virtual overviews::
     $ generatevrtwo rasters/eudem_dem.tiff copernicus-dem/elev.min --tileSize 1024x1024 --resampling min
     $ generatevrtwo rasters/eudem_dem.tiff copernicus-dem/elev.max --tileSize 1024x1024 --resampling max
 
-And as final step, links of names ``dem``, ``dem.min`` and ``dem.max`` have to
+And as a final step, links of names ``dem``, ``dem.min`` and ``dem.max`` have to
 be created::
 
     $ ln -s elev.max/dataset copernicus-dem/dem.max
