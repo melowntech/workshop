@@ -9,10 +9,10 @@
 Publishing WMS along with Corine digital elevation model
 --------------------------------------------------------
 
-In this example, a standard cartography map (Urban atlas) is laid over a digital
+In this example, standard cartography map (Urban atlas) is laid over a digital
 elevation model for better representation of the data in space.
 
-.. note:: We assume you have set up your environment as described in
+.. note:: We do assume, you setup your environment as described in
     :ref:`settting-vts-backend`.
 
 Setting up mapproxy resources
@@ -22,13 +22,13 @@ For this step, the most important locations are ``/var/vts/mapproxy/datasets/`` 
 ``/etc/vts/mapproxy/resource.json`` where you will place configuration snippet for each mapproxy resource.
 
 During resource preparation it is advisable to turn off the mapproxy, so that you have time to correct mistakes in your
-configuration:
+configuration
 
 .. code-block:: bash
   
   sudo /etc/init.d/vts-backend-mapproxy stop
 
-As the whole vts-backend runs under the vts user, it is advisable to switch to the vts user so all files are created with the right privileges and ownership.
+As the whole vts-backend runs under the vts user, it is advisable to switch to the vts user so that all files are created with the right privileges and ownership.
 
 .. code-block:: bash
 
@@ -38,15 +38,15 @@ As the whole vts-backend runs under the vts user, it is advisable to switch to t
 Preparing workspace
 ^^^^^^^^^^^^^^^^^^^
 
-First we create the project directory::
+First we create project directory::
 
     mkdir -p /var/vts/mapproxy/datasets/openlanduse
 
 Input DEM data
 ^^^^^^^^^^^^^^
-The `Copernicus programme <http://www.copernicus.eu>`_ publishes `Digital
+In frame of the `Copernicus programme <http://www.copernicus.eu>`_, `Digital
 Elevation Model over Europe (EU-DEM)
-<https://www.eea.europa.eu/data-and-maps/data/eu-dem>`_. The
+<https://www.eea.europa.eu/data-and-maps/data/eu-dem>`_ are published. The
 EU-DEM is a 3D raster dataset with elevations captured at 1 arc second postings
 (2.78E-4 degrees) or about every 30 meters.
 
@@ -90,11 +90,11 @@ services.
 Setting up DEM dataset
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The first thing you need to do after downloading the data is to create a virtual
-raster with the help of GDAL::
+First thing you have to do after downloading the data, is to create virtual
+raster with help of GDAL::
 
-    $ cd /var/vts/mapproxy/datasets/openlanduse/copernicus/rasters
-    $ ls 
+    cd /var/vts/mapproxy/datasets/openlanduse/copernicus/rasters
+    ls 
 
     eudem_dem_5deg_n40e010.tif  eudem_dem_5deg_n45e020.tif  eudem_dem_5deg_n55e010.tif
     eudem_dem_5deg_n40e015.tif  eudem_dem_5deg_n45e025.tif  eudem_dem_5deg_n55e015.tif
@@ -103,18 +103,18 @@ raster with the help of GDAL::
     eudem_dem_5deg_n45e010.tif  eudem_dem_5deg_n50e020.tif
     eudem_dem_5deg_n45e015.tif  eudem_dem_5deg_n50e025.tif
 
-Let's create the virtual dataset::
+Let's create virtual dataset::
 
-    $ gdalbuildvrt eudem_dem.vrt *.tif
+    gdalbuildvrt eudem_dem.vrt *.tif
 
 And have a look at the data in QGIS
 
 .. figure:: images/eudem_dem.png
     :width: 600px
 
-.. note:: In this example, we are going to process a major part of Europe. This is
+.. note:: In this example, we are going to process major part of Europe. This is
     usually very time and resources demanding operation. For some simple
-    project, make sure your dataset is reasonably sized, e.g., just one country.
+    project, make sure, your dataset is reasonable big, e.g. just one country.
     For "cutting out" just country borders, use ``gdalwarp``::
 
         gdalwarp -cutline COUNTRY.shp -crop_to_cutline -dstalpha eudem_dem.vrt eudem_COUNTRY.tiff
@@ -122,23 +122,23 @@ And have a look at the data in QGIS
 
 Next, we have to create virtual overviews::
 
-    $ cd /var/vts/mapproxy/datasets/openlanduse/
-    $ mkdir copernicus-dem
-    $ generatevrtwo rasters/eudem_dem.tiff copernicus-dem/elev --tileSize 1024x1024 --resampling dem
-    $ generatevrtwo rasters/eudem_dem.tiff copernicus-dem/elev.min --tileSize 1024x1024 --resampling min
-    $ generatevrtwo rasters/eudem_dem.tiff copernicus-dem/elev.max --tileSize 1024x1024 --resampling max
+    cd /var/vts/mapproxy/datasets/openlanduse/
+    mkdir copernicus-dem
+    generatevrtwo copernicus/rasters/eudem_dem.tiff copernicus-dem/elev --tileSize 1024x1024 --resampling dem
+    generatevrtwo copernicus/rasters/eudem_dem.tiff copernicus-dem/elev.min --tileSize 1024x1024 --resampling min
+    generatevrtwo copernicus/rasters/eudem_dem.tiff copernicus-dem/elev.max --tileSize 1024x1024 --resampling max
 
-And as a final step, links of names ``dem``, ``dem.min`` and ``dem.max`` have to
+And as final step, links of names ``dem``, ``dem.min`` and ``dem.max`` have to
 be created::
 
-    $ ln -s elev.max/dataset copernicus-dem/dem.max
-    $ ln -s elev.min/dataset copernicus-dem/dem.min
-    $ ln -s elev/dataset copernicus-dem/dem
+    ln -s elev.max/dataset copernicus-dem/dem.max
+    ln -s elev.min/dataset copernicus-dem/dem.min
+    ln -s elev/dataset copernicus-dem/dem
 
 And the last preparation step is to create a basic metainformation about tiles - tileindex.
 For this, we first need to know tile extents of the input dataset::
 
-    $ mapproxy-calipers copernicus-dem/dem melown2015
+    mapproxy-calipers copernicus-dem/dem melown2015
 
     2017-08-08 14:43:57 I3 [28036(main)]: [mapproxy-calipers] Config:
         dataset = "/home/jachym/src/melown/projects/openlanduse/datasets/corine/copernicus-dem/dem"
@@ -162,8 +162,8 @@ Setting up Urban atlas dataset
 
 We are going to rely on the OGC WMS, maintained  by `European Environment Agency <https://www.eea.europa.eu/>`_. The service URL is ``http://image.discomap.eea.europa.eu/arcgis/services/Corine/CLC2012/MapServer/WmsServer``. We use `GDAL <http://gdal.org>`_ to generate file needed for MapProxy input::
 
-    $ cd /var/vts/mapproxy/datasets/openlanduse/
-    $ gdalinfo "WMS:http://image.discomap.eea.europa.eu/arcgis/services/Corine/CLC2012/MapServer/WmsServer"
+    cd /var/vts/mapproxy/datasets/openlanduse/
+    gdalinfo "WMS:http://image.discomap.eea.europa.eu/arcgis/services/Corine/CLC2012/MapServer/WmsServer"
 
         Driver: WMS/OGC Web Map Service
         Files: none associated
@@ -187,7 +187,7 @@ some scale level, then vectors are used, therefore we need to generate XML,
 which will contain both subdatasets. We will take the first one as base for our
 XML template file::
 
-    $ gdal_translate -of WMS "WMS:http://image.discomap.eea.europa.eu/arcgis/services/Corine/CLC2012/MapServer/WmsServer?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=Corine%20Land%20Cover%202012%20vector&SRS=EPSG:4326&BBOX=-81.231079,-29.121654,93.489511,72.123059" corine-landcover.xml
+    gdal_translate -of WMS "WMS:http://image.discomap.eea.europa.eu/arcgis/services/Corine/CLC2012/MapServer/WmsServer?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=Corine%20Land%20Cover%202012%20vector&SRS=EPSG:4326&BBOX=-81.231079,-29.121654,93.489511,72.123059" corine-landcover.xml
 
 In the file :download:`projects/corine/corine-landcover.xml`, only the ``Corine
 Land Cover 2012 vector`` is stored. Let's open it with text editor and add the
@@ -225,7 +225,7 @@ Running Mapproxy
 ^^^^^^^^^^^^^^^^
 Mapproxy can be started again using::
 
-    $ sudo /etc/init.d/vts-backend-mapproxy start
+    sudo /etc/init.d/vts-backend-mapproxy start
 
 And we should obtain result similar to the picture, at 
 http://localhost:8070/mapproxy/melown2015/surface/openlanduse/dem/
