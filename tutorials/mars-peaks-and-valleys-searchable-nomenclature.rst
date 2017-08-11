@@ -175,7 +175,7 @@ and do
 
 ::
 
-    $ curl http://localhost:8100/mars?q=Chasma&format=json&limit=1
+    $ curl 'http://localhost:8100/mars?q=Chasma&format=json&limit=1'
 
 to test that togs is up and running. The output will be a single-element JSON array, familiar in format to everyone used to working with `OSM Nominatim <http://nominatim.openstreetmap.org/>`_. 
 
