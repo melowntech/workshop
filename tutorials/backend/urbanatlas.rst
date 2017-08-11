@@ -151,9 +151,10 @@ For this, we first need to know tile extents of the input dataset::
     range: 7,15 34,21:35,22
     position: obj,15.474967,49.803826,float,0.000000,0.000000,-90.000000,0.000000,649246.827847,55.000000
     
-Now we can run ``mapproxy-tiling`` to calculate the tileindex for our input data::
+Now we can run ``mapproxy-tiling`` to calculate the tileindex for our input data. Use your own numbers
+from ``range`` line of mapproxy-calipers output::
 
-    mapproxy-tiling copernicus-dem --referenceFrame melown2015 --lodRange 7,15 --tileRange 15/8742,5480:9050,5657
+    mapproxy-tiling copernicus-dem --referenceFrame melown2015 --lodRange 7,15 --tileRange 34,21:35,22
 
 .. note:: This step can take a very long time, in order to get all the tiles
         calculated.
