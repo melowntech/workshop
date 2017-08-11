@@ -93,8 +93,8 @@ Setting up DEM dataset
 The first thing you need to do after downloading the data is to create a virtual
 raster with the help of GDAL::
 
-    $ cd /var/vts/mapproxy/datasets/openlanduse/copernicus/rasters
-    $ ls 
+    cd /var/vts/mapproxy/datasets/openlanduse/copernicus/rasters
+    ls 
 
     eudem_dem_5deg_n40e010.tif  eudem_dem_5deg_n45e020.tif  eudem_dem_5deg_n55e010.tif
     eudem_dem_5deg_n40e015.tif  eudem_dem_5deg_n45e025.tif  eudem_dem_5deg_n55e015.tif
@@ -105,7 +105,7 @@ raster with the help of GDAL::
 
 Let's create the virtual dataset::
 
-    $ gdalbuildvrt eudem_dem.vrt *.tif
+    gdalbuildvrt eudem_dem.vrt *.tif
 
 And have a look at the data in QGIS
 
@@ -122,23 +122,23 @@ And have a look at the data in QGIS
 
 Next, we have to create virtual overviews::
 
-    $ cd /var/vts/mapproxy/datasets/openlanduse/
-    $ mkdir copernicus-dem
-    $ generatevrtwo rasters/eudem_dem.tiff copernicus-dem/elev --tileSize 1024x1024 --resampling dem
-    $ generatevrtwo rasters/eudem_dem.tiff copernicus-dem/elev.min --tileSize 1024x1024 --resampling min
-    $ generatevrtwo rasters/eudem_dem.tiff copernicus-dem/elev.max --tileSize 1024x1024 --resampling max
+    cd /var/vts/mapproxy/datasets/openlanduse/
+    mkdir copernicus-dem
+    generatevrtwo copernicus/rasters/eudem_dem.vrt copernicus-dem/elev --tileSize 1024x1024 --resampling dem
+    generatevrtwo copernicus/rasters/eudem_dem.vrt copernicus-dem/elev.min --tileSize 1024x1024 --resampling min
+    generatevrtwo copernicus/rasters/eudem_dem.vrt copernicus-dem/elev.max --tileSize 1024x1024 --resampling max
 
 And as a final step, links named ``dem``, ``dem.min`` and ``dem.max`` need to
 be created::
 
-    $ ln -s elev.max/dataset copernicus-dem/dem.max
-    $ ln -s elev.min/dataset copernicus-dem/dem.min
-    $ ln -s elev/dataset copernicus-dem/dem
+    ln -s elev.max/dataset copernicus-dem/dem.max
+    ln -s elev.min/dataset copernicus-dem/dem.min
+    ln -s elev/dataset copernicus-dem/dem
 
 And the last preparation step is to create a basic metainformation about tiles - tileindex.
 For this, we first need to know tile extents of the input dataset::
 
-    $ mapproxy-calipers copernicus-dem/dem melown2015
+    mapproxy-calipers copernicus-dem/dem melown2015
 
     2017-08-08 14:43:57 I3 [28036(main)]: [mapproxy-calipers] Config:
         dataset = "/home/jachym/src/melown/projects/openlanduse/datasets/corine/copernicus-dem/dem"
@@ -162,8 +162,8 @@ Setting up Urban atlas dataset
 
 We are going to rely on the OGC WMS, maintained  by `European Environment Agency <https://www.eea.europa.eu/>`_. The service URL is ``http://image.discomap.eea.europa.eu/arcgis/services/Corine/CLC2012/MapServer/WmsServer``. We use `GDAL <http://gdal.org>`_ to generate the file needed for MapProxy input::
 
-    $ cd /var/vts/mapproxy/datasets/openlanduse/
-    $ gdalinfo "WMS:http://image.discomap.eea.europa.eu/arcgis/services/Corine/CLC2012/MapServer/WmsServer"
+    cd /var/vts/mapproxy/datasets/openlanduse/
+    gdalinfo "WMS:http://image.discomap.eea.europa.eu/arcgis/services/Corine/CLC2012/MapServer/WmsServer"
 
         Driver: WMS/OGC Web Map Service
         Files: none associated
@@ -187,7 +187,7 @@ some scale level, then vectors are used, therefore we need to generate an XML co
 both subdatasets. We will take the first one as a base for our
 XML template file::
 
-    $ gdal_translate -of WMS "WMS:http://image.discomap.eea.europa.eu/arcgis/services/Corine/CLC2012/MapServer/WmsServer?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=Corine%20Land%20Cover%202012%20vector&SRS=EPSG:4326&BBOX=-81.231079,-29.121654,93.489511,72.123059" corine-landcover.xml
+    gdal_translate -of WMS "WMS:http://image.discomap.eea.europa.eu/arcgis/services/Corine/CLC2012/MapServer/WmsServer?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=Corine%20Land%20Cover%202012%20vector&SRS=EPSG:4326&BBOX=-81.231079,-29.121654,93.489511,72.123059" corine-landcover.xml
 
 In the file :download:`projects/corine/corine-landcover.xml`, only the ``Corine
 Land Cover 2012 vector`` is stored. Let's open it with a text editor and add the
@@ -225,7 +225,7 @@ Running Mapproxy
 ^^^^^^^^^^^^^^^^
 Mapproxy can be started again using::
 
-    $ sudo /etc/init.d/vts-backend-mapproxy start
+    sudo /etc/init.d/vts-backend-mapproxy start
 
 And we should obtain a result similar to the following picture, at 
 http://localhost:8070/mapproxy/melown2015/surface/openlanduse/dem/
