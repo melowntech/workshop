@@ -3,7 +3,7 @@
 
 .. _cadastre-tutorial:
 
-Displaying cadastre over 3D data
+Displaying Cadastre Over 3D Data
 --------------------------------
 
 In this tutorial we combine 3D data of a Czech village Jenštejn that we made available for this purpose with both raster
