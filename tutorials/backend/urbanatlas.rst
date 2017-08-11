@@ -214,27 +214,13 @@ Configuring resources
 ^^^^^^^^^^^^^^^^^^^^^
 
 We can now edit the ``/etc/vts/mapproxy/resources.json`` file containing DEM and cover Corine
-Land Cover datasets. The file :download:`projects/corine/resources.json` should
-be stored in ``openlanduse/`` directory:
+Land Cover datasets. Don't forget to use ``mapproxy-calipers`` to obtain tile ranges.
 
 .. literalinclude:: projects/corine/resources.json
 
-Don't forget to use ``mapproxy-calipers`` to obtain tile ranges.
+Alternatively, you can download complete configuration
+:download:`projects/corine/resources.json` and just replace your ``resources.json`` with it.
 
-<<<<<<< 7114f952eb51ebce72872daa2efb93d20a9a4ef5
-Configuring mapproxy
-^^^^^^^^^^^^^^^^^^^^
-
-For Mapproxy we use the same configuration file we used in previous examples.
-The configuration file should be stored in ``openlanduse/`` directory too:
-:download:`projects/corine/mapproxy.cfg`
-
-.. literalinclude:: projects/corine/mapproxy.cfg
-
-Running Mapproxy
-^^^^^^^^^^^^^^^^
-Mapproxy is started by running::
-=======
 Running Mapproxy
 ^^^^^^^^^^^^^^^^
 Mapproxy can be started again using::
