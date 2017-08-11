@@ -54,8 +54,7 @@
             "introspection": {
                 "position": ["obj",15.474967,49.803826, "float",0.000000,0.000000,-90.000000,0.000000,649246.827847,55.000000],
                 "tms": [
-                    {"group":"openlanduse", "id": "corine"},
-                    {"group":"openlanduse", "id": "openlanduse"}
+                    {"group":"openlanduse", "id": "corine"}
                 ]
             }
         }
