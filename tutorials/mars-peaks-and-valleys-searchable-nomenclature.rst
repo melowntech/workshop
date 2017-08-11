@@ -215,11 +215,11 @@ If all went well, your map now includes a search field:
 
 .. image:: mars-peaks-and-valleys-search-window.jpg
 
-You can search for the characteristic Martian topographic feature types (*chaos*, *chasma*, *mons*, or *crater*). Or you can search for the nationalities (*Czech*, *German*,*Dutch*) to find out what nations discovered and named the individual features. There is lots of fun ways to fool around. 
+You can search for the characteristic Martian topographic feature types (*chaos*, *chasma*, *mons*, or *crater*). Or you can search for the nationalities (*Czech*, *German*, *Dutch*) to find out what nations discovered and named the individual features. There is lots of fun ways to fool around. 
 
 That's it! Your own Mars website sports almost 2000 official place labels, indexed and searchable.  
 
-VTS has some more yet uncovered features to offer which can make your Mars website even more interesting. We shall explore those in some of our next tutorials.
+VTS has some more yet uncovered features to offer which can make your Mars website even more interesting. We shall explore these in some of our next tutorials.
 
 
  
