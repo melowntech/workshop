@@ -13,7 +13,7 @@
             }
         },
         "definition" : {
-            "dataset" : "corine-landcover.xml",
+            "dataset" : "openlanduse/corine-landcover.xml",
             "format" : "png"
         }
     },
@@ -26,12 +26,12 @@
         "type" : "tms",
         "referenceFrames" : {
             "melown2015" : {
-                "lodRange": [7, 15],
-                "tileRange": [ [ 34, 21], [35, 22]]
+                "lodRange": [2, 25],
+                "tileRange": [ [ 0, 0], [1, 1]]
             }
         },
         "definition" : {
-            "dataset" : "openlanduse.xml",
+            "dataset" : "openlanduse/openlanduse.xml",
             "format" : "png"
         }
     },
@@ -49,7 +49,7 @@
         },
         "credits": [],
         "definition": {
-            "dataset": "corine/copernicus-dem",
+            "dataset": "openlanduse/copernicus-dem",
             "geoidGrid": "egm96_15.gtx",
             "introspection": {
                 "position": ["obj",15.474967,49.803826, "float",0.000000,0.000000,-90.000000,0.000000,649246.827847,55.000000],
