@@ -131,13 +131,15 @@ Next, we have to create virtual overviews::
 And as a final step, links named ``dem``, ``dem.min`` and ``dem.max`` need to
 be created::
 
-    ln -s elev.max/dataset copernicus-dem/dem.max
-    ln -s elev.min/dataset copernicus-dem/dem.min
-    ln -s elev/dataset copernicus-dem/dem
+    cd /var/vts/mapproxy/datasets/openlanduse/copernicus-dem
+    ln -s elev.max/dataset dem.max
+    ln -s elev.min/dataset dem.min
+    ln -s elev/dataset dem
 
 And the last preparation step is to create a basic metainformation about tiles - tileindex.
 For this, we first need to know tile extents of the input dataset::
 
+    cd /var/vts/mapproxy/datasets/openlanduse/
     mapproxy-calipers copernicus-dem/dem melown2015
 
     2017-08-08 14:43:57 I3 [28036(main)]: [mapproxy-calipers] Config:
