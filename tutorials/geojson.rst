@@ -85,7 +85,7 @@ We created a map in place of the ``map-div`` and set the ``map`` parameter
 to point to a map configuration we prepared in Melown Cloud for this purpose. 
 You can create your own map in `Melown Cloud <https://www.melown.com/cloud>`__. We set the
 `position <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#position>`__
-to San Francisco Golden Bridge. You can discover more about
+to San Francisco Golden Gate Bridge. You can discover more about
 browser configuration parameters in
 `documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-API#options>`__.
 
@@ -154,8 +154,8 @@ trough Golden Gate Bridge Vista Point.
     }
 
 The data contains two features. One point and one line represented by a list
-of coordinates. In addition to geometry representation every feature can
-have custom properties such as a title as in the current example. We'll
+of coordinates. In addition to geometry data every feature can
+have custom properties such as a title, as in the current example. We'll
 take advantage of this later in the tutorial.
 
 To load the data into the browser we need to implement the ``onMapLoaded()``
@@ -179,11 +179,11 @@ We create a ``geodata`` object with ``map.createGeodata()`` that we can
 use to import a GeoJSON with ``geodata.importGeoJson(json, <mode = float>)``. During the
 import, the height of features is interpreted either as above the terrain
 (``float`` mode, default) or above ellipsoid (``fix`` mode). 
-If height are missing, 0 is assumed and therefore ``float`` should be used.
+If heights are missing, 0 is assumed and therefore ``float`` should be used.
 ``geodata.processHeights(...)`` must be called for every ``float`` data to 
 display them correctly.
 
-VTS Browser currently does not support importing polygons
+At the moment VTS Browser does not support importing polygons
 as a feature type.
 
 .. code:: javascript
@@ -216,7 +216,7 @@ Basic styling
 ~~~~~~~~~~~~~
 
 Let's start with a really basic one. We'll omit point data for now
-and just display a magenta line. To do so we'll change the style object to following:
+and just display a magenta line. To do so we'll change the style object to the following:
 
 ::
 
@@ -236,23 +236,23 @@ and just display a magenta line. To do so we'll change the style object to follo
 
    Basic styling
 
-``style`` now contains property ``layers`` which works as a container
+``style`` now contains the property ``layers`` which works as a container
 component for all style layers we want to use. Direct children of
 ``layers`` can have arbitrary names. In the example above we've added
-one style layer and named it ``track-line``. Style layer can have
-multiple properties you can check them
+one style layer and named it ``track-line``. A style layer can have
+multiple properties that you can find
 `here <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#layers-structure>`__.
-Most important one is ``filter``.
+The most important one is ``filter``.
 
-Filter is used to select features from geojson to which we want to apply
-set of display rules described in current style layer. In current example we
+Filter is used to select features from GeoJSON to which we want to apply
+a set of display rules described in the current style layer. In our example we
 are applying display rules to all lines. This filter selects everything
 from features where ``type`` equals ``line``. The ``"line":true`` means
-we want to display current feature as a line. ``line-width`` denominates
-line width. And finally we set line color to magenta with ``line-color``
+we want to display the current feature as a line. ``line-width`` specifies
+line width. And finally we set line color to magenta with ``line-color``,
 which accepts RGBA values as an array.
 
-You can find comprehensive documentation for styles
+You can find a comprehensive documentation for styles
 `here <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`__.
 
 Advanced styling
