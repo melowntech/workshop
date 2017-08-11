@@ -216,7 +216,7 @@ Basic styling
 ~~~~~~~~~~~~~
 
 Let's start with a really basic one. We'll omit point data for now
-and just display a magenta line. To do so we'll change the style object to the following:
+and just display a magenta line. To do so, let's change the style object to the following:
 
 ::
 
@@ -244,7 +244,7 @@ multiple properties that you can find
 `here <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#layers-structure>`__.
 The most important one is ``filter``.
 
-Filter is used to select features from GeoJSON to which we want to apply
+Filter is used to select features from the GeoJSON to which we want to apply
 a set of display rules described in the current style layer. In our example we
 are applying display rules to all lines. This filter selects everything
 from features where ``type`` equals ``line``. The ``"line":true`` means
@@ -258,9 +258,9 @@ You can find a comprehensive documentation for styles
 Advanced styling
 ~~~~~~~~~~~~~~~~
 
-You may have noticed that line dives under the surface. This happens due
+You may have noticed that the line dives under the surface. This happens due
 to interpolation of line height between points. We can fix this by adding
-``zbuffer-offset`` to ``track-line`` layer. Try to add
+``zbuffer-offset`` to the ``track-line`` layer. Try to add
 ``"zbuffer-offset": [-0.5, 0, 0]`` and see the difference.
 
 .. figure:: ./geojson-zbuffer.png
@@ -268,7 +268,7 @@ to interpolation of line height between points. We can fix this by adding
 
    Displayed track with ``zbuffer-offset``
 
-Now we'll improve line's visual style by adding shadow to it.
+Now we'll add a shadow to the line's visual style.
 
 .. code:: javascript
 
@@ -297,8 +297,8 @@ Now we'll improve line's visual style by adding shadow to it.
 
    Added track shadow
 
-Okay so far we have managed to visualize feature of type line. But if we
-go back to our sample GeoJSON data we'll notice that it contains feature
+Okay, so far we have managed to visualize a line feature. But if we
+go back to our sample GeoJSON data we notice that it contains a feature
 of type point as well. We'll focus on visualizing that one now.
 
 We'll make the point appear as a green circle with it's title displayed
@@ -349,18 +349,18 @@ above it.
         }
     }; 
 
-We've added 2 new properties to ``style``. The ``bitmap.icons`` defines
-url with overlay icon resource. In ``constants`` we define
-variables that can be reused trough whole style object. Here we define
-constant ``@icon-marker`` and select rectangle out of ``icons`` png.
-First two numbers in array define top left corner and last two numbers
-bottom right corner in image coordinates.
+We've added two new properties to ``style``. The ``bitmap.icons`` defines
+a URL with overlay icon resource. In ``constants`` we define
+variables that can be reused troughout the style object. Here we define
+the constant ``@icon-marker`` and select a rectangle out of ``icons`` PNG.
+The first two numbers in the array define the top left corner and the last two numbers
+the bottom right corner in image coordinates.
 
-We've also added new layer group ``place`` to ``layers``. Notice that
-now we have used different ``filter`` to select all points instead. For
-``icon-source`` we have used defined constant. Notice that for
-``label-source`` we used ``$title``. This means that contents of point's
-``title`` property should be used as label. Rest of the style
+We've also added a new layer group ``place`` to ``layers``. Notice that
+now we have used a different ``filter`` to select all points instead. For
+``icon-source`` we have used the defined constant. Notice that for
+``label-source`` we used ``$title``. This means that the contents of the point's
+``title`` property should be used as a label. The rest of the style
 properties are self-explanatory.
 
 .. figure:: ./geojson-track-point.png
@@ -372,4 +372,4 @@ Thats it for now, you've made it to the end :)
 
 In the `next
 tutorial <http://vtsdocs.melown.com/en/latest/tutorials/geojson-part2.html>`__
-we'll have a look at loading extra data from url and extending the track.
+we'll take a look at loading extra data from the URL and extending the track.
