@@ -368,7 +368,7 @@ properties are self-explanatory.
 
    Track with point
 
-Thats it for now, you've made it to the end :)
+That's it for now, you've made it to the end :)
 
 In the `next
 tutorial <http://vtsdocs.melown.com/en/latest/tutorials/geojson-part2.html>`__
