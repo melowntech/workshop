@@ -209,8 +209,9 @@ Configuring Open landuse layer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 We shall use the same approach for the Open Landuse layer. The input URL is
 http://gis.lesprojekt.cz/cgi-bin/mapserv?map=/home/dima/maps/olu/european_openlandusemap.map
-(provided by `SDI4Apps <http://sdi4apps.eu/>`_ project). The final XML can be
-downloaded :download:`projects/corine/openlanduse.xml`.
+(provided by `SDI4Apps <http://sdi4apps.eu/>`_ project). We will use SUBDATASET_2, Open Land-Use Map, the
+layer name is ``olu``.
+The final XML can be downloaded :download:`projects/corine/openlanduse.xml`.
 
 Configuring resources
 ^^^^^^^^^^^^^^^^^^^^^
