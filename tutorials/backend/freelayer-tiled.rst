@@ -108,7 +108,7 @@ Once set, you can re-run ``mapproxy`` and see your vector map::
 
     $ mapproxy --config mapproxy.conf
 
-.. figure:: austria-mbtiles.png
+.. figure:: images/austria-mbtiles.png
 
     Tiled vector layer using `MapBox vector tiles format`_ as :ref:`free-layer` displayed on surface with default style. Vector data tiles provided by `OpenMapTiles`_
 

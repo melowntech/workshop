@@ -50,11 +50,11 @@ VTS backend is capable of generating ellipsoid surfaces out of the box for every
 
 To see the WGS84 ellipsoid with spherical mercator tile hierarchy, simply point your web browser to ``http://<yourserver>:8070/mapproxy/melown2015/surface/.system/surface-spheroid/``. After a little while, you should see something like this:
 
-.. image:: vtsbackend-spheroid.jpg
+.. image:: images/vtsbackend-spheroid.jpg
 
 For your own interactive 3D map of Dachstein, based on SRTM and Geoland basemap.at data, go to ``http://<yourserver>:8070/mapproxy/melown2015/surface/examples/srtm1-n47-e013/``. Here is what the result should look like:
 
-.. image:: vtsbackend-srtm1-n47-e013-basemap-at.jpg
+.. image:: images/vtsbackend-srtm1-n47-e013-basemap-at.jpg
 
 Please note that depending on the speed of your hardware, the initial generation of textured tiles in mapproxy's cache may take some time.
 

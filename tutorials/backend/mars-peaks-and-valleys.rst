@@ -127,7 +127,7 @@ A browsable, multi-resolution tiled color mosaic of Mars should be now available
 
 You should something like this:
 
-.. image:: mars-peaks-and-valleys-colormosaic.jpg
+.. image:: images/mars-peaks-and-valleys-colormosaic.jpg
 
 Indeed, ``mars-qsc`` reference frame represents Mars as a folded-out cube. Zoom and pan to see some of the details of your new VTS resource.
 
@@ -237,7 +237,7 @@ All right now. Point your browser to
 
 On the first try rendering of the map will take quite some time, but eventually, this is what you will see:
 
-.. image:: mars-peaks-and-valleys-terrain.jpg
+.. image:: images/mars-peaks-and-valleys-terrain.jpg
 
 You are looking into the massive equatorial canyons of *Ius Chasma* which form one of the planet's most striking topographical features. Zoom in or out, pan, or rotate your view to look around.
 
