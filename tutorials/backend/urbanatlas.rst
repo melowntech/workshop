@@ -6,8 +6,8 @@
 
 .. _corine-example:
 
-Publishing WMS along with Corine digital elevation model
---------------------------------------------------------
+Publishing WMS (Urbanatlas) along with Corine digital elevation model
+---------------------------------------------------------------------
 
 In this example, a standard cartography map (Urban atlas) is laid over a digital
 elevation model for better representation of the data in space.

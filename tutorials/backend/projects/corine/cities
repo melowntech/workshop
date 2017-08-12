@@ -1,14 +1,14 @@
 {
-      "storage": "../storage",
+      "storage": "../stage.melown2015/",
       "tilesets": [
               "melown-cities-cz"
       ],
       "credits": { },
       "boundLayers": {
-              "urbanatlas": "//localhost/melown2015/tms/openlanduse/urbanatlas/boundlayer.json"
+              "urbanatlas": "//localhost:3070/melown2015/tms/openlanduse/urbanatlas/boundlayer.json"
       },
       "freeLayers": {
-              "copernicus-dem" : "//localhost/melown2015/surface/openlanduse/dem/freelayer.json"
+              "copernicus-dem" : "//localhost:3070/melown2015/surface/openlanduse/dem/freelayer.json"
       },
       "view": {
               "description": "",
