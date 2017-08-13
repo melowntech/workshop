@@ -1,5 +1,5 @@
 /**
- * WMTS fancy example
+ * Corine and Urban atlas example
  */
 
 /**
@@ -46,14 +46,6 @@ var switchBoundLayer = function(view, visibility, id) {
 var onInputChange = function(evt) {
   var view = browser.map.getView();
 
-  //var panel = browser.ui.getControl("switch-panel").element;
-  //var inputs = panel.getElementsByTagName('input');
-  //for (var i = 0, ii = inputs.length; i < ii; i++) {
-  //  if (inputs[i].id != evt.target.id) {
-  //    inputs[i].checked = false;
-  //  }
-  //}
-
   if (evt.target.checked) {
     view.surfaces["openlanduse-dem"].push("openlanduse-"+evt.target.id)
   } else {
@@ -83,7 +75,7 @@ var addControl = function() {
 (function start() {
 
     browser = vts.browser('map-div', {
-      map: 'http://localhost/melown2015/surface/openlanduse/dem/mapConfig.json',
+      map: 'http://localhost:8070/mapproxy/melown2015/surface/openlanduse/dem/mapConfig.json',
       view: {
         surfaces: {
           'openlanduse-dem': []},
