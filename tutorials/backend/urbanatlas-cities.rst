@@ -6,7 +6,7 @@ Displaying Open Landuse map over 3D data
 In this tutorial we combine 3D data of Czech cities and the Corine Land Cover
 / Open Landuse datasets from the :ref:`corine-example`.
 
-.. note:: Czech Cities 3D is proprietary dataset, provided by `Melown Technologies <https://melown.com>`_. Please contact Melown Technologies in order to get permission for the dataset usage.
+.. note:: Czech Cities 3D is proprietary dataset, provided by `Melown Technologies <https://melown.com>`_. Please contact Melown Technologies in order to get access to this dataset.
 
 Pre-requirements 
 ^^^^^^^^^^^^^^^^
@@ -22,18 +22,22 @@ Filling the storage
 ^^^^^^^^^^^^^^^^^^^
 
 To work with static True3D data and/or fuse various surfaces together, we must
-add them to the storage.  Storage is administered by tool ``vts`` that
-takes care of adding tilesets to storage. The :ref:`glue`\s will not be
-generated, since we are using just one surface.
+add them to the storage. Storage is administered by tool ``vts`` that
+takes care of adding tilesets to storage and subsequent fusion. In our case,
+there are no other datasets in the Storage so there will be no fusion and the operation
+will be instantaneous.
 
-Now we are ready to add our cities 3D
-tileset as remote tileset to the Storage. The tiles will be eventually
-downloaded from URL specified in ``vts --add`` command.
+Now we are ready to add our cities 3D tileset as remote tileset to the 
+Storage. This means that tileset will not be phisically copied into 
+Storage - which is useful for large tilesets like this one - 
+but the tiles will be downloaded on demand from URL specified in the 
+``vts --add`` command.
 
 .. code-block:: bash
 
   vts /var/vts/store/stage.melown2015 --add \
       --tileset http://[SERVER]/store/melown2015/stage/tilesets/melown-cities-cz --bottom
+      
 
 Creating a storage view
 """""""""""""""""""""""
@@ -68,9 +72,9 @@ be printed.::
                 {
                     "id" : 103,
                     "notice" : "{copy}{Y} Seznam.cz, a.s."
-                },
-                "topgis" : 
+                }, 
         ...
+
 
 You may now restart the ``vtsd`` program::
 
