@@ -86,12 +86,6 @@ You may now restart the ``vtsd`` program::
 
   Urban atlas layer "draped" over the 3D cities map
 
-.. figure:: images/urban-atlas-cities-2.png
-  :width: 800px
-
-  Corine DEM as **Free layer** with texture from Open Landuse service, layed
-  over 3D cities with texture - using 50% transparency.
-
 .. figure:: images/cities-x-urbanatlas.png
   :width: 800px
 

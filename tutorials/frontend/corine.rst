@@ -54,16 +54,16 @@ parameters:
 #. Map configuration JSON file
 
 .. literalinclude:: srcs/corine.js
-    :lines: 84-97
+    :lines: 75-88
 
 In the initializing function, ``addControl()`` function is called, it ensures,
 there will be layerswitcher panel in the map:
 
 .. literalinclude:: srcs/corine.js
-    :lines: 70-82
+    :lines: 61-73
 
 .. literalinclude:: srcs/corine.js
-    :lines: 13-21
+    :lines: 42-58
 
 The resulting application can look like following pictures:
 
