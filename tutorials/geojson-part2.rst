@@ -5,7 +5,7 @@ This tutorial shows how to import and visualize remote GeoJSON data
 and how to programmatically modify geodata.
 
 This is the second part of our tutorial series about GeoJSON. At this
-point you should be familiar displaying GeoJSON data and applying basic 
+point you should be familiar displaying GeoJSON data and applying basic
 styling to them. If not, maybe you missed our `first
 tutorial <//vtsdocs.melown.com/en/latest/tutorials/geojson.html>`__. We
 highly recommend to check it out first since current tutorial builds
@@ -94,7 +94,7 @@ Let's start with a reminder of the javascript code from previous tutorial.
             'constants': {
                 '@icon-marker': ['icons', 6, 8, 18, 18]
             },
-        
+
             'bitmaps': {
                 'icons': 'http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png'
             },
@@ -131,7 +131,7 @@ Let's start with a reminder of the javascript code from previous tutorial.
                     "label-size": 19,
                     "label-source": "$title",
                     "label-offset": [0,-20],
-                    
+
                     "zbuffer-offset" : [-1,0,0]
                 }
             }
@@ -187,18 +187,18 @@ to discover more.
 .. code:: javascript
 
     geodata.addPoint(
-        [-122.489622, 37.834831], 
-        'float', 
+        [-122.489622, 37.834831],
+        'float',
         { title: 'Slackers Hill'},
         'hill-top'
     );
 
 Here we defined a new point. First argument is array with point
-coordinates, the third coordinate is assumed 0 if not specified. 
+coordinates, the third coordinate is assumed 0 if not specified.
 The second argument corresponds to height mode. We used height
-mode as ``float`` because we the point to lay on the terrain. The third 
-argument represents properties. We use this to specify title for our 
-new location. The last argument represents id which we'll use to tell 
+mode as ``float`` because we the point to lay on the terrain. The third
+argument represents properties. We use this to specify title for our
+new location. The last argument represents id which we'll use to tell
 the points appart. We add this snippet to
 ``geoJsonLoaded()`` function right after
 ``geodata.importGeoJson(data);``.
@@ -236,6 +236,42 @@ add ``zbuffer-offset`` to make red icon render above green one.
 
    Point with changed style
 
+This isn't ideal solution bacause we are rendering points above each other and only one on the top is visible. Rendering of invisble should be always avoided for performance reasonson. Therefore we'll refactor layer styles a little bit.
+
+.. code:: javascript
+
+    'place-title': {
+        'filter' : [ "==", "#type", "point"],
+        'label': true,
+        'label-size': 19,
+        'label-source': "$title",
+        'label-offset': [0,-20]
+    },
+
+    "place-green" : {
+        'filter' : ["all", ["==", "#type", "point"], ['!=', '#id', 'hill-top']],
+        'icon': true,
+        'icon-source': '@icon-marker',
+        'icon-color': [0,255,0,255],
+        'icon-scale': 2,
+        'icon-origin': 'center-center',
+        'zbuffer-offset' : [-1,0,0]
+    },
+
+    'place-hill': {
+        'filter': ['all', ['==', '#type', 'point'], ['==', '#id', 'hill-top']],
+        'icon': true,
+        'icon-source': '@icon-marker',
+        'icon-color': [0,255,0,255],
+        'icon-scale': 2,
+        'icon-origin': 'center-center',
+        'icon-color': [255, 0, 0, 255],
+        'zbuffer-offset' : [-1,0,0]
+    }
+
+We removed ``place`` and substituted it with ``place-title``, ``place-green`` and ``place-hill``. ``place-title`` will be now used to render titles for both places. Next we updated filter in ``place-green`` to omit points of id ``hill-top``.
+
+
 Adding line segment
 ~~~~~~~~~~~~~~~~~~~
 
@@ -265,17 +301,25 @@ should have at this point idea how to achieve it by yourself.
 
 .. code:: javascript
 
+    "track-line" : {
+        "filter" : ['all', ['==', '#type', 'line'], ["!=", "#id", "track-to-hill"]],
+        "line": true,
+        "line-width" : 4,
+        "line-color": [255,0,255,255],
+        "zbuffer-offset" : [-0.5,0,0],
+        "z-index" : -1
+    },
+
     "track-extension" : {
         "filter" : ['all', ['==', '#type', 'line'], ["==", "#id", "track-to-hill"]],
         "line": true,
         "line-width" : 4,
         "line-color": [255,0,0,255],
         "zbuffer-offset" : [-0.5,0,0],
-        "z-index" : -2
+        "z-index" : -1
     }
 
-It's important to add ``z-index`` that renders this part of track above
-the current one.
+We again refactored previous layer style ``track-line`` to omit rendering of newly added track on it's own. Then we added new layer style ``track-extension`` for newly added line segment.
 
 .. figure:: ./geojson-part2-track.png
    :alt: Added track
