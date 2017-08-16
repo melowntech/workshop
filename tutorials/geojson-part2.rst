@@ -5,10 +5,10 @@ This tutorial shows how to import and visualize remote GeoJSON data
 and how to programmatically modify geodata.
 
 This is the second part of our tutorial series about GeoJSON. At this
-point you should be familiar displaying GeoJSON data and applying basic
+point you should be familiar with displaying GeoJSON data and applying basic
 styling to them. If not, maybe you missed our `first
 tutorial <//vtsdocs.melown.com/en/latest/tutorials/geojson.html>`__. We
-highly recommend to check it out first since this tutorial builds
+highly recommend checking it out first, since this tutorial builds
 on top of what we did previously.
 
 Loading data from URL
