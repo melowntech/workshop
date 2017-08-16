@@ -195,9 +195,9 @@ to discover more.
 
 Here we defined a new point. The first argument is an array with point
 coordinates. The third coordinate is assumed to be 0 if not specified.
-The second argument corresponds to height mode. We used height
+The second argument corresponds to the height mode. We used height
 mode ``float`` because we need the point to lie on the terrain. The third
-argument represents properties. We use this to specify title for our
+argument represents properties. We use this to specify a title for our
 new location. The last argument represents an id which we'll use to tell
 the points appart. We add this snippet to
 ``geoJsonLoaded()`` function right after
