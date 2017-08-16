@@ -172,14 +172,14 @@ we did previously in ``onMapLoaded()``.
 Extending existing data
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-VTS Browser provides an API to extend current
+VTS Browser provides an API to extend existing
 `geodata <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#geodata-creation>`__.
 We'll demonstrate this by adding a new point and a line segment to our
 data. Let's start with a point.
 
 For this purpose,
 `geodata <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#geodata-creation>`__
-provides the methods ``addPoint``, and ``addPointArray``, in case we want to add
+provides the methods ``addPoint`` and ``addPointArray``, in case we want to add
 multiple points at once. You can check the
 `documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#geodata-methods>`__
 to discover more.
@@ -193,12 +193,12 @@ to discover more.
         'hill-top'
     );
 
-Here we defined a new point. First argument is array with point
-coordinates, the third coordinate is assumed 0 if not specified.
+Here we defined a new point. The first argument is an array with point
+coordinates. The third coordinate is assumed to be 0 if not specified.
 The second argument corresponds to height mode. We used height
-mode as ``float`` because we the point to lay on the terrain. The third
+mode ``float`` because we need the point to lie on the terrain. The third
 argument represents properties. We use this to specify title for our
-new location. The last argument represents id which we'll use to tell
+new location. The last argument represents an id which we'll use to tell
 the points appart. We add this snippet to
 ``geoJsonLoaded()`` function right after
 ``geodata.importGeoJson(data);``.
@@ -208,8 +208,8 @@ the points appart. We add this snippet to
 
    Newly added point
 
-Next we'll style added point to distinguish it visually from other
-point. Add following new layer into ``style.layers`` right after
+Next we'll style the added point to distinguish it visually from other
+points. Add the following new layer into ``style.layers``, right after
 ``place``.
 
 .. code:: javascript
@@ -225,18 +225,18 @@ point. Add following new layer into ``style.layers`` right after
         'zbuffer-offset' : [-4,0,0]
     }
 
-Here we selected new point via it's *type* and *id*. We defined
-properties to render similar icon as for the last point. The only difference here
-is the color and absence of label. The label is rendered due to
+Here we selected the new point via it's *type* and *id*. We defined
+properties to render a similar icon as for the last point. The only difference here
+is the color and the absence of label. The label is rendered due to
 rules defined in ``place``. In addition to icon properties we have to
-add ``zbuffer-offset`` to make red icon render above green one.
+add ``zbuffer-offset`` to make the red icon render above the green one.
 
 .. figure:: ./geojson-part2-point-red.png
    :alt: Point with changed style
 
    Point with changed style
 
-This isn't ideal solution bacause we are rendering points above each other and only one on the top is visible. Rendering of invisble should be always avoided for performance reasonson. Therefore we'll refactor layer styles a little bit.
+This isn't the ideal solution bacause we are rendering points above each other and only the one on top is visible. Rendering of the invisble should always be avoided for performance reasons. Therefore we'll refactor the layer styles a little bit.
 
 .. code:: javascript
 
@@ -269,13 +269,13 @@ This isn't ideal solution bacause we are rendering points above each other and o
         'zbuffer-offset' : [-1,0,0]
     }
 
-We removed ``place`` and substituted it with ``place-title``, ``place-green`` and ``place-hill``. ``place-title`` will be now used to render titles for both places. Next we updated filter in ``place-green`` to omit points of id ``hill-top``.
+We removed ``place`` and substituted it with ``place-title``, ``place-green`` and ``place-hill``. ``place-title`` will now be used to render titles for both places. Next we updated the filter in ``place-green`` to omit points of id ``hill-top``.
 
 
 Adding line segment
 ~~~~~~~~~~~~~~~~~~~
 
-As a next step we'll add a line segment via geodata API. We'll take
+As the next step we'll add a line segment via geodata API. We'll take
 advantage of
 ``geodata.addLineString(coordinates, heightMode, properties, id)``.
 
@@ -296,8 +296,8 @@ advantage of
         [-122.489622,  37.834831]
     ], 'float', null, 'track-to-hill');
 
-We added track up to Slacker Hill. Next we'll make it red again. You
-should have at this point idea how to achieve it by yourself.
+We added a track up to Slacker Hill. Next we'll make it red again. You
+should at this point have an idea how to achieve it yourself.
 
 .. code:: javascript
 
@@ -319,17 +319,17 @@ should have at this point idea how to achieve it by yourself.
         "z-index" : -1
     }
 
-We again refactored previous layer style ``track-line`` to omit rendering of newly added track on it's own. Then we added new layer style ``track-extension`` for newly added line segment.
+We again refactored the previous layer style ``track-line`` to omit rendering of the newly added track on it's own. Then we added a new layer style ``track-extension`` for the newly added line segment.
 
 .. figure:: ./geojson-part2-track.png
    :alt: Added track
 
    Added track
 
-That's it you've managed it to the end again! You've learned how to
-fetch GeoJSON from url, add new points, lines and how to style them.
+That's it, you've made it to the end again! You've learned how to
+fetch a GeoJSON from a URL, add new points, lines and how to style them.
 
-If you'd like to practice more. Try to add blue track descending from
-Slackers hill to original track's start. You can obtain track
+If you'd like to practice more, try to add a blue track descending from
+Slackers hill to the original track's start. You can obtain the track
 coordinates
 `here <https://mapy.cz/zakladni?vlastni-body&x=-122.4851648&y=37.8360597&z=16&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&uc=oc3YzwTMRj6GWsIXXgfjdWnF0KCPjVIKjXrNN-0SGSWTGM1SJQNPNO2O8LL6dg62QJB2QQHENXGeR8FFUQGVQgB7GgDyQ1flaQQfeXgQ9fYmIngNjSDFAJxUoTnH3X8fh0MQSWQN0P&ud=Slacker%20Trail&ud=Slacker%20Trail&ud=Slacker%20Trail&ud=Slacker%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail>`__.
