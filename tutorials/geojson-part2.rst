@@ -236,7 +236,7 @@ add ``zbuffer-offset`` to make the red icon render above the green one.
 
    Point with changed style
 
-This isn't the ideal solution bacause we are rendering points above each other and only the one on top is visible. Rendering of the invisble should always be avoided for performance reasons. Therefore we'll refactor the layer styles a little bit.
+This is not an ideal solution bacause we are rendering points above each other and only the one on top is visible. Rendering of the invisible should always be avoided for performance reasons. Therefore we'll refactor the layer styles a little bit.
 
 .. code:: javascript
 
@@ -275,7 +275,7 @@ We removed ``place`` and substituted it with ``place-title``, ``place-green`` an
 Adding line segment
 ~~~~~~~~~~~~~~~~~~~
 
-As the next step we'll add a line segment via geodata API. We'll take
+As a next step we'll add a line segment via geodata API. We'll take
 advantage of
 ``geodata.addLineString(coordinates, heightMode, properties, id)``.
 
