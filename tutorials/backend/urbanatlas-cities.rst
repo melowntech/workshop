@@ -89,6 +89,6 @@ You may now restart the ``vtsd`` program::
 .. figure:: images/cities-x-urbanatlas.png
   :width: 800px
 
-  Corine DEM as **Free layer** with texture from Open Landuse service, layed
+  Corine DEM as a **free layer** with texture from Open Landuse service, layed
   over 3D cities with texture - using 50% transparency.
 
