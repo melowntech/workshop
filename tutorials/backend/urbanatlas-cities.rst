@@ -1,6 +1,6 @@
 .. _urbanatlas-cities-tutorial:
 
-Displaying Open Landuse map over 3D data
+Displaying Open Landuse Map Over 3D Data
 ----------------------------------------
 
 In this tutorial we combine 3D data of Czech cities and the Corine Land Cover
