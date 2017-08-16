@@ -8,13 +8,13 @@ This is the second part of our tutorial series about GeoJSON. At this
 point you should be familiar displaying GeoJSON data and applying basic
 styling to them. If not, maybe you missed our `first
 tutorial <//vtsdocs.melown.com/en/latest/tutorials/geojson.html>`__. We
-highly recommend to check it out first since current tutorial builds
+highly recommend to check it out first since this tutorial builds
 on top of what we did previously.
 
 Loading data from URL
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
-Let's start with a reminder of the javascript code from previous tutorial.
+Let's start with a reminder of the JavaScript code from the previous tutorial.
 
 .. code:: javascript
 
@@ -145,7 +145,7 @@ Let's start with a reminder of the javascript code from previous tutorial.
 
     startDemo();
 
-To fetch GeoJSON we need to edit ``onMapLoaded`` function.
+To fetch a GeoJSON we need to edit the function ``onMapLoaded``.
 
 .. code:: javascript
 
@@ -154,8 +154,8 @@ To fetch GeoJSON we need to edit ``onMapLoaded`` function.
         vts.utils.loadJSON('https://raw.githubusercontent.com/Melown/vts-browser-js/master/demos/geodata-geojson-import-from-url/jotunheimen_track.json', geoJsonLoaded);
     }
 
-Our VTS stack comes with utility function ``vts.utils.loadJSON()`` to
-help you with that. If you favor other ways to fetch data there
+Our VTS stack comes with the utility function ``vts.utils.loadJSON()`` to
+help you downloading a JSON. However, if you favor other ways of fetching the data there
 is nothing stopping you.
 
 .. code:: javascript
@@ -166,20 +166,20 @@ is nothing stopping you.
         geodata.processHeights('node-by-precision', 62, onHeightProcessed);
     }
 
-In the body of ``geoJsonLoaded()`` we can handle received GeoJSON like
+In the body of ``geoJsonLoaded()`` we can handle the received GeoJSON like
 we did previously in ``onMapLoaded()``.
 
 Extending existing data
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-VTS Browser provides API to extend current
+VTS Browser provides an API to extend current
 `geodata <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#geodata-creation>`__.
 We'll demonstrate this by adding a new point and a line segment to our
-current data. Let's start with the point.
+data. Let's start with a point.
 
-For this purpose
+For this purpose,
 `geodata <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#geodata-creation>`__
-provides methods ``addPoint`` and ``addPointArray`` in case we want to add
+provides the methods ``addPoint``, and ``addPointArray``, in case we want to add
 multiple points at once. You can check the
 `documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#geodata-methods>`__
 to discover more.
