@@ -6,31 +6,31 @@ Displaying Open Landuse map over 3D data
 In this tutorial we combine 3D data of Czech cities and the Corine Land Cover
 / Open Landuse datasets from the :ref:`corine-example`.
 
-.. note:: Czech Cities 3D is proprietary dataset, provided by `Melown Technologies <https://melown.com>`_. Please contact Melown Technologies in order to get access to this dataset.
+.. note:: Czech Cities 3D is a proprietary dataset, provided by `Melown Technologies <https://melown.com>`_. Please contact Melown Technologies in order to get access to this dataset.
 
 Pre-requirements 
 ^^^^^^^^^^^^^^^^
   
 #. This tutorial expects that you have already set up your VTS backend, as
    described in :ref:`setting-vts-backend`.
-#. It is assumed, that your Mapproxy resources are set up and that your Mapproxy
+#. It is assumed that your Mapproxy resources are set up and that your Mapproxy
    instance is up and running, just as shown in the example :ref:`corine-example`.
-#. It is also expected, that you do start with clean VTS installation (the
+#. It is also expected that you start with a clean VTS installation (the
    Storage is empty).
 
 Filling the storage
 ^^^^^^^^^^^^^^^^^^^
 
 To work with static True3D data and/or fuse various surfaces together, we must
-add them to the storage. Storage is administered by tool ``vts`` that
-takes care of adding tilesets to storage and subsequent fusion. In our case,
+add them to the storage. The storage is administered by the tool ``vts`` that
+takes care of adding tilesets to the storage and their subsequent fusion. In our case,
 there are no other datasets in the Storage so there will be no fusion and the operation
 will be instantaneous.
 
-Now we are ready to add our cities 3D tileset as remote tileset to the 
-Storage. This means that tileset will not be phisically copied into 
-Storage - which is useful for large tilesets like this one - 
-but the tiles will be downloaded on demand from URL specified in the 
+Now we are ready to add our cities 3D tileset as a remote tileset to the 
+Storage. This means that the tileset will not be physically copied into 
+the Storage - which is useful for large tilesets like this one - 
+but the tiles will be downloaded on demand from a URL specified in the 
 ``vts --add`` command.
 
 .. code-block:: bash
@@ -43,14 +43,14 @@ Creating a storage view
 """""""""""""""""""""""
 
 As the final step we need to create a :ref:`storage-view` that
-combines tilesets from our storage and free and bound layer from the mapproxy.
+combines tilesets from our storage and a free and a bound layer from the mapproxy.
 
-Go to ``/var/vts/store/map-config`` directory and create a file ``cities`` with the
-following contents.
+Go to ``/var/vts/store/map-config`` directory and create the file ``cities`` with the
+following content.
 
 .. literalinclude:: projects/corine/cities
 
-For commented configuration file, have a look at the :ref:`cadastre-tutorial`
+For a commented configuration file, take a look at the :ref:`cadastre-tutorial`
 example.
 
 .. code-block:: bash
@@ -84,7 +84,7 @@ You may now restart the ``vtsd`` program::
 .. figure:: images/urban-atlas-cities.png
   :width: 800px
 
-  Urban atlas layer "draped" over the 3D cities map
+  Urban atlas layer "draped" over the 3D cities map.
 
 .. figure:: images/cities-x-urbanatlas.png
   :width: 800px
