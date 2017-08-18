@@ -13,3 +13,4 @@ Some more VTS case studies and tutorials are provided below.
    cadastre
    mars-peaks-and-valleys-searchable-nomenclature
    geojson
+   geojson-part2
