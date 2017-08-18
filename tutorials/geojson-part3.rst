@@ -114,7 +114,7 @@ We'll start by displaying red a and blue line to the map.
 
     startDemo();
 
-.. figure:: ./geojson-part3-lines.png
+.. figure:: ./geojson-part3-lines.jpg
    :alt: Red and blue lines
 
    Red and blue lines
@@ -164,7 +164,7 @@ Next add some styling to component:
           font-size: 20px;
     }
 
-.. figure:: ./geojson-part3-ui-element.png
+.. figure:: ./geojson-part3-ui-element.jpg
    :alt: Added status-div element
 
    Added status-div element
@@ -256,7 +256,7 @@ original state.
         statusDiv.setHtml('Nothing hovered');
     }
 
-.. figure:: ./geojson-part3-hover-box.png
+.. figure:: ./geojson-part3-hover-box.jpg
    :alt: Status box with information about hovered feature
 
    Status box with information about hovered feature
@@ -301,7 +301,7 @@ Next add ``line-glow`` layer that we selected as hover layer previously.
 If you did everything correctly you should se the similar outcome if you
 hover over the blue line.
 
-.. figure:: ./geojson-part3-hover-effect.png
+.. figure:: ./geojson-part3-hover-effect.jpg
    :alt: Feature glowing effect
 
    Feature glowing effect
