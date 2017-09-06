@@ -29,3 +29,4 @@ Melown server and data tools consists of several components:
     vtsd
     tools
     cmd-tools
+    docker
