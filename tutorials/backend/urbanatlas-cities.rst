@@ -75,20 +75,17 @@ be printed.::
                 }, 
         ...
 
+Now, you can go to http://127.0.0.1:8070/store/melown2015/map-config/cities :
 
-You may now restart the ``vtsd`` program::
+.. figure:: images/cities-x-urbanatlas.png
+  :width: 800px
 
-    $ sudo /etc/init.d/vts-backend-vtsd restart
+  The result of our configuration. Corine DEM as a **free layer** with texture from Open Landuse service 
+  with 50% transparency, layed over textured 3D cities.
 
 
 .. figure:: images/urban-atlas-cities.png
   :width: 800px
 
-  Urban atlas layer "draped" over the 3D cities map.
-
-.. figure:: images/cities-x-urbanatlas.png
-  :width: 800px
-
-  Corine DEM as a **free layer** with texture from Open Landuse service, layed
-  over 3D cities with texture - using 50% transparency.
+  Another option how to display the same data: Urban atlas used as **bound layer** for 3D cities.
 
