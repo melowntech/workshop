@@ -8,7 +8,8 @@ Corine land cover frontend side
 ===============================
 
 In this example, we are going to create front-end JavaScript app using the
-:ref:`corine-example`.
+:ref:`corine-example`. We are going to enrich the map with legend and a control
+element to switch the two landuse layers.
 
 HTML Page
 ---------
@@ -21,14 +22,14 @@ the map.
    :language: html
    :linenos:
 
-We also add some CSS sugar, for styling the layerswitcher panel and legend div:
+We also add some CSS sugar, for styling the layerswitcher, panel and legend div:
 
 .. literalinclude:: srcs/corine.html
    :lines: 10-36
    :language: css
    :linenos:
 
-At the end of the file, legend ``div`` element is add too
+At the end of the file, we add the legend ``div``
 
 .. literalinclude:: srcs/corine.html
    :lines: 42-44
@@ -46,7 +47,7 @@ using following URL:  http://image.discomap.eea.europa.eu/arcgis/services/Corine
 JavaScript code
 ---------------
 
-The code is straight forward and can be downloaded from
+The code is straightforward and can be downloaded from
 :download:`srcs/corine.js`, you have to initialize the browser with two
 parameters: 
 
@@ -56,8 +57,7 @@ parameters:
 .. literalinclude:: srcs/corine.js
     :lines: 75-88
 
-In the initializing function, ``addControl()`` function is called, it ensures,
-there will be layerswitcher panel in the map:
+In the initializing function, ``addControl()`` function is called to create the layerswitcher panel in the map:
 
 .. literalinclude:: srcs/corine.js
     :lines: 61-73
@@ -65,7 +65,7 @@ there will be layerswitcher panel in the map:
 .. literalinclude:: srcs/corine.js
     :lines: 42-58
 
-The resulting application can look like following pictures:
+Once you open the app in the web browser, it should look like the following screenshots:
 
 .. figure:: ../backend/images/corine-2012.png
     :width: 800px
