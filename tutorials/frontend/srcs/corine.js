@@ -75,7 +75,7 @@ var addControl = function() {
 (function start() {
 
     browser = vts.browser('map-div', {
-      map: 'http://localhost:8070/mapproxy/melown2015/surface/openlanduse/dem/mapConfig.json',
+      map: 'http://127.0.0.1:8070/mapproxy/melown2015/surface/openlanduse/dem/mapConfig.json',
       view: {
         surfaces: {
           'openlanduse-dem': []},
