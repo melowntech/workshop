@@ -1,23 +1,24 @@
 Geodata - Hover Events
 ======================
 
-This tutorial will teach you how to handle geodata hover events with
+This tutorial will show you how to handle geodata hover events with
 Melown VTS Browser JS.
 
-As prerequisite you should be familiar how to display GeoJSON with
-Melown VTS Browser. If you don't know how to do that or need a reminder
+As a prerequisite you should be able to display GeoJSON with
+Melown VTS Browser. If you don't know how to do that or you need a reminder
 check our previous tutorials
 (`part1 <vtsdocs.melown.com/en/latest/tutorials/geojson.html>`__,
 `part2 <vtsdocs.melown.com/en/latest/tutorials/geojson-part2.html>`__)
-regarding this topic.
+on this topic.
 
-You can check live demo and source code
+You can check live demo and source code of this tutorial
 `here <https://jsfiddle.net/gyjwxbfj/>`__.
 
-Display first data
+Preparing base data
 ------------------
 
-We'll start by displaying red a and blue line to the map.
+First, we need some geodata on which we shall listen for hover events.
+We'll start by displaying red a and blue line on our map.
 
 .. code:: javascript
 
@@ -117,13 +118,13 @@ We'll start by displaying red a and blue line to the map.
 .. figure:: ./geojson-part3-lines.jpg
    :alt: Red and blue lines
 
-   Red and blue lines
+   Red and blue lines.
 
 Adding UI to display hover state
 --------------------------------
 
-Now we'll start expanding our example by adding an ui element that will
-display information about hovered state. Expand start demo function in
+Now we'll add a ui element that will
+display information about hovered state. Expand ``startDemo`` function in
 the following way:
 
 .. code:: javascript
@@ -133,7 +134,7 @@ the following way:
         
         var panel = browser.ui.addControl('status-panel',
             '<div id="status-div">' +
-                'Nothing hovered' +
+                'Hovering over: nothing' +
             '</div>');
 
         
@@ -141,12 +142,12 @@ the following way:
         browser.on('map-loaded', onMapLoaded);
     }
 
-We added new ``div`` with id ``status-div`` and assigned to variable
+We added new ``div`` with id ``status-div`` and assigned it to variable
 ``statusDiv``. Notice that we are using ``getElement()`` not
 ``getElementById()``. It's because element ids are changed to unique
 ids.
 
-Next add some styling to component:
+Next, add some styling to new component:
 
 .. code:: javascript
 
@@ -172,9 +173,9 @@ Next add some styling to component:
 Hover events
 ------------
 
-To enable hover events generation for layers we need to add
-``hover-event:true`` as property to style layer. We'll use
-``line-shadow`` for our cause.
+To enable hover events generation for geodata we need to add
+``hover-event:true`` property to style layer. We'll use
+``line-shadow`` in our case.
 
 .. code:: javascript
 
@@ -185,7 +186,7 @@ To enable hover events generation for layers we need to add
             "line-width" : 40,
             "line-color": [0,0,0,100],
             "zbuffer-offset" : [-5,0,0],
-            "hover-event": true // enables generating of hover events
+            "hover-event": true // enables generation of hover events
         }
     }
 
@@ -204,7 +205,7 @@ with following:
     browser.on('geo-feature-hover', onFeatureHover);
 
 We added several new callback methods. Let's implement them now. First
-we need to implement hover triggering ourselves in ``onMouseMove``
+we need to propagate hover to browser element in ``onMouseMove``
 function.
 
 .. code:: javascript
@@ -216,11 +217,11 @@ function.
         }
     }
 
-First we obtain canvas coordinates and set map to hover cursor over
-provided coordinates permanently afterwards.
+First we obtain canvas coordinates and inform the map we are
+hovering above given coordinates.
 
-We also have to cancel hovering manually when we leave map element with
-cursor, otherwise hover state will hang permanently. We do this in
+We also have to cancel hovering manually when the cursor leaves the map element, 
+otherwise hover state will hang permanently. We do this in
 ``onMouseLeave`` function.
 
 .. code:: javascript
@@ -232,13 +233,13 @@ cursor, otherwise hover state will hang permanently. We do this in
         }
     };
 
-Now that we are triggering hover events. Next we'll implement their
+Now we are triggering hover events in browser. Next we'll implement their
 handling. We don't need listen to ``geo-feature-enter`` event in our
 demo application. It's listed just to give the complete picture.
 Therefore we'll omit implementing the ``onFeatureEnter``.
 
-First let's implement ``onFeatureHover`` to display which geo feature is
-being hovered and list it's properties inside ``statusDiv`` element.
+First let's implement ``onFeatureHover`` to display above which geo feature we are
+hovering and list it's properties inside ``statusDiv`` element.
 
 .. code:: javascript
 
@@ -247,26 +248,25 @@ being hovered and list it's properties inside ``statusDiv`` element.
                           'Feature properties are: ' + JSON.stringify(event.feature) );
     }
 
-Lastly we update status box when feature no longer hovered back to
-original state.
+When leaving the feature, we udpdate ``statusDiv`` to its original state.
 
 .. code:: javascript
 
     function onFeatureLeave(event) {
-        statusDiv.setHtml('Nothing hovered');
+        statusDiv.setHtml('Hovering over: nothing');
     }
 
 .. figure:: ./geojson-part3-hover-box.jpg
-   :alt: Status box with information about hovered feature
+   :alt: Status box with information about feature
 
-   Status box with information about hovered feature
+   Status box with information about feature
 
 Hover effect
 ------------
 
-Next let's add a glowing effect to shadow of the hovered line. We can
-achieve this by adding ``hover-layer: <layer-id>`` to style layer that
-is generating the glowing effect. In the tutorial it's ``line-shadow``.
+Next let's add a glowing effect to shadow when we are hovering above a line. We can
+achieve this by adding a style layer `line-glow`` with the glow and adding ``hover-layer: "line-glow"``
+to ``line-shadow`` which generates the hover events.
 
 .. code:: javascript
 
@@ -279,15 +279,7 @@ is generating the glowing effect. In the tutorial it's ``line-shadow``.
           "zbuffer-offset" : [-5,0,0],
           "hover-event" : true,
           "hover-layer" : "line-glow"
-      }
-    }
-
-Next add ``line-glow`` layer that we selected as hover layer previously.
-
-.. code:: javascript
-
-    var style = {
-      ...
+      },
       "line-glow" : {
           "filter" : ["skip"],
           "line": true,
@@ -298,7 +290,7 @@ Next add ``line-glow`` layer that we selected as hover layer previously.
       }
     }
 
-If you did everything correctly you should se the similar outcome if you
+If you did everything correctly you should see the similar outcome if you
 hover over the blue line.
 
 .. figure:: ./geojson-part3-hover-effect.jpg
