@@ -232,7 +232,7 @@ Mapproxy can be started again using::
     sudo /etc/init.d/vts-backend-mapproxy start
 
 And we should obtain a result similar to the following picture, at 
-http://localhost:8070/mapproxy/melown2015/surface/openlanduse/dem/
+http://127.0.0.1:8070/mapproxy/melown2015/surface/openlanduse/dem/
 
 .. figure:: images/corine-praha.png
     :width: 800px
