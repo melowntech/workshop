@@ -12,7 +12,7 @@ check our previous tutorials
 on this topic.
 
 You can check live demo and source code of this tutorial
-`here <https://jsfiddle.net/gyjwxbfj/>`__.
+`here <https://jsfiddle.net/qn0cjLbd/>`__.
 
 Preparing base data
 ------------------
@@ -143,9 +143,8 @@ the following way:
     }
 
 We added new ``div`` with id ``status-div`` and assigned it to variable
-``statusDiv``. Notice that we are using ``getElement()`` not
-``getElementById()``. It's because element ids are changed to unique
-ids.
+``statusDiv``. We are using our``getElement()`` to make sure we get the
+right element in case more applications are embedded in the same page.
 
 Next, add some styling to new component:
 
@@ -202,7 +201,6 @@ with following:
     //geodata events listeners
     browser.on('geo-feature-enter', onFeatureEnter);
     browser.on('geo-feature-leave', onFeatureLeave);
-    browser.on('geo-feature-hover', onFeatureHover);
 
 We added several new callback methods. Let's implement them now. First
 we need to propagate hover to browser element in ``onMouseMove``
@@ -233,17 +231,18 @@ otherwise hover state will hang permanently. We do this in
         }
     };
 
-Now we are triggering hover events in browser. Next we'll implement their
-handling. We don't need listen to ``geo-feature-enter`` event in our
-demo application. It's listed just to give the complete picture.
-Therefore we'll omit implementing the ``onFeatureEnter``.
+Now we are propagating mouse movements into browser. Next we'll implement their
+handling. We only need to listen to ``geo-feature-enter`` and ``geo-feature-leave``.
+There is another hover event ``geo-feature-hover`` emitted every time mouse moves
+when over a feature. This is handy if we need to do different things when hovering 
+over different parts of the feature but it is unnecessary to use in our case.
 
-First let's implement ``onFeatureHover`` to display above which geo feature we are
+First let's implement ``onFeatureEnter`` to display above which geo feature we are
 hovering and list it's properties inside ``statusDiv`` element.
 
 .. code:: javascript
 
-    function onFeatureHover(event) {
+    function onFeatureEnter(event) {
         statusDiv.setHtml('Hovering over: ' + event.feature['#id'] + '<br/><br/>' +
                           'Feature properties are: ' + JSON.stringify(event.feature) );
     }
