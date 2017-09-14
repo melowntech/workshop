@@ -137,7 +137,12 @@ Here is what you should see:
 
 If you're into the VTS fineprint, here is a bit of styling tricks you've just used: the ``diameter`` property from the IAU feature dataset (which contains the feature size in kilometers) in conjunction with the "visibility-abs" and "visibility-rel" layer properties makes sure that labels are visible either 1.) when they are bigger than two kilometers and occupy more then 8 percent and less than 80 percent of the current vertical view extent, or 2.) they are smaller than two kilometers and the vertical view extent is less than 120 kilometers. These simple rules ensure that the labels exhibit just the right level of visual density for the map to be informative while avoiding visual clutter. 
 
-Anothe point worth noticing: the streamable map you've just created is a fine example of the VTS mapproxy introspection capabilities. It combines four different resources: 1.) the nomenclature, which you've just defined, 2.) its style, 3.) the terrain (which the labels refer to in their introspection) and 4.) the orthomosaic (which the terrain refers to in its own introspection). Yes, introspection is quite powerful - but in the next section, we will move on to VTS storage views to give our map even more functionality.
+Another point worth noticing: the streamable map you've just created is a
+fine example of the VTS mapproxy introspection capabilities.  It combines
+four different resources: 1.) the nomenclature, which you've just defined,
+2.) its style, 3.) the terrain (which the labels refer to in their
+introspection) and 4.) the orthomosaic (which the terrain refers to in its
+own introspection).  Yes, introspection is quite powerful.
 
 
 The Search Interface
@@ -219,7 +224,9 @@ You can search for the characteristic Martian topographic feature types (*chaos*
 
 That's it! Your own Mars website sports almost 2000 official place labels, indexed and searchable.  
 
-VTS has some more yet uncovered features to offer which can make your Mars website even more interesting. We shall explore these in some of our next tutorials.
+VTS has some more yet uncovered features to offer which can make your Mars
+website even more interesting.  We shall explore these in some of our next
+tutorials.
 
 
  
