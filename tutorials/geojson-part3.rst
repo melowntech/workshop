@@ -1,5 +1,5 @@
-Importing GeoJSON with VTS Browser JS - Part III
-================================================
+VTS Browser JS - Geodata: Hover events
+======================================
 
 This tutorial will show you how to handle geodata hover events with
 Melown `VTS Browser
@@ -16,7 +16,7 @@ You can check live demo and source code of this tutorial
 `here <https://jsfiddle.net/qn0cjLbd/>`__.
 
 Preparing base data
-------------------
+-------------------
 
 First, we need some geodata on which we shall listen for hover events.
 We'll start by displaying red a and blue line on our map.

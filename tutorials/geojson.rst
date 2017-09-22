@@ -1,5 +1,5 @@
-Importing GeoJSON with VTS Browser JS
-=====================================
+VTS Browser JS - Geodata: Importing GeoJSON Part I
+==================================================
 
 This tutorial provides a step by step guide how to import and visualize
 sample GeoJSON data with `VTS Browser

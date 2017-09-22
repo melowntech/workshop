@@ -1,5 +1,5 @@
-Importing GeoJSON with VTS Browser JS - Part II
-===============================================
+VTS Browser JS - Geodata: Importing GeoJSON Part II
+===================================================
 
 This tutorial shows how to import and visualize remote GeoJSON data
 and how to programmatically modify geodata with Melown `VTS Browser
