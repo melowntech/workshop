@@ -2,13 +2,14 @@ Geodata - Hover Events
 ======================
 
 This tutorial will show you how to handle geodata hover events with
-Melown VTS Browser JS.
+Melown `VTS Browser
+JS <https://github.com/Melown/vts-browser-js>`__.
 
 As a prerequisite you should be able to display GeoJSON with
 Melown VTS Browser. If you don't know how to do that or you need a reminder
 check our previous tutorials
-(`part1 <vtsdocs.melown.com/en/latest/tutorials/geojson.html>`__,
-`part2 <vtsdocs.melown.com/en/latest/tutorials/geojson-part2.html>`__)
+(`part1 <//vtsdocs.melown.com/en/latest/tutorials/geojson.html>`__,
+`part2 <//vtsdocs.melown.com/en/latest/tutorials/geojson-part2.html>`__)
 on this topic.
 
 You can check live demo and source code of this tutorial

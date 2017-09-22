@@ -2,7 +2,8 @@ Importing GeoJSON with VTS Browser JS - Part II
 ===================================================
 
 This tutorial shows how to import and visualize remote GeoJSON data
-and how to programmatically modify geodata.
+and how to programmatically modify geodata with Melown `VTS Browser
+JS <https://github.com/Melown/vts-browser-js>`__.
 
 This is the second part of our tutorial series about GeoJSON. At this
 point you should be familiar with displaying GeoJSON data and applying basic
@@ -10,6 +11,9 @@ styling to them. If not, maybe you missed our `first
 tutorial <//vtsdocs.melown.com/en/latest/tutorials/geojson.html>`__. We
 highly recommend checking it out first, since this tutorial builds
 on top of what we did previously.
+
+You can find the code and a `live demo <https://jsfiddle.net/hd6k7q0f/>`__ of
+this tutorial on JSFiddle.
 
 Loading data from URL
 ~~~~~~~~~~~~~~~~~~~~~
@@ -215,61 +219,24 @@ points. Add the following new layer into ``style.layers``, right after
 .. code:: javascript
 
     'place-hill': {
+        'inherit': 'place',
         'filter': ['all', ['==', '#type', 'point'], ['==', '#id', 'hill-top']],
-        'icon': true,
-        'icon-source': '@icon-marker',
-        'icon-color': [0,255,0,255],
-        'icon-scale': 2,
-        'icon-origin': 'center-center',
-        'icon-color': [255, 0, 0, 255],
-        'zbuffer-offset' : [-4,0,0]
-    }
+        'icon-color': [255,0,0,255]
+	}
 
-Here we selected the new point via it's *type* and *id*. We defined
-properties to render a similar icon as for the last point. The only difference here
-is the color and the absence of label. The label is rendered due to
-rules defined in ``place``. In addition to icon properties we have to
-add ``zbuffer-offset`` to make the red icon render above the green one.
+In this case we use layer style inheritace. You can imagine that inheritance will copy all properties from defined layer style and these properties can be oweriten by newly defined properties. This is very useful when you whant share properties for other style layer and define only thouse properties which differ. In this case we changed only ``filter`` and ``icon-color`` properties.
+Notice that we filtered the new point via it's *type* and *id*. We have to also change filter in previously defined ``place`` layer style, because we have to prevent of rendering hill point twice.
 
+.. code:: javascript
+
+    "place" : {
+        'filter' : ["all", ["==", "#type", "point"], ['!=', '#id', 'hill-top']],
+
+		
 .. figure:: ./geojson-part2-point-red.jpg
    :alt: Point with changed style
 
    Point with changed style
-
-This is not an ideal solution bacause we are rendering points above each other and only the one on top is visible. Rendering of the invisible should always be avoided for performance reasons. Therefore we'll refactor the layer styles a little bit.
-
-.. code:: javascript
-
-    'place-title': {
-        'filter' : [ "==", "#type", "point"],
-        'label': true,
-        'label-size': 19,
-        'label-source': "$title",
-        'label-offset': [0,-20]
-    },
-
-    "place-green" : {
-        'filter' : ["all", ["==", "#type", "point"], ['!=', '#id', 'hill-top']],
-        'icon': true,
-        'icon-source': '@icon-marker',
-        'icon-color': [0,255,0,255],
-        'icon-scale': 2,
-        'icon-origin': 'center-center',
-        'zbuffer-offset' : [-1,0,0]
-    },
-
-    'place-hill': {
-        'filter': ['all', ['==', '#type', 'point'], ['==', '#id', 'hill-top']],
-        'icon': true,
-        'icon-source': '@icon-marker',
-        'icon-color': [0,255,0,255],
-        'icon-scale': 2,
-        'icon-origin': 'center-center',
-        'icon-color': [255, 0, 0, 255],
-        'zbuffer-offset' : [-1,0,0]
-    }
-
-We removed ``place`` and substituted it with ``place-title``, ``place-green`` and ``place-hill``. ``place-title`` will now be used to render titles for both places. Next we updated the filter in ``place-green`` to omit points of id ``hill-top``.
 
 
 Adding line segment
