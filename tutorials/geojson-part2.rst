@@ -224,7 +224,7 @@ points. Add the following new layer into ``style.layers``, right after
         'icon-color': [255,0,0,255]
 	}
 
-In this case we use layer style inheritace. You can imagine that inheritance will copy all properties from defined layer style and these properties can be oweriten by newly defined properties. This is very useful when you whant share properties for other style layer and define only thouse properties which differ. In this case we changed only ``filter`` and ``icon-color`` properties.
+In this case we use layer style inheritance. You can imagine that inheritance will copy all properties from defined layer style and these properties can be overwritten by newly defined properties. This is very useful when you want share properties for other style layer and define only those properties which differ. In this case we changed only ``filter`` and ``icon-color`` properties.
 Notice that we filtered the new point via it's *type* and *id*. We have to also change filter in previously defined ``place`` layer style, because we have to prevent of rendering hill point twice.
 
 .. code:: javascript
