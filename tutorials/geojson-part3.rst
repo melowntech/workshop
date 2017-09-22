@@ -1,5 +1,5 @@
-Geodata - Hover Events
-======================
+Importing GeoJSON with VTS Browser JS - Part III
+================================================
 
 This tutorial will show you how to handle geodata hover events with
 Melown `VTS Browser
