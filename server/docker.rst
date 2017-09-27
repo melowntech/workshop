@@ -86,3 +86,16 @@ VTS-Mapproxy is configured, so that
   available.
 * The ``resources.json`` shall cotain **absolute paths** to existing datasets.
 
+====================================================
+Download and run containers from Docker Hub directly
+====================================================
+
+Melown Technologies have account at `Docker Hub <https://hub.docker.com/r/melown/>`_, you can download 
+and use images directly, e.g.::
+
+    docker run -ti -p 3070:3070 --name mapproxy --rm \
+        -v /projects/mapproxy-wmts:/vts/datasets/mapproxy-wmts:rw \
+        melown/vts-mapproxy
+
+    
+
