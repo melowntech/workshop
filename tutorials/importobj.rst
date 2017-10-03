@@ -194,8 +194,7 @@ Rendering models is easy. Just add these line to the onDrawModels function:
 First lines check whether we are rendering ``base`` channel. The ``base`` channel means that we are
 rendering color channel. There can be other channels like ``depth`` so we have to check that we are
 rendering in to the right channel. Next line is testing that houseModel exists and whether is ready
-(all textures are loaded). When conditions are met, we draw model. The draw function can have following
- parameters:
+(all textures are loaded). When conditions are met, we draw model. The draw function can have following parameters:
  
 =================  ===========  ================================
  Parameter          Default           Description
