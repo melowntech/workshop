@@ -23,7 +23,7 @@ VTS Browser JS
 ~~~~~~~~~~~~~~
 
 In case you already know to display map with VTS Browser JS you can skip flowing
-lines and continue with the OBJ part of the code.
+lines and continue with the `OBJ part <./#importing-obj-files>`__ of the code.
 
 The VTS Browser JS is a JavaScript WebGL rendering engine used and
 developed by `Melown Technologies SE <http://melown.com>`__ as part of
@@ -95,7 +95,7 @@ importing a OBJ files. We achieve this by using the callback function
 ``onMapLoaded`` and registering it to listen for the ``map-loaded`` event.
 You should now see the following:
 
-.. figure:: ./importobj-initial.png
+.. figure:: ./importobj-initial.jpg
    :alt: initial image
 
    Initial image
@@ -106,6 +106,7 @@ Importing OBJ files
 You need modelObj.js library for importing OBJ files. This library part of the VTS Browser JS demos.
 
 .. code:: html
+
     <script src="https://rawgithub.com/Melown/vts-browser-js/master/demos/meshes-obj-import/modelObj.js"></script>
 
 Let's assume we have the one OBJ file containing house and one OBJ file containing car. We place
@@ -124,6 +125,7 @@ The ModelOBJ(map, renderer, options) object loads OBJ file from provided ``path`
 There are other supported parameters like:
 
 .. code:: javascript
+
    optimize - set whether meshes with the same material are rendered together for better performance. Default value is ``true``.
    textureFilter - sets filter used for textures. Defaul value is ``trilinear``. Other possible values are: ``linear``, ``nearest``.
    fastTessellation - this option can be enabled when you are sure, that model contains only convex polygons with maximum number of 4 vertices. Default value is ``false``.
@@ -149,6 +151,7 @@ Rendering model
 Rendering models is easy. Just add these line to the onDrawModels function:
 
 .. code:: javascript
+
     function onDrawModels(renderChannel) {
         if (renderChannel != 'base') {
             return; //draw only in base channel
@@ -189,6 +192,7 @@ rendering in to the right channel. Next line is testing that houseModel exists a
  parameters:
  
 .. code:: javascript
+
     navCoords: coorinates + height, in most cases [long, lat, height]
     heightMode: heigth mode, posible values are 'float' (height above terrain),
                 'fix' (absolute height), default value is 'float'
@@ -207,7 +211,7 @@ models as you like.
 				  
 That's it for now, you've made it to the end :)
 
-.. figure:: ./importobj-result.png
+.. figure:: ./importobj-result.jpg
    :alt: Resulting map
 
    The resulting map.
