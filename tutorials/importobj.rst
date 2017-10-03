@@ -131,6 +131,16 @@ There are other supported parameters like:
    fastTessellation - this option can be enabled when you are sure, that model contains only convex polygons with maximum number of 4 vertices. Default value is ``false``.
    onLoaded - callback when model is loaded. Defaul value is: ```null``.
    
+=================  ================  ============================================================================================================================
+  Prameter          Default value     Description
+=================  ================  ============================================================================================================================
+optimize           true              Sets whether meshes with the same material are rendered together for better performance
+textureFilter      trilinear         Sets filter used for textures. Defaul value is ``trilinear``. Other possible values are: ``linear``, ``nearest``.
+fastTessellation   false             This option can be enabled when you are sure, that model contains only convex polygons with maximum number of 4 vertices. 
+onLoaded           null              Callback when model is loaded. 
+=================  ================  ============================================================================================================================
+   
+   
 How to setup rendering callback
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    
@@ -220,13 +230,3 @@ That's it for now, you've made it to the end :)
 You can check live demo `here <https://jsfiddle.net/uLqyjpu0/>`__.
 
 
-=====  =====  ====== 
-   Inputs     Output 
-------------  ------ 
-  A      B    A or B 
-=====  =====  ====== 
-False  False  False 
-True   False  True 
-False  True   True 
-True   True   True 
-=====  =====  ======
