@@ -15,3 +15,4 @@ Some more VTS case studies and tutorials are provided below.
    geojson
    geojson-part2
    geojson-part3
+   importobj
