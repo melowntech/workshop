@@ -141,7 +141,7 @@ textureFilter      trilinear    Sets filter used for textures. Defaul value is `
 fastTessellation   false        This option can be enabled when you are sure, that model contains
 \                               only convex polygons with maximum number of 4 vertices. 
 onLoaded           null         Callback when model is loaded. 
-=================  =========== ================================
+=================  ===========  ================================
    
    
 How to setup rendering callback
