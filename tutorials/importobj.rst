@@ -23,7 +23,7 @@ VTS Browser JS
 ~~~~~~~~~~~~~~
 
 In case you already know to display map with VTS Browser JS you can skip flowing
-lines and continue with the `OBJ part <./#importing-obj-files>`__ of the code.
+lines and continue with the `OBJ part <#importing-obj-files>`__ of the code.
 
 The VTS Browser JS is a JavaScript WebGL rendering engine used and
 developed by `Melown Technologies SE <http://melown.com>`__ as part of
@@ -220,3 +220,13 @@ That's it for now, you've made it to the end :)
 You can check live demo `here <https://jsfiddle.net/uLqyjpu0/>`__.
 
 
+=====  =====  ====== 
+   Inputs     Output 
+------------  ------ 
+  A      B    A or B 
+=====  =====  ====== 
+False  False  False 
+True   False  True 
+False  True   True 
+True   True   True 
+=====  =====  ======
