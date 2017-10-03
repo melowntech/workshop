@@ -135,11 +135,11 @@ There are other supported parameters like:
   Prameter          Default value     Description
 =================  ================  ================================
 optimize           true              Sets whether meshes with the same material are rendered together
-                                     for better performance
+\                                    for better performance
 textureFilter      trilinear         Sets filter used for textures. Defaul value is ``trilinear``.
-                                     Other possible values are: ``linear``, ``nearest``.
+\                                    Other possible values are: ``linear``, ``nearest``.
 fastTessellation   false             This option can be enabled when you are sure, that model contains
-                                     only convex polygons with maximum number of 4 vertices. 
+\                                    only convex polygons with maximum number of 4 vertices. 
 onLoaded           null              Callback when model is loaded. 
 =================  ================  ================================
    
