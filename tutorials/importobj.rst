@@ -197,21 +197,6 @@ rendering in to the right channel. Next line is testing that houseModel exists a
 (all textures are loaded). When conditions are met, we draw model. The draw function can have following
  parameters:
  
-.. code:: javascript
-
-    navCoords: coorinates + height, in most cases [long, lat, height]
-    heightMode: heigth mode, posible values are 'float' (height above terrain),
-                'fix' (absolute height), default value is 'float'
-    rotation: euler angles [yaw, pitch, roll], default value is [0,0,0]
-    scale: [scaleX, scaleY, scaleZ], default value is [1,1,1]
-    ambientLight: ambient light color [r,g,b], default value is [90,90,90]
-
-    depthOffset: [globalFactor, distanceFactor, tiltFactor] when you need some
-                  zbuffer tolerance, you will probably only need to change first
-                  value in the array, default value is [0,0,0]
-    depthOnly:   for hit test implementation, when 'depth' chanel is rendered
-                  default value is 'false'
-
 =================  ===========  ================================
  Parameter          Default           Description
 =================  ===========  ================================
@@ -228,8 +213,8 @@ ambientLight       [90,90,90]   ambient light color [r,g,b]
 depthOnly          false        for the hit test implementation, when the 'depth' channel is
 \                               rendered
 depthOffset        [0,0,0]      [globalFactor, distanceFactor, tiltFactor] when you need some
-                                zbuffer tolerance, you will probably only need to change first
-								value in the array
+\                               zbuffer tolerance, you will probably only need to change first
+\								value in the array
 =================  ===========  ================================
 				  
 Note that you can change model position, rotation and scale in every rendered frame, so you can also animate
@@ -244,5 +229,4 @@ That's it for now, you've made it to the end :)
 
 
 You can check live demo `here <https://jsfiddle.net/uLqyjpu0/>`__.
-
 
