@@ -124,13 +124,6 @@ The map, renderer, carModel, houseModel are global variables, sow we can use the
 The ModelOBJ(map, renderer, options) object loads OBJ file from provided ``path`` parameter.
 There are other supported parameters like:
 
-.. code:: javascript
-
-   optimize - set whether meshes with the same material are rendered together for better performance. Default value is ``true``.
-   textureFilter - sets filter used for textures. Defaul value is ``trilinear``. Other possible values are: ``linear``, ``nearest``.
-   fastTessellation - this option can be enabled when you are sure, that model contains only convex polygons with maximum number of 4 vertices. Default value is ``false``.
-   onLoaded - callback when model is loaded. Defaul value is: ```null``.
-   
 =================  ===========  ================================
  Parameter          Default           Description
 =================  ===========  ================================
@@ -219,6 +212,26 @@ rendering in to the right channel. Next line is testing that houseModel exists a
     depthOnly:   for hit test implementation, when 'depth' chanel is rendered
                   default value is 'false'
 
+=================  ===========  ================================
+ Parameter          Default           Description
+=================  ===========  ================================
+navCoords          null         coorinates + height, in most cases [long, lat, height]
+\                               
+heightMode         float        heigth mode, posible values are 'float' (height above terrain),
+\                               'fix' (absolute height)
+rotation           [0,0,0]      euler angles [yaw, pitch, roll]
+\                               
+scale              [1,1,1]      [scaleX, scaleY, scaleZ]
+\
+ambientLight       [90,90,90]   ambient light color [r,g,b]
+\
+depthOnly          false        for the hit test implementation, when the 'depth' channel is
+\                               rendered
+depthOffset        [0,0,0]      [globalFactor, distanceFactor, tiltFactor] when you need some
+                                zbuffer tolerance, you will probably only need to change first
+								value in the array
+=================  ===========  ================================
+				  
 Note that you can change model position, rotation and scale in every rendered frame, so you can also animate
 models as you like.
 				  
