@@ -18,6 +18,10 @@ Technologies for its Advanced Visualizer animation package. The file format is
 open and has been adopted by other 3D graphics application vendors. More about
 obj file format can be found `here <http://geojson.org/>`__.
 
+We have tested our importer on the models exported from `Blender <https://www.blender.org/>`__ 
+and `SketchUP <https://www.sketchup.com/>`__. You should get good results with these programs.
+Keep in mind that models should be exported with triangulated polygons and in case you are using
+double side materials enable this option in your exporter (e.g. SketchUp).
 
 VTS Browser JS
 ~~~~~~~~~~~~~~
