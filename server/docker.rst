@@ -1,7 +1,7 @@
 .. index::
     single: docker
 
-.. _docker:
+.. _docker-container:
 
 ******
 Docker
