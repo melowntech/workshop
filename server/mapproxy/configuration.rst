@@ -23,9 +23,9 @@ command line. First, we create directory with first project configuration
     $EDITOR mapproxy.conf
 
 You can now add following lines in the
-:download:`../../tutorials/backend/projects/nc/mapproxy.conf` configuration file.
+:download:`../../tutorials/projects/nc/mapproxy.conf` configuration file.
 
-.. literalinclude:: ../../tutorials/backend/projects/nc/mapproxy.conf
+.. literalinclude:: ../../tutorials/projects/nc/mapproxy.conf
    :linenos:
 
 Mapproxy configuration options

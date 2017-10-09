@@ -42,7 +42,7 @@ You may know, that the `OGC WMS <http://opengeospatial.org/standards/wms>`_
 supports ``GetLegendGraphic`` type of request. The legend image can be obtained
 using following URL:  http://image.discomap.eea.europa.eu/arcgis/services/Corine/CLC2012/MapServer/WmsServer?request=GetLegendGraphic&version=1.3.0&format=image/png&layer=Corine%20Land%20Cover%202012%20raster
 
-.. figure:: ../backend/images/corine-legend.png
+.. figure:: images/corine-legend.png
     
 JavaScript code
 ---------------
@@ -67,9 +67,9 @@ In the initializing function, ``addControl()`` function is called to create the 
 
 Once you open the app in the web browser, it should look like the following screenshots:
 
-.. figure:: ../backend/images/corine-2012.png
+.. figure:: images/corine-2012.png
     :width: 800px
 
-.. figure:: ../backend/images/urban-atlas.png
+.. figure:: images/urban-atlas.png
     :width: 800px
 

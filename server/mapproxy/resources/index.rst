@@ -12,7 +12,7 @@ to resource configuration file in the ``[resource-backend]`` section.
 There are two possible ways, how to define resources - using configuration file
 or using :ref:`resources-python`.
 
-The sample configuration can be seen in :download:`../../../tutorials/backend/resources.json` file
+The sample configuration can be seen in :download:`../../../tutorials/resources.json` file
 example. Generic JSON file structure looks following::
 
     [{
