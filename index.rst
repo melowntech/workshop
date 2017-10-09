@@ -32,6 +32,7 @@ technically skilled users.
 **Contents:**
 
 .. toctree::
+    :maxdepth: 1
 
     introduction
     server/index
