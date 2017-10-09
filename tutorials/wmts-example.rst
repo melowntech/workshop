@@ -84,4 +84,4 @@ out: http://localhost/melown2015/surface/melown/dem/mapConfig.json
 
 And also you should be able to visit `our example <../../_downloads/wmts-app.html>`_ and it should be working.
 
-.. figure:: images/wmts-example.png
+.. figure:: images/wmts-example.jpg

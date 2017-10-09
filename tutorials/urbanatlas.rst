@@ -109,7 +109,7 @@ Let's create the virtual dataset::
 
 And have a look at the data in QGIS
 
-.. figure:: images/eudem_dem.png
+.. figure:: images/eudem_dem.jpg
     :width: 600px
 
 .. note:: In this example, we are going to process a major part of Europe. This is
@@ -234,7 +234,7 @@ Mapproxy can be started again using::
 And we should obtain a result similar to the following picture, at 
 http://127.0.0.1:8070/mapproxy/melown2015/surface/openlanduse/dem/
 
-.. figure:: images/corine-praha.png
+.. figure:: images/corine-praha.jpg
     :width: 800px
 
 Next steps

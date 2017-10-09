@@ -67,9 +67,9 @@ In the initializing function, ``addControl()`` function is called to create the 
 
 Once you open the app in the web browser, it should look like the following screenshots:
 
-.. figure:: images/corine-2012.png
+.. figure:: images/corine-2012.jpg
     :width: 800px
 
-.. figure:: images/urban-atlas.png
+.. figure:: images/urban-atlas.jpg
     :width: 800px
 

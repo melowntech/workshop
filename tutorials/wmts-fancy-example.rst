@@ -102,4 +102,4 @@ You can download :download:`srcs/wmts-app-fancy.js` the file for further changes
 And also you should be able to visit `our example
 <../../_downloads/wmts-app-fancy.html>`_ and it should be working.
 
-.. figure:: images/wmts-fancy.png
+.. figure:: images/wmts-fancy.jpg

@@ -46,7 +46,7 @@ Create virtual raster file with GDAL::
 This will create single data files, which is covering all 4 underlaying GeoTIFF
 files.
 
-.. figure:: images/srtm.png
+.. figure:: images/srtm.jpg
 
     Centeral Europe SRTM DEM data, put together using ``gdalbuildvrt``
     downloaded from http://srtm.csi.cgiar.org/SELECTION/inputCoord.asp
@@ -109,7 +109,7 @@ Again, the file should look limilar to :download:`projects/wmts/geolandat.xml`
 We now have WMTS from two sources and digital elevation model from SRTM source.
 Let's check our data in QGIS:
 
-.. figure:: images/cz-au-srtm.png
+.. figure:: images/cz-au-srtm.jpg
 
     WMTS layers along with SRTM DEM
 
@@ -256,16 +256,16 @@ We can now start the server and see the result::
     ...
     2017-05-29 13:28:27 I3 [27261(updater)]: Ready to serve.
 
-.. figure:: images/cz-au.png
+.. figure:: images/cz-au.jpg
 
     Czech republic and Austria on ``melown2015`` reference frame using SRTM
     digital elevation model.
 
-.. figure:: images/austria.png
+.. figure:: images/austria.jpg
 
     Alps region in Austria
 
-.. figure:: images/palava.png
+.. figure:: images/palava.jpg
 
     `Pálava <https://mapy.cz/zakladni?x=16.64174&y=48.81627&z=17&base=ophoto&m3d=1&height=602.1&yaw=-28.662&pitch=-30&source=area&id=26568>`_, look from behind Austrian borders
 

@@ -94,7 +94,7 @@ importing a GeoJSON. We achieve this by using the callback function
 ``onMapLoaded`` and registering it to listen for the ``map-loaded`` event.
 You should now see the following:
 
-.. figure:: ./images/geojson-initial.png
+.. figure:: ./images/geojson-initial.jpg
    :alt: initial image
 
    Initial image
@@ -231,7 +231,7 @@ and just display a magenta line. To do so, let's change the style object to the 
         }
     };
 
-.. figure:: ./images/geojson-basic.png
+.. figure:: ./images/geojson-basic.jpg
    :alt: Basic styling
 
    Basic styling
@@ -263,7 +263,7 @@ to interpolation of line height between points. We can fix this by adding
 ``zbuffer-offset`` to the ``track-line`` layer. Try to add
 ``"zbuffer-offset": [-0.5, 0, 0]`` and see the difference.
 
-.. figure:: ./images/geojson-zbuffer.png
+.. figure:: ./images/geojson-zbuffer.jpg
    :alt: Displayed track with ``zbuffer-offset``
 
    Displayed track with ``zbuffer-offset``
@@ -292,7 +292,7 @@ Now we'll add a shadow to the line's visual style.
         }
     };
 
-.. figure:: ./images/geojson-track-shadow.png
+.. figure:: ./images/geojson-track-shadow.jpg
    :alt: Added track shadow
 
    Added track shadow
@@ -363,7 +363,7 @@ now we have used a different ``filter`` to select all points instead. For
 ``title`` property should be used as a label. The rest of the style
 properties are self-explanatory.
 
-.. figure:: ./images/geojson-track-point.png
+.. figure:: ./images/geojson-track-point.jpg
    :alt: Track with point
 
    Track with point

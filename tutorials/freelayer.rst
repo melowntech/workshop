@@ -55,7 +55,7 @@ We can create directory and copy our motorways there::
     $ mkdir resources/roads
     $ mv motorways.* resources/roads/
 
-.. figure:: images/motorways.png
+.. figure:: images/motorways.jpg
     
     Motorways separated from routes (OpenStreetMap from GeoFabrik.de)
 
@@ -119,6 +119,6 @@ Once set, you can re-run ``mapproxy`` and see your vector map::
 
     $ mapproxy --config mapproxy.conf
 
-.. figure:: images/vector-data.png
+.. figure:: images/vector-data.jpg
 
     Vector layer as :ref:`free-layer` displayed on surface with default style.
