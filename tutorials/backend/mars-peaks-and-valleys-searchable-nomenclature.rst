@@ -1,7 +1,7 @@
 .. _mars-peaks-and-valleys-searchable-nomenclature:
 
 
-.. image:: mars-peaks-and-valleys2-banner.jpg 
+.. image:: images/mars-peaks-and-valleys2-banner.jpg 
 
 |
 |
@@ -132,7 +132,7 @@ All right, time to see this in action. Point your browser to
 
 Here is what you should see:
 
-.. image:: mars-peaks-and-valleys-labels.jpg
+.. image:: images/mars-peaks-and-valleys-labels.jpg
 
 
 If you're into the VTS fineprint, here is a bit of styling tricks you've just used: the ``diameter`` property from the IAU feature dataset (which contains the feature size in kilometers) in conjunction with the "visibility-abs" and "visibility-rel" layer properties makes sure that labels are visible either 1.) when they are bigger than two kilometers and occupy more then 8 percent and less than 80 percent of the current vertical view extent, or 2.) they are smaller than two kilometers and the vertical view extent is less than 120 kilometers. These simple rules ensure that the labels exhibit just the right level of visual density for the map to be informative while avoiding visual clutter. 
@@ -218,7 +218,7 @@ Go back to your website at
 
 If all went well, your map now includes a search field:
 
-.. image:: mars-peaks-and-valleys-search-window.jpg
+.. image:: images/mars-peaks-and-valleys-search-window.jpg
 
 You can search for the characteristic Martian topographic feature types (*chaos*, *chasma*, *mons*, or *crater*). Or you can search for the nationalities (*Czech*, *German*, *Dutch*) to find out what nations discovered and named the individual features. There is lots of fun ways to fool around. 
 

@@ -207,7 +207,7 @@ the points appart. We add this snippet to
 ``geoJsonLoaded()`` function right after
 ``geodata.importGeoJson(data);``.
 
-.. figure:: ./geojson-part2-added-point.jpg
+.. figure:: ./images/geojson-part2-added-point.jpg
    :alt: Newly added point
 
    Newly added point
@@ -233,7 +233,7 @@ Notice that we filtered the new point via it's *type* and *id*. We have to also 
         'filter' : ["all", ["==", "#type", "point"], ['!=', '#id', 'hill-top']],
 
 		
-.. figure:: ./geojson-part2-point-red.jpg
+.. figure:: ./images/geojson-part2-point-red.jpg
    :alt: Point with changed style
 
    Point with changed style
@@ -288,7 +288,7 @@ should at this point have an idea how to achieve it yourself.
 
 We again refactored the previous layer style ``track-line`` to omit rendering of the newly added track on it's own. Then we added a new layer style ``track-extension`` for the newly added line segment.
 
-.. figure:: ./geojson-part2-track.jpg
+.. figure:: ./images/geojson-part2-track.jpg
    :alt: Added track
 
    Added track

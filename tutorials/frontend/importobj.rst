@@ -99,7 +99,7 @@ importing a OBJ files. We achieve this by using the callback function
 ``onMapLoaded`` and registering it to listen for the ``map-loaded`` event.
 You should now see the following:
 
-.. figure:: ./importobj-initial.jpg
+.. figure:: ./images/importobj-initial.jpg
    :alt: initial image
 
    Initial image
@@ -226,7 +226,7 @@ models as you like.
 				  
 That's it for now, you've made it to the end :)
 
-.. figure:: ./importobj-result.jpg
+.. figure:: ./images/importobj-result.jpg
    :alt: Resulting map
 
    The resulting map.

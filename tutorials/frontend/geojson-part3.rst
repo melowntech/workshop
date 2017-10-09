@@ -116,7 +116,7 @@ We'll start by displaying red a and blue line on our map.
 
     startDemo();
 
-.. figure:: ./geojson-part3-lines.jpg
+.. figure:: ./images/geojson-part3-lines.jpg
    :alt: Red and blue lines
 
    Red and blue lines.
@@ -165,7 +165,7 @@ Next, add some styling to new component:
           font-size: 20px;
     }
 
-.. figure:: ./geojson-part3-ui-element.jpg
+.. figure:: ./images/geojson-part3-ui-element.jpg
    :alt: Added status-div element
 
    Added status-div element
@@ -256,7 +256,7 @@ When leaving the feature, we udpdate ``statusDiv`` to its original state.
         statusDiv.setHtml('Hovering over: nothing');
     }
 
-.. figure:: ./geojson-part3-hover-box.jpg
+.. figure:: ./images/geojson-part3-hover-box.jpg
    :alt: Status box with information about feature
 
    Status box with information about feature
@@ -293,7 +293,7 @@ to ``line-shadow`` which generates the hover events.
 If you did everything correctly you should see the similar outcome if you
 hover over the blue line.
 
-.. figure:: ./geojson-part3-hover-effect.jpg
+.. figure:: ./images/geojson-part3-hover-effect.jpg
    :alt: Feature glowing effect
 
    Feature glowing effect

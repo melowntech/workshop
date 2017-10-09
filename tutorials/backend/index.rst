@@ -21,7 +21,7 @@ and :ref:`vtsd`.
     freelayer-tiled
     vtsbackend
     mars-peaks-and-valleys
-    cadastre
     mars-peaks-and-valleys-searchable-nomenclature
+    cadastre
     urbanatlas-cities
 
