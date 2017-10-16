@@ -26,15 +26,15 @@ Backend Components
 ==================
 
 The :ref:`mapproxy` dynamically converts local or remote resources like DSMs,
-orthopthotos and features into :ref:`tileset`s, :ref:`bound-layer`s and
-:ref:`free-layer`s that are directly usable by clients. It can be configured to
+orthopthotos and features into :ref:`tileset`\s, :ref:`bound-layer`\s and
+:ref:`free-layer`\s that are directly usable by clients. It can be configured to
 provide a ``mapConfig.json`` for some resources, thus serving as a
 stand-alone backend for simple setups which is leveraged in few tutorials.
 
 The :ref:`vtsd` is an nginx-like thin webserver capable of serving static VTS
-resources. These are usually 3D models and corresponding :ref:`glue`s from
-storage. It also provides a map configurations for :ref:`storage`s, :ref:`tileset`s
-and :ref:`storage-view`s. Generally, if you intend to work with 3D models or you
+resources. These are usually 3D models and corresponding :ref:`glue`\s from
+storage. It also provides a map configurations for :ref:`storage`\s, :ref:`tileset`\s
+and :ref:`storage-view`\s. Generally, if you intend to work with 3D models or you
 want to create some complex map configurations, you will always need the VTSD
 and a storage.
 
