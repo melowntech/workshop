@@ -13,11 +13,12 @@
    single: mesh
    single: attribution
 
-************
-Introduction
-************
 
-Melown 3D technology stack uses server-client architecture. There are two server
+
+
+
+
+There are two server
 applications :ref:`mapproxy` and :ref:`vtsd` and there are more client
 applications too, namely the :ref:`vts-browser-js` and :ref:`vts-browser-cpp`
 for now, but we do plan to add more in the future.
@@ -25,7 +26,7 @@ for now, but we do plan to add more in the future.
 As already said, there are two server-side applications, :ref:`mapproxy` and
 :ref:`vtsd`. The :ref:`mapproxy` is responsible for serving 3D data and bound
 layers to client apps, while :ref:`vtsd` is responsible for creating the 3D data
-meshes and *glueing* them together on edges.  
+meshes and *glueing* them together on edges.
 
 The javascript-based :ref:`vts-browser-js` client is then consuming data from
 Mapproxy and visualizing them using WebGL in the window of web browser. It also
@@ -35,7 +36,14 @@ The C++ :ref:`vts-browser-cpp` client is working the same way and consumes the
 same configuration file. It's rendering 3D scene using OpenGL library. The
 :ref:`vts-browser-cpp` is meant as *library*, but there are two sample
 applications included ``vts-browser-qt`` and ``vts-browser-glfw``, which are
-build by default. 
+build by default.
+
+
+
+
+
+
+
 
 ==============================
 Getting data for this tutorial
@@ -49,7 +57,7 @@ Schema
 ======
 
 You might find this picture as useful reference in the future, while going
-through this tutorial. 
+through this tutorial.
 
 .. figure:: images/VTS-architecture-final.png
     :width: 800px
@@ -69,7 +77,7 @@ data). We call the first perspective *analysis* and the second perspective
 describing, how the backe-end part works.
 
 Typical analytical concepts in VTS are that of configuration, surface and
-layers. 
+layers.
 
 .. _bound-layer:
 
@@ -188,7 +196,7 @@ In VTS, meshes are used to construct final 3D surface, covered with
 
 .. figure:: images/mesh-flatshade.png
     :scale: 50%
-    
+
     Flatshaded mesh, rendered as surface
 
 .. figure:: images/mesh-wireframe.png
@@ -209,7 +217,7 @@ definition.
 
 .. figure:: images/poster-coordinates.gif
     :scale: 50%
-    
+
     Source: `Maptiler <http://www.maptiler.org/img/poster-coordinates.gif>`_
 
 

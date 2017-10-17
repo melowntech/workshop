@@ -375,9 +375,7 @@ castle, oriented 31 degrees east of north and tilted 47 degrees downwards with
 observer at such distance from which a 613 meters long line perpendicular to the
 viewing direction is seen at 45 vertical degrees.
 
-:todo: float position
-
- Fixed positions, both subjective and objective, meet the criterion of immediate usability (they directly translate to projection matrices in absence of surface information). There intuitiveness is limited by reliance on navigation altitude (which is typically geodetic height). Floating positions rely on intuitive concept of ground level altitude, which makes them surface dependent and not usable until surface geodetic altitude at given XY coordinates is available. Both positions meet the criterion of FOV orthogonality.
+Fixed positions, both subjective and objective, meet the criterion of immediate usability (they directly translate to projection matrices in absence of surface information). There intuitiveness is limited by reliance on navigation altitude (which is typically geodetic height). Floating positions rely on intuitive concept of ground level altitude, which makes them surface dependent and not usable until surface geodetic altitude at given XY coordinates is available. Both positions meet the criterion of FOV orthogonality.
 
 Objective positions are generic in the sense that they can describe all possible projection matrix definitions, including the orthographic projection. Subjective positions lack the ability to express orthographic projections as they are based on the center of perspectivity. Any subjective position may be converted into an objective position, and any objective position with a non-zero FOV may be converted into a subjective position. In a geographic navigation SRS this conversion is non-trivial, since Euler angles are based on local tangential planes and these planes differ in the center of perspective and in the center of orbit - this phenomenon is not manifested in the trivial example above, but it will become profound at larger scale orbits.
 

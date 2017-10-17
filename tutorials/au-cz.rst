@@ -100,7 +100,7 @@ Same approach applies for Austrian Luftbilder::
     ...
           SUBDATASET_5_NAME=WMTS:http://maps.wien.gv.at/basemap/1.0.0/WMTSCapabilities.xml,layer=bmaporthofoto30cm
           SUBDATASET_5_DESC=Layer Geoland Basemap Orthofoto
-    ...    
+    ...
 
     $ gdal_translte -of WMTS "WMTS:http://maps.wien.gv.at/basemap/1.0.0/WMTSCapabilities.xml,layer=bmaporthofoto30cm" geolandat.xml
 
@@ -256,7 +256,7 @@ We can now start the server and see the result::
     ...
     2017-05-29 13:28:27 I3 [27261(updater)]: Ready to serve.
 
-.. figure:: images/cz-au.jpg
+.. figure:: images/cz-au.png
 
     Czech republic and Austria on ``melown2015`` reference frame using SRTM
     digital elevation model.

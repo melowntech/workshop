@@ -6,14 +6,14 @@
 
 .. _corine-example:
 
-Publishing WMS (Urbanatlas) along with Corine digital elevation model
----------------------------------------------------------------------
+Publishing WMS (Urbanatlas and Corine Land Cover) on top of Copernicus DEM
+-----------------------------------------------------------------------
 
 In this example, a standard cartography map (Urban atlas) is laid over a digital
 elevation model for better representation of the data in space.
 
 .. note:: We assume you have set up your environment as described in
-    :ref:`settting-vts-backend`.
+    :ref:`vts-backend`.
 
 Setting up mapproxy resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -25,7 +25,7 @@ During resource preparation it is advisable to turn off the mapproxy, so that yo
 configuration:
 
 .. code-block:: bash
-  
+
   sudo /etc/init.d/vts-backend-mapproxy stop
 
 As the whole vts-backend runs under the vts user, it is advisable to switch to the vts user so all files are created with the right privileges and ownership.
@@ -94,7 +94,7 @@ The first thing you need to do after downloading the data is to create a virtual
 raster with the help of GDAL::
 
     cd /var/vts/mapproxy/datasets/openlanduse/copernicus/rasters
-    ls 
+    ls
 
     eudem_dem_5deg_n40e010.tif  eudem_dem_5deg_n45e020.tif  eudem_dem_5deg_n55e010.tif
     eudem_dem_5deg_n40e015.tif  eudem_dem_5deg_n45e025.tif  eudem_dem_5deg_n55e015.tif
@@ -118,7 +118,7 @@ And have a look at the data in QGIS
     For "cutting out" just country borders, use ``gdalwarp``::
 
         gdalwarp -cutline COUNTRY.shp -crop_to_cutline -dstalpha eudem_dem.vrt eudem_COUNTRY.tiff
-    
+
 
 Next, we have to create virtual overviews::
 
@@ -150,7 +150,7 @@ For this, we first need to know tile extents of the input dataset::
     range<pseudomerc>: 7,15 15/8742,5480:9050,5657
     range: 7,15 34,21:35,22
     position: obj,15.474967,49.803826,float,0.000000,0.000000,-90.000000,0.000000,649246.827847,55.000000
-    
+
 Now we can run ``mapproxy-tiling`` to calculate the tileindex for our input data. Use your own numbers
 from ``range`` line of mapproxy-calipers output::
 
@@ -159,7 +159,7 @@ from ``range`` line of mapproxy-calipers output::
 .. note:: This step can take a very long time, in order to get all the tiles
         calculated.
 
-    
+
 Setting up Urban atlas dataset
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -231,7 +231,7 @@ Mapproxy can be started again using::
 
     sudo /etc/init.d/vts-backend-mapproxy start
 
-And we should obtain a result similar to the following picture, at 
+And we should obtain a result similar to the following picture, at
 http://127.0.0.1:8070/mapproxy/melown2015/surface/openlanduse/dem/
 
 .. figure:: images/corine-praha.jpg

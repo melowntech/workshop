@@ -13,15 +13,15 @@ and :ref:`vtsd`.
 
 .. toctree::
     :maxdepth: 1
-    
+
+    vtsbackend
+    mars-peaks-and-valleys
+    mars-peaks-and-valleys-searchable-nomenclature
     north-carolina
     au-cz
     urbanatlas
     freelayer
     freelayer-tiled
-    vtsbackend
-    mars-peaks-and-valleys
-    mars-peaks-and-valleys-searchable-nomenclature
     cadastre
     urbanatlas-cities
 
