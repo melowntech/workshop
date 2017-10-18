@@ -1,7 +1,7 @@
 .. _mars-peaks-valleys:
 
-The Peaks and Valleys of Mars
------------------------------
+Mars: The Peaks and Valleys
+---------------------------
 
 If you have encountered 3D interactive Mars websites such as `Mars in Google Earth <https://www.google.com/maps/space/mars>`_ or `NASA Mars Trek <https://marstrek.jpl.nasa.gov/index.html>`_ you probably stood in awe at how much work went into them. 
 

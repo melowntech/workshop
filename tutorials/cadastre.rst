@@ -1,10 +1,10 @@
 .. index::
     pair: HGT; SRTMHGT
 
-.. _cadastre-tutorial:
+.. _cadastre-raster-vector-3d:
 
-Displaying Cadastre Over 3D Data
---------------------------------
+Displaying Raster and Vector Cadastre Over 3D Data
+--------------------------------------------------
 
 In this tutorial we combine 3D data of a Czech village Jenštejn that we made available for this purpose with both raster
 and vector cadastre provided by `State Administration of Land Surveying and Cadastre (ČÚZK) <http://www.cuzk.cz/en>`_ .

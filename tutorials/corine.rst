@@ -8,7 +8,7 @@ Corine land cover frontend side
 ===============================
 
 In this example, we are going to create front-end JavaScript app using the
-:ref:`corine-example`. We are going to enrich the map with legend and a control
+:ref:`landuse-wms-dem`. We are going to enrich the map with legend and a control
 element to switch the two landuse layers.
 
 HTML Page

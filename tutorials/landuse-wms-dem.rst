@@ -4,10 +4,10 @@
     single: tutorial
     single: example
 
-.. _corine-example:
+.. _landuse-wms-dem:
 
-Publishing WMS (Urbanatlas and Corine Land Cover) on top of Copernicus DEM
------------------------------------------------------------------------
+Land Use: Copernicus DEM with Urbanatlas and Corine Land Cover WMS
+------------------------------------------------------------------
 
 In this example, a standard cartography map (Urban atlas) is laid over a digital
 elevation model for better representation of the data in space.

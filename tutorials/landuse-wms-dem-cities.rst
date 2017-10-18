@@ -1,10 +1,10 @@
-.. _urbanatlas-cities-tutorial:
+.. _landuse-wms-3d:
 
-Displaying Open Landuse Map Over 3D Data
+Land Use: Open Landuse Maps over 3D Data
 ----------------------------------------
 
 In this tutorial we combine 3D data of Czech cities and the Corine Land Cover
-/ Open Landuse datasets from the :ref:`corine-example`.
+/ Open Landuse datasets from the :ref:`landuse-wms-dem` tutorial.
 
 .. note:: Czech Cities 3D is a proprietary dataset, provided by `Melown Technologies <https://melown.com>`_. Please contact Melown Technologies in order to get access to this dataset.
 
@@ -14,7 +14,7 @@ Pre-requirements
 #. This tutorial expects that you have already set up your VTS backend, as
    described in :ref:`setting-vts-backend`.
 #. It is assumed that your Mapproxy resources are set up and that your Mapproxy
-   instance is up and running, just as shown in the example :ref:`corine-example`.
+   instance is up and running, just as shown in the tutorial :ref:`landuse-wms-dem`.
 #. It is also expected that you start with a clean VTS installation (the
    Storage is empty).
 
@@ -50,7 +50,7 @@ following content.
 
 .. literalinclude:: projects/corine/cities
 
-For a commented configuration file, take a look at the :ref:`cadastre-tutorial`
+For a commented configuration file, take a look at the :ref:`cadastre-raster-vector-3d`
 example.
 
 .. code-block:: bash

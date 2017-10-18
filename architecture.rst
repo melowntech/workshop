@@ -5,7 +5,7 @@
 Architecture Overview
 *********************
 
-VTS 3D Stack uses client-server architecture. The backend consists of two streaming servers :ref:`mapproxy` and :ref:`vtsd`, a commandline data management tool suite and encoders. The frontend consist of WebGL based :ref:`vts-browser-js` with JavaScript API and :ref:`vts-browser-cpp` with C++ API. The main point of contact between backend and frontend is a :ref:`map-configuration` represented by ``mapConfig.json`` file which is the first file the client asks for and which contains complete configuration needed to render given map.
+VTS 3D Stack uses client-server architecture. The backend consists of two streaming servers :ref:`mapproxy` and :ref:`vtsd`, a commandline data management tool suite including encoders and the :ref:`registry <vts-registry>`. The frontend consist of WebGL based :ref:`vts-browser-js` with JavaScript API and :ref:`vts-browser-cpp` with C++ API. The main point of contact between backend and frontend is a :ref:`map-configuration` represented by ``mapConfig.json`` file which is the first file the client asks for and which contains complete configuration needed to render given map.
 
 Typical production setup of the whole stack can be seen in the following schema.
 
@@ -60,6 +60,11 @@ Encoders
 
 Encoders are used to convert external hierarchical mesh formats (VEF, I3S/SLPK, LODTree) into VTS :ref:`tilesets <tileset>`. Currently, there are :ref:`vef2vts <vef2vts>`, :ref:`slpk2vts <slpk2vts>` and :ref:`lodtree2vts <lodtree2vts>`. There is also :ref:`vts2vts <vts2vts>` that can be used to convert tilesets from one :ref:`reference frame <reference-frame>` to another if there is a need but this practice is discouraged because of
 possible quality loss.
+
+Registry
+========
+
+:ref:`VTS Registry <vts-registry>` holds the definitions of :ref:`coordinate systems <srs>` and :ref:`reference frames <reference-frame>` known to VTS. 
 
 Rendering Libraries
 ===================

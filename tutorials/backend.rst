@@ -17,11 +17,13 @@ and :ref:`vtsd`.
     vtsbackend
     mars-peaks-and-valleys
     mars-peaks-and-valleys-searchable-nomenclature
+    landuse-wms-dem  
+    landuse-wms-dem-cities
+    cadastre
+
+..
     north-carolina
     au-cz
-    urbanatlas
     freelayer
     freelayer-tiled
-    cadastre
-    urbanatlas-cities
 

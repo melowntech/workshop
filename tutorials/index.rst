@@ -4,7 +4,7 @@
 Learning VTS
 ############
 
-The simplest way to get started with VTS is by following some of our tutorials and case studies. The tutorials are organized into two main sections and sorted by complexity starting with the simplest ones.
+The simplest way to get started with VTS is by following some of our tutorials. The tutorials are organized into two main sections and roughly sorted by complexity starting with the simplest ones.
 
 .. _backend-tutorials:
 
@@ -13,9 +13,13 @@ Backend
 
 Backend tutorials are focused on setting up the VTS Backend environment, preprocessing your data and configuring the VTS streaming servers to serve them to client. It is a must-read if you plan to serve your own data through VTS.
 
-* :ref:`Setting up the VTS Backend environment <vts-backend>`: essential basic setup of VTS, most other backend tutorials build atop of it.
-* :ref:`Mars: The Peaks and Valeys <mars-peaks-valleys>`: setting up an interactive 3D globe using local data on your drive (DEM and imagery) and :ref:`mapproxy <mapproxy>`.
-* :ref:`Mars: Searchable Nomenclature <mars-peaks-and-valleys-searchable-nomenclature>: adding vector nomenclature labels and search functionality to the previous tutorial.
+* :ref:`vts-backend`: essential basic setup of VTS, most other backend tutorials build atop of it.
+* :ref:`mars-peaks-valleys`: set up an interactive 3D globe using local data on your drive (DEM and imagery) and :ref:`mapproxy <mapproxy>`.
+* :ref:`mars-peaks-and-valleys-searchable-nomenclature: add and style vector nomenclature labels and set up search functionality for the previous tutorial.
+* :ref:`landuse-wms-dem`: combine maps available through WMS with open Copernicus DEM using :ref:`mapproxy <mapproxy>`.
+* :ref:`landuse-wms-3d`: use :ref:`free layers <free-layer>` to combine 2D land use data with 3D city in eye-pleasing way.
+* :ref:`cadastre-raster-vector-3d`: fuse two 3D models of Jenstejn village in :ref:`storage <storage>` and overlay them with both raster and styled vector cadastre.
+
 
 
 Some more VTS case studies and tutorials are provided below.
