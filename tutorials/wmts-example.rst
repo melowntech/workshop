@@ -15,7 +15,7 @@ WMTS Application example
 HTML Page
 ---------
 
-You as shown in the :ref:`wmts-app` examle, first we add 2 files to your web
+You as shown in the :ref:`wmts-app` example, first we add 2 files to your web
 page, the CSS file and the ``VTS-Browser-JS`` library (minified version)
 
 .. literalinclude:: srcs/wmts-app.html

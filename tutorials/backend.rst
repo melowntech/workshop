@@ -24,4 +24,4 @@ and :ref:`vtsd`.
     mars-peaks-and-valleys-searchable-nomenclature
     cadastre
     urbanatlas-cities
-
+    bing-maps

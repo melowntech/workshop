@@ -256,7 +256,7 @@ We can now start the server and see the result::
     ...
     2017-05-29 13:28:27 I3 [27261(updater)]: Ready to serve.
 
-.. figure:: images/cz-au.jpg
+.. figure:: images/cz-au.png
 
     Czech republic and Austria on ``melown2015`` reference frame using SRTM
     digital elevation model.
