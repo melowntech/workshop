@@ -1,27 +1,25 @@
-VTS Browser JS - Geodata: Hover events
-======================================
+.. _vtsjs-geojson-3:
+
+GeoJSON: Hover Events in VTS-Browser-JS
+---------------------------------------
 
 This tutorial will show you how to handle geodata hover events with
-Melown `VTS Browser
-JS <https://github.com/Melown/vts-browser-js>`__.
+Melown `VTS-Browser-JS <https://github.com/Melown/vts-browser-js>`__.
 
-As a prerequisite you should be able to display GeoJSON with
-Melown VTS Browser. If you don't know how to do that or you need a reminder
-check our previous tutorials
-(`part1 <//vtsdocs.melown.com/en/latest/tutorials/geojson.html>`__,
-`part2 <//vtsdocs.melown.com/en/latest/tutorials/geojson-part2.html>`__)
+As a prerequisite you should be able to display GeoJSON with VTS Browser. If you don't know how to do that or you need a reminder
+check our previous tutorials (:ref:`part1 <vtsjs-geojson-1>`, :ref:`part2 <vtsjs-geojson-3>`)
 on this topic.
 
 You can check live demo and source code of this tutorial
 `here <https://jsfiddle.net/qn0cjLbd/>`__.
 
 Preparing base data
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 First, we need some geodata on which we shall listen for hover events.
 We'll start by displaying red a and blue line on our map.
 
-.. code:: javascript
+.. code-block:: javascript
 
     var browser = null;
     var renderer = null;
@@ -122,13 +120,13 @@ We'll start by displaying red a and blue line on our map.
    Red and blue lines.
 
 Adding UI to display hover state
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Now we'll add a ui element that will
 display information about hovered state. Expand ``startDemo`` function in
 the following way:
 
-.. code:: javascript
+.. code-block:: javascript
 
     function startDemo(){
         browser = vts.browser(...) // omitted for simplicity
@@ -149,7 +147,7 @@ right element in case more applications are embedded in the same page.
 
 Next, add some styling to new component:
 
-.. code:: javascript
+.. code-block:: javascript
 
      #status-div {
           font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
@@ -171,13 +169,13 @@ Next, add some styling to new component:
    Added status-div element
 
 Hover events
-------------
+^^^^^^^^^^^^
 
 To enable hover events generation for geodata we need to add
 ``hover-event:true`` property to style layer. We'll use
 ``line-shadow`` in our case.
 
-.. code:: javascript
+.. code-block:: javascript
 
     var style = {
         ...
@@ -193,7 +191,7 @@ To enable hover events generation for geodata we need to add
 To listen to hover events we need to update ``startDemo`` function again
 with following:
 
-.. code:: javascript
+.. code-block:: javascript
 
     //add mouse down callback
     browser.ui.getMapElement().on('mousemove', onMouseMove);
@@ -207,7 +205,7 @@ We added several new callback methods. Let's implement them now. First
 we need to propagate hover to browser element in ``onMouseMove``
 function.
 
-.. code:: javascript
+.. code-block:: javascript
 
     function onMouseMove(event) {
         if (map) {
@@ -223,7 +221,7 @@ We also have to cancel hovering manually when the cursor leaves the map element,
 otherwise hover state will hang permanently. We do this in
 ``onMouseLeave`` function.
 
-.. code:: javascript
+.. code-block:: javascript
 
     function onMouseLeave(event) {
         if (map) {
@@ -241,7 +239,7 @@ over different parts of the feature but it is unnecessary to use in our case.
 First let's implement ``onFeatureEnter`` to display above which geo feature we are
 hovering and list it's properties inside ``statusDiv`` element.
 
-.. code:: javascript
+.. code-block:: javascript
 
     function onFeatureEnter(event) {
         statusDiv.setHtml('Hovering over: ' + event.feature['#id'] + '<br/><br/>' +
@@ -250,7 +248,7 @@ hovering and list it's properties inside ``statusDiv`` element.
 
 When leaving the feature, we udpdate ``statusDiv`` to its original state.
 
-.. code:: javascript
+.. code-block:: javascript
 
     function onFeatureLeave(event) {
         statusDiv.setHtml('Hovering over: nothing');
@@ -262,13 +260,13 @@ When leaving the feature, we udpdate ``statusDiv`` to its original state.
    Status box with information about feature
 
 Hover effect
-------------
+^^^^^^^^^^^^
 
 Next let's add a glowing effect to shadow when we are hovering above a line. We can
 achieve this by adding a style layer `line-glow`` with the glow and adding ``hover-layer: "line-glow"``
 to ``line-shadow`` which generates the hover events.
 
-.. code:: javascript
+.. code-block:: javascript
 
     var style = {
       ...

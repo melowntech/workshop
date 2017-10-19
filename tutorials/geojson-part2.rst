@@ -1,26 +1,26 @@
-VTS Browser JS - Geodata: Importing GeoJSON Part II
-===================================================
+.. _vtsjs-geojson-2:
+
+GeoJSON: Import and Extending with VTS-Browser-JS
+-------------------------------------------------
 
 This tutorial shows how to import and visualize remote GeoJSON data
-and how to programmatically modify geodata with Melown `VTS Browser
-JS <https://github.com/Melown/vts-browser-js>`__.
+and how to programmatically modify geodata with Melown `VTS-Browser-JS <https://github.com/Melown/vts-browser-js>`_.
 
 This is the second part of our tutorial series about GeoJSON. At this
 point you should be familiar with displaying GeoJSON data and applying basic
-styling to them. If not, maybe you missed our `first
-tutorial <//vtsdocs.melown.com/en/latest/tutorials/geojson.html>`__. We
+styling to them. If not, maybe you missed our :ref:`previous tutorial <vtsjs-geojson-1>`_. We
 highly recommend checking it out first, since this tutorial builds
 on top of what we did previously.
 
-You can find the code and a `live demo <https://jsfiddle.net/hd6k7q0f/>`__ of
+You can find the code and a `live demo <https://jsfiddle.net/hd6k7q0f/>`_ of
 this tutorial on JSFiddle.
 
 Loading data from URL
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
 
 Let's start with a reminder of the JavaScript code from the previous tutorial.
 
-.. code:: javascript
+.. code-block:: javascript
 
     var browser = null;
     var renderer = null;
@@ -151,7 +151,7 @@ Let's start with a reminder of the JavaScript code from the previous tutorial.
 
 To fetch a GeoJSON we need to edit the function ``onMapLoaded``.
 
-.. code:: javascript
+.. code-block:: javascript
 
     function onMapLoaded() {
         map = browser.map;
@@ -162,7 +162,7 @@ Our VTS stack comes with the utility function ``vts.utils.loadJSON()`` to
 help you downloading a JSON. However, if you favor other ways of fetching the data there
 is nothing stopping you.
 
-.. code:: javascript
+.. code-block:: javascript
 
     function geoJsonLoaded(data) {
         geodata = map.createGeodata();
@@ -174,7 +174,7 @@ In the body of ``geoJsonLoaded()`` we can handle the received GeoJSON like
 we did previously in ``onMapLoaded()``.
 
 Extending existing data
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^
 
 VTS Browser provides an API to extend existing
 `geodata <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#geodata-creation>`__.
@@ -188,7 +188,7 @@ multiple points at once. You can check the
 `documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#geodata-methods>`__
 to discover more.
 
-.. code:: javascript
+.. code-block:: javascript
 
     geodata.addPoint(
         [-122.489622, 37.834831],
@@ -216,7 +216,7 @@ Next we'll style the added point to distinguish it visually from other
 points. Add the following new layer into ``style.layers``, right after
 ``place``.
 
-.. code:: javascript
+.. code-block:: javascript
 
     'place-hill': {
         'inherit': 'place',
@@ -227,7 +227,7 @@ points. Add the following new layer into ``style.layers``, right after
 In this case we use layer style inheritance. You can imagine that inheritance will copy all properties from defined layer style and these properties can be overwritten by newly defined properties. This is very useful when you want share properties for other style layer and define only those properties which differ. In this case we changed only ``filter`` and ``icon-color`` properties.
 Notice that we filtered the new point via it's *type* and *id*. We have to also change filter in previously defined ``place`` layer style, because we have to prevent of rendering hill point twice.
 
-.. code:: javascript
+.. code-block:: javascript
 
     "place" : {
         'filter' : ["all", ["==", "#type", "point"], ['!=', '#id', 'hill-top']],
@@ -240,13 +240,13 @@ Notice that we filtered the new point via it's *type* and *id*. We have to also 
 
 
 Adding line segment
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
 As a next step we'll add a line segment via geodata API. We'll take
 advantage of
 ``geodata.addLineString(coordinates, heightMode, properties, id)``.
 
-.. code:: javascript
+.. code-block:: javascript
 
     geodata.addLineString([
         [-122.4937820, 37.833683],
@@ -266,7 +266,7 @@ advantage of
 We added a track up to Slacker Hill. Next we'll make it red again. You
 should at this point have an idea how to achieve it yourself.
 
-.. code:: javascript
+.. code-block:: javascript
 
     "track-line" : {
         "filter" : ['all', ['==', '#type', 'line'], ["!=", "#id", "track-to-hill"]],
@@ -299,4 +299,4 @@ fetch a GeoJSON from a URL, add new points, lines and how to style them.
 If you'd like to practice more, try to add a blue track descending from
 Slackers Hill to the original track's start. You can obtain the track
 coordinates
-`here <https://mapy.cz/zakladni?vlastni-body&x=-122.4851648&y=37.8360597&z=16&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&uc=oc3YzwTMRj6GWsIXXgfjdWnF0KCPjVIKjXrNN-0SGSWTGM1SJQNPNO2O8LL6dg62QJB2QQHENXGeR8FFUQGVQgB7GgDyQ1flaQQfeXgQ9fYmIngNjSDFAJxUoTnH3X8fh0MQSWQN0P&ud=Slacker%20Trail&ud=Slacker%20Trail&ud=Slacker%20Trail&ud=Slacker%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail>`__.
+`here <https://mapy.cz/zakladni?vlastni-body&x=-122.4851648&y=37.8360597&z=16&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&ut=Nov%C3%BD%20bod&uc=oc3YzwTMRj6GWsIXXgfjdWnF0KCPjVIKjXrNN-0SGSWTGM1SJQNPNO2O8LL6dg62QJB2QQHENXGeR8FFUQGVQgB7GgDyQ1flaQQfeXgQ9fYmIngNjSDFAJxUoTnH3X8fh0MQSWQN0P&ud=Slacker%20Trail&ud=Slacker%20Trail&ud=Slacker%20Trail&ud=Slacker%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail&ud=Coastal%20Trail>`_.

@@ -1,18 +1,19 @@
-VTS Browser JS - Importing OBJ Models
-=====================================
+.. _vtsjs-import-obj:
+
+Importing OBJ Models with VTS-Browser-JS
+----------------------------------------
 
 This tutorial provides a step by step guide how to import and visualize
-sample OBJ models with `VTS Browser
-JS <https://github.com/Melown/vts-browser-js>`__.
+sample OBJ models with `VTS-Browser-JS <https://github.com/Melown/vts-browser-js>`_.
 
 In detail we'll take a look how to display the VTS browser on a webpage. Next
 we'll load some OBJ data and display them.
 
-You can find the code and a `live demo <https://jsfiddle.net/uLqyjpu0/>`__ of
+You can find the code and a `live demo <https://jsfiddle.net/uLqyjpu0/>`_ of
 this tutorial on JSFiddle.
 
 OBJ File format
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 OBJ (or .OBJ) is a geometry definition file format first developed by Wavefront
 Technologies for its Advanced Visualizer animation package. The file format is
 open and has been adopted by other 3D graphics application vendors. More about
@@ -24,7 +25,7 @@ Keep in mind that models should be exported with triangulated polygons and in ca
 double side materials enable this option in your exporter (e.g. SketchUp).
 
 VTS Browser JS
-~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^
 
 In case you already know to display map with VTS Browser JS you can skip flowing
 lines and continue with the `OBJ part <#importing-obj-files>`__ of the code.
@@ -34,12 +35,12 @@ developed by `Melown Technologies SE <http://melown.com>`__ as part of
 the VTS 3D Technology Stack.
 
 Embedding the browser
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
 
 To embed the VTS Browser into a webpage, add the necessary CSS and
 JavaScript resources and create a ``div`` with an id like ``map-div``.
 
-.. code:: html
+.. code-block:: html
 
     <!DOCTYPE html>
     <html lang="en">
@@ -58,7 +59,7 @@ JavaScript resources and create a ``div`` with an id like ``map-div``.
 Now that we've prepared our HTML structure we can add some JavaScript
 code to make the browser run.
 
-.. code:: javascript
+.. code-block:: javascript
 
     var browser = null;
     var renderer = null;
@@ -105,18 +106,18 @@ You should now see the following:
    Initial image
 
 Importing OBJ files
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
 You need modelObj.js library for importing OBJ files. This library is part of the VTS Browser JS demos.
 
-.. code:: html
+.. code-block:: html
 
     <script src="https://rawgithub.com/Melown/vts-browser-js/master/demos/meshes-obj-import/modelObj.js"></script>
 
 Let's assume we have one OBJ file containing house and one OBJ file containing car. We place
 following lines in the onMapLoaded function.
 
-.. code:: javascript
+.. code-block:: javascript
 
     map = browser.map;   
     renderer = browser.renderer;
@@ -142,11 +143,11 @@ onLoaded           null         Callback when model is loaded.
    
    
 How to setup rendering callback
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    
 We have to setup rendering callback for rendering custom models into the map. For that case we add following lines into the onMapLoaded function.
 
-.. code:: javascript
+.. code-block:: javascript
 
         map.addRenderSlot('custom-models', onDrawModels, true);
         map.moveRenderSlotAfter('after-map-render', 'custom-models');
@@ -156,11 +157,11 @@ The second line tells that ``custom-models`` callback will be called after the m
 about render slots in the `documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#render-slots-methods>`__.
        
 Rendering model
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
 Rendering models is easy. Just add these line to the onDrawModels function:
 
-.. code:: javascript
+.. code-block:: javascript
 
     function onDrawModels(renderChannel) {
         if (renderChannel != 'base') {

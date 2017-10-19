@@ -3,5 +3,4 @@
 Next steps
 ==========
 
-Look for :ref:`tutorials` to get examples of VTS-MapProxy configuration,
-especially :ref:`mapproxy-tutorial`. 
+Look for :ref:`backend tutorials <backend-tutorials>` to get examples of VTS-MapProxy configuration. 

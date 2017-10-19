@@ -1,15 +1,15 @@
-.. _mapproxy-examples:
 
-.. _mapproxy-tutorial:
 
-.. _backend-examples:
+..
+  This page serves only to add one level to the TOC, parent page contains all
+  the needed details.
 
-================
-Backend examples
-================
+=================
+Backend tutorials
+=================
 
-Here are some examples of the backend components, such as :ref:`mapproxy`
-and :ref:`vtsd`.
+Here is a list of backend tutorials, refer to :ref:`parent page <backend-tutorials>`
+for more information.
 
 .. toctree::
     :maxdepth: 1

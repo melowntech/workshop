@@ -1,9 +1,10 @@
-VTS Browser JS - Geodata: Importing GeoJSON Part I
-==================================================
+.. _vtsjs-geojson-1:
+
+GeoJSON: Import and Styling with VTS-Browser-JS
+-----------------------------------------------
 
 This tutorial provides a step by step guide how to import and visualize
-sample GeoJSON data with `VTS Browser
-JS <https://github.com/Melown/vts-browser-js>`__.
+sample GeoJSON data with `VTS-Browser-JS <https://github.com/Melown/vts-browser-js>`_.
 
 In detail we'll take a look how to display the VTS browser on a webpage. Next
 we'll load some GeoJSON data and display them. And finally we'll take a
@@ -13,27 +14,27 @@ You can find the code and a `live demo <https://jsfiddle.net/1xf3bxz9/>`__ of
 this tutorial on JSFiddle.
 
 GeoJSON
-~~~~~~~
+^^^^^^^
 
 GeoJSON is an open standard format designed for representing simple
 geographical features, along with their non-spatial attributes, based on
 JavaScript Object Notation. You can view the specs 
-`here <http://geojson.org/>`__.
+`here <http://geojson.org/>`_.
 
-VTS Browser JS
-~~~~~~~~~~~~~~
-
-The VTS Browser JS is a JavaScript WebGL rendering engine used and
-developed by `Melown Technologies SE <http://melown.com>`__ as part of
-the VTS 3D Technology Stack.
+.. 
+    VTS Browser JS
+    ~~~~~~~~~~~~~~
+    The VTS Browser JS is a JavaScript WebGL rendering engine used and
+    developed by `Melown Technologies SE <http://melown.com>`__ as part of
+    the VTS 3D Technology Stack.
 
 Displaying the browser
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^
 
 To display the VTS Browser, add the necessary CSS and
 JavaScript resources and create a ``div`` with an id like ``map-div``.
 
-.. code:: html
+.. code-block:: html
 
     <!DOCTYPE html>
     <html lang="en">
@@ -52,7 +53,7 @@ JavaScript resources and create a ``div`` with an id like ``map-div``.
 Now that we've prepared our HTML structure we can add some JavaScript
 code to make the browser run.
 
-.. code:: javascript
+.. code-block:: javascript
 
     var browser = null;
     var renderer = null;
@@ -83,11 +84,11 @@ code to make the browser run.
 
 We created a map in place of the ``map-div`` and set the ``map`` parameter
 to point to a map configuration we prepared in Melown Cloud for this purpose. 
-You can create your own map in `Melown Cloud <https://www.melown.com/cloud>`__. We set the
-`position <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#position>`__
+You can create your own map in `Melown Cloud <https://www.melown.com/cloud>`_. We set the
+`position <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#position>`_
 to San Francisco Golden Gate Bridge. You can discover more about
 browser configuration parameters in
-`documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-API#options>`__.
+`documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-API#options>`_.
 
 Once the map loads we can start with
 importing a GeoJSON. We achieve this by using the callback function
@@ -100,12 +101,12 @@ You should now see the following:
    Initial image
 
 Adding GeoJSON data
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
 Let's assume we have the following GeoJSON data containing a sample trek
 trough Golden Gate Bridge Vista Point.
 
-.. code:: javascript
+.. code-block:: javascript
 
     var json = {
         "type": "FeatureCollection",
@@ -161,7 +162,7 @@ take advantage of this later in the tutorial.
 To load the data into the browser we need to implement the ``onMapLoaded()``
 function mentioned earlier:
 
-.. code:: javascript
+.. code-block:: javascript
 
     function onMapLoaded() {
         map = browser.map;
@@ -186,7 +187,7 @@ display them correctly.
 At the moment VTS Browser does not support importing polygons
 as a feature type.
 
-.. code:: javascript
+.. code-block:: javascript
 
     function onHeightsProcessed() {
 
@@ -213,7 +214,7 @@ but it's still invisible because we need to first add some styles to
 the newly created layers.
 
 Basic styling
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
 Let's start with a really basic one. We'll omit point data for now
 and just display a magenta line. To do so, let's change the style object to the following:
@@ -256,7 +257,7 @@ You can find a comprehensive documentation for styles
 `here <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`__.
 
 Advanced styling
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 
 You may have noticed that the line dives under the surface. This happens due
 to interpolation of line height between points. We can fix this by adding
@@ -270,7 +271,7 @@ to interpolation of line height between points. We can fix this by adding
 
 Now we'll add a shadow to the line's visual style.
 
-.. code:: javascript
+.. code-block:: javascript
 
     var style = {
         layers: {
@@ -304,7 +305,7 @@ of type point as well. We'll focus on visualizing that one now.
 We'll make the point appear as a green circle with it's title displayed
 above it.
 
-.. code:: javascript
+.. code-block:: javascript
 
     var style = {
         "constants": {

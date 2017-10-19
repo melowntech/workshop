@@ -64,7 +64,7 @@ will be present in :ref:`map-configuration`.
 
 Here is an example of SRS definitions with explanation below:
 
-.. code:: javascript
+.. code-block:: javascript
 
   {
     "utm33n": {
@@ -181,7 +181,7 @@ the algorithmic processing is precisely the same in both cases.
 
 Here is an example of a simple reference frame:
 
-.. code:: javascript
+.. code-block:: javascript
   {
         "version" : 1,
         "id": "webmerc-unprojected",
@@ -221,7 +221,7 @@ Here is an example of a simple reference frame:
 
 With the corresponding SRS definitions:
 
-.. code:: javascript
+.. code-block:: javascript
 
   {
     "geocentric-wgs84": {
@@ -333,7 +333,7 @@ describes where is the point you look at and from where you look. Presuming you
 work in :ref:`melown2015 reference frame <reference-frame>` with lat-long
 navigation SRS, the objective position may look like:
 
-.. code::javascript
+.. code-block::javascript
   [ "obj", 14.401364, 50.090839, "fix", 295.77, -31, -47, 0, 613, 45.00 ]
 
 where
@@ -354,7 +354,7 @@ projection is orthographic.
 A slightly less general position format, named *subjective position*, is defined
 as a similar 10-tuple:
 
-.. code::javascript
+.. code-block::javascript
   [ "subj" ,14.404993 ,50.086954, "fix", 837.14, -31, -47, 0, 613, 45.00 ]
 
 where
@@ -390,7 +390,7 @@ will assemble all this information into a single attribution notice.
 
 A claim of attribution may be associated with any VTS resource. An example follows:
 
-..code:: javascript
+..code-block:: javascript
   {
     "melown":       { "id": 1, "notice": "{copy}{Y} Melown Technologies SE" },
     "basemap-at":   { "id": 2, "notice": "Data source: [http://www.basemap.at/ www.basemap.at]" },
@@ -404,7 +404,7 @@ In VTS terminology, this is called an *expanded claim of attribution* (or expand
 
 A *compact claim of attribution* makes use only of attributions defined elsewhere and thus is not self-containing. The expanded claim above may be written as:
 
-..code:: javascript
+..code-block:: javascript
   ["citationtech", "basemap-at", "seznamcz"]
 
 Finally, a *specific claim of attribution* is present within :ref:`surface metatiles <surface-metatiles>`. It uses numerical id to identify the claimed attribution.
@@ -421,7 +421,7 @@ Attribution ``Powered by MELOWN`` is always included.
 
 Suppose we are looking at Earth modeled using Viewfinder Panoramas DEM by Jonathan de Ferranti covered by Bing Maps aerial imagery and OSM based geodata drawn from Mapzen server. The complete attribution displayed will go as follows:
 
-.. code::
+.. code-block::
   Imagery: ©2017 Microsoft Corporation, ©2005-16 Jonathan de Ferranti | Map Data: ©OpenStreetMap contributors, ©Mapzen | Powered by MELOWN
 
 The more specific (higher :ref:`LOD <lod>`) attributions always go first. If
