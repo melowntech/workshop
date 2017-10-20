@@ -18,6 +18,7 @@ Backend tutorials are focused on setting up the VTS Backend environment, preproc
 * :ref:`mars-peaks-and-valleys-searchable-nomenclature: add and style vector nomenclature labels and set up search functionality for the previous tutorial.
 * :ref:`landuse-wms-dem`: combine maps available through WMS with open Copernicus DEM using :ref:`mapproxy <mapproxy>`.
 * :ref:`landuse-wms-3d`: use :ref:`free layers <free-layer>` to combine 2D land use data with 3D city in eye-pleasing way.
+* :ref:`bing-maps-tms`: leverage mapproxy drivers to use Bing Maps in your maps.
 * :ref:`cadastre-raster-vector-3d`: fuse two 3D models of Jenstejn village in :ref:`storage <storage>` and overlay them with both raster and styled vector cadastre sourced from MBtiles archive.
 
 .._frontend-tutorials:

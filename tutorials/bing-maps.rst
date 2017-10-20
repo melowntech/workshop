@@ -1,7 +1,7 @@
 .. index::
     single: Bing
 
-.. _bing-maps-tutorial:
+.. _bing-maps-tms:
 
 Displaying Bing Map layers
 --------------------------
@@ -108,25 +108,26 @@ When running :ref:`mapproxy` with the :download:`projects/bing/resources.json` (
     The Bing ``AerialWithLabels`` layer in the web-mercator projection, using
     the ``webmerc-projected`` reference frame.
 
-Integration with the WMTS example
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-We can now put this for example in to our :ref:`wmts-app` tutorial and add the
-``bing-world`` to list of ``tms`` layers of the configured digital elevation
-model.::
+.. 
+  Integration with the WMTS example
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  We can now put this for example in to our :ref:`wmts-app` tutorial and add the
+  ``bing-world`` to list of ``tms`` layers of the configured digital elevation
+  model.::
 
-                ...
-                "tms": [
-                  { "group": "ophoto", "id": "bing-world" },
-                  { "group": "ophoto", "id": "czech-ophoto" },
-                  { "group": "ophoto", "id": "austria-ophoto" }
-                ],
-                ...
+                  ...
+                  "tms": [
+                    { "group": "ophoto", "id": "bing-world" },
+                    { "group": "ophoto", "id": "czech-ophoto" },
+                    { "group": "ophoto", "id": "austria-ophoto" }
+                  ],
+                  ...
 
 
-As result, we can see Bing aerial map as background layer of Czech and Austrian
-ortophoto images.
+  As result, we can see Bing aerial map as background layer of Czech and Austrian
+  ortophoto images.
 
-.. figure:: images/bing-wmts.png
+  .. figure:: images/bing-wmts.png
 
-You can see the combination of all three layers in one mash.
+  You can see the combination of all three layers in one mash.
 
