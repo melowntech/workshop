@@ -21,7 +21,19 @@ Backend tutorials are focused on setting up the VTS Backend environment, preproc
 * :ref:`bing-maps-tms`: leverage mapproxy drivers to use Bing Maps in your maps.
 * :ref:`cadastre-raster-vector-3d`: fuse two 3D models of Jenstejn village in :ref:`storage <storage>` and overlay them with both raster and styled vector cadastre sourced from MBtiles archive.
 
-.._frontend-tutorials:
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   vtsbackend
+   mars-peaks-and-valleys
+   mars-peaks-and-valleys-searchable-nomenclature
+   landuse-wms-dem  
+   landuse-wms-dem-cities
+   bing-maps
+   cadastre
+
+.. _frontend-tutorials:
 
 Frontend
 ========
@@ -38,9 +50,13 @@ Frontend tutorials are focused on building apps on top of the VTS browser API, d
 * `List of JSFiddle live examples <https://github.com/Melown/vts-browser-js/wiki/Examples>`__: extensive list of live examples focused on single feature of VTS-Browser-JS. Some of them are referenced from previous tutorials but there is a lot more worth to check.
 
 .. toctree::
-   :maxdepth: 0
-   :titlesonly:
+   :maxdepth: 1
    :hidden:
 
-   backend
-   frontend
+   sample-app
+   gpx-viewer
+   geojson
+   geojson-part2
+   geojson-part3
+   landuse-frontend
+   importobj
