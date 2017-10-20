@@ -19,10 +19,11 @@ Technologies for its Advanced Visualizer animation package. The file format is
 open and has been adopted by other 3D graphics application vendors. More about
 obj file format can be found `here <http://geojson.org/>`__.
 
-We have tested our importer on the models exported from `Blender <https://www.blender.org/>`__ 
-and `SketchUp <https://www.sketchup.com/>`__. You should get good results with these programs.
-Keep in mind that models should be exported with triangulated polygons and in case you are using
-double side materials enable this option in your exporter (e.g. SketchUp).
+We have tested our importer on the models exported from 
+`Blender <https://www.blender.org/>`__ and `SketchUp <https://www.sketchup.com/>`__. 
+You should get good results with these programs. Keep in mind that models should 
+be exported with triangulated polygons and in case you are using double side 
+materials enable this option in your exporter (e.g. SketchUp).
 
 VTS Browser JS
 ^^^^^^^^^^^^^^
@@ -87,12 +88,13 @@ code to make the browser run.
 
     startDemo();
 
-We created a map in place of the ``map-div`` and set the ``map`` parameter
-to point to a map configuration we prepared in Melown Cloud for this purpose.
-You can create your own map in `Melown Cloud <https://www.melown.com/cloud>`__. We set the
+We created a map in place of the ``map-div`` and set the ``map`` parameter to 
+point to a map configuration we prepared in Melown Cloud for this purpose. You 
+can create your own map in `Melown Cloud <https://www.melown.com/cloud>`__. We 
+set the 
 `position <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#position>`__
-to some nice place in the countryside. You can discover more about
-browser configuration parameters in
+to some nice place in the countryside. You can discover more about browser 
+configuration parameters in
 `documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-API#options>`__.
 
 Once the map loads we can start with
@@ -145,7 +147,8 @@ onLoaded           null         Callback when model is loaded.
 How to setup rendering callback
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    
-We have to setup rendering callback for rendering custom models into the map. For that case we add following lines into the onMapLoaded function.
+We have to setup rendering callback for rendering custom models into the map. 
+For that case we add following lines into the onMapLoaded function.
 
 .. code-block:: javascript
 
@@ -196,10 +199,12 @@ Rendering models is easy. Just add these line to the onDrawModels function:
         }   
     }
 
-First lines check whether we are rendering ``base`` channel. The ``base`` channel means that we are
-rendering color channel. There can be other channels like ``depth`` so we have to check that we are
-rendering in to the right channel. Next line is testing that houseModel exists and whether it is ready
-(all textures are loaded). When conditions are met, we draw the model. The draw function can have following parameters:
+First lines check whether we are rendering ``base`` channel. The ``base`` channel 
+means that we are rendering color channel. There can be other channels like 
+``depth`` so we have to check that we are rendering in to the right channel. 
+Next line is testing that houseModel exists and whether it is ready (all textures 
+are loaded). When conditions are met, we draw the model. The draw function can 
+have following parameters:
  
 =================  ===========  ================================
  Parameter          Default           Description
@@ -222,8 +227,8 @@ depthOffset        [0,0,0]      [globalFactor, distanceFactor, tiltFactor] when 
 =================  ===========  ================================
 
 
-Note that you can change the model position, rotation and scale in every rendered frame, so you can also animate
-models as you like.
+Note that you can change the model position, rotation and scale in every 
+rendered frame, so you can also animate models as you like.
 				  
 That's it for now, you've made it to the end :)
 

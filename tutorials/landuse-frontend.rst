@@ -1,18 +1,17 @@
 .. index::
     single: Corine
 
-.. _corine-javascript:
+.. _vtsjs-landuse:
 
-===============================
-Corine land cover frontend side
-===============================
+Land Use: Adding Legend and Layer Switch to The Map
+---------------------------------------------------
 
 In this example, we are going to create front-end JavaScript app using the
 :ref:`landuse-wms-dem`. We are going to enrich the map with legend and a control
 element to switch the two landuse layers.
 
 HTML Page
----------
+^^^^^^^^^
 
 We need simple HTML web page with JavaScript included and ``<div>`` element for
 the map.
@@ -25,7 +24,7 @@ the map.
 We also add some CSS sugar, for styling the layerswitcher, panel and legend div:
 
 .. literalinclude:: srcs/corine.html
-   :lines: 10-36
+   :lines: 10-31
    :language: css
    :linenos:
 
@@ -37,7 +36,7 @@ At the end of the file, we add the legend ``div``
    :linenos:
 
 Legend image
-------------
+^^^^^^^^^^^^
 You may know, that the `OGC WMS <http://opengeospatial.org/standards/wms>`_
 supports ``GetLegendGraphic`` type of request. The legend image can be obtained
 using following URL:  http://image.discomap.eea.europa.eu/arcgis/services/Corine/CLC2012/MapServer/WmsServer?request=GetLegendGraphic&version=1.3.0&format=image/png&layer=Corine%20Land%20Cover%202012%20raster
@@ -45,7 +44,7 @@ using following URL:  http://image.discomap.eea.europa.eu/arcgis/services/Corine
 .. figure:: images/corine-legend.png
     
 JavaScript code
----------------
+^^^^^^^^^^^^^^^
 
 The code is straightforward and can be downloaded from
 :download:`srcs/corine.js`, you have to initialize the browser with two

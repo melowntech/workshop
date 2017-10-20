@@ -239,5 +239,5 @@ http://127.0.0.1:8070/mapproxy/melown2015/surface/openlanduse/dem/
 
 Next steps
 ^^^^^^^^^^
-Next we create :ref:`corine-javascript` HTML page, in the frontend tutorials
-section.
+Follow :ref:`vtsjs-landuse` frontend tutorial to learn how to add a legend to the
+landuse map.

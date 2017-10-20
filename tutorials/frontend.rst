@@ -1,21 +1,25 @@
-.. _frontend-examples:
+..
+  This page serves only to add one level to the TOC, parent page contains all
+  the needed details.
 
-=================
-Frontend examples
-=================
+==================
+Frontend tutorials
+==================
 
-Here are some examples of the frontend components, such as :ref:`vts-browser-js`
-and :ref:`vts-browser-cpp`.
+Here is a list of frontend tutorials, refer to :ref:`parent page <frontend-tutorials>`
+for more information.
 
 .. toctree::
     :maxdepth: 1
     
     sample-app
-    wmts-example
-    wmts-fancy-example
     gpx-viewer
     geojson
     geojson-part2
     geojson-part3
+    landuse-frontend
     importobj
-    corine
+
+..
+    wmts-example
+    wmts-fancy-example
