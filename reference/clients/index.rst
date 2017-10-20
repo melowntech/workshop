@@ -1,11 +1,33 @@
-####################
+
+
+********************
 VTS Client Libraries
-####################
+********************
 
-Description of clients (JavaScript, C++)
+Being closest to the source code, the main up-to-date reference for both 
+:ref:`JavaScript <vts-browser-js>` and :ref:`C++ <vts-browser-cpp>` clients can 
+be found in corresponding GitHub repositories.
 
-.. toctree::
+.. _vts-browser-js:
 
-    javascript/index
-    cpp/index
+VTS-Browser-JS
+==============
 
+* `Main repository <https://github.com/Melown/vts-browser-js>`__
+* `Installation <https://github.com/Melown/vts-browser-js#install>`__
+* `API documentation <https://github.com/Melown/vts-browser-js/wiki>`__
+* `Live JSFiddle examples <https://github.com/Melown/vts-browser-js/wiki/Examples>`__
+  also distributed along the source in the 
+  `demos directory <https://github.com/Melown/vts-browser-js/tree/master/demos>`__
+* :ref:`Tutorials <frontend-tutorials>` here on readthedocs
+
+.. _vts-browser-cpp:
+
+VTS-Browser-cpp
+===============
+
+* `Main repository <https://github.com/Melown/vts-browser-cpp>`__
+* `Installation or build <https://github.com/Melown/vts-browser-cpp#install-from-melown-repository>`__
+* `API documentation <https://github.com/Melown/vts-browser-cpp/wiki>`__
+* `Example applications <https://github.com/Melown/vts-browser-cpp/wiki#example-applications>`__
+* :ref:`Tutorials <frontend-tutorials>` here on readthedocs

@@ -76,7 +76,7 @@ Where to go next
 
   architecture
   tutorials/index
-  reference
+  reference/index
 
 
 Indices and tables
