@@ -50,7 +50,7 @@ backend components <https://cdn.melown.com/packages/>`_ for latest Ubuntu LTS. T
 with basic configuration for all componets allowing to install the whole stack
 using just a :ref:`single package <vts-backend>`.
 
-Alternatively, the VTS 3D Stack can be run using :ref:`docker`.
+Alternatively, the VTS 3D Stack components can be run using :ref:`docker-container`.
 
 To obtain :ref:`mapconfig <map-configuration>` for development
 with VTS client APIs, you can:

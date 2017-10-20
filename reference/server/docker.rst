@@ -46,8 +46,8 @@ To get :ref:`vtsd` container up and running, use.
 docker build -t vts-vtsd:latest -f docker/vtsd/Dockerfile .
 ```
 
-If you were trying to follow one of our tutorials at
-:ref:`tutorials`, you may have the ``storage`` directory already in your host
+If you were trying to follow one of our :ref:`backend tutorials <backend-tutorials>`, 
+you may have the ``storage`` directory already in your host
 computer. You can therefore start the container with existing directory mounted
 as volume:
 
@@ -68,7 +68,7 @@ docker build -t vts-mapproxy:latest -f docker/mapproxy/Dockerfile .
 You can now run the container directly, there  are already examples being part
 of the deployment.
 
-But again, if you followed some Mapproxy tutorials :ref:`tutorials`, you have
+But again, if you followed some :ref:`backend tutorials <backend-tutorials>`, you have
 have the ``datasets`` directory already available along with the
 ``resources.json`` file.::
 

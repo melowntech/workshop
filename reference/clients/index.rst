@@ -1,4 +1,4 @@
-
+.. _clients-reference:
 
 ********************
 VTS Client Libraries
