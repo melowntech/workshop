@@ -19,8 +19,9 @@ for more information.
     mars-peaks-and-valleys-searchable-nomenclature
     landuse-wms-dem  
     landuse-wms-dem-cities
+    bing-maps
     cadastre
-
+    
 ..
     north-carolina
     au-cz

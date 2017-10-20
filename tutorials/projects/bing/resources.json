@@ -1,0 +1,54 @@
+[
+    {
+        "comment" : "Microsoft Bing Maps orthophoto",
+        "credits" : [ "microsoft" ],
+        "definition" : {
+            "metadataUrl" : "http://dev.virtualearth.net/REST/v1/Imagery/Metadata/AerialWithLabels?key=As################################################mbk"
+        },
+        "driver" : "tms-bing",
+        "group" : "melown",
+        "id" : "bing-world",
+        "referenceFrames": {
+            "melown2015" : {
+                "lodRange" : [ 2, 21 ],
+                "tileRange" : [ [ 0, 0 ], [ 1, 1 ] ]
+            },
+            "webmerc-projected" : {
+                "lodRange" : [ 0, 21 ],
+                "tileRange" : [ [ 0, 0 ], [ 1, 1 ] ]
+            }
+        },
+        "registry" : {
+            "credits" : {
+                "microsoft" : { "id" : 5, "notice" : "{copy}{Y} Microsoft Corporation" }
+            }
+        },
+        "type" : "tms"
+    },
+    {
+        "comment": "spheroid",
+        "group": "melown",
+        "id": "dem",
+        "type": "surface",
+        "driver": "surface-spheroid",
+        "referenceFrames": {
+            "melown2015" : {
+                "lodRange": [0,21],
+                "tileRange": [ [ 0, 0], [1, 1]]
+            },
+            "webmerc-projected" : {
+                "lodRange": [0,21],
+                "tileRange": [ [ 0, 0], [1, 1]]
+            }
+        },
+        "credits": [],
+        "definition": {
+            "introspection": {
+                "tms": [{
+                    "group": "melown",
+                    "id": "bing-world"
+                }]
+            }
+        }
+    }
+]
