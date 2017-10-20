@@ -179,9 +179,10 @@ deal with a physical depiction of the planet (or another object), or a
 geocentric reference frame. This distinction is purely observational, since
 the algorithmic processing is precisely the same in both cases.
 
-Here is an example of a simple reference frame:
+Here is an example of a simple hypothetical reference frame:
 
 .. code-block:: javascript
+  
   {
         "version" : 1,
         "id": "webmerc-unprojected",
@@ -285,10 +286,9 @@ same would apply to :ref:`positioning <position>`. And the axis of orbital
 motion would not point perpendicular to the (roughly ellipsoidal) Earth surface,
 but straight to Earth centre (or even more precisely, very close to Earth centre).
 
-Helas, this simple model of Earth is missing polar caps. This is merely a
-limitation of our definition, or more precisely, of the spatial division we
-employ. It is possible to define a reference frame with polar caps included and
-`melown2015 <https://github.com/Melown/vts-registry/blob/master/registry/registry/referenceframes.json#L70>`_ reference frame does just that. Another interesting reference frame
+Helas, this simple model of Earth is missing polar caps. This is why we instead
+define the 
+`melown2015 <https://github.com/Melown/vts-registry/blob/master/registry/registry/referenceframes.json#L70>`_ reference frame with modified spatial division which includes the polar caps. Another interesting reference frame
 covering whole planet is a `mars-qsc <https://github.com/Melown/vts-registry/blob/master/registry/registry/referenceframes.json#L225>`_ which
 represents Mars as a folded-out cube.
 
@@ -419,9 +419,8 @@ There are two scopes under which the attribution may be displayed:
 
 Attribution ``Powered by MELOWN`` is always included.
 
-Suppose we are looking at Earth modeled using Viewfinder Panoramas DEM by Jonathan de Ferranti covered by Bing Maps aerial imagery and OSM based geodata drawn from Mapzen server. The complete attribution displayed will go as follows:
+Suppose we are looking at Earth modeled using Viewfinder Panoramas DEM by Jonathan de Ferranti covered by Bing Maps aerial imagery and OSM based geodata drawn from Mapzen server. The complete attribution displayed will go as follows::
 
-.. code-block::
   Imagery: ©2017 Microsoft Corporation, ©2005-16 Jonathan de Ferranti | Map Data: ©OpenStreetMap contributors, ©Mapzen | Powered by MELOWN
 
 The more specific (higher :ref:`LOD <lod>`) attributions always go first. If
