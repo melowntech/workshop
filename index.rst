@@ -8,10 +8,6 @@ What is VTS 3D Map Streaming and Rendering Stack
 ################################################
 
 
-dle webu/ plakatu/ Ondrovy FOSS4G prezentace
-kvuli spravnym formulacim
-
-
 VTS 3D Map Streaming and Rendering Stack is an open source solution for streaming and interactive
 rendering of 3D geospatial content developed by
 `Melown Technologies <https://www.melown.com>`_. It is a client-server architecture
@@ -24,15 +20,15 @@ for Web, Linux, MacOS and iOS development.
   steps and provides an API to build interactive web or desktop applications.
 
 The key features of VTS are:
-* complete open source system fro 3D maps streaming and rendering
-* massively scalable and performance-oriented
-* server-side data intergration tools
-* dynamic DEM/DSM streaming
-* GDAL raster and OGR vectors with stylesheets
-* streams and renders photogrammetric 3D models (I3S, VEF, LODTree)
-* WMS/WMTS and Mapbox vector tile support
-* coordinate system agnostic with seamless polar caps
-* reliance on existing open source libraries (GDAL, PROJ4) and standards
+  * complete open source system fro 3D maps streaming and rendering
+  * massively scalable and performance-oriented
+  * server-side data intergration tools
+  * dynamic DEM/DSM streaming
+  * GDAL raster and OGR vectors with stylesheets
+  * streams and renders photogrammetric 3D models (I3S, VEF, LODTree)
+  * WMS/WMTS and Mapbox vector tile support
+  * coordinate system agnostic with seamless polar caps
+  * reliance on existing open source libraries (GDAL, PROJ4) and standards
 
 License
 =======
@@ -52,11 +48,10 @@ using just a :ref:`single package <vts-backend>`.
 
 Alternatively, the VTS 3D Stack components can be run using :ref:`docker-container`.
 
-To obtain :ref:`mapconfig <map-configuration>` for development
-with VTS client APIs, you can:
-* use one of the public URLs available from Melown Tech, or
-* set up an account in :ref:`Melown Cloud <melown-cloud>`, or
-* install and configure :ref:`VTS streaming servers <vts-backend>`.
+To obtain :ref:`mapconfig <map-configuration>` for development with VTS client APIs, you can:
+  * use one of the public URLs available from Melown Tech, or
+  * set up an account in :ref:`Melown Cloud <melown-cloud>`, or
+  * install and configure :ref:`VTS streaming servers <vts-backend>`.
 
 .. _melown-cloud:
 

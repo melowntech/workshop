@@ -13,23 +13,7 @@
    single: mesh
    single: attribution
 
--- reference frame
-
--- tileset
-
-surface
-
-tile index
-
-storage
-
-storage view
-
-map configuration
-
-bound layer
-
-free layer
+.. _concepts-glossary:
 
 **************
 Basic Concepts
@@ -149,21 +133,21 @@ extents of a tile with given indices on a given :ref:`LOD <lod>`?
 
 For this reason, reference frames defines following:
 
-#. **Physical** spatial reference system, employed by mesh and free layer geometries
-#. **Navigational** spatial reference system, whose XY plane defines tangential
-   movement (pan) and objective rotational movement (orbit) as movement along
-   the plane and rotation around axis perpendicular to the plane, respectively;
-   its Z component is employed by navigation tiles and it is the system used in
-   positioning, both to define position and orientation
-#. **Public** spatial reference system, which is used when interfacing with the user
-   (when informing user of current position in the map or of altitude or when
-   handling user input)
-#. **Spatial division**, which defines physical extents of the model and extents of
-   every tile on every :ref:`LOD <lod>`, either explicitly (for a specific
-   tile) or by setting out a rule by which tiles are split into subtiles. In case
-   the tile is explicitly defined, it defines unique SRS and extents which it
-   (and its complete subtree) occupies in that SRS. This SRS is then used in
-   :ref:`metatile <metatile>` bounding boxes.
+  #. **Physical** spatial reference system, employed by mesh and free layer geometries
+  #. **Navigational** spatial reference system, whose XY plane defines tangential
+     movement (pan) and objective rotational movement (orbit) as movement along
+     the plane and rotation around axis perpendicular to the plane, respectively;
+     its Z component is employed by navigation tiles and it is the system used in
+     positioning, both to define position and orientation
+  #. **Public** spatial reference system, which is used when interfacing with the user
+     (when informing user of current position in the map or of altitude or when
+     handling user input)
+  #. **Spatial division**, which defines physical extents of the model and extents of
+     every tile on every :ref:`LOD <lod>`, either explicitly (for a specific
+     tile) or by setting out a rule by which tiles are split into subtiles. In case
+     the tile is explicitly defined, it defines unique SRS and extents which it
+     (and its complete subtree) occupies in that SRS. This SRS is then used in
+     :ref:`metatile <metatile>` bounding boxes.
 
 A reference frame is not the same thing as a :ref:`spatial reference system (SRS) <srs>`,
 though the two are closely related. A reference frame defines multiple SRSes,
@@ -316,37 +300,49 @@ generated resources) or a conversion has to be performed.
   services are available only in specific SRS. Then it may be reasonable to tailor
   the reference frame for that SRS.
 
-.. position:
+.. _position:
 
 Position
 --------
 
 In VTS, the position is defined to accommodate the following requirements:
-* independence of surface information and thus immediately usable
-* orthogonality with respect to the vertical field of view (FOV), which is part
-  of the position
-* intuitive, and adaptable to multiple semantic contexts in which positioning is
-  performed
+
+  * independence of surface information and thus immediately usable
+
+  * orthogonality with respect to the vertical field of view (FOV), which is part
+    of the position
+
+  * intuitive, and adaptable to multiple semantic contexts in which positioning is
+    performed
+
 
 The general position format is called an *objective position*. Simply said, it
 describes where is the point you look at and from where you look. Presuming you
 work in :ref:`melown2015 reference frame <reference-frame>` with lat-long
 navigation SRS, the objective position may look like:
 
-.. code-block::javascript
+.. code-block:: javascript
+
   [ "obj", 14.401364, 50.090839, "fix", 295.77, -31, -47, 0, 613, 45.00 ]
 
 where
-* element 0 is string "obj"
-* elements 1-2 are XY components of the center of orbit in navigation SRS
-* element 3 is either "fix" or "float"
-* element 4 is either Z component of the center of orbit in navigation SRS (if
-  element 3 is "fix") or its height AGL (if element 3 is "float")
-* elements 5-7 are NED based Euler angles (yaw, pitch, and roll) of the
-  direction of view, measured at the center of orbit
-* element 8 is vertical extent of camera view, measured at the center of orbit
-  in physical SRS units
-* element 9 is a vertical FOV, measured in degrees.
+
+  * element 0 is string "obj"
+
+  * elements 1-2 are XY components of the center of orbit in navigation SRS
+
+  * element 3 is either "fix" or "float"
+
+  * element 4 is either Z component of the center of orbit in navigation SRS (if
+    element 3 is "fix") or its height AGL (if element 3 is "float")
+
+  * elements 5-7 are NED based Euler angles (yaw, pitch, and roll) of the
+    direction of view, measured at the center of orbit
+
+  * element 8 is vertical extent of camera view, measured at the center of orbit
+    in physical SRS units
+
+  * element 9 is a vertical FOV, measured in degrees.
 
 As a special case, the value of element 8 may be 0, indicating that the
 projection is orthographic.
@@ -354,20 +350,28 @@ projection is orthographic.
 A slightly less general position format, named *subjective position*, is defined
 as a similar 10-tuple:
 
-.. code-block::javascript
+.. code-block:: javascript
+
   [ "subj" ,14.404993 ,50.086954, "fix", 837.14, -31, -47, 0, 613, 45.00 ]
 
 where
-* element 0 is string "subj"
-* elements 1-2 are XY components of the center of perspectivity in navigation SRS
-* element 3 is either "fix" or "float"
-* elements 4 is either Z component of the center of perspectivity in navigation
-  SRS (if element 3 is "fix") or its AGL (if element 3 is "float")
-* elements 5-7 are NED based Euler angles of the direction of view, measured at
-  the center of perspectivity
-* element 8 is vertical extent of camera view, measured at the center of orbit
-  in physical SRS units
-* element 9 is a vertical FOV, measured in degrees.
+
+  * element 0 is string "subj"
+
+  * elements 1-2 are XY components of the center of perspectivity in navigation SRS
+
+  * element 3 is either "fix" or "float"
+
+  * elements 4 is either Z component of the center of perspectivity in navigation
+    SRS (if element 3 is "fix") or its AGL (if element 3 is "float")
+
+  * elements 5-7 are NED based Euler angles of the direction of view, measured at
+    the center of perspectivity
+
+  * element 8 is vertical extent of camera view, measured at the center of orbit
+    in physical SRS units
+
+  * element 9 is a vertical FOV, measured in degrees.
 
 Under presumptions given, the example subjective and objective definitions are
 identical up to rounding errors. They define a view pointed at the Prague
@@ -379,7 +383,7 @@ Fixed positions, both subjective and objective, meet the criterion of immediate 
 
 Objective positions are generic in the sense that they can describe all possible projection matrix definitions, including the orthographic projection. Subjective positions lack the ability to express orthographic projections as they are based on the center of perspectivity. Any subjective position may be converted into an objective position, and any objective position with a non-zero FOV may be converted into a subjective position. In a geographic navigation SRS this conversion is non-trivial, since Euler angles are based on local tangential planes and these planes differ in the center of perspective and in the center of orbit - this phenomenon is not manifested in the trivial example above, but it will become profound at larger scale orbits.
 
-.. attribution:
+.. _attribution:
 
 Attributions (credits)
 ----------------------
@@ -390,17 +394,20 @@ will assemble all this information into a single attribution notice.
 
 A claim of attribution may be associated with any VTS resource. An example follows:
 
-..code-block:: javascript
+.. code-block:: javascript
+
   {
     "melown":       { "id": 1, "notice": "{copy}{Y} Melown Technologies SE" },
     "basemap-at":   { "id": 2, "notice": "Data source: [http://www.basemap.at/ www.basemap.at]" },
     "seznamcz":     { "id": 3, "notice": "{copy} Seznam.cz, a.s." },
   }
 
+
 In VTS terminology, this is called an *expanded claim of attribution* (or expanded credits definition). Each attribution has a compulsory string id and numerical id. Both may be used for referencing outside the place where the credit was defined. String ids and numerical ids *need to be unique across the entire map configuration* regardless of where they appear, hence an expanded claim of attribution is in fact a combination of claim of attribution and at the same time its globally applicable definition. The notice is a template for the actual text presented to the user. It allows for wiki-like syntax for external links (as in case of ``basemap-at`` in the example above) and may contain the following macros (in curly braces):
 
-* ``{copy}`` expands into the copyright symbol U00A9
-* ``{Y}`` expands into current year in four digits
+  * ``{copy}`` expands into the copyright symbol U00A9
+
+  * ``{Y}`` expands into current year in four digits
 
 A *compact claim of attribution* makes use only of attributions defined elsewhere and thus is not self-containing. The expanded claim above may be written as:
 
@@ -413,9 +420,11 @@ Scopes of attribution
 ^^^^^^^^^^^^^^^^^^^^^
 
 There are two scopes under which the attribution may be displayed:
-* **Imagery**: attributions from visible :ref:`surfaces <surface>` and
-  :ref:`bound layers <bound-layer>`
-* **Map data**: attributions from visible :ref:`free geodata layers <geodata-layer>`
+
+  * **Imagery**: attributions from visible :ref:`surfaces <surface>` and
+    :ref:`bound layers <bound-layer>`
+
+  * **Map data**: attributions from visible :ref:`free geodata layers <geodata-layer>`
 
 Attribution ``Powered by MELOWN`` is always included.
 
@@ -430,9 +439,21 @@ the attributions.
 
 .. _bound-layer:
 
-Bound layers
-------------
+Bound layer
+-----------
 
+Bound layers are tiled datasets which may complement a :ref:`surface`. The
+adjective *bound* (as opposed to :ref:`free-layer`\s) means that for any tile
+used from a bound layer, there is the corresponding tile from the active
+surface, having the same :ref:`lod`, and indices.  For this reason, bound layers
+**do not**, in essence, **require any metatile information**, as they take it
+from the active surface. Bound layers are usually used as texture overlays for
+surfaces (e.g. aerial photos).
+
+.. _map-configuration:
+
+Map configuration
+-----------------
 
 
 Synthesis
@@ -451,15 +472,19 @@ bound to the tileset.
 For implementation reasons, there are more types of tilesets with the same
 interface. While practically indistinguishable, it is good to know about them
 for reference:
-* **plain tileset**: basic tileset with all data stored within tileset location
-* **local tileset**: tileset whose data are elsewhere on the disk, functionally
-  behaves as symlink. Used to prevent copying large amounts of data while working
-  with :ref:`storage`
-* **remote tileset**: tileset for which the :ref:`tileindex` is known but the
-  tiles themselves are accessible at specified URL and are usually dynamically
-  generated. Tilesets derived from DEMs and DSMs are usually remote.
-* **aggregated tileset**: tileset acting as a proxy for part of storage or whole
-  storage. Allows to handle groups of tilesets as a single entity.
+
+  * **plain tileset**: basic tileset with all data stored within tileset location
+
+  * **local tileset**: tileset whose data are elsewhere on the disk, functionally
+    behaves as symlink. Used to prevent copying large amounts of data while working
+    with :ref:`storage`
+
+  * **remote tileset**: tileset for which the :ref:`tileindex` is known but the
+    tiles themselves are accessible at specified URL and are usually dynamically
+    generated. Tilesets derived from DEMs and DSMs are usually remote.
+
+  * **aggregated tileset**: tileset acting as a proxy for part of storage or whole
+    storage. Allows to handle groups of tilesets as a single entity.
 
 .. _storage:
 
@@ -483,46 +508,6 @@ that you are not going to render all your data in final application.
 
 
 
-
-
-
-
-
-
-
-
-
-===========
-Basic terms
-===========
-
-There are two ways to onlook on Melown VTS: either from the client side
-(interpreting existing data), or from the server side (composing or creating
-data). We call the first perspective *analysis* and the second perspective
-*synthesis*. In this part, we are focusing on *analysis*, since we are will be
-describing, how the backe-end part works.
-
-Typical analytical concepts in VTS are that of configuration, surface and
-layers.
-
-.. _bound-layer:
-
-Bound layer
------------
-Bound layers are tiled datasets which may complement a :ref:`surface`. The
-adjective *bound* (as opposed to :ref:`free-layer`\s) means that for any tile
-used from a bound layer, there is the corresponding tile from the active
-surface, having the same :ref:`lod`, and indices.  For this reason, bound layers
-**do not**, in essence, **require any metatile information**, as they take it
-from the active surface. Bound layers are usually used as texture overlays for
-surfaces (e.g. aerial photos).
-
-.. _credit:
-
-Credits
--------
-Each data source can have credits, or *attributions* defined. See
-:ref:`mapproxy-configuration` for more details.
 
 .. _free-layer:
 
@@ -648,8 +633,6 @@ JPEG images.
 
     Image containing mesh textures
 
-
-
 .. _resource:
 
 Resource
@@ -658,33 +641,6 @@ Resource
 Data sources defined in ``JSON`` encoded file, used in :ref:`mapproxy`. The data
 sources can be DEMs or :ref:`bound-layer`\s with map.
 
-.. _srs:
-
-Spatial reference system
-------------------------
-`Spatial reference system
-<https://en.wikipedia.org/wiki/Spatial_reference_system>`_ (SRS) is a
-coordinate-based local, regional or global system used to locate geographical
-entities. A spatial reference system defines a specific map projection, as well
-as transformations between different spatial reference systems. In GIS, usually
-use `EPSG <https://www.epsg-registry.org/>`_ datase, however, EPSG codes are
-not used in VTS* tools. SRS is stored in internal :ref:`registry` database.
-
-.. _storage:
-
-Storage
--------
-Storage is a stack of :ref:`tileset` sharing the same :ref:`reference-frame`.
-Surface display priority is defined by tileset stacking order (first in, last
-out). It also contains :ref:`glue`\ s between it's constituent tilesets.
-contains :ref:`glue`\ s. It's basicaly a database of all your tilesets.
-
-.. _storage-view:
-
-Storage view
--------------
-Storage view is subset of :ref:`storage`, with selected :ref:`tileset`\ s, so
-that you are not going to render all your data in final application.
 
 .. _surface:
 
@@ -693,9 +649,11 @@ Surface
 
 Surfaces are a client side notion of tilesets. More precisely, they are
 
-* a geometrical definition of the modeled object's surface,
-* with optional textures and/or information on how to map external textures to object's surface
-* with information on terrain, allowing to map map XY navigation SRS coordinates to their Z compoment.
+  * a geometrical definition of the modeled object's surface,
+
+  * with optional textures and/or information on how to map external textures to object's surface
+
+  * with information on terrain, allowing to map map XY navigation SRS coordinates to their Z compoment.
 
 Our current webexport format is, under our new terminology, a representation of
 a single surface. It is a surface which is tiled (organized in a tile hierarchy)
