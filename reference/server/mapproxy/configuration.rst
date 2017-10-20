@@ -7,26 +7,13 @@
 
 .. _mapproxy-configuration:
 
-=============
 Configuration
 =============
 
 Configuration of VTS-Mapproxy is saved in simple text file, using `INI file
 format <https://en.wikipedia.org/wiki/INI_file>`_. You can get extensive list of
 configuration options, by running :command:`mapproxy --help-all` command  in the
-command line. First, we create directory with first project configuration
-
-.. code-block:: bash
-
-    mkdir mapproxy-project
-    cd mapproxy-project
-    $EDITOR mapproxy.conf
-
-You can now add following lines in the
-:download:`../../tutorials/projects/nc/mapproxy.conf` configuration file.
-
-.. literalinclude:: ../../tutorials/projects/nc/mapproxy.conf
-   :linenos:
+command line.
 
 Mapproxy configuration options
 ------------------------------
@@ -77,7 +64,7 @@ Here is defined, how you configure you data resources with following options:
 **Common options:**
 
 ``type``
-    resource configuration type, this can be either ``file`` or ``python``    
+    resource configuration type, is ``file``   
 
 ``root``
     path to data files (GDAL data sources), stored on the server
@@ -87,7 +74,7 @@ Here is defined, how you configure you data resources with following options:
 ``path``
     applies to ``type=file``, path to resource configuration file (JSON),
 
-See :ref:`resources` for reference.
+Resources configuration reference can be found in `vts-mapproxy repository on GitHub <https://github.com/Melown/vts-mapproxy/blob/master/docs/resources.md>`__.
 
 
 [gdal]

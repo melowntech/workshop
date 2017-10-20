@@ -85,7 +85,20 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store',
+    'cloud/index.rst',
+    'reference/server/cmdline-tools/cmd-tools.rst',
+    'reference/server/cmdline-tools/tools.rst',
+    'reference/server/mapproxy/resources/index.rst',
+    'reference/server/mapproxy/running.rst',
+    'reference/server/registry',
+    'tutorials/au-cz.rst',
+    'tutorials/freelayer.rst',
+    'tutorials/freelayer-tiled.rst',
+    'tutorials/north-carolina.rst',
+    'tutorials/wmts-example.rst',
+    'tutorials/wmts-fancy-example.rst'
+]
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.

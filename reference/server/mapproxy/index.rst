@@ -16,10 +16,9 @@ For the first time setup it is recommended to install and run mapproxy as a part
 * `Resource configuration <https://github.com/Melown/vts-mapproxy/blob/master/docs/resources.md>`__
 * :ref:`mapproxy-troubleshooting`
 
-
 .. toctree::
-	:maxdepth: 1
-    :hidden:
+  :maxdepth: 1
+  :hidden:
 
-    configuration
-    troubleshooting
+  configuration
+  troubleshooting
