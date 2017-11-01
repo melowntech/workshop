@@ -40,30 +40,27 @@ generate the Docker images and start te Containers.
 Build and run the VTSD Docker Container
 =======================================
 
-To get :ref:`vtsd` container up and running, use.
+To get :ref:`vtsd` container up and running, use::
 
-```
-docker build -t vts-vtsd:latest -f docker/vtsd/Dockerfile .
-```
+  docker build -t vts-vtsd:latest -f docker/vtsd/Dockerfile .
+
 
 If you were trying to follow one of our :ref:`backend tutorials <backend-tutorials>`, 
 you may have the ``storage`` directory already in your host
 computer. You can therefore start the container with existing directory mounted
-as volume:
+as volume::
 
-```
-docker run -ti -p 3060:3060 -v /path/to/vtsd-storage:/var/vts/store:rw --name vtsd vts-vtsd
-```
+  docker run -ti -p 3060:3060 -v /path/to/vtsd-storage:/var/vts/store:rw --name vtsd vts-vtsd
+
 
 ===========================================
 Build and run the Mapproxy Docker Container
 ===========================================
 
-First build the Docker image
+First build the Docker image::
 
-```
-docker build -t vts-mapproxy:latest -f docker/mapproxy/Dockerfile .
-```
+  docker build -t vts-mapproxy:latest -f docker/mapproxy/Dockerfile .
+
 
 You can now run the container directly, there  are already examples being part
 of the deployment.

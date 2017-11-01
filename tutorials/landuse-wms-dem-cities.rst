@@ -8,8 +8,8 @@ In this tutorial we combine 3D data of Czech cities and the Corine Land Cover
 
 .. note:: Czech Cities 3D is a proprietary dataset, provided by `Melown Technologies <https://melown.com>`_. Please contact Melown Technologies in order to get access to this dataset.
 
-Pre-requirements 
-^^^^^^^^^^^^^^^^
+Prerequisities
+^^^^^^^^^^^^^^
   
 #. This tutorial expects that you have already set up your VTS backend, as
    described in :ref:`setting-vts-backend`.

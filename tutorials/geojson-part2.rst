@@ -3,12 +3,11 @@
 GeoJSON: Import and Extending with VTS-Browser-JS
 -------------------------------------------------
 
-This tutorial shows how to import and visualize remote GeoJSON data
-and how to programmatically modify geodata with Melown `VTS-Browser-JS <https://github.com/Melown/vts-browser-js>`_.
+This tutorial shows how to import and visualize remote GeoJSON data and how to programmatically modify geodata with Melown `VTS-Browser-JS <https://github.com/Melown/vts-browser-js>`__.
 
-This is the second part of our tutorial series about GeoJSON. At this
-point you should be familiar with displaying GeoJSON data and applying basic
-styling to them. If not, maybe you missed our :ref:`previous tutorial <vtsjs-geojson-1>`_. We
+This is the second part of our tutorial series about GeoJSON. At this point you 
+should be familiar with displaying GeoJSON data and applying basic
+styling to them. If not, maybe you missed our :ref:`previous tutorial <vtsjs-geojson-1>`. We
 highly recommend checking it out first, since this tutorial builds
 on top of what we did previously.
 
