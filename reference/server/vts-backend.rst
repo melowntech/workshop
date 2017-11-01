@@ -14,4 +14,4 @@ Installation takes care of:
   * installing :ref:`VTS Registry <vts-registry>`
   * setting up caching reverse-proxy listening at localhost:8070 - a main entry point for browsing your map configurations
 
-The source is available on `GitHub <ckage build project, for get>`__.
+The source is available on `GitHub <https://github.com/Melown/vts-backend>`__.
