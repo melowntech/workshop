@@ -7,15 +7,6 @@ Architecture Overview
 
 VTS 3D Stack uses client-server architecture. The backend consists of two streaming servers :ref:`mapproxy` and :ref:`vtsd`, a commandline data management tool suite including encoders and the :ref:`registry <vts-registry>`. The frontend consist of WebGL based :ref:`vts-browser-js` with JavaScript API and :ref:`vts-browser-cpp` with C++ API. The main point of contact between backend and frontend is a :ref:`map-configuration` represented by ``mapConfig.json`` file which is the first file the client asks for and which contains complete configuration needed to render given map.
 
-Typical production setup of the whole stack can be seen in the following schema.
-
-.. _vts-architecture-schema:
-
-.. figure:: images/VTS-architecture-final.png
-    :width: 800px
-
-    VTS 3D Stack architecture
-
 Streaming Servers
 =================
 
@@ -37,7 +28,7 @@ Generally, if you intend to work with 3D models or you want to create some compl
 
 .. note::
 
-  Although not mentioned in the schema, it is expected that streamed resources (especially dynamically generated ones) are cached somewhere in the network layer. Both mapproxy and VTSD serve configurable caching headers for this purpose. We recommend setting up the VTS Backend using :ref:`vts-backend <vts-backend>` package which takes care of that by inserting thin nginx caching proxy in front of both mapproxy and VTSD.
+  It is expected that streamed resources (especially dynamically generated ones) are cached somewhere in the network layer. Both mapproxy and VTSD serve configurable caching headers for this purpose. We recommend setting up the VTS Backend using :ref:`vts-backend <vts-backend>` package which takes care of that by inserting thin nginx caching proxy in front of both mapproxy and VTSD.
 
 Data Management Tools
 =====================
@@ -83,4 +74,16 @@ libvts-browser
 --------------
 
 The :ref:`libvts-browser <libvts-browser>` is a multiplatform lightweight C++ client library that is separate from actual rendering layer. The thin rendering layer is called :ref:`libvts-renderer <libvts-renderer>` and while still multiplatform, it may be used when building full-fledged VTS based applications form scratch. There are currently two sample applications :ref:`vts-browser-desktop <vts-browser-desktop>` for Linux desktop and Mac and :ref:`vts-browser-ios <vts-browser-ios>` for iOS mobile.
+
+Sample production setup
+=======================
+
+Typical production setup of the whole stack may look like the following:
+
+.. _vts-architecture-schema:
+
+.. figure:: images/VTS-architecture-final.png
+    :width: 800px
+
+    VTS 3D Stack architecture
 
