@@ -1,7 +1,3 @@
-.. index::
-    single: vtsd
-    signle: http
-    single: HTTPD
 
 .. _vtsd:
 
@@ -9,7 +5,9 @@
 VTSD
 ****
 
-VTSD (VTS-Deamon) is HTTP server for surface and map configuration delivery.
+`VTSD (VTS-Deamon) <https://github.com/melown/vts-vtsd>`__ is an HTTP server for static surface and map configuration delivery
+
+for surface and map configuration delivery.
 It's designed to server VTS resources (surface, boundlayer and freelayer)
 only.
 

@@ -11,9 +11,12 @@ Configuration
 =============
 
 Configuration of VTS-Mapproxy is saved in simple text file, using `INI file
-format <https://en.wikipedia.org/wiki/INI_file>`_. You can get extensive list of
+format <https://en.wikipedia.org/wiki/INI_file>`_. You can get exhaustive list of
 configuration options, by running :command:`mapproxy --help-all` command  in the
-command line.
+command line. Here we describe the most important options you may want to tweak.
+
+The best starting point for configuring mapproxy on your own is a `fully commented 
+configuration file <https://github.com/Melown/vts-backend/blob/master/vts-backend/etc/mapproxy/mapproxy.conf>`__ used in VTS Backend.
 
 Mapproxy configuration options
 ------------------------------
@@ -44,40 +47,54 @@ stored. Two important options you can set are ``mask`` and ``file``.
 
 [store]
 ^^^^^^^
-In store section, ``path`` option has to be defined - where does VTS-Mapproxy
-store it's metadata about it's resources
+
+``path``
+  Path where extra resource metadata are stored once the resource is sucessfully loaded for the first time.
 
 [http]
 ^^^^^^
-In ``[http]`` section, the HTTP server options are configured, like
+In ``[http]`` section, the HTTP server options are configured, like:
 
-* ``listen`` the TCP endpoint, where to listen at, e.g. ``0.0.0.0:3070`` (the
+``listen``
+  The TCP endpoint, where to listen at, e.g. ``0.0.0.0:3070`` (the
   default value), possible formats are ``IP:PORT, :PORT`` or ``PORT``.
-* ``threadCount`` number of parallel HTTP threads
-* ``enableBrowser`` - ``true`` or ``false`` to enable browsing of files and
-  directories published by the server.
+
+``threadCount``
+  Number of parallel HTTP threads, defaults to number of CPU cores.
+
+``enableBrowser``
+  If ``true``, direct listing and browsing of published resources is possible and ``introspection`` section in resource definitions takes effect. Not recommended for production.
 
 [resource-backend]
 ^^^^^^^^^^^^^^^^^^
 Here is defined, how you configure you data resources with following options:
 
-**Common options:**
-
 ``type``
-    resource configuration type, is ``file``   
+  Resource configuration type, is either ``conffile`` or ``python``.
 
 ``root``
-    path to data files (GDAL data sources), stored on the server
+  Root path of datasets defined as relative path.
 
-**Per-type options:**
+Depending on ``type`` there is one more parameter.
 
-``path``
-    applies to ``type=file``, path to resource configuration file (JSON),
+resource backend conffile: configuration file-based resource backend:
+  ``--resource-backend.path`` arg Path to resource file (JSON).
+
+resource backend python: mysql-based resource backend:
+  ``--resource-backend.script`` arg Path pythong script. It must privide global 
+                                function run().
 
 Resources configuration reference can be found in `vts-mapproxy repository on GitHub <https://github.com/Melown/vts-mapproxy/blob/master/docs/resources.md>`__.
 
 
 [gdal]
 ^^^^^^
-Various settings for `GDAL <http://gdal.org>`_ processing tools. 
+
+Settings pertaining to internal GDAL operations:
+
+``processCount``
+  Number of parallel GDAL processes, defaults to number of CPU cores. ``core.threadCount`` should be same or higher than this.
+
+``rssLimit``
+  Real memory limit of all GDAL processes (in MB). Directly influences memory footprint of whole mapproxy, should be adjusted with respect of available memory. Low values may slow mapproxy down (it will repetitively kill large GDAL processes).
 
