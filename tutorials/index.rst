@@ -13,7 +13,7 @@ Backend
 
 Backend tutorials are focused on setting up the VTS Backend environment, preprocessing your data and configuring the VTS streaming servers to serve the data to the client. It is a must-read if you plan to serve your own data through VTS.
 
-* :ref:`vts-backend`: essential basic setup of VTS, most other backend tutorials build atop of it.
+* :ref:`setting-vts-backend`: essential basic setup of VTS, most other backend tutorials build atop of it.
 * :ref:`mars-peaks-valleys`: set up an interactive 3D globe using local data on your drive (DEM and imagery) and :ref:`mapproxy <mapproxy>`.
 * :ref:`mars-peaks-valleys-searchable`: add and style vector nomenclature labels and set up search functionality for the previous tutorial.
 * :ref:`landuse-wms-dem`: combine maps available through WMS with open Copernicus DEM using :ref:`mapproxy <mapproxy>`.

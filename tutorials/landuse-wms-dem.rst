@@ -13,7 +13,7 @@ In this example, a standard cartography map (Urban atlas) is laid over a digital
 elevation model for better representation of the data in space.
 
 .. note:: We assume you have set up your environment as described in
-    :ref:`vts-backend`.
+    :ref:`setting-vts-backend`.
 
 Setting up mapproxy resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
