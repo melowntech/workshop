@@ -1,10 +1,10 @@
-.. _mars-peaks-and-valleys-searchable-nomenclature:
-
 
 .. image:: images/mars-peaks-and-valleys2-banner.jpg 
 
 |
 |
+
+.. _mars-peaks-valleys-searchable:
 
 Mars: Searchable Nomenclature Labels
 ------------------------------------
