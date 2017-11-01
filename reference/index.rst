@@ -10,12 +10,14 @@ reading :ref:`learning-vts` chapter first.
 
 * :ref:`clients-reference`
 * Server components:
+
   * :ref:`vts-backend`
   * :ref:`mapproxy`
   * :ref:`vtsd`
   * :ref:`cmdline-tools`
   * :ref:`vts-registry`
   * :ref:`Docker Support <docker-container>`
+
 * :ref:`concepts-glossary`
 
 .. toctree::
