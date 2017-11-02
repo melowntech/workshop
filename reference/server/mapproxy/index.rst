@@ -8,13 +8,21 @@ VTS-Mapproxy
 converts non-VTS resources (raster or vector) to VTS resources (:ref:`surface <surface>`,
 :ref:`bound layer <bound-layer>` and :ref:`free layer <free-layer>`) on the fly.
 
-For the first time setup it is recommended to install and run mapproxy as a part of :ref:`vts-backend` package or using :ref:`docker-container` container which relieve you from the server configuration.
+For the first time setup it is recommended to install and run mapproxy as a part of :ref:`vts-backend` package or using :ref:`docker-container` container which takes care of configuring and running the server.
 
 * `Main GitHub repository <https://github.com/Melown/vts-mapproxy>`__
 * `Build and install instructions <https://github.com/Melown/vts-mapproxy#download-build-and-install>`__ (GitHub)
 * :ref:`Server configuration <mapproxy-configuration>`
 * `Resource configuration`_ (GitHub)
 * :ref:`mapproxy-troubleshooting`
+
+.. toctree::
+  :maxdepth: 1
+  :hidden:
+  :titlesonly:
+
+  configuration
+  troubleshooting
 
 .. _mapproxy-howitworks:
 
@@ -33,13 +41,5 @@ Once it comes across a new resource, mapproxy parses its definition and if the d
 Mapproxy serves all valid resources on following URLs (see `Resource configuration`_ and :ref:`Server configuration <mapproxy-configuration>`)::
 
 	<server>:<port>/<reference-frame>/<resource-type>/<resource-group>/<resource-id>/
-
-
-.. toctree::
-  :maxdepth: 1
-  :hidden:
-
-  configuration
-  troubleshooting
 
 .. _Resource configuration: https://github.com/Melown/vts-mapproxy/blob/master/docs/resources.md

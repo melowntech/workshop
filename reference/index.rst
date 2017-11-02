@@ -27,7 +27,7 @@ reading :ref:`learning-vts` chapter first.
   clients/index
   server/vts-backend
   server/mapproxy/index
-  server/vtsd
+  server/vtsd/index
   server/cmdline-tools/index
   server/registry
   server/docker

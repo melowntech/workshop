@@ -43,7 +43,7 @@ Mapproxy tools
 
 Mapproxy tools take care of raster preprocessing for mapproxy. This includes
 overview generation (:ref:`generatevrtwo <generatevrtwo>`), dataset measurement
-(:ref:`mapproxy-calipers <mapproxy-calipers>) and creation of tiling metainformation (:ref:`mapproxy-tiling <mapproxy-tiling>`). There are also helper scripts that shrink
+(:ref:`mapproxy-calipers <mapproxy-calipers>`) and creation of tiling metainformation (:ref:`mapproxy-tiling <mapproxy-tiling>`). There are also helper scripts that shrink
 data preparation for mapproxy in a single command.
 
 Encoders
