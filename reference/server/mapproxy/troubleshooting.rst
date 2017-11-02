@@ -3,7 +3,7 @@
 Troubleshooting mapproxy
 ========================
 
-This section assumes you installed your mapproxy as a part of :ref:`VTS Backend <vts-backend>`. If not, actual paths or commands may differ
+This section assumes you installed your mapproxy as a part of :ref:`VTS Backend <vts-backend>`. If not, actual paths or commands may differ - e.g. if you are running mapproxy from command line instead of with init-script.
 
 Mapproxy log file
 -----------------
@@ -26,7 +26,7 @@ I cannot see my resource
 		...
 		Ready to serve <your/resource>
 
-	Then the resource will be ready. In case there is no ``Ready to serve <your/resource>``, there will be an error why your resource could not be loaded, that will give you a hint, where the problem is.
+	Then the resource will be ready. In case there is no ``Ready to serve <your/resource>``, there will be an error why your resource could not be loaded, that will give you a hint, where is the problem.
 
 Resource is ``Ready to serve`` but tiles return 404/500
 	When mapproxy prepares resource, it does not check all underlying data. Search log file for errors regarding your tiles, they will contain reason why tile generation failed. The paths you provided in resource definition may not exist or the data at that paths may be incomplete or corrupted. Check if all data preprocessing tools finished successfully.
