@@ -13,7 +13,7 @@ For the first time setup it is recommended to install and run mapproxy as a part
 * `Main GitHub repository <https://github.com/Melown/vts-mapproxy>`__
 * `Build and install instructions <https://github.com/Melown/vts-mapproxy#download-build-and-install>`__ (GitHub)
 * :ref:`Server configuration <mapproxy-configuration>`
-* `Resource configuration`_ (GitHub)
+* `Resource definition`_ (GitHub)
 * :ref:`mapproxy-troubleshooting`
 
 .. toctree::
@@ -38,8 +38,8 @@ Once it comes across a new resource, mapproxy parses its definition and if the d
 
 	See :ref:`mapproxy-troubleshooting` on how to deal with mistakes in the resource configuration.
 
-Mapproxy serves all valid resources on following URLs (see `Resource configuration`_ and :ref:`Server configuration <mapproxy-configuration>`)::
+Mapproxy serves all valid resources on following URLs (see `Resource definition`_ and :ref:`Server configuration <mapproxy-configuration>`)::
 
 	<server>:<port>/<reference-frame>/<resource-type>/<resource-group>/<resource-id>/
 
-.. _Resource configuration: https://github.com/Melown/vts-mapproxy/blob/master/docs/resources.md
+.. _Resource definition: https://github.com/Melown/vts-mapproxy/blob/master/docs/resources.md
