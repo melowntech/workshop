@@ -42,7 +42,7 @@ Spatial Reference System (SRS)
 ------------------------------
 
 To maintain consistency across the whole system, the SRSes in VTS are defined
-in one central place in `VTS Registry <https://github.com/Melown/vts-registry/blob/master/registry/registry/srs.json>`_ and then referenced by their
+in one central place in :ref:`VTS Registry <vts-registry>` and then referenced by their
 ``id`` wherever needed. In case of frontend, definitions of all needed SRSes
 will be present in :ref:`map-configuration`.
 
