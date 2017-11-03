@@ -28,7 +28,7 @@ I cannot see my resource
 
 	Then the resource will be ready. In case there is no ``Ready to serve <your/resource>``, there will be an error why your resource could not be loaded, that will give you a hint, where is the problem.
 
-Resource is ``Ready to serve`` but tiles return 404/500
+Resource is ``Ready to serve`` but tiles return 404/500 HTTP error
 	When mapproxy prepares resource, it does not check all underlying data. Search log file for errors regarding your tiles, they will contain reason why tile generation failed. The paths you provided in resource definition may not exist or the data at that paths may be incomplete or corrupted. Check if all data preprocessing tools finished successfully.
 
 I fixed my resource definition but I see no change

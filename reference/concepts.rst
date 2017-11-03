@@ -15,9 +15,9 @@
 
 .. _concepts-glossary:
 
-**************
-Basic Concepts
-**************
+************************
+Concepts and terminology
+************************
 
 The page describes concepts used in VTS.
 
@@ -411,7 +411,8 @@ In VTS terminology, this is called an *expanded claim of attribution* (or expand
 
 A *compact claim of attribution* makes use only of attributions defined elsewhere and thus is not self-containing. The expanded claim above may be written as:
 
-..code-block:: javascript
+.. code-block:: javascript
+
   ["citationtech", "basemap-at", "seznamcz"]
 
 Finally, a *specific claim of attribution* is present within :ref:`surface metatiles <surface-metatiles>`. It uses numerical id to identify the claimed attribution.
@@ -502,7 +503,8 @@ Storage view
 Storage view is subset of :ref:`storage`, with selected :ref:`tileset`\ s, so
 that you are not going to render all your data in final application.
 
-
+..
+  test by vts --map-config
 
 
 
