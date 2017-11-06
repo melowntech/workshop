@@ -12,7 +12,7 @@ Besides this reference, all tools offer unix-style help which can be evoked is s
 * :ref:`Encoders <encoders>`
 * :ref:`Mapproxy tools <mapproxy-tools>`
 
-The additional purely debugging tools that are part of the pojects are not described here yet. Consider `getting in touch with the developer team <https://github.com/Melown/vts-tools/issues>`__ on GitHub first.
+The additional purely debugging tools that are part of the pojects are not described here yet. Consider `getting in touch with the developer team <https://github.com/Melown/vts-tools/issues>`__ on GitHub first if you need help.
 
 .. toctree::
   :maxdepth: 1
