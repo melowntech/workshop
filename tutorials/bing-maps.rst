@@ -8,7 +8,7 @@ Displaying Bing Map layers
 
 `Microsoft Bing Maps <https://www.bing.com/maps>`_ is popular web mapping applications, which `license is less restrictive <https://www.microsoft.com/en-us/maps/licensing>`_ when
 compared to other services. Therefore it can be used in VTS 3D
-visualisation chain as one of the :ref:`bound-layer`\s.
+Geospatial Software Stack as one of the :ref:`bound-layer`\s.
 
 
 Setting up mapproxy resources

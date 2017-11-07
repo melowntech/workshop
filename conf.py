@@ -53,7 +53,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'VTS 3D Technology Stack'
+project = u'VTS 3D Geospatial Software Stack'
 copyright = u'2017 Melown Technologies SE'
 author = u'Melown Technologies SE'
 
@@ -87,8 +87,6 @@ language = None
 # This patterns also effect to html_static_path and html_extra_path
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store',
     'cloud/index.rst',
-    'reference/server/cmdline-tools/cmd-tools.rst',
-    'reference/server/cmdline-tools/tools.rst',
     'reference/server/mapproxy/running.rst',
     'tutorials/au-cz.rst',
     'tutorials/freelayer.rst',

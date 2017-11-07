@@ -5,7 +5,7 @@ Mars: The Peaks and Valleys
 
 If you have encountered 3D interactive Mars websites such as `Mars in Google Earth <https://www.google.com/maps/space/mars>`_ or `NASA Mars Trek <https://marstrek.jpl.nasa.gov/index.html>`_ you probably stood in awe at how much work went into them. 
 
-Yet with the help Melown Tech's VTS 3D map streaming and rendering stack and using only publicly available data sources, you can run a similar website in a couple of hours. And if you put some extra thought and work into it, your site might even be superior to its aforementioned respectable counterparts in some respects! This tutorial will walk you through the process.
+Yet with the help Melown Tech's VTS 3D Geospatial Software Stack and using only publicly available data sources, you can run a similar website in a couple of hours. And if you put some extra thought and work into it, your site might even be superior to its aforementioned respectable counterparts in some respects! This tutorial will walk you through the process.
 
 Preparation
 """""""""""

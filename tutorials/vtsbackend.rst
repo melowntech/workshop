@@ -3,7 +3,7 @@
 Setting up Your Own VTS Backend Environment
 -------------------------------------------
 
-VTS backend environment is a system of server-side components which allow you to run the backend portion of Melown Tech's open source VTS 3D map streaming and rendering stack. 
+VTS backend environment is a system of server-side components which allow you to run the backend portion of Melown Tech's open source VTS 3D Geospatial Software Stack. 
 
 If you need to work with an existing VTS map configuration, such as one hosted at `Melown Cloud <https://melown.com/cloud>`_, you don't need VTS backend environment. If you need to stream from your own servers, on your Intranet, do not want to upload your data to the cloud, or want to make use of VTS features not available in the cloud, this tutorial will tell you what you need to do.
 

@@ -26,6 +26,10 @@ For the first time setup it is recommended to install and run VTSD as a part of 
 How it works
 ============
 
-Once running, it behaves similarly as `nginx <https://www.nginx.com/>`__ webserver. If you access an URL matching *location* where ``dataset`` is set to ``true`` (which is the default), VTS will try to open underlaying filesystem path as storage (looking for a ``storage.conf`` within a directory), tileset (looking for a ``tileset.conf`` within a directory) or storage view (parsing given path as JSON). VTSD will return :ref:`map configuration <map-configuration>` for the first entity it successfully opens. 
+Once running, it behaves similarly as `nginx <https://www.nginx.com/>`__ webserver. If you access an URL matching *location* where ``dataset`` is set to ``true`` (which is the default), VTS will try to open underlaying filesystem path as:
 
-If none of above succeeds, VTSD will return a directory listing of underlaying path if configured to do so.
+* storage - looking for a ``storage.conf`` within a directory,
+* tileset - looking for a ``tileset.conf`` within a directory,
+* or storage view (parsing given path as JSON). 
+
+VTSD will return :ref:`map configuration <map-configuration>` for the first entity it successfully opens. If none of above succeeds, VTSD will return a directory listing of underlaying path if configured to do so.

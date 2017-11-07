@@ -26,7 +26,7 @@ JavaScript Object Notation. You can view the specs
     ~~~~~~~~~~~~~~
     The VTS Browser JS is a JavaScript WebGL rendering engine used and
     developed by `Melown Technologies SE <http://melown.com>`__ as part of
-    the VTS 3D Technology Stack.
+    the VTS 3D Geospatial Software Stack.
 
 Displaying the browser
 ^^^^^^^^^^^^^^^^^^^^^^

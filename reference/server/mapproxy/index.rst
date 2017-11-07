@@ -1,7 +1,7 @@
 .. _mapproxy:
 
 ************
-VTS-Mapproxy
+VTS Mapproxy
 ************
 
 `VTS Mapproxy <https://github.com/melown/vts-mapproxy>`_ is a HTTP server that

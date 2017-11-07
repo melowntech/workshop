@@ -52,10 +52,11 @@ Encoders
 Encoders are used to convert external hierarchical mesh formats (VEF, I3S/SLPK, LODTree) into VTS :ref:`tilesets <tileset>`. Currently, there are :ref:`vef2vts <vef2vts>`, :ref:`slpk2vts <slpk2vts>` and :ref:`lodtree2vts <lodtree2vts>`. There is also :ref:`vts2vts <vts2vts>` that can be used to convert tilesets from one :ref:`reference frame <reference-frame>` to another if there is a need but this practice is discouraged because of
 possible quality loss.
 
-Registry
-========
+..
+    Registry
+    ========
 
-:ref:`VTS Registry <vts-registry>` holds the definitions of :ref:`coordinate systems <srs>` and :ref:`reference frames <reference-frame>` known to VTS. 
+    :ref:`VTS Registry <vts-registry>` holds the definitions of :ref:`coordinate systems <srs>` and :ref:`reference frames <reference-frame>` known to VTS. 
 
 Rendering Libraries
 ===================

@@ -33,7 +33,7 @@ lines and continue with the `OBJ part <#importing-obj-files>`__ of the code.
 
 The VTS Browser JS is a JavaScript WebGL rendering engine used and
 developed by `Melown Technologies SE <http://melown.com>`__ as part of
-the VTS 3D Technology Stack.
+the VTS 3D Geospatial Software Stack.
 
 Embedding the browser
 ^^^^^^^^^^^^^^^^^^^^^

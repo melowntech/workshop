@@ -6,6 +6,9 @@ Learning VTS
 
 The simplest way to get started with VTS is by following some of our tutorials. The tutorials are organized into two main sections and roughly sorted by complexity starting with the simplest ones.
 
+..
+    zakladni prehled jak VTS stack funguje "ve dvou odstavcich", tak aby se uzivatel mohl rozhodnout, jake tutorialy jsou pro nej relevantni. Idealne s jednoduchym obrazkem
+
 .. _frontend-tutorials:
 
 Frontend
