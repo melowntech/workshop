@@ -123,7 +123,7 @@ The concept of reference frames is of crucial importance in VTS design. In order
 to create and use 3D map data, we need answers to questions such as:
 
 In which coordinate system (or more precisely spatial reference) are geometries
-within polygonal :ref:`meshes <mesh>` and :ref:`metatiles <surface-metatile>`? When the
+within polygonal :ref:`meshes <mesh>` and :ref:`metatiles <metatile>`? When the
 user navigates the map, what is logic of motion? For example, what does pan
 motion mean, geometrically? When we rotate around and object, what is the axis
 of rotation?  When we report spatial coordinates to the user, how do they relate
@@ -415,7 +415,7 @@ A *compact claim of attribution* makes use only of attributions defined elsewher
 
   ["citationtech", "basemap-at", "seznamcz"]
 
-Finally, a *specific claim of attribution* is present within :ref:`surface metatiles <surface-metatiles>`. It uses numerical id to identify the claimed attribution.
+Finally, a *specific claim of attribution* is present within :ref:`surface metatiles <metatile>`. It uses numerical id to identify the claimed attribution.
 
 Scopes of attribution
 ^^^^^^^^^^^^^^^^^^^^^
@@ -425,7 +425,7 @@ There are two scopes under which the attribution may be displayed:
   * **Imagery**: attributions from visible :ref:`surfaces <surface>` and
     :ref:`bound layers <bound-layer>`
 
-  * **Map data**: attributions from visible :ref:`free geodata layers <geodata-layer>`
+  * **Map data**: attributions from visible :ref:`free geodata layers <geodata>`
 
 Attribution ``Powered by MELOWN`` is always included.
 
@@ -438,24 +438,129 @@ there is not enough room to include all attributions, we put hyperlink with text
 "and others" after the first attribution, pointing to a tooltip containing all
 the attributions.
 
+.. _surface:
+
+Surface
+-------
+
+Surface a client side notion of :ref:`tileset <tileset>`. More precisely, it is
+
+  * a geometrical definition of the modeled object's surface,
+  * with optional textures and/or information on how to map external textures to object's surface
+
+The geometry of the surface is represented by polygonal mesh.
+
+The client knows which surfaces to display from :ref:`map configuration <map-configuration>` which contains URLs surface tiles, :ref:`metatiles <metatile>` and navtiles (used for navigation above the terrain). If more overlapping surfaces are to be displayed, the visibility is determined by their fixed stacking order which comes from the storage stacking order on backend. The resulting combination of surfaces displayed can be viewed as one surface, usually referred to as *virtual active surface*.
+
 .. _bound-layer:
 
 Bound layer
 -----------
 
-Bound layers are tiled datasets which may complement a :ref:`surface`. The
-adjective *bound* (as opposed to :ref:`free-layer`\s) means that for any tile
-used from a bound layer, there is the corresponding tile from the active
-surface, having the same :ref:`lod`, and indices.  For this reason, bound layers
-**do not**, in essence, **require any metatile information**, as they take it
-from the active surface. Bound layers are usually used as texture overlays for
-surfaces (e.g. aerial photos).
+Bound layers are tiled texture/imagery layers that are draped over :ref:`surfaces <surface>`. :ref:`Map configuration <map-configuration>` tells the client which bound layers should be bound to a particular surface. Bound layers usually come from :ref:`mapproxy <mapproxy>` but may also come completely external sources like TMS or WMTS services, if compatible with given reference frame.
+The actual draping of bound layer over surface happens on client, this allows e.g. switching the different bound layers for one surface without need to stream the surface data multiple times.
+
+On the backend, binding of bound layer happens in :ref:`storage view <storage-view>`. First the layer has to be defined by giving it some id and pointing to ``boundlayer.json`` available from mapproxy:
+
+.. code-block:: javascript
+
+  { // storage view
+    "boundLayers": {
+        "basemap-orthophoto": "https://maps.cdn.melown.com/tms/<group/<id>>/boundlayer.json",
+        ...
+    }
+  }
+
+Then the layer is bound to one or more surfaces in ``view`` section:
+
+.. code-block:: javascript
+
+  { // storage view
+    "view": {
+      "surfaces": {
+        <surfaceId>: [<bound-layerId>, ..., "basemap-orthophoto"],
+        ...
+      }
+    }
+  }
+
+The last bound layer in the list wins, the last but one is displayed in places where the last is not available and so on.
+
+To make the client draw the data from external service, the layer is simply defined in mapproxy using ``tms-raster-remote`` driver (see `mapproxy resource definition <https://github.com/Melown/vts-mapproxy/blob/master/docs/resources.md>`__). This allows for keeping all the bound layer definitions at mapproxy for overall consistency.
+
+Bound layers usually :ref:`metatiles <metatile>` which indicate which tiles are covered by underlaying data.
+
+.. _free-layer:
+.. _geodata:
+
+Free layer
+----------
+
+Free layers are collections of three dimensional information capable of
+independent rendering. There are two facets to this independence: unlike :ref:`bound
+layers <bound-layer>`, free layers do not require the active surface to determine their
+position. And unlike :ref:`surfaces <surface>`, they do not exclude other surfaces from
+rendering. As many free layers as needed may be rendered at a given position in
+the reference frame's node hierarchy.
+
+If a free layer is tiled, or organized in a tile hierarchy, it holds also an
+independent hierarchy of :ref:`metatiles <metatile>` to achieve its independence on the active
+surface. In format and semantics, free layer metatiles are precisely identical
+to surface metatiles.
+
+Currently there are two kinds of free layers:
+
+* free geodata layer: Tiled or monolithic 3D vector data.
+* free mesh layer: Arbitrary surface can be displayed as a free layer.
+
+On the backend, the free layer is defined similarly as a bound layer in :ref:`storage view <storage-view>`:
+
+.. code-block:: javascript
+
+  { // storage view
+    "freeLayers" : 
+      {
+        "streets" : "//cdn.melown.com/mario/proxy/melown2015/geodata/<group>/<id>/freelayer.json"
+      }
+  }
+
+Then it is used in ``view`` section:
+
+.. code-block:: javascript
+
+  { // storage view
+    "view": {
+      "freeLayers": {
+        "streets": {},
+        ...,
+        <surfaceId>: { "boundLayers": [<bound-layerId>, ...] },
+      }
+    }
+  }
+
+Notice how surface can be used as a free layer simply by mentioning its ``id`` in ``view.freeLayers`` section. See :ref:`cadastre tutorial <cadastre-raster-vector-3d>` for examples of free layer use.
 
 .. _map-configuration:
 
 Map configuration
 -----------------
 
+Map configuration contains a all information the client needs to display given map/model.
+Although it does not contain any data that can be directly rendered, it contains URLs where the data can be retrieved and all needed accompanying configuration.
+
+Contents of map configuration:
+
+* Reference frame definition: all resources must be in this :ref:`reference frame <reference-frame>`.
+* SRS definitions: definitions of all SRSs used in reference frame.
+* :ref:`Bound <bound-layer>` and :ref:`free layer <free-layer>` definitions.
+* Surface and glue definitions.
+* View section: defining how surfaces, bound and free layers will be used together (actual composition can be modified with :ref:`browser API <clients-reference>`).
+* Default :ref:`position <position>`.
+* Other options.
+
+The map configuration itself is not meant to be human-writable. Instead it is served by :ref:`VTSD <vtsd>` from :ref:`storage view <storage-view>` which is human-readable and -writable configuration. Alternatively, the map configuration can be served by VTSD for the whole :ref:`storage <storage>` or :ref:`tileset <tileset>` or by :ref:`mapproxy <mapproxy>` when ``http.enableBrowser`` is set to ``true`` in :ref:`mapproxy configuration <mapproxy-configuration>`.
+
+.. _synthesis:
 
 Synthesis
 =========
@@ -464,6 +569,7 @@ Synthesis
 
 Tileset
 -------
+
 Tileset is a tiled surface, set of meshes with metadata bound to one given
 :ref:`reference-frame`. Meshes may or may not be textured. If not textured,
 meshes still have *external texture coordinates* to allow them being textured by
@@ -507,41 +613,6 @@ that you are not going to render all your data in final application.
   test by vts --map-config
 
 
-
-
-
-
-.. _free-layer:
-
-Free layer
-----------
-
-Free layers are collections of three dimensional information capable of
-independent rendering. There are two facets to this independence: unlike bound
-layers, free layers do not require the active surface to determine their
-position. And unlike surfaces, they do not exclude other surfaces from
-rendering. As many free layers as needed may be rendered at a given position in
-the reference frame's node hierarchy.
-
-If a free layer is tiled, or organized in a tile hierarchy, it holds also an
-independent hierarchy of metatiles to achieve its independence on the active
-surface. In format and semantics, free layer metatiles are precisely identical
-to surface metatiles. Their usage in the rendering pipeline is largely identical
-as with surfaces. Each free layer, however, forms its own independent,
-single-entity rendering stack.
-
-For configuration options, have a look at :ref:`geodata` resources configuration
-section.
-
-
-.. _geogrid:
-
-Geogrid
--------
-Usually raster representation of height differences between used ellipsoid and
-real Earth surface `Geoid <https://en.wikipedia.org/wiki/Geoid>`_ heights.
-
-.. figure:: images/geoid-grid.png
 
 .. _glue:
 
@@ -643,22 +714,3 @@ Resource
 Data sources defined in ``JSON`` encoded file, used in :ref:`mapproxy`. The data
 sources can be DEMs or :ref:`bound-layer`\s with map.
 
-
-.. _surface:
-
-Surface
--------
-
-Surfaces are a client side notion of tilesets. More precisely, they are
-
-  * a geometrical definition of the modeled object's surface,
-
-  * with optional textures and/or information on how to map external textures to object's surface
-
-  * with information on terrain, allowing to map map XY navigation SRS coordinates to their Z compoment.
-
-Our current webexport format is, under our new terminology, a representation of
-a single surface. It is a surface which is tiled (organized in a tile hierarchy)
-and sampled (described as a set of polygonal meshes, as opposed to using
-analytical and implicit functions). We shall preserve this properties in the new
-surface format.

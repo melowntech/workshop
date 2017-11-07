@@ -13,7 +13,7 @@ Streaming Servers
 Mapproxy
 --------
 
-The :ref:`mapproxy` is an HTTP server that performs on the fly conversion of non-VTS GIS formats (GDAL rasters, OGR vectors, Mapbox vector tiles) to VTS streaming formats like :ref:`surfaces <surface>`, :ref:`bound layers <bound-layer>` and :ref:`tiled geodata <tiled-geodata>` that are directly usable by clients. Part of mapproxy that deals with imagery can be viewed a powerful SRS transforming TMS server.
+The :ref:`mapproxy` is an HTTP server that performs on the fly conversion of non-VTS GIS formats (GDAL rasters, OGR vectors, Mapbox vector tiles) to VTS streaming formats like :ref:`surfaces <surface>`, :ref:`bound layers <bound-layer>` and :ref:`geodata <geodata>` that are directly usable by clients. Part of mapproxy that deals with imagery can be viewed a powerful SRS transforming TMS server.
 
 The mapproxy be configured to provide a streamable VTS :ref:`map configurations <map-configuration>`, thus removing need for :ref:`vtsd <vtsd>` and :ref:`storage <storage>` for very simple setups which is leveraged in few tutorials.
 
