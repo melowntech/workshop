@@ -4,15 +4,22 @@
 Introduction to VTS-Browser-CPP
 -------------------------------
 
-This guide shows how to build a simple c++ frontend application build on VTS.
+This guide shows how to build a simple C++ front-end application build on VTS.
 
 .. figure:: images/frontend-cpp.png
 
-  What you should have in the end.
+  What we should have in the end.
+
+The application will create a window and show a single map configuration.
+You may navigate on the map with mouse.
+
+This tutorial uses source code from `vts-browser-minimal <https://github.com/Melown/vts-browser-cpp/wiki/examples-minimal>`_ example,
+which is part of the git repository.
 
 
 Dependencies
 ^^^^^^^^^^^^
+
 
 VTS Browser
 """""""""""
@@ -25,13 +32,15 @@ After that, install the developer files for the library and optionally the debug
 
   apt-get install libvts-browser-dev libvts-browser-dbg
 
-If the package is not available for your distribution you may build the library from source code.
+If the package is not available for your distribution, you may build the library from source code.
 See `Building <https://github.com/Melown/vts-browser-cpp/blob/master/BUILDING.md>`_ for more information.
 After that just install the library locally.
 
 .. code-block:: sh
 
   sudo cmake --build . --target install
+
+Source code for the library is available at `GitHub <https://github.com/Melown/vts-browser-cpp>`_.
 
 
 SDL
@@ -40,6 +49,10 @@ SDL
 SDL is portable library for window creation, OpenGL context creation and event handling.
 
 For instructions on installation see `SDL <https://libsdl.org>`_.
+
+.. note::
+  We use SDL in this example to keep it simple.
+  However, you are free to use the browser library with any OpenGL context, no matter where you get it.
 
 
 Cmake
@@ -55,8 +68,7 @@ Building
 
 First, we write a simple cmake script called *CMakeLists.txt*.
 It will search for the actual paths to all the required libraries.
-Than is specifies to build an executable program called *vts-example*.
-
+Next it specifies to build an executable program called *vts-example*.
 The program uses single source file called *main.cpp* and is linked with all the libraries.
 
 *CMakeLists.txt*:
@@ -64,11 +76,13 @@ The program uses single source file called *main.cpp* and is linked with all the
 .. literalinclude:: srcs/frontend-cpp/CMakeLists.txt
    :language: cmake
 
-Afterwards, let us generate the platform specific build files (usually a makefile on linux).
-This step is only done once.
-After that, the build system will automatically check the *CMakeLists.txt* for changes.
+You may download the file: :download:`srcs/frontend-cpp/CMakeLists.txt`.
 
-Moreover, we do not want to clutter the directory with numerous temporary files, therefore, we instruct cmake to generate the build scripts in a separate directory.
+Now, we let cmake generate the platform specific build files (usually a makefile on linux).
+This step is only done once.
+
+Moreover, we do not want to clutter the directory with numerous temporary files,
+therefore, we instruct cmake to build in a separate directory.
 
 .. code-block:: sh
 
@@ -76,11 +90,14 @@ Moreover, we do not want to clutter the directory with numerous temporary files,
   cd build
   cmake ..
 
-After that, just call the following command every time you want to rebuild the code (from inside the *build* directory).
+After that, just call the following command every time you want to rebuild the application (from inside the *build* directory).
 
 .. code:: sh
 
   cmake --build .
+
+This cmake call will use the generated build files.
+Alternatively, you may use them directly.
 
 
 Source Code
@@ -93,15 +110,13 @@ Source Code
    :lines: 26-
    :linenos:
 
+You may download the source: :download:`srcs/frontend-cpp/main.cpp`.
 
 Conclusion
 ^^^^^^^^^^
 
-You may download the sources: :download:`srcs/frontend-cpp/main.cpp`
-and :download:`srcs/frontend-cpp/CMakeLists.txt`.
+Complete documentation for the browser library is at `wiki <https://github.com/Melown/vts-browser-cpp/wiki>`_.
 
-For further reading about the browser library see our `Wiki <https://github.com/Melown/vts-browser-cpp/wiki>`_
-or `GitHub <https://github.com/Melown/vts-browser-cpp>`_.
 
 
 
