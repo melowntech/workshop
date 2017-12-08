@@ -108,7 +108,6 @@ Source Code
 .. literalinclude:: srcs/frontend-cpp/main.cpp
    :language: c++
    :lines: 26-
-   :linenos:
 
 You may download the source: :download:`srcs/frontend-cpp/main.cpp`.
 
