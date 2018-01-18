@@ -8,8 +8,8 @@ What is VTS 3D Geospatial Software Stack
 ########################################
 
 
-VTS 3D Geospatial Software Stack is an open source solution for streaming and interactive rendering of 3D geospatial content developed by
-`Melown Technologies <https://www.melown.com>`_. It is a client-server architecture
+VTS 3D Geospatial Software Stack is an open source solution developed by
+`Melown Technologies <https://www.melown.com>`_ for streaming and interactive rendering of 3D geospatial content. It is a client-server architecture
 with C++ Linux backend components and JavaScript and C++ frontend libraries
 for Web, Linux, MacOS and iOS development.
 
