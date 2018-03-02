@@ -6,8 +6,8 @@
 
 .. _mars-peaks-valleys-searchable:
 
-Mars: Searchable Nomenclature Labels
-------------------------------------
+Mars 2: Searchable Nomenclature
+-------------------------------
 
 In our :doc:`first Mars tutorial <mars-peaks-and-valleys>`, you used `VTS 3D Geospatial Software Stack <https://melown.com/products/vts>`_ to  stream an interactive, browseable map of Mars from your own system using public domain data sources. That was fun.
 
