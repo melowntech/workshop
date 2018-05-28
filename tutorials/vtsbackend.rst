@@ -10,7 +10,7 @@ If you need to work with an existing VTS map configuration, such as one hosted a
 Prerequisites
 """""""""""""
 
-We presume that you have a clean Ubuntu 16.04 installation and that your user can obtain superuser privileges via sudo. Any usable VTS installation should have at least 2GB of RAM available. You also need some diskspace, the actual size of it much depends on what you want to use VTS backend for, but a couple of GiBs should be enough to get your started. Both Linode servers and Digital Ocean droplets mid-range configurations will perfectly suit the purpose.
+We presume that you have a clean Ubuntu 18.04 LTS (Bionic Beaver) installation and that your user can obtain superuser privileges via sudo. Any usable VTS installation should have at least 2GB of RAM available. You also need some diskspace, the actual size of it much depends on what you want to use VTS backend for, but a couple of GiBs should be enough to get your started. Both Linode servers and Digital Ocean droplets mid-range configurations will perfectly suit the purpose.
 
 Make sure that port 8070 is open and unonccupied on your system.
 
@@ -19,17 +19,13 @@ Install VTS Backend
 
 `Melown Technologies <https://melown.com/>`_ provides a public package repository for VTS backend and installing it is thus straightforward.
 
-Make sure we have ``add-apt-repository`` and HTTPS apt transport available::
+Make sure we have HTTPS apt transport available::
 
-    $ sudo apt install software-properties-common apt-transport-https
-
-Add ubuntugis ppa to your apt system::
-
-    $ sudo add-apt-repository ppa:ubuntugis/ppa
+    $ sudo apt install apt-transport-https
 
 Add Melown Tech's repository to your sources list::
 
-  $ cd /etc/apt/sources.list.d/ && sudo wget http://cdn.melown.com/packages/conf/melown-xenial.list 
+  $ cd /etc/apt/sources.list.d/ && sudo wget http://cdn.melown.com/packages/conf/melown-bionic.list 
   $ wget -O - http://cdn.melown.com/packages/keys/oss.packages%40melown.com.key | sudo apt-key add -
   
 Update your package lists::
