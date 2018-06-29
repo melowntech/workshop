@@ -71,10 +71,10 @@ vts-browser-js
 The :ref:`vts-browser-js <vts-browser-js>` is all encompassing WebGL-based VTS client-side implementation with `comprehensive API <https://github.com/Melown/vts-browser-js/wiki>`_ and very small footprint - currently about 176 kB gzipped and minified.
 It works in all modern browsers with rudimentary mobile support.
 
-libvts-browser
---------------
+vts-browser-cpp
+---------------
 
-The :ref:`libvts-browser <libvts-browser>` is a multiplatform lightweight C++ client library that is separate from actual rendering layer. The thin rendering layer is called :ref:`libvts-renderer <libvts-renderer>` and while still multiplatform, it may be used when building full-fledged VTS based applications form scratch. There are currently two sample applications :ref:`vts-browser-desktop <vts-browser-desktop>` for Linux desktop and Mac and :ref:`vts-browser-ios <vts-browser-ios>` for iOS mobile.
+The :ref:`vts-browser-cpp` is a multiplatform lightweight c++ client library. It is separate from actual rendering layer, although a thin rendering layer based on modern OpenGL or OpenGL ES is also provided. It may be used for building full-fledged VTS based applications form scratch. There are currently several example applications. First, a fancy desktop application with advanced controls, search, layers configuration and many customization options. Second, an iOS application with two different touch controls available. We also have minimal applications for each language binding: c++, c and cs. Finaly, we provide a plugin for VTS integration into Unity 3D game engine.
 
 Sample production setup
 =======================
