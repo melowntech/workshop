@@ -24,6 +24,7 @@ Frontend tutorials are focused on building apps on top of the VTS browser API, d
 * :ref:`vtsjs-landuse`: enhance the map with interactive layer control and a legend.
 * :ref:`vtsjs-import-obj`: place OBJ models from arbitrary source into your map and get more in-depth view to the rendering pipeline.
 * `List of JSFiddle live examples <https://github.com/Melown/vts-browser-js/wiki/Examples>`__: extensive list of live examples focused on single feature of VTS-Browser-JS. Some of them are referenced from previous tutorials but there is a lot more worth to check.
+* :ref:`vtsfrontend-cpp`: building sample application with the c++ library.
 
 .. toctree::
    :maxdepth: 1
@@ -36,6 +37,7 @@ Frontend tutorials are focused on building apps on top of the VTS browser API, d
    geojson-part3
    landuse-frontend
    importobj
+   frontend-cpp
 
 
 .. _backend-tutorials:

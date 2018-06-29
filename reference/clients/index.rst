@@ -27,7 +27,6 @@ VTS-Browser-cpp
 ===============
 
 * `Main repository <https://github.com/Melown/vts-browser-cpp>`__
-* `Installation or build <https://github.com/Melown/vts-browser-cpp#install-from-melown-repository>`__
 * `API documentation <https://github.com/Melown/vts-browser-cpp/wiki>`__
-* `Example applications <https://github.com/Melown/vts-browser-cpp/wiki#example-applications>`__
 * :ref:`Tutorials <frontend-tutorials>` here on readthedocs
+
