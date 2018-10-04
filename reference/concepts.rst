@@ -166,7 +166,7 @@ the algorithmic processing is precisely the same in both cases.
 Here is an example of a simple hypothetical reference frame:
 
 .. code-block:: javascript
-  
+
   {
         "version" : 1,
         "id": "webmerc-unprojected",
@@ -271,7 +271,7 @@ motion would not point perpendicular to the (roughly ellipsoidal) Earth surface,
 but straight to Earth centre (or even more precisely, very close to Earth centre).
 
 Helas, this simple model of Earth is missing polar caps. This is why we instead
-define the 
+define the
 `melown2015 <https://github.com/Melown/vts-registry/blob/master/registry/registry/referenceframes.json#L70>`_ reference frame with modified spatial division which includes the polar caps. Another interesting reference frame
 covering whole planet is a `mars-qsc <https://github.com/Melown/vts-registry/blob/master/registry/registry/referenceframes.json#L225>`_ which
 represents Mars as a folded-out cube.
@@ -518,7 +518,7 @@ On the backend, the free layer is defined similarly as a bound layer in :ref:`st
 .. code-block:: javascript
 
   { // storage view
-    "freeLayers" : 
+    "freeLayers" :
       {
         "streets" : "//cdn.melown.com/mario/proxy/melown2015/geodata/<group>/<id>/freelayer.json"
       }
@@ -597,22 +597,32 @@ for reference:
 
 Storage
 -------
-Storage is a stack of :ref:`tileset`\s sharing the same :ref:`reference-frame`.
-It also contains :ref:`glue`\ s between it's constituent tilesets. Due to its
-stack nature it is always clear which tileset is on top if two or more tilesets
-overlap and are glues to be created. The storage is managed by :ref:`vts-cmdline`.
+
+Storage is a stack of :ref:`tilesets <tileset>` sharing the same
+:ref:`reference-frame`. Due to its stack nature it is always clear which tileset
+is on top if two or more tilesets overlap. Furthermore, the storage contains
+:ref:`glues <glue>` between it's constituent tilesets enabling seamless
+visualization wherever two or more tilesets come into contact. Adding and
+removing tilesets into and from storage is done via :ref:`vts commandline
+utility <vts-cmdline>` which takes care of the the glue generation.
 
 .. _storage-view:
 
 Storage view
--------------
-Storage view is subset of :ref:`storage`, with selected :ref:`tileset`\ s, so
-that you are not going to render all your data in final application.
+------------
 
-..
-  test by vts --map-config
+Storage view is human readable and writable configuration file which combines a
+subset of :ref:`tilesets <tileset>` from the storage,
+:ref:`bound layers <bound-layer>` and :ref:`free layers <free-layer>` from
+:ref:`mapproxy <mapproxy>`, :ref:`credit definitions <attribution>` and other
+options. When placed somewhere in the :ref:`VTSD <vtsd>` root (default path
+``/var/vts/store/`` if installed as a part of the VTS Backend), VTSD is able to
+serve the :ref: `map-configuration` based on the storage view at URL:
+``<url-to-storage-view>/mapConfig.json``. Once you write the storage view, you
+can check whether it is correct (produces valid mapConfig.json) by calling:
 
-
+.. code-block:: bash
+  $ vts --map-config <path-to-storage-view>
 
 .. _glue:
 
@@ -659,10 +669,18 @@ out" pixels out of region of interest.
 
 .. _metatile:
 
-Meta tile
----------
-Tile, holding *meta informations* needed to construct 3D model from input
-:ref:`mesh` and :ref:`texture` tiles.
+Metatile
+--------
+
+The metatiles contain mainly:
+
+* Data availability information - for which tiles the meshes, textures and other data are available and if there are further data deeper in the tile hierarchy.
+* Geometry extents of underlying data - where in space are the meshes located.
+* Coarseness information - size of the texture element.
+
+Each metatile contains metainformation for many tiles (usually 1024) on the same :ref:`LOD <lod>`. Bound layer metatiles contain only data availability information.
+
+The client first downloads some metatiles for each :ref:`bound layer <bound-layer>`, :ref:`free layer <free-layer>` and :ref:`surface <surface>`. Based on current position and the information in metatiles, the client takes into account visibility and coarseness and decides for which tiles it will download meshes, textures, etc. and for which it will go deeper to get finer data.
 
 .. _mesh:
 
@@ -705,12 +723,4 @@ JPEG images.
     :scale: 50%
 
     Image containing mesh textures
-
-.. _resource:
-
-Resource
---------
-
-Data sources defined in ``JSON`` encoded file, used in :ref:`mapproxy`. The data
-sources can be DEMs or :ref:`bound-layer`\s with map.
 
