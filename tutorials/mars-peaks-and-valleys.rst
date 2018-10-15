@@ -26,8 +26,8 @@ As a good practice, create a resource directory and dataset subdirectory to conf
 ::
 
    $ sudo -iu vts
-   $ mkdir /etc/vts/mapproxy/mars-case-study.d
-   $ mkdir ~/mapproxy/datasets/mars-case-study
+   $ mkdir -p /etc/vts/mapproxy/mars-case-study.d
+   $ mkdir -p ~/mapproxy/datasets/mars-case-study
 
 and extend your mapproxy resource configuration to include these resources. The third line in the following mapproxy resource configuration file (```/etc/vts/mapproxy/resources.json```) does the trick:
 
