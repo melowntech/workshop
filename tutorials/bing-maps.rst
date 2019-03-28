@@ -13,7 +13,7 @@ Geospatial Software Stack as one of the :ref:`bound-layer`\s.
 
 Setting up mapproxy resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-:ref:`mapproxy` has support for `tms-bing <https://github.com/Melown/vts-mapproxy/blob/master/docs/resources.md#tms-bing>`_
+:ref:`mapproxy` has support for `tms-bing <https://github.com/melowntech/vts-mapproxy/blob/master/docs/resources.md#tms-bing>`_
 driver. It will be configured as standard :ref:`bound-layer` for
 :ref:`mapproxy`. Therefore we need to know following inputs, before we
 start:
@@ -87,7 +87,7 @@ configuration part.
 
 Displaying the data
 ^^^^^^^^^^^^^^^^^^^
-We need to define at least one "empty" `spheroid-dem <https://github.com/Melown/vts-mapproxy/blob/master/docs/resources.md#surface-spheroid>`_ type of ``surface`` layer,
+We need to define at least one "empty" `spheroid-dem <https://github.com/melowntech/vts-mapproxy/blob/master/docs/resources.md#surface-spheroid>`_ type of ``surface`` layer,
 with our ``bing`` layer in it's definition.
 
 

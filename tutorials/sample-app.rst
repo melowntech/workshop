@@ -4,7 +4,7 @@
 Writing a Simple VTS-Browser-JS application
 -------------------------------------------
 
-In this tutorial we set up a basic JavaScript web application using the latest `VTS Browser JS <https://github.com/Melown/vts-browser-js>`__ hosted at `Melown Tech's <https://www.melown.com>`__ CDN. The app will allow you to browse any map for which you have the :ref:`map configuration <map-configuration>`.
+In this tutorial we set up a basic JavaScript web application using the latest `VTS Browser JS <https://github.com/melowntech/vts-browser-js>`__ hosted at `Melown Tech's <https://www.melown.com>`__ CDN. The app will allow you to browse any map for which you have the :ref:`map configuration <map-configuration>`.
 
 HTML Page
 ^^^^^^^^^

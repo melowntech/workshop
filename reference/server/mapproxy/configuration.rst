@@ -16,7 +16,7 @@ configuration options, by running :command:`mapproxy --help-all` command  in the
 command line. Here we describe the most important options you may want to tweak.
 
 The best starting point for configuring mapproxy on your own is a `fully commented 
-configuration file <https://github.com/Melown/vts-backend/blob/master/vts-backend/etc/mapproxy/mapproxy.conf>`__ used in VTS Backend.
+configuration file <https://github.com/melowntech/vts-backend/blob/master/vts-backend/etc/mapproxy/mapproxy.conf>`__ used in VTS Backend.
 
 Mapproxy configuration options
 ------------------------------
@@ -84,7 +84,7 @@ resource backend python: mysql-based resource backend:
   ``--resource-backend.script`` arg Path pythong script. It must privide global 
                                 function run().
 
-Resources configuration reference can be found in `vts-mapproxy repository on GitHub <https://github.com/Melown/vts-mapproxy/blob/master/docs/resources.md>`__.
+Resources configuration reference can be found in `vts-mapproxy repository on GitHub <https://github.com/melowntech/vts-mapproxy/blob/master/docs/resources.md>`__.
 
 
 [gdal]

@@ -17,13 +17,13 @@ Frontend
 Frontend tutorials are focused on building apps on top of the VTS browser API, describing various parts of its functionality. Being the most accessible, most torials are focused on the :ref:`JavaScript API <vts-browser-js>`. A few tutorials are sequels of backend tutorials but most of them can be followed without setting up VTS Backend.
 
 * :ref:`vtsjs-simple-app`: set up the most basic JavaScript web application possible to browse your maps.
-* :ref:`vtsjs-gpx-viewer`: use VTS-Browser-JS `Geodata API <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#geodata-creation>`_ to visualize GPX.
+* :ref:`vtsjs-gpx-viewer`: use VTS-Browser-JS `Geodata API <https://github.com/melowntech/vts-browser-js/wiki/VTS-Browser-Map-API#geodata-creation>`_ to visualize GPX.
 * :ref:`vtsjs-geojson-1`: import GeoJSON from arbitrary source and learn how to style geodata.
 * :ref:`vtsjs-geojson-2`: display geodata programmatically generated at frontend, do more advanced styling.
 * :ref:`vtsjs-geojson-3`: create interactive application by use of hover events and style switching.
 * :ref:`vtsjs-landuse`: enhance the map with interactive layer control and a legend.
 * :ref:`vtsjs-import-obj`: place OBJ models from arbitrary source into your map and get more in-depth view to the rendering pipeline.
-* `List of JSFiddle live examples <https://github.com/Melown/vts-browser-js/wiki/Examples>`__: extensive list of live examples focused on single feature of VTS-Browser-JS. Some of them are referenced from previous tutorials but there is a lot more worth to check.
+* `List of JSFiddle live examples <https://github.com/melowntech/vts-browser-js/wiki/Examples>`__: extensive list of live examples focused on single feature of VTS-Browser-JS. Some of them are referenced from previous tutorials but there is a lot more worth to check.
 * :ref:`vtsfrontend-cpp`: building sample application with the c++ library.
 
 .. toctree::

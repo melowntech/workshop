@@ -86,7 +86,7 @@ Vector data styling
 ^^^^^^^^^^^^^^^^^^^
 .. note:: Detailed reference for styling is behind scope of this example, please
     check `official styling documentation
-    <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`_.
+    <https://github.com/melowntech/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`_.
 
 Vector data styles are stored in JSON format. Let's have an example:
 
@@ -106,7 +106,7 @@ The structure of the file is obvious::
 The ``@layerId`` has no relation to ``resources.json`` configuration file. It's
 used just as internal reference in the styling file. For styling just subset of
 vector data, check the
-`Filters <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#filters`, they
+`Filters <https://github.com/melowntech/vts-browser-js/wiki/VTS-Geodata-Format#filters`, they
 should be similar to `mapbox filter format
 <https://www.mapbox.com/mapbox-gl-js/style-spec/#types-filter>`_.
 

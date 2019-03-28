@@ -92,7 +92,7 @@ Vector data styling
 ^^^^^^^^^^^^^^^^^^^
 .. note:: Detailed reference for styling is behind scope of this example, please
     check `official styling documentation
-    <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`_.
+    <https://github.com/melowntech/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`_.
 
 Vector data styles are stored in JSON format. We shall discuss this in separate
 example. In our case, we just use simple style file.

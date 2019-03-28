@@ -13,12 +13,12 @@ be found in corresponding GitHub repositories.
 VTS-Browser-JS
 ==============
 
-* `Main repository <https://github.com/Melown/vts-browser-js>`__
-* `Installation <https://github.com/Melown/vts-browser-js#install>`__
-* `API documentation <https://github.com/Melown/vts-browser-js/wiki>`__
-* `Live JSFiddle examples <https://github.com/Melown/vts-browser-js/wiki/Examples>`__
+* `Main repository <https://github.com/melowntech/vts-browser-js>`__
+* `Installation <https://github.com/melowntech/vts-browser-js#install>`__
+* `API documentation <https://github.com/melowntech/vts-browser-js/wiki>`__
+* `Live JSFiddle examples <https://github.com/melowntech/vts-browser-js/wiki/Examples>`__
   also distributed along the source in the 
-  `demos directory <https://github.com/Melown/vts-browser-js/tree/master/demos>`__
+  `demos directory <https://github.com/melowntech/vts-browser-js/tree/master/demos>`__
 * :ref:`Tutorials <frontend-tutorials>` here on readthedocs
 
 .. _vts-browser-cpp:
@@ -26,7 +26,7 @@ VTS-Browser-JS
 VTS-Browser-cpp
 ===============
 
-* `Main repository <https://github.com/Melown/vts-browser-cpp>`__
-* `API documentation <https://github.com/Melown/vts-browser-cpp/wiki>`__
+* `Main repository <https://github.com/melowntech/vts-browser-cpp>`__
+* `API documentation <https://github.com/melowntech/vts-browser-cpp/wiki>`__
 * :ref:`Tutorials <frontend-tutorials>` here on readthedocs
 

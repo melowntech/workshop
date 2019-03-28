@@ -3,7 +3,7 @@
 Encoders
 ========
 
-VTS allows to covert external hierarchical mesh formats into VTS tilesets. These include so far ESRI SLPK (.spk) format, Bentley Context capture LODTree and Leica Citymapper DAE export (accepted by ``lodtree2vts``) and `VEF <https://github.com/Melown/true3d-format-spec>`__ open transport format proposed by Melown.
+VTS allows to covert external hierarchical mesh formats into VTS tilesets. These include so far ESRI SLPK (.spk) format, Bentley Context capture LODTree and Leica Citymapper DAE export (accepted by ``lodtree2vts``) and `VEF <https://github.com/melowntech/true3d-format-spec>`__ open transport format proposed by Melown.
 
 There are also two special encoders to concert from VTS tilesets and VEF.
 

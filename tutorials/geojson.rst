@@ -4,7 +4,7 @@ GeoJSON: Import and Styling with VTS-Browser-JS
 -----------------------------------------------
 
 This tutorial provides a step by step guide how to import and visualize
-sample GeoJSON data with `VTS-Browser-JS <https://github.com/Melown/vts-browser-js>`_.
+sample GeoJSON data with `VTS-Browser-JS <https://github.com/melowntech/vts-browser-js>`_.
 
 In detail we'll take a look how to display the VTS browser on a webpage. Next
 we'll load some GeoJSON data and display them. And finally we'll take a
@@ -85,10 +85,10 @@ code to make the browser run.
 We created a map in place of the ``map-div`` and set the ``map`` parameter
 to point to a map configuration we prepared in Melown Cloud for this purpose. 
 You can create your own map in `Melown Cloud <https://www.melown.com/cloud>`_. We set the
-`position <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#position>`_
+`position <https://github.com/melowntech/vts-browser-js/wiki/VTS-Browser-Map-API#position>`_
 to San Francisco Golden Gate Bridge. You can discover more about
 browser configuration parameters in
-`documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-API#options>`_.
+`documentation <https://github.com/melowntech/vts-browser-js/wiki/VTS-Browser-API#options>`_.
 
 Once the map loads we can start with
 importing a GeoJSON. We achieve this by using the callback function
@@ -242,7 +242,7 @@ component for all style layers we want to use. Direct children of
 ``layers`` can have arbitrary names. In the example above we've added
 one style layer and named it ``track-line``. A style layer can have
 multiple properties that you can find
-`here <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#layers-structure>`__.
+`here <https://github.com/melowntech/vts-browser-js/wiki/VTS-Geodata-Format#layers-structure>`__.
 The most important one is ``filter``.
 
 Filter is used to select features from the GeoJSON to which we want to apply
@@ -254,7 +254,7 @@ line width. And finally we set line color to magenta with ``line-color``,
 which accepts RGBA values as an array.
 
 You can find a comprehensive documentation for styles
-`here <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`__.
+`here <https://github.com/melowntech/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`__.
 
 Advanced styling
 ^^^^^^^^^^^^^^^^

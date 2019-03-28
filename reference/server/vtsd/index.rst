@@ -10,8 +10,8 @@ VTSD
 For the first time setup it is recommended to install and run VTSD as a part of :ref:`vts-backend` package or using :ref:`docker-container` container which takes care of configuring and running the server.
 
 * `Main GitHub repository <https://github.com/melown/vts-vtsd>`__
-* `Build and install instructions <https://github.com/Melown/vts-vtsd#download-build-and-install>`__
-* `Commented sample configuration file <https://github.com/Melown/vts-backend/blob/master/vts-backend/etc/vtsd/vtsd.conf>`__. To get complete list of options, run :command:`vtsd --help-all`.
+* `Build and install instructions <https://github.com/melowntech/vts-vtsd#download-build-and-install>`__
+* `Commented sample configuration file <https://github.com/melowntech/vts-backend/blob/master/vts-backend/etc/vtsd/vtsd.conf>`__. To get complete list of options, run :command:`vtsd --help-all`.
 * :ref:`Troubleshooting <vtsd-troubleshooting>`
 
 .. toctree::

@@ -43,5 +43,5 @@ I fixed my resource definition but I see no change
 
 
 I cannot find my issue here
-	Check the `the issues on GitHub <https://github.com/Melown/vts-mapproxy/issues>`__ and connect with our development team.
+	Check the `the issues on GitHub <https://github.com/melowntech/vts-mapproxy/issues>`__ and connect with our development team.
 

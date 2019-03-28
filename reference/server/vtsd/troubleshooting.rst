@@ -24,4 +24,4 @@ I get 403 HTTP errors when trying to browse directories with VTSD
 	``listing = true`` for location in question is missing in the VTSD configuration.
 
 I cannot find my issue here
-	Check the `the issues on GitHub <https://github.com/Melown/vts-vtsd/issues>`__ and connect with our development team.
+	Check the `the issues on GitHub <https://github.com/melowntech/vts-vtsd/issues>`__ and connect with our development team.

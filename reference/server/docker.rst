@@ -29,7 +29,7 @@ generate the Docker images and start te Containers.
 
 ::
 
-    git clone --recursive https://github.com/Melown/vts-backend.git 
+    git clone --recursive https://github.com/melowntech/vts-backend.git 
     cd vts-backend
     make
 

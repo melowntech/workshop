@@ -3,7 +3,7 @@
 GeoJSON: Import and Extending with VTS-Browser-JS
 -------------------------------------------------
 
-This tutorial shows how to import and visualize remote GeoJSON data and how to programmatically modify geodata with Melown `VTS-Browser-JS <https://github.com/Melown/vts-browser-js>`__.
+This tutorial shows how to import and visualize remote GeoJSON data and how to programmatically modify geodata with Melown `VTS-Browser-JS <https://github.com/melowntech/vts-browser-js>`__.
 
 This is the second part of our tutorial series about GeoJSON. At this point you 
 should be familiar with displaying GeoJSON data and applying basic
@@ -176,15 +176,15 @@ Extending existing data
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 VTS Browser provides an API to extend existing
-`geodata <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#geodata-creation>`__.
+`geodata <https://github.com/melowntech/vts-browser-js/wiki/VTS-Browser-Map-API#geodata-creation>`__.
 We'll demonstrate this by adding a new point and a line segment to our
 data. Let's start with a point.
 
 For this purpose,
-`geodata <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#geodata-creation>`__
+`geodata <https://github.com/melowntech/vts-browser-js/wiki/VTS-Browser-Map-API#geodata-creation>`__
 provides the methods ``addPoint`` and ``addPointArray``, in case we want to add
 multiple points at once. You can check the
-`documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#geodata-methods>`__
+`documentation <https://github.com/melowntech/vts-browser-js/wiki/VTS-Browser-Map-API#geodata-methods>`__
 to discover more.
 
 .. code-block:: javascript

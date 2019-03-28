@@ -88,11 +88,11 @@ downloadable too.
     :lines: 94-124
 
 The layerswitcher switchingg function is modifying the ``view`` attribute of
-``browser.map`` object. You can have a look in `the documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#definition-of-view>`_ as well
+``browser.map`` object. You can have a look in `the documentation <https://github.com/melowntech/vts-browser-js/wiki/VTS-Browser-Map-API#definition-of-view>`_ as well
 as at our `mapConfig.json <http://localhost/melown2015/surface/melown/dem/mapConfig.json>`_ file.
 As for the styling, we are using similar vector style syntax, as used by `MapBox
 <https://www.mapbox.com/mapbox-gl-js/style-spec/>`_. Check you `full
-documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`_.
+documentation <https://github.com/melowntech/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`_.
 
 .. literalinclude:: srcs/wmts-app-fancy.js
     :lines: 21-56

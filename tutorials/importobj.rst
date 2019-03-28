@@ -4,7 +4,7 @@ Importing OBJ Models with VTS-Browser-JS
 ----------------------------------------
 
 This tutorial provides a step by step guide how to import and visualize
-sample OBJ models with `VTS-Browser-JS <https://github.com/Melown/vts-browser-js>`_.
+sample OBJ models with `VTS-Browser-JS <https://github.com/melowntech/vts-browser-js>`_.
 
 In detail we'll take a look how to display the VTS browser on a webpage. Next
 we'll load some OBJ data and display them.
@@ -92,10 +92,10 @@ We created a map in place of the ``map-div`` and set the ``map`` parameter to
 point to a map configuration we prepared in Melown Cloud for this purpose. You 
 can create your own map in `Melown Cloud <https://www.melown.com/cloud>`__. We 
 set the 
-`position <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#position>`__
+`position <https://github.com/melowntech/vts-browser-js/wiki/VTS-Browser-Map-API#position>`__
 to some nice place in the countryside. You can discover more about browser 
 configuration parameters in
-`documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-API#options>`__.
+`documentation <https://github.com/melowntech/vts-browser-js/wiki/VTS-Browser-API#options>`__.
 
 Once the map loads we can start with
 importing a OBJ files. We achieve this by using the callback function
@@ -114,7 +114,7 @@ You need modelObj.js library for importing OBJ files. This library is part of th
 
 .. code-block:: html
 
-    <script src="https://rawgithub.com/Melown/vts-browser-js/master/demos/meshes-obj-import/modelObj.js"></script>
+    <script src="https://rawgithub.com/melowntech/vts-browser-js/master/demos/meshes-obj-import/modelObj.js"></script>
 
 Let's assume we have one OBJ file containing house and one OBJ file containing car. We place
 following lines in the onMapLoaded function.
@@ -157,7 +157,7 @@ For that case we add following lines into the onMapLoaded function.
 
 First line adds new render slot with ``custom-models`` id which will call onDrawModels function when rendering the map.
 The second line tells that ``custom-models`` callback will be called after the map is rendered. You can read more
-about render slots in the `documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#render-slots-methods>`__.
+about render slots in the `documentation <https://github.com/melowntech/vts-browser-js/wiki/VTS-Browser-Map-API#render-slots-methods>`__.
        
 Rendering model
 ^^^^^^^^^^^^^^^

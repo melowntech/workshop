@@ -10,8 +10,8 @@ converts non-VTS resources (raster or vector) to VTS resources (:ref:`surface <s
 
 For the first time setup it is recommended to install and run mapproxy as a part of :ref:`vts-backend` package or using :ref:`docker-container` container which takes care of configuring and running the server.
 
-* `Main GitHub repository <https://github.com/Melown/vts-mapproxy>`__
-* `Build and install instructions <https://github.com/Melown/vts-mapproxy#download-build-and-install>`__ (GitHub)
+* `Main GitHub repository <https://github.com/melowntech/vts-mapproxy>`__
+* `Build and install instructions <https://github.com/melowntech/vts-mapproxy#download-build-and-install>`__ (GitHub)
 * :ref:`Server configuration <mapproxy-configuration>`
 * `Resource definition`_ (GitHub)
 * :ref:`mapproxy-troubleshooting`
@@ -42,4 +42,4 @@ Mapproxy serves all valid resources on following URLs (see `Resource definition`
 
 	<server>:<port>/<reference-frame>/<resource-type>/<resource-group>/<resource-id>/
 
-.. _Resource definition: https://github.com/Melown/vts-mapproxy/blob/master/docs/resources.md
+.. _Resource definition: https://github.com/melowntech/vts-mapproxy/blob/master/docs/resources.md

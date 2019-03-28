@@ -58,7 +58,7 @@ This generates set of three rasters with overviews needed to use DEM in mapproxy
 mapproxy-calipers
 -----------------
 
-Calculates recommended tile ranges and :ref:`LOD <lod>` ranges of given raster dataset for specified :ref:`reference frame <reference-frame>`. It furthermore provides VTS :ref:`position <position>` from which the dataset can be seen. These values are required in mapproxy `resource definition <https://github.com/Melown/vts-mapproxy/blob/master/docs/resources.md>`__. 
+Calculates recommended tile ranges and :ref:`LOD <lod>` ranges of given raster dataset for specified :ref:`reference frame <reference-frame>`. It furthermore provides VTS :ref:`position <position>` from which the dataset can be seen. These values are required in mapproxy `resource definition <https://github.com/melowntech/vts-mapproxy/blob/master/docs/resources.md>`__. 
 
 The last two lines of output in case of successful run look like::
 

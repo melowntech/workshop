@@ -29,7 +29,7 @@ This function creates a map in an HTML DOM element with ID 'map-div'. The parame
 Adding a New Panel to the Map Browser
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The simplest way to add new UI controls to the map browser is to use the `UI API <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-UI-API>`_. 
+The simplest way to add new UI controls to the map browser is to use the `UI API <https://github.com/melowntech/vts-browser-js/wiki/VTS-Browser-UI-API>`_. 
 
 .. code-block:: javascript
 
@@ -130,7 +130,7 @@ Once the XML file is loaded, we can extract features by `DOM methods <https://ww
 Displaying the Geodata
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Now that we have geographic data, we can display them in the map using the `Geodata API <https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Map-API#geodata-creation>`_. First we create a geodata object.
+Now that we have geographic data, we can display them in the map using the `Geodata API <https://github.com/melowntech/vts-browser-js/wiki/VTS-Browser-Map-API#geodata-creation>`_. First we create a geodata object.
 
 .. code-block:: javascript
 
@@ -387,6 +387,6 @@ How do we get the height profile of the track? We are able to get track geometry
 
 .. image:: images/gpx-viewer-final.jpg
 
-.. _geodata styles: https://github.com/Melown/JSFiddle-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure
-.. _rendering api: https://github.com/Melown/vts-browser-js/wiki/VTS-Browser-Renderer-API
-.. _vts-browser-js: https://github.com/Melown/vts-browser-js/wiki
+.. _geodata styles: https://github.com/melowntech/JSFiddle-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure
+.. _rendering api: https://github.com/melowntech/vts-browser-js/wiki/VTS-Browser-Renderer-API
+.. _vts-browser-js: https://github.com/melowntech/vts-browser-js/wiki

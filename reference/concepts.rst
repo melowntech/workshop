@@ -272,8 +272,8 @@ but straight to Earth centre (or even more precisely, very close to Earth centre
 
 Helas, this simple model of Earth is missing polar caps. This is why we instead
 define the
-`melown2015 <https://github.com/Melown/vts-registry/blob/master/registry/registry/referenceframes.json#L70>`_ reference frame with modified spatial division which includes the polar caps. Another interesting reference frame
-covering whole planet is a `mars-qsc <https://github.com/Melown/vts-registry/blob/master/registry/registry/referenceframes.json#L225>`_ which
+`melown2015 <https://github.com/melowntech/vts-registry/blob/master/registry/registry/referenceframes.json#L70>`_ reference frame with modified spatial division which includes the polar caps. Another interesting reference frame
+covering whole planet is a `mars-qsc <https://github.com/melowntech/vts-registry/blob/master/registry/registry/referenceframes.json#L225>`_ which
 represents Mars as a folded-out cube.
 
 The most important thing to remember about reference frames is that there exists
@@ -486,7 +486,7 @@ Then the layer is bound to one or more surfaces in ``view`` section:
 
 The last bound layer in the list wins, the last but one is displayed in places where the last is not available and so on.
 
-To make the client draw the data from external service, the layer is simply defined in mapproxy using ``tms-raster-remote`` driver (see `mapproxy resource definition <https://github.com/Melown/vts-mapproxy/blob/master/docs/resources.md>`__). This allows for keeping all the bound layer definitions at mapproxy for overall consistency.
+To make the client draw the data from external service, the layer is simply defined in mapproxy using ``tms-raster-remote`` driver (see `mapproxy resource definition <https://github.com/melowntech/vts-mapproxy/blob/master/docs/resources.md>`__). This allows for keeping all the bound layer definitions at mapproxy for overall consistency.
 
 Bound layers usually :ref:`metatiles <metatile>` which indicate which tiles are covered by underlaying data.
 

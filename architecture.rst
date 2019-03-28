@@ -68,7 +68,7 @@ sample browser and API allowing them to be plugged into existing
 vts-browser-js
 --------------
 
-The :ref:`vts-browser-js <vts-browser-js>` is all encompassing WebGL-based VTS client-side implementation with `comprehensive API <https://github.com/Melown/vts-browser-js/wiki>`_ and very small footprint - currently about 176 kB gzipped and minified.
+The :ref:`vts-browser-js <vts-browser-js>` is all encompassing WebGL-based VTS client-side implementation with `comprehensive API <https://github.com/melowntech/vts-browser-js/wiki>`_ and very small footprint - currently about 176 kB gzipped and minified.
 It works in all modern browsers with rudimentary mobile support.
 
 vts-browser-cpp

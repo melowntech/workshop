@@ -13,7 +13,7 @@ This guide shows how to build a simple C++ front-end application build on VTS.
 The application will create a window and show a single map configuration.
 You may navigate on the map with mouse.
 
-This tutorial uses source code from `vts-browser-minimal <https://github.com/Melown/vts-browser-cpp/wiki/examples-minimal>`_ example,
+This tutorial uses source code from `vts-browser-minimal <https://github.com/melowntech/vts-browser-cpp/wiki/examples-minimal>`_ example,
 which is part of the git repository.
 
 
@@ -33,14 +33,14 @@ After that, install the developer files for the library and optionally the debug
   apt-get install libvts-browser-dev libvts-browser-dbg
 
 If the package is not available for your distribution, you may build the library from source code.
-See `Building <https://github.com/Melown/vts-browser-cpp/blob/master/BUILDING.md>`_ for more information.
+See `Building <https://github.com/melowntech/vts-browser-cpp/blob/master/BUILDING.md>`_ for more information.
 After that just install the library locally.
 
 .. code-block:: sh
 
   sudo cmake --build . --target install
 
-Source code for the library is available at `GitHub <https://github.com/Melown/vts-browser-cpp>`_.
+Source code for the library is available at `GitHub <https://github.com/melowntech/vts-browser-cpp>`_.
 
 
 SDL
@@ -114,7 +114,7 @@ You may download the source: :download:`srcs/frontend-cpp/main.cpp`.
 Conclusion
 ^^^^^^^^^^
 
-Complete documentation for the browser library is at `wiki <https://github.com/Melown/vts-browser-cpp/wiki>`_.
+Complete documentation for the browser library is at `wiki <https://github.com/melowntech/vts-browser-cpp/wiki>`_.
 
 
 

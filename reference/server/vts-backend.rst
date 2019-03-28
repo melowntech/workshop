@@ -7,7 +7,7 @@ VTS Backend
 VTS Backend is a convenience package for simple installation and configuration
 of all VTS backend components.
 
-* `Main GitHub repository <https://github.com/Melown/vts-backend>`__
+* `Main GitHub repository <https://github.com/melowntech/vts-backend>`__
 * Step by step :ref:`tutorial <setting-vts-backend>` on how to set it up
 
 

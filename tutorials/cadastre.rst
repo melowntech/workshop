@@ -429,7 +429,7 @@ with the following contents::
 
 That will tell the browser that we want to see parcel borders yellow drawn by
 line that looks flat (gets thinner when you tilt). Further, when you come close,
-the parcel numbers will show up. Check the `free layers style documentation <https://github.com/Melown/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`_
+the parcel numbers will show up. Check the `free layers style documentation <https://github.com/melowntech/vts-browser-js/wiki/VTS-Geodata-Format#geo-layer-styles-structure>`_
 for further details.
 
 Filling the storage
@@ -454,7 +454,7 @@ Preparing True3D tilesets
 VTS tileset format is suitable for streaming data over the internet but it is
 firmly bound to given Reference Frame.  For True3D data exchange purposes we
 specified an open, Reference Frame independent, `VEF format
-<https://github.com/Melown/true3d-format-spec>`_ meant for storing hierarchical
+<https://github.com/melowntech/true3d-format-spec>`_ meant for storing hierarchical
 georeferenced textured meshes. The VEF format is a preferable entry point for 3D
 data into VTS.
 
