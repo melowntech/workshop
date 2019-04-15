@@ -9,11 +9,9 @@ What is VTS Geospatial
 
 .. figure:: images/vts-geospatial-black-no-left-padding.png
   :width: 400px
-  
+
 .. raw:: html
 
-
-  <!--<h1><span style=""></span><img src="images/vts-geospatial-black-no-left-padding.png" style="width: 400px;"></h1>-->
   <style>
     h1 {
       display: none;
@@ -55,7 +53,7 @@ The entire VTS 3D Stack is open source under the
 Downloading VTS
 ===============
 
-The sources are available at `GitHub/Melown <https://github.com/Melown>`_.
+The sources are available at `GitHub/melowntech <https://github.com/melowntech>`_.
 For easier instalation, Melown Technologies provide `binary packages of all
 backend components <https://cdn.melown.com/packages/>`_ for latest Ubuntu LTS. There is also a convenience package
 with basic configuration for all componets allowing to install the whole stack
