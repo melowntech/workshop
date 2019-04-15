@@ -3,10 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-########################################
-What is VTS 3D Geospatial Software Stack
-########################################
-
+.. figure:: images/vts-geospatial-black-no-left-padding.png
+   :width: 400px
 
 VTS 3D Geospatial Software Stack is a state-of-the-art, full-stack
 open source platform for 3D geospatial application development.  Consisting
@@ -83,10 +81,9 @@ Where to go next
   reference/index
 
 
-.. 
+..
   Indices and tables
   ==================
 
   * :ref:`genindex`
   * :ref:`search`
-
