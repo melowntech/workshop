@@ -6,6 +6,7 @@
 .. figure:: images/vts-geospatial-black-no-left-padding.png
    :width: 400px
 
+
 VTS 3D Geospatial Software Stack is a state-of-the-art, full-stack
 open source platform for 3D geospatial application development.  Consisting
 of 3D streaming backend components and of JavaScript and C++ frontend
