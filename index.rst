@@ -3,8 +3,22 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+**********************
+What is VTS Geospatial
+**********************
+
 .. figure:: images/vts-geospatial-black-no-left-padding.png
-   :width: 400px
+  :width: 400px
+  
+.. raw:: html
+
+
+  <!--<h1><span style=""></span><img src="images/vts-geospatial-black-no-left-padding.png" style="width: 400px;"></h1>-->
+  <style>
+    h1 {
+      display: none;
+    }
+  </style>
 
 
 VTS 3D Geospatial Software Stack is a state-of-the-art, full-stack
