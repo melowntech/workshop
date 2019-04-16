@@ -573,8 +573,8 @@ Tileset
 Tileset is a tiled surface, set of meshes with metadata bound to one given
 :ref:`reference-frame`. Meshes may or may not be textured. If not textured,
 meshes still have *external texture coordinates* to allow them being textured by
-e.g. :ref:`bound-layer`. :ref:`credit` information (copyrights, attributions) is
-bound to the tileset.
+e.g. :ref:`bound-layer`. :ref:`Credit <attribution>` information (copyrights,
+attributions) is bound to the tileset.
 
 For implementation reasons, there are more types of tilesets with the same
 interface. While practically indistinguishable, it is good to know about them
@@ -622,6 +622,7 @@ serve the :ref: `map-configuration` based on the storage view at URL:
 can check whether it is correct (produces valid mapConfig.json) by calling:
 
 .. code-block:: bash
+
   $ vts --map-config <path-to-storage-view>
 
 .. _glue:
