@@ -53,7 +53,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'VTS 3D Geospatial Software Stack'
+project = u'VTS Geospatial'
 copyright = u'2017 Melown Technologies SE'
 author = u'Melown Technologies SE'
 
@@ -149,7 +149,7 @@ html_theme_options = {
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
 #
-# html_title = u'Melown 3D Stack v1.0.0'
+html_title = u'VTS Geospatial'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #
