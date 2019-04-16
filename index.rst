@@ -7,7 +7,7 @@
 What is VTS Geospatial
 **********************
 
-.. figure:: images/vts-geospatial-black-no-left-padding.png?a
+.. figure:: _images/vts-geospatial-black-no-left-padding.png?a
   :width: 400px
 
 .. raw:: html
