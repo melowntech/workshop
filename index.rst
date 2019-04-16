@@ -3,9 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-**********************
-What is VTS Geospatial
-**********************
+**************************************
+Documentation, Tutorials and Reference
+**************************************
 
 .. figure:: images/vts-geospatial-black-no-left-padding2.png
   :width: 400px
