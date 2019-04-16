@@ -63,7 +63,17 @@ In ``[http]`` section, the HTTP server options are configured, like:
   Number of parallel HTTP threads, defaults to number of CPU cores.
 
 ``enableBrowser``
-  If ``true``, direct listing and browsing of published resources is possible and ``introspection`` section in resource definitions takes effect. Not recommended for production.
+  If ``true``, direct listing and browsing of published resources is possible and ``introspection`` section
+  in resource definitions takes effect. Not recommended for production.
+
+``externalUrl``
+  URL of this server's root directory. Defaults to http://ip:port/ or
+  http://localhost:port/, based on the value of ``listen``. Used only in cases
+  when full URL is needed:
+
+      * documentation (various README files)
+      * ``WMTSCapabilities.xml`` file which (unfortunately) requires absolute addresses
+      * in control interface used by ``mapproxy-setup-resource`` tool.
 
 [resource-backend]
 ^^^^^^^^^^^^^^^^^^
@@ -78,11 +88,10 @@ Here is defined, how you configure you data resources with following options:
 Depending on ``type`` there is one more parameter.
 
 resource backend conffile: configuration file-based resource backend:
-  ``--resource-backend.path`` arg Path to resource file (JSON).
+  ``path`` arg Path to resource file (JSON).
 
 resource backend python: mysql-based resource backend:
-  ``--resource-backend.script`` arg Path pythong script. It must privide global 
-                                function run().
+  ``script`` arg Path pythong script. It must privide global function run().
 
 Resources configuration reference can be found in `vts-mapproxy repository on GitHub <https://github.com/melowntech/vts-mapproxy/blob/master/docs/resources.md>`__.
 
