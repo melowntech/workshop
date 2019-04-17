@@ -25,12 +25,12 @@ VTS Browser
 """""""""""
 
 The library is available as a package on some popular linux distributions.
-Instructions to add the source-lists are at `OSS <https://cdn.melown.com/packages>`_.
+Instructions to add the source-lists are at `OSS <https://cdn.melown.com/packages/>`_.
 After that, install the developer files for the library and optionally the debug symbols.
 
 .. code-block:: sh
 
-  apt-get install libvts-browser-dev libvts-browser-dbg
+  apt install libvts-browser-dev libvts-browser-dbg
 
 If the package is not available for your distribution, you may build the library from source code.
 See `Building <https://github.com/melowntech/vts-browser-cpp/blob/master/BUILDING.md>`_ for more information.
@@ -78,7 +78,7 @@ The program uses single source file called *main.cpp* and is linked with all the
 
 You may download the file: :download:`srcs/frontend-cpp/CMakeLists.txt`.
 
-Now, we let cmake generate the platform specific build files (usually a makefile on linux).
+Next, let cmake generate the platform specific build files (usually a makefile on linux).
 This step is only done once.
 
 Moreover, we do not want to clutter the directory with numerous temporary files,
