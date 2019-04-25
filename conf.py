@@ -174,8 +174,12 @@ html_static_path = ['_static']
 html_context = {
     'css_files': [
         '_static/theme_overrides.css',  # override wide tables in RTD theme
-        ],
-     }
+    ],
+    'display_github': True,
+    'github_user': 'melowntech',
+    'github_repo': 'workshop',
+    'github_version': 'master/'
+}
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
