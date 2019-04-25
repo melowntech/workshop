@@ -54,7 +54,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'VTS Geospatial'
-copyright = u'2017 Melown Technologies SE'
+copyright = u'2019 Melown Technologies SE'
 author = u'Melown Technologies SE'
 
 # The version info for the project you're documenting, acts as replacement for
